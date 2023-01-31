@@ -15,7 +15,7 @@ body{
 }
 
 .main-container{
-    border-radius: 2rem;
+    border-radius: 1rem;
     height: fit-content;
     background-color: #f3f5f7;
     display: flex;
@@ -35,11 +35,13 @@ body{
     
 }
 
+/* -----------------------right container ---------------- */
+
 .left-container {
     height: 70vh;
     flex-basis: 15%;
     background: white;
-    border-radius: 2rem 0 0 2rem;
+    border-radius: 1rem 0 0 1rem;
     padding: 2rem 1rem;
     width: 18%;
     position: relative;
@@ -84,6 +86,9 @@ li {
 }
 
 
+/* -----------------------right container ---------------- */
+
+
 .right-container {
     flex-basis: 85%;
 }
@@ -97,7 +102,7 @@ li {
     /* border-bottom: 1px solid black; */
     padding: 2rem;
     background-color: rgba(182, 174, 174, 0.096);
-    border-radius: 0 2rem 0 0;
+    border-radius: 0 1rem 0 0;
 }
 
 .welcome-dashboard p{
