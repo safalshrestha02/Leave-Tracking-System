@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+body{
+    background-color: #dbe8f4;
+    padding: 10rem;
+    font-family: 'Poppins'; font-weight: 300;
+}
+
+
+
+.container {
+    display: flex;
+    border-radius: 2rem;
+
+}
+
+#ecobees-text-logo{
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+#ecobees-text-logo span{
+    color:  #fdb514;
+
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* -------------left container--------- */
+
+.left-container{
+    display: flex;
+    background-color: #f3f5f7;;
+    flex-basis: 65%;
+    border-radius: 2rem 0 0 2rem;
+    padding: 2rem;
+    
+}
+
+.left-container-heading {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.ecobees-trans-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 12rem;
+}
+
+.left-container .ecobees-text-logo {
+    text-align: center;
+}
+
+
+/* ----right container-------- */
+
+.right-container {
+    justify-content: center;
+    flex-basis: 35%;
+    display: flex;
+    background-color: white;
+    border-radius: 0 2rem 2rem 0;
+}
+
+.right-container-wrapper {
+    margin: 6rem;
+}
+
+.login-heading {
+    flex-direction: row;
+    font-size: 2.3rem;
+    justify-content: center;
+    font-weight: 500;
+}
+
+.login-heading h1 {
+    display: inline-flex;
+}
+
+.new-user-register{
+    padding-bottom: 1rem;
+    text-align: center;
+}
+
+.new-user-register a {
+    color: #fdb514;
+}
+
+.new-user-register a:hover {
+    text-decoration: underline;
+}
+
+
+/* login example */
+
+/* .login-example {
+    display: flex;
+    align-items: center;
+    background-color: #fdb514;
+    color: whitesmoke;
+    border-radius: 1rem;
+}
+
+.login-example-wrapper{
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.username-example {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: .5rem;
+}
+
+.username-example span:nth-child(1){
+    display: block;
+    text-align: center;
+} */
+
+/* form */
+.login-form {
+    margin-top: 4rem;
+    padding-bottom: 2rem;
+}
+
+.login-type {
+    margin-bottom: 2rem;
+}
+
+.login-input-field {
+    width: 100%;
+    font-size: 1.3rem;
+    border: none;
+    padding: 1rem;
+    border-radius: 0.3rem;
+    background-color: #f3f5f7;
+    margin-bottom: 1.5rem;
+    color: rgb(22, 22, 22);
+}
+
+.loginor{
+    text-align: center;
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+
+.login-as-client, .login-as-worker {
+    background-color: #3d3a3a;
+    width: 100%;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+    line-height: 3.5rem;
+    color: #dbe8f4;
+}
+
+.login-as-client:hover, .login-as-worker:hover{
+    cursor: pointer;
+    background-color: #494646;
+}
