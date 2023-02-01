@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Leave Tracking System</title>
-    <link rel="stylesheet" href="../style_sheets/home.css" />
+    <link rel="stylesheet" href="../style_sheets/profile.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -19,18 +19,20 @@
                 <nav>
                     <h1 id="main-logo"><span>e</span>coB<span>ee</span>s</h1>
                     <ul id="nav-ul ">
-                        <li class="active">
+                        <li>
                             <a href="./home.html" class="nav-links"><i class="fa-solid fa-house nav-icon"></i>Home</a>
                         </li>
-                        <li>
+
+                        <li class="active">
                             <a href="./profile.html" class="nav-links"><i
                                     class="fa-regular fa-user nav-icon"></i>Profile</a>
                         </li>
+
                         <li>
                             <a href="./leave.html" class="nav-links"><i
-                                    class="fa-solid fa-right-from-bracket nav-icon"></i>Apply
-                                for Leave</a>
+                                    class="fa-solid fa-right-from-bracket nav-icon"></i>Apply for Leave</a>
                         </li>
+
                         <li>
                             <a href="#" class="nav-links"><i class="fa-solid fa-clock-rotate-left nav-icon"></i>Leave
                                 History</a>
@@ -54,13 +56,48 @@
                         <p class="worker-id">Worker ID: <span>4483 </span></p>
                     </div>
                 </div>
+
+
                 <div class="dashboard-content">
-                    <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores
-                        perspiciatis magni sequi consequuntur eaque quidem, error
-                        molestias vel exercitationem, distinctio voluptate repellat
-                        facilis enim eius veritatis qui nemo animi minus!
-                    </p>
+
+                    <div class="worker-details">
+                        <!-- <i class="fa-regular fa-circle-user user-icon"></i> -->
+                        <div class="worker-name-and-sub-title">
+                            <p class="worker-name">Ishan Ghimire</p>
+                            <p class="worker-sub-title">ecoBees Worker</p>
+                        </div>
+
+                    </div>
+
+                    <div class="details-table">
+                        <div class="profile-worker-id profile-details">
+                            <p class="details-head emp-id">Worker ID</p>
+                            <p class="details-body emp-id-value">4483</p>
+                        </div>
+
+                        <div class="profile-worker-email profile-details">
+                            <p class="details-head emp-email">Email Address</p>
+                            <p class="details-body emp-email-value">ishanghimire9@gmail.com</p>
+                        </div>
+
+                        <div class="profile-leave-approver profile-details">
+                            <p class="details-head leave-approver">Leave Approver</p>
+                            <p class="details-body leave-approver-value">Anugraha Acharya</p>
+                        </div>
+
+                        <div class="profile-worker-country profile-details">
+                            <p class="details-head emp-country">Country</p>
+                            <p class="details-body emp-country-value">Nepal</p>
+                        </div>
+
+                        <div class="profile-worker-email profile-details">
+                            <p class="details-head emp-city">City</p>
+                            <p class="details-body emp-city-value">Kathmandu</p>
+                        </div>
+
+                    </div>
+
+
                 </div>
             </div>
         </div>
