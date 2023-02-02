@@ -7,16 +7,16 @@ const path = require("path");
 
 //routes
 //const connectDB = require("./config/connect");
-const loginPage = require("./routes/loadPages");
+const loadPages = require("./routes/loadPages");
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 // connectDB();
 
-app.get("/", loginPage);
-app.get("/home", loginPage);
-app.get("/leave", loginPage);
+app.get("/", loadPages);
+app.get("/home", loadPages);
+app.get("/leave", loadPages);
 
 // mongoose.connection.once("open", () => {
 app.listen(3000, () => {
