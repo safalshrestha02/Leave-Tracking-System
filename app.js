@@ -7,25 +7,25 @@ const path = require("path");
 
 //routes
 const loadPages = require("./routes/loadPages");
+const clientRegistration = require("./routes/clientRoutes");
 
 const DBrui =
-  "mongodb+srv://Datamanagement:gKqq46vSnvymlnWk@cluster0.nkzwg3y.mongodb.net/People?retryWrites=true&w=majority";
+  "mongodb+srv://safal1234:safal1234@cluster0.cgli9ia.mongodb.net/mongoPrac?retryWrites=true&w=majority";
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
 
-// connectDB();
-const Person = mongoose.connect(DBrui).then((result)=>{
-  app.listen(3000, () => {
-    console.log("Server running on port 3000");
-  });
-})
+//html rendering
 app.get("/", loadPages);
 app.get("/home", loadPages);
 app.get("/leave", loadPages);
-app.post("/client_registration", loadPages);
 
+//routes for posting data to backend
+app.use("/client_registration", clientRegistration);
 
-// mongoose.connection.once("open", () => {
-
-// });
+// connectDB();
+const Person = mongoose.connect(DBrui).then((result) => {
+  app.listen(3000, () => {
+    console.log("Server running on port 3000");
+  });
+});
