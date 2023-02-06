@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap');
 
-
 *{
     margin: 0;
     padding: 0;
@@ -14,11 +13,18 @@ body{
     margin: 0 auto;
 }
 
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
 .main-container{
     border-radius: 1rem;
     height: fit-content;
     background-color: #f3f5f7;
     display: flex;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
 }
 
@@ -26,8 +32,10 @@ body{
     font-size: 2rem;
     font-weight: 500;
     margin-bottom: 3rem;
-    padding: 0.8rem;
     letter-spacing: 2px;
+    display: block;
+    text-align: center;
+    color: white;
 }
 
 #main-logo span{
@@ -38,14 +46,15 @@ body{
 /* -----------------------right container ---------------- */
 
 .left-container {
-    height: 70vh;
-    flex-basis: 15%;
-    background: white;
+    background: #3c4048;
     border-radius: 1rem 0 0 1rem;
-    padding: 2rem 1rem;
-    width: 18%;
-    position: relative;
-    
+    padding: 0.5rem  1rem 2rem 1rem;
+    width: fit-content;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
 }
 
 
@@ -53,36 +62,48 @@ body{
 li {
     list-style: none;
     margin: 1rem 0;
-    padding: 0.8rem;
-    padding-right: 1rem;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    color: white;
 
+}
+
+
+.nav-links{
+    width: 100%;
+    padding: 1.1rem;
+    display: inline-block;
+    color: white;
+    
 }
 
 .active{
     background-color: #fdb514;
-
 }
 
-.nav-links{
-    text-decoration: none;
+.nav-active {
     color: black;
-    
 }
+
 
 
 
 .logout-button {
-    opacity: 0.4;
     text-decoration: none;
-    position: absolute;
-    bottom: 3rem;
     padding: 0.8rem;
-    
+    position: initial;
+    margin-bottom: 3rem;
+    color: white;
+}
+
+.logout-button:hover{
+    color: red;
+    opacity: 1;
 }
 
 .nav-icon {
     margin-right: 1.5rem;
+    opacity: 0.7;
 }
 
 
@@ -90,46 +111,52 @@ li {
 
 
 .right-container {
-    flex-basis: 85%;
+    flex-basis: 90%;
 }
 
+
 .welcome {
-    font-size: 1.3rem;
     margin-bottom: 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* border-bottom: 1px solid black; */
-    padding: 2rem;
+    padding: 0.5rem 2rem;
     background-color: rgba(182, 174, 174, 0.096);
     border-radius: 0 1rem 0 0;
 }
 
-.welcome-dashboard p{
-    font-size: 2.3rem;
+
+
+.welcome-dashboard {
+    font-size: 1.8rem;
 
 }
 
-.welcome-worker{
-    color:orange;
-    font-size: 3rem;
-}
+
 
 .welcome span {
     color: #fdb514;
+    font-weight: 600;
+}
+
+
+#welcome-worker{
+    font-size: 2.5rem;
+    margin-right: 0.7rem;
 }
 
 .worker-id {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    opacity: 0.3;
+    display: inline-block;
+    margin-right: 0.2rem;
 }
 
-.dashboard-content {
+#id-number{
+    font-weight: 500;
+}
+
+
+.dashboard-content{
     padding: 2rem;
-
 }
-
-#welcome-worker {
-    font-size: 3rem;
-}
-
-

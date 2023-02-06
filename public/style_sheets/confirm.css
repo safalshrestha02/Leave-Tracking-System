@@ -1,0 +1,67 @@
+.confirm-container {
+    width: 100%;
+    background: linear-gradient(rgba(0,0,0,0.4)50%,rgba(0,0,0,0.4)50%);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.confirm-wrapper {
+    width: fit-content;
+    padding: 4rem;
+    text-align: center;
+    background-color: white;
+    border-radius: 1rem;
+
+}
+
+.confirm-icon {
+    font-size: 7rem;
+    color: #FF0032;
+}
+
+.warning-title {
+    opacity: 0.8;
+    margin-top: 1.5rem;
+    display: block;
+}
+
+.warning-about {
+    opacity: 0.7;
+    margin: 2.3rem 0;
+}
+
+.confirm {
+    padding: 0.7rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 0.3rem;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.cancel-button {
+    margin-right: 1rem;
+    background-color: rgb(124, 124, 124);
+}
+
+.confirm-button {
+    background-color: #FF0032;
+}
+
+.confirm-button:hover {
+    background-color: #e73357;
+    opacity: 1;
+}
+
+.cancel-button:hover{
+    background-color: rgb(145, 139, 139);
+    opacity: 1;
+}
+
+
+
