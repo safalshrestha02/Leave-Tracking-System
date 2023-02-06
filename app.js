@@ -10,8 +10,7 @@ const loadPages = require("./routes/loadPages");
 const clientRegistration = require("./routes/clientRoutes");
 const workerRegistration = require("./routes/employeeRoutes");
 
-const DBrui =
-  "mongodb+srv://safal1234:safal1234@cluster0.cgli9ia.mongodb.net/mongoPrac?retryWrites=true&w=majority";
+const DBrui = process.env.DBrui;
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
