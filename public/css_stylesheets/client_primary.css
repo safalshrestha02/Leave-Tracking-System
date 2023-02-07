@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+}
+
+.main-container {
+  border-radius: 1rem;
+  background-color: #f3f5f7;
+  display: flex;
+}
+
+#main-logo {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 3rem;
+  letter-spacing: 2px;
+  display: block;
+  text-align: center;
+  color: white;
+}
+
+#main-logo span {
+  color: #fdb514;
+}
+
+/* -----------------------left container ---------------- */
+.left-container {
+  background: #3c4048;
+  padding: 2rem 1rem;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 15%;
+  min-height: 100vh;
+}
+
+li {
+  list-style: none;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  width: 100%;
+  color: white;
+}
+
+.nav-links {
+  width: 100%;
+  padding: 1rem;
+  display: inline-block;
+  color: white;
+}
+
+.active {
+  background-color: #fdb514;
+}
+
+.nav-active {
+  color: black;
+}
+
+.logout-button {
+  text-decoration: none;
+  padding: 0.8rem;
+  margin-bottom: 3rem;
+  color: white;
+}
+
+.logout-button:hover {
+  color: #ff0032;
+}
+
+.nav-icon {
+  margin-right: 1.5rem;
+}
+
+/* -----------------------right container ---------------- */
+.right-container {
+  width: 100%;
+}
+
+.navbar-name {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  background-color: rgba(102, 100, 100, 0.096);
+  width: 100%;
+}
+
+.navbar-left {
+  font-size: 2.5rem;
+}
+
+#button-add-worker {
+  padding: 0.7rem;
+  background-color: #ff0032;
+  border-radius: 1rem;
+  color: white;
+  display: inline-block;
+  transform: translateY(-18%);
+  font-size: 1.1rem;
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
+}
+
+.fa-user-plus {
+  margin-right: 0.3rem;
+}
+
+.dashboard-content {
+  padding: 2rem;
+  width: 90%;
+  background-color: white;
+  margin: 0 auto;
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-top: 5rem;
+} /*# sourceMappingURL=client_primary.css.map */
