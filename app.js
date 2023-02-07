@@ -6,7 +6,8 @@ const mongoose = require("mongoose");
 const path = require("path");
 
 //routes
-const loadPages = require("./routes/loadPages");
+const workerPages = require("./routes/workerPagesRoutes");
+const clientPages = require("./routes/clientPageRoutes");
 const clientRegistration = require("./routes/clientRoutes");
 const workerRegistration = require("./routes/employeeRoutes");
 
@@ -16,9 +17,13 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 //html rendering
-app.get("/", loadPages);
-app.get("/home", loadPages);
-app.get("/leave", loadPages);
+app.get("/", workerPages);
+
+//worker side
+app.use("/", workerPages);
+
+//client side
+app.use("/", clientPages);
 
 //routes for posting data to backend
 app.use("/client_registration", clientRegistration);
