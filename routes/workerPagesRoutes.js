@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 //paths
-const loadPages = require("../controller/workerPageController");
+const loadPages = require("../controller/loadPages");
 
 //landing page
 router.get("/", loadPages.loginPage);
