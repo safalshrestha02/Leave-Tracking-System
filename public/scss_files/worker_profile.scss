@@ -5,23 +5,18 @@
   padding: 0;
   box-sizing: border-box;
   font-family: $global-font-family;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 body {
   background: $body-bg;
-  padding: 5rem;
-  margin: 0 auto;
 }
 
 a {
   text-decoration: none;
-  color: black;
 }
 
 .main-container {
-  border-radius: 1rem;
-  height: fit-content;
   background-color: #f3f5f7;
   display: flex;
   box-shadow: $primary-box-shadow;
@@ -49,10 +44,9 @@ a {
 
 .left-container {
   background: $dark-bg;
-  border-radius: 1rem 0 0 1rem;
   padding: 0.5rem 1rem 2rem 1rem;
-  min-width: fit-content;
-  min-height: 80vh;
+  min-width: 13vw;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -95,13 +89,12 @@ li {
 
 .nav-icon {
   margin-right: 1.5rem;
-  opacity: 0.7;
 }
 
 /* -----------------------right container ---------------- */
 
 .right-container {
-  flex-basis: 90%;
+  width: 100%;
 }
 
 .welcome {
@@ -109,9 +102,8 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 2rem;
-  background-color: $grey-bg;
-  border-radius: 0 1rem 0 0;
+  padding: 1rem 2rem;
+  background-color: $separator;
 }
 
 #welcome-worker {
@@ -128,14 +120,14 @@ li {
 
 .dashboard-content {
   padding: 2.3rem 4rem;
-  width: 80%;
+  width: 60%;
   background-color: white;
-  margin: 0 auto;
-  border-radius: 2rem;
+  margin: auto;
+  border-radius: 1rem;
   box-shadow: $primary-box-shadow;
   align-self: center;
   justify-self: center;
-  margin-top: 5rem;
+  margin-top: 10rem;
 }
 
 .worker-name {
