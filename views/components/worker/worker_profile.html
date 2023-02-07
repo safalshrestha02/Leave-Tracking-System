@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leave Tracking System</title>
+  <link rel="stylesheet" href="/public/css_stylesheets/worker_profile.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <div>
+    <div class="main-container">
+      <div class="left-container">
+        <nav>
+          <h1 id="main-logo"><span>e</span>coB<span>ee</span>s</h1>
+          <ul id="nav-ul ">
+            <li>
+              <a href="/worker_home" class="nav-links"><i class="fa-solid fa-house nav-icon"></i>Home</a>
+            </li>
+
+            <li class="active">
+              <a href="/worker_profile" class="nav-links nav-active"><i
+                  class="fa-solid fa-user nav-icon"></i>Profile</a>
+            </li>
+
+            <li>
+              <a href="/worker_applyLeave" class="nav-links"><i
+                  class="fa-solid fa-right-from-bracket nav-icon"></i>Apply for Leave</a>
+            </li>
+
+            <li>
+              <a href="/leave_history" class="nav-links"><i class="fa-solid fa-clock-rotate-left nav-icon"></i>Leave
+                History</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="logout-button-container">
+          <a href="#" class="logout-button"><i class="fa-solid fa-arrow-right-from-bracket nav-icon"
+              style="rotate: 180deg"></i>Logout</a>
+        </div>
+      </div>
+      <div class="right-container">
+        <div class="welcome">
+          <div class="welcome-dashboard">
+            <span id="welcome-worker">Ishan Ghimire</span>
+          </div>
+          <div class="welcome-right">
+            <span> Worker ID: </span>
+            <span class="worker-id">4483</span>
+          </div>
+        </div>
+
+
+        <div class="dashboard-content">
+
+          <div class="worker-details">
+
+            <div class="worker-name-and-sub-title">
+              <p class="worker-name">Ishan Ghimire</p>
+              <p class="worker-sub-title">ecoBees Worker</p>
+            </div>
+
+          </div>
+
+          <div class="details-table">
+            <div class="profile-worker-id profile-details">
+              <p class="details-head emp-id">Worker ID</p>
+              <p class="details-body emp-id-value">4483</p>
+            </div>
+
+            <div class="profile-worker-email profile-details">
+              <p class="details-head emp-email">Email Address</p>
+              <p class="details-body emp-email-value">ishanghimire9@gmail.com</p>
+            </div>
+
+            <div class="profile-leave-approver profile-details">
+              <p class="details-head emp-gender">Gender</p>
+              <p class="details-body emp-gender-value">Male</p>
+            </div>
+
+            <div class="profile-worker-country profile-details">
+              <p class="details-head emp-country">Country</p>
+              <p class="details-body emp-country-value">Nepal</p>
+            </div>
+
+            <div class="profile-worker-email profile-details">
+              <p class="details-head emp-city">City</p>
+              <p class="details-body emp-city-value">Kathmandu</p>
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

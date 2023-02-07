@@ -38,7 +38,7 @@ exports.workerProfile = (req, res, next) => {
       "./views",
       "./components",
       "./worker",
-      "profile.html"
+      "worker_profile.html"
     )
   );
 };
