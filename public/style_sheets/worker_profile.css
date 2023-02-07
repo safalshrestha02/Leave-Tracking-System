@@ -17,7 +17,7 @@ a {
 }
 
 .main-container {
-  background-color: #f3f5f7;
+  background-color: #F3F5F7;
   display: flex;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
@@ -40,7 +40,7 @@ a {
   font-family: "Poppins", sans-serif;
 }
 
-/* -----------------------right container ---------------- */
+/* -----------------------left container ---------------- */
 .left-container {
   background: #3C4048;
   padding: 0.5rem 1rem 2rem 1rem;
@@ -56,11 +56,12 @@ li {
   margin: 1rem 0;
   border-radius: 0.5rem;
   width: 100%;
+  color: white;
 }
 
 .nav-links {
   width: 100%;
-  padding: 1.1rem;
+  padding: 1rem;
   display: inline-block;
   color: white;
 }
@@ -76,44 +77,62 @@ li {
 .logout-button {
   text-decoration: none;
   padding: 0.8rem;
-  position: initial;
   margin-bottom: 3rem;
   color: white;
 }
 
 .logout-button:hover {
-  color: red;
-  opacity: 1;
+  color: #FF0032;
 }
 
 .nav-icon {
   margin-right: 1.5rem;
 }
 
-/* -----------------------right container ---------------- */
+/* -----------------------right container ----------------  */
 .right-container {
   width: 100%;
 }
 
-.welcome {
+.navbar-name {
   margin-bottom: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
   background-color: rgba(182, 174, 174, 0.096);
+  width: 100%;
+}
+
+.worker-name {
+  font-size: 2.5rem;
 }
 
 #welcome-worker {
   font-size: 2.5rem;
   color: #3C4048;
   font-weight: 600;
+  margin-right: 0.7rem;
 }
 
 .worker-id {
   font-size: 1rem;
-  margin-right: 0.2rem;
-  font-weight: 500;
+  display: inline-block;
+}
+
+#id-number {
+  font-weight: 600;
+  margin-left: 0.2rem;
+}
+
+.dashboard-content {
+  padding: 2rem;
+  width: 90%;
+  background-color: white;
+  margin: 0 auto;
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-top: 5rem;
 }
 
 .dashboard-content {
@@ -128,7 +147,7 @@ li {
   margin-top: 10rem;
 }
 
-.worker-name {
+.worker-name-profile {
   font-weight: 500;
   font-size: 2.5rem;
 }
@@ -163,4 +182,4 @@ li {
 
 .details-body {
   font-weight: 500;
-}/*# sourceMappingURL=worker_profile.css.map */
+}
