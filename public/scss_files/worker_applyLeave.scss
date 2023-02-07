@@ -1,0 +1,99 @@
+@import "./worker_primary.scss";
+
+
+a {
+    color: black;
+}
+
+label span {
+    color: red;
+}
+
+label {
+    font-weight: 500;
+    display: block;
+    margin-top: 2rem;
+    margin-bottom: 0.8rem;
+}
+
+.form-container {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0 auto;
+}
+
+.form-field:nth-child(2n) {
+
+    flex-basis: 50%;
+    
+} 
+
+.form-field:nth-child(2n+1) {
+    flex-basis: 50%;
+    
+} 
+
+select {
+    width: 90%;
+    background-color:#f3f5f7 ;
+    padding: 0.6rem;
+    margin-right: 2rem;
+    border: none;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+}
+
+
+.form-field input {
+
+    border: none;
+    padding: 0.6rem;
+    border-radius: 0.3rem;
+    background-color: #f3f5f7;
+    margin-right: 2rem;
+    width: 90%;
+    font-size: 1rem;
+
+}
+
+#reason-box{
+
+    flex-basis: 100%;
+
+}
+
+#reason-box textarea {
+    border: none;
+    border-radius: 0.3rem;
+    background-color: #f3f5f7;
+    padding: 1rem;
+    width: 95%;
+    resize: none;
+    font-size: 1rem;
+}
+
+.form-buttons {
+    width: 93%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 4rem;
+  }
+  
+  .form-buttons button {
+    margin: 0 1rem;
+    padding: 0.5rem 3rem;
+    border-radius: 0.3rem;
+    border: none;
+    font-size: 1rem;
+}
+
+.form-button-apply {
+        background-color: $primary-yellow;
+}
+
+.form-button-reset {
+    background-color: white;
+}

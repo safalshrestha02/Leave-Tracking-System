@@ -1,135 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Leave Tracking System</title>
-    <link rel="stylesheet" href="../../style_sheets/leave.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  </head>
+    <link rel="stylesheet" href="/public/style_sheets/worker_applyLeave.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
 
-  <body>
+<body>
     <div>
-      <div class="main-container">
-        <div class="left-container">
-          <nav>
-            <h1 id="main-logo"><span>e</span>coB<span>ee</span>s</h1>
-            <ul id="nav-ul ">
-              <li>
-                <a href="/worker_home" class="nav-links"
-                  ><i class="fa-solid fa-house nav-icon"></i>Home</a
-                >
-              </li>
-              <li>
-                <a href="/worker_profile" class="nav-links"
-                  ><i class="fa-solid fa-user nav-icon"></i>Profile</a
-                >
-              </li>
-              <li class="active">
-                <a href="/worker_applyLeave" class="nav-links"
-                  ><i class="fa-solid fa-right-from-bracket nav-icon"></i>Apply
-                  for Leave</a
-                >
-              </li>
-              <li>
-                <a href="/leave_history" class="nav-links"
-                  ><i class="fa-solid fa-clock-rotate-left nav-icon"></i>Leave
-                  History</a
-                >
-              </li>
-              <li>
-                <a href="./client_home.html" class="nav-links"
-                  ><i class="fa-solid fa-clock-rotate-left nav-icon"></i>Client
-                  Dashboard</a
-                >
-              </li>
-            </ul>
-          </nav>
-          <div class="logout-button-container">
-            <a href="#" class="logout-button"
-              ><i
-                class="fa-solid fa-arrow-right-from-bracket nav-icon"
-                style="rotate: 180deg"
-              ></i
-              >Logout</a
-            >
-          </div>
-        </div>
-        <div class="right-container">
-          <div class="welcome">
-            <div class="welcome-dashboard">
-              <p><span id="welcome-worker">Worker's</span> Dashboard</p>
+        <div class="main-container">
+            <div class="left-container">
+                <nav>
+                    <h1 id="main-logo"><span>e</span>coB<span>ee</span>s</h1>
+                    <ul id="nav-ul ">
+                        <li>
+                            <a href="./worker_home.html" class="nav-links"><i
+                                    class="fa-solid fa-house nav-icon"></i>Home</a>
+                        </li>
+                        <li>
+                            <a href="./worker_profile.html" class="nav-links"><i
+                                    class="fa-solid fa-user nav-icon"></i>Profile</a>
+                        </li>
+                        <li class="active">
+                            <a href="./worker_applyLeave.html" class="nav-links  nav-active"><i
+                                    class="fa-solid fa-right-from-bracket nav-icon"></i>Apply
+                                for Leave</a>
+                        </li>
+                        <li>
+                            <a href="/leave_history" class="nav-links"><i
+                                    class="fa-solid fa-clock-rotate-left nav-icon"></i>Leave
+                                History</a>
+                        </li>
+                        <li>
+                            <a href="../client/client_home.html" class="nav-links"><i
+                                    class="fa-solid fa-clock-rotate-left nav-icon"></i>Client
+                                Dashboard</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="logout-button-container">
+                    <a href="/" class="logout-button"><i class="fa-solid fa-arrow-right-from-bracket nav-icon"
+                            style="rotate: 180deg"></i>Logout</a>
+                </div>
             </div>
-            <div class="welcome-right">
-              <p><span> Ishan Ghimire </span></p>
-              <p class="worker-id">Worker ID:</p>
-              <span>4483 </span>
+            <div class="right-container">
+                <div class="navbar-name">
+                    <div class="worker-name">
+                        <p>Ishan Ghimire</p>
+                    </div>
+                    
+                    <div class="navbar-id">
+                        <p class="worker-id">Worker ID:<span id="id-number">4483</span></p>
+                    
+                    </div>
+                </div>
+                
+                <div class="dashboard-content">
+
+                    <form class="form-container">
+                        <div class="form-field">
+                          <label for="name"> Employee Name <span>*</span> </label>
+                          <input type="text" value="Ishan Ghimire" disabled />
+                        </div>
+                        <div class="form-field">
+                          <label for="Employee ID"> Employee ID <span>*</span> </label>
+                          <input type="text" value="4483" disabled />
+                        </div>
+            
+                        <div class="form-field">
+                          <label for="start-date"> Start Date <span>*</span> </label>
+                          <input type="date" />
+                        </div>
+            
+                        <div class="form-field">
+                          <label for="end-date"> End Date <span>*</span> </label>
+                          <input type="date" />
+                        </div>
+            
+                        <div class="form-field">
+                          <label for="leave-type"> Type of leave<span>*</span> </label><select name="type-of-leave" id="">
+                            <option value="sick">Sick Leave</option>
+                            <option value="vacation">Vacation Leave</option>
+                            <option value="unpaid">Unpaid Leave</option>
+                            <option value="urgent">Urgent Leave</option>
+                          </select>
+                        </div>
+            
+                        <div class="form-field">
+                          <label for="days-number">No. of days leaves required<span>*</span> </label><input type="text"
+                            placeholder="Less than 30" />
+                        </div>
+            
+                        <div id="reason-box">
+                          <label for="reason">Reason for leave <span>*</span></label>
+                          <textarea rows="4" placeholder="Type your reason for leave"></textarea>
+                        </div>
+            
+                        <div class="form-buttons">
+                          <button class="form-button-reset">
+                            <a href="#">Reset</a>
+                          </button>
+                          <button class="form-button-apply">
+                            <a href="#">Apply</a>
+                          </button>
+                        </div>
+                      </form>
+
+                </div>
             </div>
-          </div>
-          <div class="dashboard-content">
-            <form class="form-container">
-              <div class="form-field">
-                <label for="name"> Employee Name <span>*</span> </label>
-                <input type="text" value="Ishan Ghimire" disabled />
-              </div>
-              <div class="form-field">
-                <label for="Employee ID"> Employee ID <span>*</span> </label>
-                <input type="text" value="4483" disabled />
-              </div>
-
-              <div class="form-field">
-                <label for="start-date"> Start Date <span>*</span> </label>
-                <input type="date" />
-              </div>
-
-              <div class="form-field">
-                <label for="end-date"> End Date <span>*</span> </label>
-                <input type="date" />
-              </div>
-
-              <div class="form-field">
-                <label for="leave-type"> Type of leave<span>*</span> </label
-                ><select name="type-of-leave" id="">
-                  <option value="sick">Sick Leave</option>
-                  <option value="vacation">Vacation Leave</option>
-                  <option value="unpaid">Unpaid Leave</option>
-                  <option value="urgent">Urgent Leave</option>
-                </select>
-              </div>
-
-              <div class="form-field">
-                <label for="days-number"
-                  >No. of days leaves required<span>*</span> </label
-                ><input type="text" placeholder="Less than 30" />
-              </div>
-
-              <div id="reason-box">
-                <label for="reason">Reason for leave <span>*</span></label>
-                <textarea
-                  rows="4"
-                  placeholder="Type your reason for leave"
-                ></textarea>
-              </div>
-
-              <div class="form-buttons">
-                <button class="form-button-reset">
-                  <a href="#">Reset</a>
-                </button>
-                <button class="form-button-apply">
-                  <a href="#">Apply</a>
-                </button>
-              </div>
-            </form>
-          </div>
         </div>
-      </div>
     </div>
-  </body>
+</body>
+
 </html>
