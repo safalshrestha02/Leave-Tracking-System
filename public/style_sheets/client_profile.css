@@ -128,3 +128,52 @@ li {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-top: 5rem;
 }
+
+.dashboard-content {
+  padding: 2.3rem 4rem;
+  width: 60%;
+  background-color: white;
+  margin: auto;
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  align-self: center;
+  justify-self: center;
+  margin-top: 10rem;
+}
+
+.client-name {
+  font-weight: 500;
+  font-size: 2.5rem;
+}
+
+.client-sub-title {
+  font-weight: 200;
+  color: black;
+}
+
+.details-table {
+  margin: 2rem 0;
+  padding: 1.2rem 2rem;
+  display: flex;
+  flex-flow: column wrap;
+  gap: 0.5rem;
+  background-color: #F3F5F7;
+  border-radius: 1rem;
+}
+
+.profile-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0.7rem 0;
+  border-bottom: 2px solid #EDEEF0;
+}
+
+.details-head {
+  color: black;
+  font-weight: bold;
+}
+
+.details-body {
+  font-weight: 500;
+}
