@@ -1,0 +1,176 @@
+@import "./variables";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+body{
+    font-family: $global-font-family;
+    padding: 10rem;
+    background-color: $body-bg;
+}
+
+
+
+.main-container {
+    display: flex;
+    border-radius: 2rem;
+    box-shadow: $primary-box-shadow;
+}
+
+#ecobees-text-logo{
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+#ecobees-text-logo span{
+    color:  $primary-yellow;
+
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* -------------left container--------- */
+
+.left-container{
+    display: flex;
+    background-color: $light-bg;;
+    flex-basis: 65%;
+    border-radius: 2rem 0 0 2rem;
+    
+}
+
+.left-container-heading {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.ecobees-trans-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 12rem;
+}
+
+.ecobees-text-logo {
+    text-align: center;
+}
+
+
+/* ----right container-------- */
+
+.right-container {
+    display: flex;
+    justify-content: center;
+    flex-basis: 35%;
+    background-color: #3C4048;
+    border-radius: 0 2rem 2rem 0;
+    color: white;
+}
+
+.right-container-wrapper {
+    margin: 4rem;
+}
+
+.right-container-heading {
+    flex-direction: row;
+    font-size: 2.3rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.right-container-heading {
+    h1 {
+        display: inline-flex;
+    } 
+}
+
+
+
+/*-------------------- form */
+.login-form {
+    margin-top: 4rem;
+    padding-bottom: 2rem;
+}
+
+.login-type {
+    margin-bottom: 2rem;
+}
+
+.login-input-field {
+    width: 100%;
+    font-size: 1rem;
+    border: none;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: $light-bg;
+    margin-bottom: 1.5rem;
+    color: rgb(22, 22, 22);
+}
+
+#company-name {
+    width: 100%;
+    font-size: 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+
+
+
+.login-button{
+    background-color: white;
+    width: 100%;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    line-height: 3.5rem;
+    color: black;
+    border: none;
+    margin-top: 2rem;
+}
+
+.login-button:hover {
+    cursor: pointer;
+    background-color: $grey-bg;
+}
+
+
+
+@media only screen and (max-width: 1560px) {
+ 
+    
+    #ecobees-text-logo{
+        font-size: 1.4rem;
+    }
+
+    .right-container {
+        justify-content: center;
+        flex-basis: 35%;
+        display: flex;
+        background-color: #3C4048;
+        border-radius: 0 2rem 2rem 0;
+        color: white;
+    }
+    
+    .right-container-wrapper {
+        margin: 2rem;
+    }
+
+    .right-container-heading {
+        font-size: 1.7rem;
+
+    }
+    
+}
