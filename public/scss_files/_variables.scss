@@ -9,15 +9,17 @@ $logo-font-family: "Poppins", sans-serif;
 //----------------colors--------------------------------
 //from client dashboard
 
-$primary-yellow: #fdb514; //yellow color in logo
+$primary-yellow: #FDB514;       //yellow color in logo
 
-$body-bg: #dbe8f4; //main body bg
-$dark-bg: #3c4048; //left container in client dashboard
-$light-bg: #f3f5f7; //rignt container in client dashboard
-$grey-bg: #edeef0; // top panel bg in client dashboard         &&     box background in leave info
-$blue-bg: #3c79f5; // total workers bg in client dashboard
-$red-bg: #ff0032; // workers in leave bg in client dashboard
-$green-bg: #03c988; //active workers bg in client dashboard
+$body-bg: #DBE8F4;       //main body bg
+$dark-bg: #3C4048;       //left container in client dashboard
+$light-bg: #F3F5F7;      //rignt container in client dashboard 
+$grey-bg: #EDEEF0;      // top panel bg in client dashboard         &&     box background in leave info
+$blue-bg: #3C79F5;      // total workers bg in client dashboard
+$red-bg:#FF0032;        // workers in leave bg in client dashboard
+$green-bg: #03C988;     //active workers bg in client dashboard 
+$separator : rgba(182, 174, 174, 0.096);
+
 
 // -----------box-shadow--------------------
 
