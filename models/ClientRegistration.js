@@ -39,7 +39,7 @@ clientSchema.pre("save", async function (next) {
   next();
 });
 
-clientSchema.static.login = async function (Email, password) {
+clientSchema.statics.login = async function (Email, password) {
   const client = await this.findOne({ Email });
   if (client) {
     const passcheck = await bcrypt.compare(password, client.password);

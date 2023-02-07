@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 //html rendering
 app.get("/", workerPages);
-
+app.post("/", clientPages);
 //worker side
 app.use("/", workerPages);
 
