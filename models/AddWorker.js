@@ -6,6 +6,7 @@ const registerWorker = new mongoose.Schema(
   {
     firstName: {
       type: String,
+      ref : "ClientRegistration",
       required: [true, "Please enter your first name"],
     },
     lastName: {
