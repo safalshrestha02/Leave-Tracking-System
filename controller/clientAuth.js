@@ -17,8 +17,6 @@ exports.registerClient = async (req, res) => {
       email,
       password,
     });
-    //   const token = createtoken(client._id);
-    //   res.cookie(jwt, token, { httpOnly: true });
     res.status(201).json({
       message: `Client registered successfully`,
     });

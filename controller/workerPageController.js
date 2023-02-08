@@ -1,5 +1,5 @@
 const path = require("path");
-const worker = require("./../models/AddWorker")
+const worker = require("./../models/AddWorker");
 
 exports.loginPage = (req, res, next) => {
   res.sendFile(path.join(__dirname, "../", "./views", "index.html"));
@@ -43,12 +43,7 @@ exports.workerProfile = (req, res, next) => {
     )
   );
 };
-exports.apiWorkers = (req,res,next)=>{
-  worker.find().then((result)=>{
-    res.send(result)
-  })
 
-}
 exports.leaveHistory = (req, res, next) => {
   res.sendFile(
     path.join(
@@ -62,3 +57,8 @@ exports.leaveHistory = (req, res, next) => {
   );
 };
 
+exports.apiWorkers = (req, res, next) => {
+  worker.find().then((result) => {
+    res.send(result);
+  });
+};
