@@ -1,5 +1,6 @@
 const path = require("path");
 const worker = require("./../models/AddWorker");
+const messages = require('./../models/message')
 
 exports.loginPage = (req, res, next) => {
   res.sendFile(path.join(__dirname, "../", "./views", "index.html"));
@@ -56,6 +57,12 @@ exports.leaveHistory = (req, res, next) => {
     )
   );
 };
+
+exports.apiMessages = (req,res,next) => {
+  messages.find().then((result)=>{
+    res.send (result)
+  })
+}
 
 exports.apiWorkers = (req, res, next) => {
   worker.find().then((result) => {
