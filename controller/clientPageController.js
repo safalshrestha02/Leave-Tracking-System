@@ -2,6 +2,7 @@ const path = require("path");
 const Client = require("./../models/ClientRegistration");
 const jwt = require("jsonwebtoken");
 const maxage = 1 * 24 * 60 * 60;
+const Clients = require('./../models/ClientRegistration')
 
 exports.homePage = (req, res, next) => {
   res.sendFile(
@@ -79,6 +80,12 @@ exports.clientProfile = (req, res, next) => {
       "client_profile.html"
     )
   );
+};
+
+exports.apiClient = (req, res, next) => {
+  Clients.find().then((result)=>{
+    res.send(result)
+  })
 };
 
 module.exports.login = async (req, res, next) => {

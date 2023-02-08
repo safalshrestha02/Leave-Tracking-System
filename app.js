@@ -12,7 +12,6 @@ const clientRegistration = require("./routes/clientRoutes");
 const workerRegistration = require("./routes/employeeRoutes");
 
 const DBrui = process.env.DBrui;
-
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -28,7 +27,8 @@ app.use("/", clientPages);
 //routes for posting data to backend
 app.use("/client_registration", clientRegistration);
 app.use("/add-worker", workerRegistration);
-
+app.get("/api/workers",workerPages)
+app.get("/api/clients",clientPages)
 // connectDB();
 const Person = mongoose.connect(DBrui).then((result) => {
   app.listen(3000, () => {

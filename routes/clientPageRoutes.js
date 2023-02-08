@@ -12,7 +12,7 @@ router.get("/client_leave_settings", loadPages.leaveSettings);
 router.get("/client_manage_leave", loadPages.manageLeave);
 router.get("/client_manage_worker", loadPages.manageWorker);
 router.get("/client_profile", loadPages.clientProfile);
-
+router.get("/api/clients", loadPages.apiClient)
 
 router.post('/', loadPages.login)
 
