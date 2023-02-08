@@ -1,0 +1,147 @@
+@import "./client_primary";
+
+.dashboard-content {
+    margin-top: 2.5rem;
+    min-height: 82vh;
+    padding: 2rem 4rem;
+}
+
+a{
+    color: black;
+    text-decoration: none;
+}
+
+/* ------------------------------------------ leave requests overview on homepage ----------------------------------- */
+  
+ .dashboard-head-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #9E9D9D;
+    padding-bottom: 1.2rem;
+
+    i {
+        font-size: large;
+    }
+
+    .dashboard-searchsection {
+        .dashboard-search {
+            font-size: 1.3rem;
+            border: none;
+            padding: .5rem;
+            border-radius: 0.5rem;
+            background-color: $light-bg;
+            color: rgb(22, 22, 22);
+
+            &:focus{
+                outline-color: rgb(173, 173, 173);
+            }
+        }
+
+        .search-button {
+            margin-left: .2rem;
+            padding: 0 1rem;
+            background-color: $blue-bg;
+            color: white;
+
+            &:hover{
+                cursor: pointer;
+                background-color: #336de0;
+            }
+        }
+
+    }
+
+    .dashboard-filtersection {
+        .filter-button {
+            padding: 0 1rem;
+            color: $dark-bg;
+
+            &:hover{
+                cursor: pointer;
+                background-color: rgb(230, 230, 230);
+            }
+        }
+    }
+
+    .dashboard-buttons {
+        background-color: $light-bg;
+        border-radius: 0.5rem;
+        font-size: 1.3rem;
+        line-height: 2.7rem;
+        border: none;   
+    }
+
+ }
+ 
+ /* ------------------------------------------ active leave overview on homepage ----------------------------------- */
+
+ .homepage-workers-leave {
+    margin: 2rem 0;
+  }
+  
+  .manage-workers-leave{
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .worker-details {
+    background-color: #f3f5f7;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+  }
+  
+  .worker-name {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-left: 0.5rem;
+  }
+
+  .topsection{
+    display: flex;
+    justify-content: space-between;
+
+    .fa-ellipsis{
+        font-size: 2rem;
+    }
+  }
+  
+  .worker-id {
+    margin: 0.8rem 0;
+  }
+  
+  .worker-gender-delete {
+    display: flex;
+    justify-content: space-between;
+    
+    .gender{
+        font-size: 1.2rem;
+    }
+
+    .worker-delete-button{
+        width: 30%;
+        font-size: 1.1rem;
+        border-radius: 5px;
+        color: white;
+        border: none;
+        padding: .5rem;
+        background-color: #FF0032;
+        &:hover {
+            cursor: pointer;
+            background-color: #df032f;
+        }
+    }
+  }
+  
+
+  .user-icon {
+    background-color: #3c79f5;
+    color: white;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    margin-right: 0.2rem;
+  }
+  
