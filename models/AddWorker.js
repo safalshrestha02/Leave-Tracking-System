@@ -17,22 +17,27 @@ const registerWorker = new mongoose.Schema(
       require: [true, "Select your gender"],
       enum: ["Male", "Female", "Others"],
     },
-    employeeEmail: {
+    email: {
       type: String,
-      require: [true],
+      required: [true, "Please enter your email"],
+      unique: true,
       validate: [isEmail, "Please enter a valid email"],
     },
     password: {
       type: String,
       required: [true, "Please enter a password"],
-      minlength: [8, "Password must be 8 characters or above"],
+      minlength: [8, "Minimum password length is 8 characters"],
     },
-    // confirmPassword: {
-    //   type: String,
-    //   require: [true, "Give a description for your leave"],
-    // },
   },
   { timestamps: {} }
 );
+
+
+registerWorker.pre("save", async function (next) {
+  console.log("Please wait we are registering you...");
+  const salt = await bcrypt.genSalt();
+  this.password = await bcrypt.hash(this.password, salt);
+  next();
+});
 
 module.exports = mongoose.model("registerWorker", registerWorker);

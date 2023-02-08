@@ -1,7 +1,7 @@
 const Client = require("../models/ClientRegistration");
 // const jwt = require("jsonwebtoken");
 
-exports.clientRegistrationPage = async (req, res) => {
+exports.registerClient = async (req, res) => {
   const { companyName, companyAddress, name, email, password } = req.body;
   const FindCompany = await Client.findOne({
     companyName: req.body.companyName,
