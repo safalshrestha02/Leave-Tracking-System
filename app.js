@@ -4,6 +4,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const path = require("path");
+const cookieParser = require("cookie-parser");
 
 //pages
 const worker = require("./routes/workerRoutes");
@@ -13,6 +14,7 @@ const client = require("./routes/clientRoutes");
 const DBrui = process.env.DBrui;
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(cookieParser());
 
 //html rendering
 app.use("/", worker); //worker side
