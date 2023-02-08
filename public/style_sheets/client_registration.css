@@ -9,7 +9,7 @@
 body {
   font-family: "Open Sans", sans-serif;
   padding: 10rem;
-  background-color: #DBE8F4;
+  background-color: #dbe8f4;
 }
 
 .main-container {
@@ -25,7 +25,7 @@ body {
 }
 
 #ecobees-text-logo span {
-  color: #FDB514;
+  color: #fdb514;
 }
 
 a {
@@ -35,7 +35,7 @@ a {
 /* -------------left container--------- */
 .left-container {
   display: flex;
-  background-color: #F3F5F7;
+  background-color: #f3f5f7;
   flex-basis: 65%;
   border-radius: 2rem 0 0 2rem;
 }
@@ -100,7 +100,7 @@ a {
   border: none;
   padding: 1rem;
   border-radius: 0.5rem;
-  background-color: #F3F5F7;
+  background-color: #f3f5f7;
   margin-bottom: 1.5rem;
   color: rgb(22, 22, 22);
 }
@@ -125,7 +125,7 @@ a {
 
 .login-button:hover {
   cursor: pointer;
-  background-color: #EDEEF0;
+  background-color: #edeef0;
 }
 
 @media only screen and (max-width: 1560px) {
@@ -158,7 +158,7 @@ a {
   margin-top: 0.6rem;
 }
 .right-container-heading a {
-  color: #FDB514;
+  color: #fdb514;
   margin-left: 0.3rem;
 }
 
@@ -189,4 +189,4 @@ a {
 
 .active {
   display: none !important;
-}/*# sourceMappingURL=client_registration.css.map */
+}

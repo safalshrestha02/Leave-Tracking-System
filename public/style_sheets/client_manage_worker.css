@@ -13,7 +13,7 @@ a {
 }
 
 .main-container {
-  background-color: #F3F5F7;
+  background-color: #f3f5f7;
   display: flex;
 }
 
@@ -31,13 +31,13 @@ a {
 
 #main-logo span {
   font-weight: 500;
-  color: #FDB514;
+  color: #fdb514;
   font-family: "Poppins", sans-serif;
 }
 
 /* -----------------------left container ---------------- */
 .left-container {
-  background: #3C4048;
+  background: #3c4048;
   padding: 0.5rem 1rem 2rem 1rem;
   min-width: 13vw;
   display: flex;
@@ -62,22 +62,29 @@ li {
 }
 
 .active {
-  background-color: #FDB514;
+  background-color: #fdb514;
 }
 
 .nav-active {
   color: black;
 }
 
+.logout-button-container {
+  width: 100%;
+}
+
 .logout-button {
   text-decoration: none;
+  width: 100%;
   padding: 0.8rem;
   margin-bottom: 3rem;
   color: white;
+  border-radius: 0.5rem;
 }
 
 .logout-button:hover {
-  color: #FF0032;
+  background-color: #ff0032;
+  color: white;
 }
 
 .nav-icon {
@@ -105,7 +112,7 @@ li {
 
 #button-add-worker {
   padding: 0.7rem;
-  background-color: #FF0032;
+  background-color: #ff0032;
   border-radius: 1rem;
   color: white;
   display: inline-block;
@@ -126,10 +133,6 @@ li {
   margin: 0 auto;
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  margin-top: 5rem;
-}
-
-.dashboard-content {
   margin-top: 2.5rem;
   min-height: 82vh;
   padding: 2rem 4rem;
@@ -141,6 +144,11 @@ a {
 }
 
 /* ------------------------------------------ leave requests overview on homepage ----------------------------------- */
+.dashboard-heading {
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
 .dashboard-head-container {
   width: 100%;
   display: flex;
@@ -152,12 +160,13 @@ a {
   font-size: large;
 }
 .dashboard-head-container .dashboard-searchsection .dashboard-search {
-  font-size: 1.3rem;
+  font-size: 1rem;
   border: none;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  background-color: #F3F5F7;
+  background-color: #f3f5f7;
   color: rgb(22, 22, 22);
+  text-transform: capitalize;
 }
 .dashboard-head-container .dashboard-searchsection .dashboard-search:focus {
   outline-color: rgb(173, 173, 173);
@@ -165,7 +174,7 @@ a {
 .dashboard-head-container .dashboard-searchsection .search-button {
   margin-left: 0.2rem;
   padding: 0 1rem;
-  background-color: #3C79F5;
+  background-color: #3c79f5;
   color: white;
 }
 .dashboard-head-container .dashboard-searchsection .search-button:hover {
@@ -174,14 +183,14 @@ a {
 }
 .dashboard-head-container .dashboard-filtersection .filter-button {
   padding: 0 1rem;
-  color: #3C4048;
+  color: #3c4048;
 }
 .dashboard-head-container .dashboard-filtersection .filter-button:hover {
   cursor: pointer;
   background-color: rgb(230, 230, 230);
 }
 .dashboard-head-container .dashboard-buttons {
-  background-color: #F3F5F7;
+  background-color: #f3f5f7;
   border-radius: 0.5rem;
   font-size: 1.3rem;
   line-height: 2.7rem;
@@ -207,8 +216,7 @@ a {
 }
 
 .worker-name {
-  font-size: 1.3rem;
-  font-weight: 500;
+  font-weight: 600;
   margin-left: 0.5rem;
 }
 

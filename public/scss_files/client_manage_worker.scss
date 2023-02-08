@@ -1,10 +1,6 @@
 @import "./client_primary";
 
-.dashboard-content {
-    margin-top: 2.5rem;
-    min-height: 82vh;
-    padding: 2rem 4rem;
-}
+
 
 a{
     color: black;
@@ -12,7 +8,11 @@ a{
 }
 
 /* ------------------------------------------ leave requests overview on homepage ----------------------------------- */
-  
+  .dashboard-heading {
+    font-weight: 500;
+    margin-bottom: 2rem;
+  } 
+
  .dashboard-head-container {
     width: 100%;
     display: flex;
@@ -26,12 +26,13 @@ a{
 
     .dashboard-searchsection {
         .dashboard-search {
-            font-size: 1.3rem;
+            font-size: 1rem;
             border: none;
             padding: .5rem;
             border-radius: 0.5rem;
             background-color: $light-bg;
             color: rgb(22, 22, 22);
+            text-transform: capitalize;
 
             &:focus{
                 outline-color: rgb(173, 173, 173);
@@ -76,7 +77,7 @@ a{
  
  /* ------------------------------------------ active leave overview on homepage ----------------------------------- */
 
- .homepage-workers-leave {
+  .homepage-workers-leave {
     margin: 2rem 0;
   }
   
@@ -94,8 +95,7 @@ a{
   }
   
   .worker-name {
-    font-size: 1.3rem;
-    font-weight: 500;
+    font-weight: 600;
     margin-left: 0.5rem;
   }
 
