@@ -1,0 +1,88 @@
+@import "./worker_primary";
+
+/* ------------------------------------------ active and pending leaves ----------------------------------- */
+.pending-active-leave--heading {
+  font-weight: 500;
+}
+
+.pending-active-leave-container {
+  margin-top: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.pending-active-leave-details {
+  background-color: $light-bg;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.pending-active-leave-type {
+  font-weight: 600;
+}
+
+.pending-active-leave-date,
+.pending-active-leave-status {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.8rem 0 0 0;
+}
+
+.active-leave-date span {
+  opacity: 0.6;
+}
+
+/* ------------------------------------------ past leaves ----------------------------------- */
+
+.past-leaves {
+  border-top: $line;
+  padding-top: 1.4rem;
+  margin: 2.2rem 0;
+}
+
+.past-leaves--heading {
+  font-weight: 500;
+}
+
+.past-leaves-container {
+  margin-top: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.past-leave-details {
+  background-color: $light-bg;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.past-leave-type {
+  font-weight: 600;
+}
+
+.past-leave-date,
+.past-leave-status {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.8rem 0 0 0;
+}
+
+/* ------------------------------------------ leave status ----------------------------------- */
+
+.pending-leave {
+  color: $orange-bg;
+  margin-right: 0.5rem;
+}
+
+.active-leave,
+.approved-leave {
+  color: $green-bg;
+  margin-right: 0.5rem;
+}
+
+.rejected-leave {
+  color: $red-bg;
+  margin-right: 0.5rem;
+}
