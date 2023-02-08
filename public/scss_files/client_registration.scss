@@ -1,0 +1,50 @@
+@import "./login.scss";
+
+.right-container-heading {
+    text-align: left;
+
+    h4 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1rem;
+        margin-top: 0.6rem;
+    }
+
+    a {
+        color: $primary-yellow;
+        margin-left: 0.3rem;
+    }
+}
+
+.register-input {
+    width: 100%;
+    font-size: 1rem;
+    border: none;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: #F3F5F7;
+    margin-bottom: 1.5rem;
+    color: rgb(22, 22, 22);
+}
+
+.password-field {
+    position: relative;
+}
+
+.fa-eye-slash, .fa-eye {
+    position: absolute;
+    color: black;
+    font-size: 1rem;
+    right: 5%;
+    transform: translateY(100%);
+    display: none;
+    cursor: pointer;
+}
+
+.active {
+    display: none !important;
+}
+
+
