@@ -70,15 +70,22 @@ li {
   color: black;
 }
 
+.logout-button-container{
+  width: 100%;
+}
+
 .logout-button {
   text-decoration: none;
+  width: 100%;
   padding: 0.8rem;
   margin-bottom: 3rem;
   color: white;
+  border-radius: 0.5rem;
 }
 
 .logout-button:hover {
-  color: $red-bg;
+  background-color: $red-bg;
+  color: white;
 }
 
 .nav-icon {
@@ -128,5 +135,7 @@ li {
   margin: 0 auto;
   border-radius: 1rem;
   box-shadow: $primary-box-shadow;
-  margin-top: 5rem;
+  margin-top: 2.5rem;
+  min-height: 82vh;
+  padding: 2rem 4rem;
 }
