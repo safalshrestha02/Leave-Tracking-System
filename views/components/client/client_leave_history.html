@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/style_sheets/client_leave_history.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>ecoBees</title>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="left-container">
+            <nav>
+                <h1 id="main-logo"><span>e</span>coB<span>ee</span>s</h1>
+                <ul id="nav-ul ">
+                    <li>
+                        <a href="/client_home" class="nav-links "><i class="fa-solid fa-house nav-icon"></i>Home</a>
+                    </li>
+                    <li>
+                        <a href="/client_profile" class="nav-links"><i class="fa-solid fa-user nav-icon"></i>Profile</a>
+                    </li>
+                    <li>
+                        <a href="/client_manage_leave" class="nav-links"><i
+                                class="fa-solid fa-right-from-bracket nav-icon"></i>Manage
+                            Leaves</a>
+                    </li>
+                    <li class="active">
+                        <a href="/client_leave_history" class="nav-links  nav-active"><i
+                                class="fa-solid fa-clock-rotate-left nav-icon"></i>Leave
+                            History</a>
+                    </li>
+                    <li>
+                        <a href="/client_manage_worker" class="nav-links"><i
+                                class="fa-solid fa-user-gear nav-icon"></i>Manage Workers</a>
+                    </li>
+                    <li>
+                        <a href="/client_leave_settings" class="nav-links"><i
+                                class="fa-solid fa-gear nav-icon"></i>Leave Settings</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="logout-button-container">
+                <a href="#" class="logout-button"><i class="fa-solid fa-arrow-right-from-bracket nav-icon"
+                        style="rotate: 180deg"></i>Logout</a>
+            </div>
+        </div>
+        <div class="right-container">
+            <div class="navbar-name">
+                <div class="navbar-left">
+                    <p>Leave Tracking System</p>
+                </div>
+                <div class="navbar-right">
+                    client and company name
+                </div>
+            </div>
+            <div class="dashboard-content">
+                <div class="client-leave-history">
+                    <h2 class="client-leave-history--heading">Past Leaves</h2>
+
+                    <div class="client-leave-history--options">
+                        <select name="worker" class="select-worker">
+                            <option value="trishan">Trishan Wagle</option>
+                            <option value="ishan">Ishan Ghimire</option>
+                            <option value="shardul">Shardul Gautam</option>
+                            <option value="safal">Safal Shrestha</option>
+                            <option value="suraj">Suraj Khadka</option>
+                        </select>
+
+                        <div class="filter-workers-leave-history">
+                            <p class="filter-worker-title">Filter Through</p>
+                            <i class="fa-solid fa-filter filter-icon"></i>
+                        </div>
+                    </div>
+
+
+                    <div class="client-leave-history-container">
+
+                        <div class="client-leave-history-details ">
+
+                            <p class="client-leave-history-leave-type">Sick Leave</p>
+
+                            <div class="client-leave-history-leave-date">
+                                <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
+                            </div>
+
+                            <div class="client-leave-history-leave-status">
+                                <p><i class="fa-solid fa-circle approved-leave "></i>Approved</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="client-leave-history-details ">
+
+                            <p class="client-leave-history-leave-type">Urgent Leave</p>
+
+                            <div class="client-leave-history-leave-date">
+                                <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
+                            </div>
+
+                            <div class="client-leave-history-leave-status">
+                                <p><i class="fa-solid fa-circle rejected-leave "></i>Rejected</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="client-leave-history-details ">
+
+                            <p class="client-leave-history-leave-type">Unpaid Leave</p>
+
+                            <div class="client-leave-history-leave-date">
+                                <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
+                            </div>
+
+                            <div class="client-leave-history-leave-status">
+                                <p><i class="fa-solid fa-circle approved-leave "></i>Approved</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="client-leave-history-details ">
+
+                            <p class="client-leave-history-leave-type">Sick Leave</p>
+
+                            <div class="client-leave-history-leave-date">
+                                <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
+                            </div>
+
+                            <div class="client-leave-history-leave-status">
+                                <p><i class="fa-solid fa-circle rejected-leave "></i>Rejected</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="client-leave-history-details ">
+
+                            <p class="client-leave-history-leave-type">Urgent Leave</p>
+
+                            <div class="client-leave-history-leave-date">
+                                <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
+                            </div>
+
+                            <div class="client-leave-history-leave-status">
+                                <p><i class="fa-solid fa-circle approved-leave "></i>Approved</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="client-leave-history-details ">
+
+                            <p class="client-leave-history-leave-type">Unpaid Leave</p>
+
+                            <div class="client-leave-history-leave-date">
+                                <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
+                            </div>
+
+                            <div class="client-leave-history-leave-status">
+                                <p><i class="fa-solid fa-circle rejected-leave "></i>Rejected</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="client-leave-history-details ">
+
+                            <p class="client-leave-history-leave-type">Sick Leave</p>
+
+                            <div class="client-leave-history-leave-date">
+                                <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
+                            </div>
+
+                            <div class="client-leave-history-leave-status">
+                                <p><i class="fa-solid fa-circle approved-leave "></i>Approved</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="client-leave-history-details ">
+
+                            <p class="client-leave-history-leave-type">Unpaid Leave</p>
+
+                            <div class="client-leave-history-leave-date">
+                                <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
+                            </div>
+
+                            <div class="client-leave-history-leave-status">
+                                <p><i class="fa-solid fa-circle rejected-leave "></i>Rejected</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="client-leave-history-details ">
+
+                            <p class="client-leave-history-leave-type">Urgent Leave</p>
+
+                            <div class="client-leave-history-leave-date">
+                                <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
+                            </div>
+
+                            <div class="client-leave-history-leave-status">
+                                <p><i class="fa-solid fa-circle approved-leave "></i>Approved</p>
+                            </div>
+
+                        </div>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="/public/scripts/client_dashboard.js"></script>
+</body>
+
+</html>
