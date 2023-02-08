@@ -5,16 +5,15 @@ const router = express.Router();
 const loadPages = require("../controller/workerPageController");
 const workerRegistration = require("../controller/workerAuth");
 
-//landing page
-router.get("/", loadPages.loginPage);
-
-//routes for worker
+//html pages
+router.get("/", loadPages.loginPage); //landing page
 router.get("/worker_home", loadPages.homePage);
 router.get("/worker_applyLeave", loadPages.leavePage);
 router.get("/worker_profile", loadPages.workerProfile);
 router.get("/leave_history", loadPages.leaveHistory);
 router.get("/api/workers", loadPages.apiWorkers);
 
+//APIs
 router.post("/", workerRegistration.registerWorker);
 
 module.exports = router;

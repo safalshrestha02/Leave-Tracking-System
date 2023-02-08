@@ -2,7 +2,20 @@ const path = require("path");
 const Client = require("./../models/ClientRegistration");
 const jwt = require("jsonwebtoken");
 const maxage = 1 * 24 * 60 * 60;
-const Clients = require('./../models/ClientRegistration')
+const Clients = require("./../models/ClientRegistration");
+
+exports.registerClient = (req, res, next) => {
+  res.sendFile(
+    path.join(
+      __dirname,
+      "../",
+      "./views",
+      "./components",
+      "./client",
+      "client_registration.html"
+    )
+  );
+};
 
 exports.homePage = (req, res, next) => {
   res.sendFile(
@@ -83,16 +96,7 @@ exports.clientProfile = (req, res, next) => {
 };
 
 exports.apiClient = (req, res, next) => {
-  Clients.find().then((result)=>{
-    res.send(result)
-  })
-};
-
-module.exports.login = async (req, res, next) => {
-  const { email, password, companyName } = req.body;
-  try {
-    const client = await Client.login(email, password, companyName);
-  } catch (err) {
-    console.log(err.message);
-  }
+  Clients.find().then((result) => {
+    res.send(result);
+  });
 };
