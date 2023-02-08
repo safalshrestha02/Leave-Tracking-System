@@ -24,6 +24,7 @@ app.use("/add-worker", worker);
 //render all data
 app.get("/api/workers", worker);
 app.get("/api/clients", client);
+app.get("/api/leaveMessages", worker)
 
 // connectDB();
 const Person = mongoose.connect(DBrui).then((result) => {

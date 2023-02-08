@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 
 const messageSchema = new mongoose.Schema({
   employeeName: {
-    type: Schema.Types.ObjectID,
-    ref: "worker",
+    type: String,
+    ref: "AddWorker",
     required: [true, "employee name is required"],
   },
   employeeID: {
@@ -32,8 +32,9 @@ const messageSchema = new mongoose.Schema({
     required: [true, "Please specify a reson for your leave"],
   },
   approvestate: {
-    state: [pending, approved, declined],
-    default: pending,
+    type: String ,
+    state: [{type : String, default: 'pending'}],
+    otherStates : ["pending", "approved", "denied"]
   },
 });
 
