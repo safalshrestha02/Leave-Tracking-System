@@ -134,3 +134,106 @@ li {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-top: 5rem;
 }
+
+.dashboard-content {
+  margin-bottom: 5rem;
+}
+
+.worker-leave-overview {
+  display: flex;
+  color: white;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+.worker-leave-overview .worker-total-leave {
+  background-color: #3C79F5;
+}
+.worker-leave-overview .worker-leaves-taken {
+  background-color: #FF0032;
+}
+.worker-leave-overview .worker-leaves-remaining {
+  background-color: #03C988;
+}
+
+.overview {
+  width: 25%;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+.overview .leaves-data {
+  font-size: 2rem;
+  font-weight: 500;
+}
+.overview .leaves-number {
+  font-size: 2.5rem;
+}
+
+.active-leave-container {
+  margin-top: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid black;
+}
+.active-leave-container .active-leave-details {
+  margin-top: 1rem;
+  background-color: #F3F5F7;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 30%;
+}
+.active-leave-container .active-leave-details .leave-type {
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+.active-leave-container .active-leave-details .active-leave-date {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.8rem 0;
+}
+.active-leave-container .active-leave-details .active-leave-date span {
+  opacity: 0.6;
+}
+.active-leave-container .active-leave-details .leave-status .green {
+  margin-right: 0.8rem;
+  color: #03C988;
+}
+
+.pending-and-approved {
+  margin-top: 3rem;
+}
+.pending-and-approved .pending-and-approved-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.pending-and-approved .pending-and-approved-container .worker-leaves {
+  background-color: #F3F5F7;
+  margin-top: 1rem;
+  background-color: #F3F5F7;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  min-width: 30%;
+  margin-bottom: 1rem;
+}
+.pending-and-approved .pending-and-approved-container .worker-leaves .leave-type {
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+.pending-and-approved .pending-and-approved-container .worker-leaves .leave-date {
+  display: flex;
+  justify-content: space-between;
+  opacity: 0.6;
+  margin: 0.8rem 0;
+}
+.pending-and-approved .pending-and-approved-container .worker-leaves .fa-circle {
+  margin-right: 0.8rem;
+}
+
+.green {
+  color: #03C988;
+}
+
+.orange {
+  color: #FDB514;
+}/*# sourceMappingURL=worker_home.css.map */
