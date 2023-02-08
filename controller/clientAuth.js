@@ -19,13 +19,20 @@ exports.registerClient = async (req, res) => {
     });
     //   const token = createtoken(client._id);
     //   res.cookie(jwt, token, { httpOnly: true });
-    res
-      .status(201)
-      .json({
-        message: `Client registered successfully`,
-      });
+    res.status(201).json({
+      message: `Client registered successfully`,
+    });
   } catch (err) {
     res.status(400);
+    console.log(err.message);
+  }
+};
+
+exports.login = async (req, res, next) => {
+  const { email, password, companyName } = req.body;
+  try {
+    const client = await Client.login(email, password, companyName);
+  } catch (err) {
     console.log(err.message);
   }
 };
