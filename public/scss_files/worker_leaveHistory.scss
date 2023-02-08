@@ -69,6 +69,11 @@
   margin: 0.8rem 0 0 0;
 }
 
+.past-leave-date span,
+.pending-active-leave-date span {
+  opacity: 0.6;
+}
+
 /* ------------------------------------------ leave status ----------------------------------- */
 
 .pending-leave {

@@ -1,0 +1,89 @@
+@import "./client_primary";
+
+.client-leave-history {
+  margin: 0 0 2.2rem 0;
+}
+
+.client-leave-history--heading {
+  font-weight: 500;
+}
+
+/* ------------------------------------------ dropdown and filter ----------------------------------- */
+
+.client-leave-history--options {
+  margin: 2rem 0 1rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.select-worker {
+  width: 12%;
+  background-color: #f3f5f7;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+}
+
+.filter-workers-leave-history {
+  width: 13%;
+  background-color: #f3f5f7;
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.filter-icon {
+  margin-left: 1rem;
+}
+
+/* ------------------------------------------ leave history container ----------------------------------- */
+
+.client-leave-history-container {
+  margin-top: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.client-leave-history-details {
+  background-color: $light-bg;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.client-leave-history-leave-type {
+  font-weight: 600;
+}
+
+.client-leave-history-leave-date,
+.client-leave-history-leave-status {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.8rem 0 0 0;
+}
+
+.client-leave-history-leave-date span {
+  opacity: 0.6;
+}
+
+/* ------------------------------------------ leave status ----------------------------------- */
+
+.pending-leave {
+  color: $orange-bg;
+  margin-right: 0.5rem;
+}
+
+.approved-leave {
+  color: $green-bg;
+  margin-right: 0.5rem;
+}
+
+.rejected-leave {
+  color: $red-bg;
+  margin-right: 0.5rem;
+}

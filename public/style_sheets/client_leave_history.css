@@ -1,15 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap");
 * {
-  margin: 0;
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
-}
-
-body {
-  background: #dbe8f4;
 }
 
 a {
@@ -19,7 +15,6 @@ a {
 .main-container {
   background-color: #f3f5f7;
   display: flex;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #main-logo {
@@ -45,10 +40,10 @@ a {
   background: #3c4048;
   padding: 0.5rem 1rem 2rem 1rem;
   min-width: 13vw;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-height: 100vh;
 }
 
 li {
@@ -89,7 +84,7 @@ li {
   margin-right: 1.5rem;
 }
 
-/* -----------------------right container ----------------  */
+/* -----------------------right container ---------------- */
 .right-container {
   width: 100%;
 }
@@ -104,25 +99,24 @@ li {
   width: 100%;
 }
 
-.worker-name {
+.navbar-left {
   font-size: 2.5rem;
 }
 
-#welcome-worker {
-  font-size: 2.5rem;
-  color: #3c4048;
-  font-weight: 600;
-  margin-right: 0.7rem;
-}
-
-.worker-id {
-  font-size: 1rem;
+#button-add-worker {
+  padding: 0.7rem;
+  background-color: #ff0032;
+  border-radius: 1rem;
+  color: white;
   display: inline-block;
+  font-size: 1.1rem;
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
 }
 
-#id-number {
-  font-weight: 600;
-  margin-left: 0.2rem;
+.fa-user-plus {
+  margin-right: 0.3rem;
 }
 
 .dashboard-content {
@@ -135,76 +129,72 @@ li {
   margin-top: 5rem;
 }
 
-/* ------------------------------------------ active and pending leaves ----------------------------------- */
-.pending-active-leave--heading {
+.client-leave-history {
+  margin: 0 0 2.2rem 0;
+}
+
+.client-leave-history--heading {
   font-weight: 500;
 }
 
-.pending-active-leave-container {
+/* ------------------------------------------ dropdown and filter ----------------------------------- */
+.client-leave-history--options {
+  margin: 2rem 0 1rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.select-worker {
+  width: 12%;
+  background-color: #f3f5f7;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+}
+
+.filter-workers-leave-history {
+  width: 13%;
+  background-color: #f3f5f7;
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.filter-icon {
+  margin-left: 1rem;
+}
+
+/* ------------------------------------------ leave history container ----------------------------------- */
+.client-leave-history-container {
   margin-top: 1.2rem;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
 }
 
-.pending-active-leave-details {
+.client-leave-history-details {
   background-color: #f3f5f7;
   padding: 1rem;
   border-radius: 0.5rem;
 }
 
-.pending-active-leave-type {
+.client-leave-history-leave-type {
   font-weight: 600;
 }
 
-.pending-active-leave-date,
-.pending-active-leave-status {
+.client-leave-history-leave-date,
+.client-leave-history-leave-status {
   display: flex;
   justify-content: space-between;
   margin: 0.8rem 0 0 0;
 }
 
-.active-leave-date span {
-  opacity: 0.6;
-}
-
-/* ------------------------------------------ past leaves ----------------------------------- */
-.past-leaves {
-  border-top: 0.125rem solid #d9d9d9;
-  padding-top: 1.4rem;
-  margin: 2.2rem 0;
-}
-
-.past-leaves--heading {
-  font-weight: 500;
-}
-
-.past-leaves-container {
-  margin-top: 1.2rem;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.5rem;
-}
-
-.past-leave-details {
-  background-color: #f3f5f7;
-  padding: 1rem;
-  border-radius: 0.5rem;
-}
-
-.past-leave-type {
-  font-weight: 600;
-}
-
-.past-leave-date,
-.past-leave-status {
-  display: flex;
-  justify-content: space-between;
-  margin: 0.8rem 0 0 0;
-}
-
-.past-leave-date span,
-.pending-active-leave-date span {
+.client-leave-history-leave-date span {
   opacity: 0.6;
 }
 
@@ -214,7 +204,6 @@ li {
   margin-right: 0.5rem;
 }
 
-.active-leave,
 .approved-leave {
   color: #03c988;
   margin-right: 0.5rem;
