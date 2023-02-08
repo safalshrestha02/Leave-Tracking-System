@@ -9,7 +9,7 @@
 }
 
 body {
-  background: #DBE8F4;
+  background: #dbe8f4;
 }
 
 a {
@@ -17,7 +17,7 @@ a {
 }
 
 .main-container {
-  background-color: #F3F5F7;
+  background-color: #f3f5f7;
   display: flex;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
@@ -36,13 +36,13 @@ a {
 
 #main-logo span {
   font-weight: 500;
-  color: #FDB514;
+  color: #fdb514;
   font-family: "Poppins", sans-serif;
 }
 
 /* -----------------------left container ---------------- */
 .left-container {
-  background: #3C4048;
+  background: #3c4048;
   padding: 0.5rem 1rem 2rem 1rem;
   min-width: 13vw;
   min-height: 100vh;
@@ -67,7 +67,7 @@ li {
 }
 
 .active {
-  background-color: #FDB514;
+  background-color: #fdb514;
 }
 
 .nav-active {
@@ -82,7 +82,7 @@ li {
 }
 
 .logout-button:hover {
-  color: #FF0032;
+  color: #ff0032;
 }
 
 .nav-icon {
@@ -110,7 +110,7 @@ li {
 
 #welcome-worker {
   font-size: 2.5rem;
-  color: #3C4048;
+  color: #3c4048;
   font-weight: 600;
   margin-right: 0.7rem;
 }
@@ -217,7 +217,7 @@ select {
 }
 
 .form-button-apply {
-  background-color: #FDB514;
+  background-color: #fdb514;
 }
 
 .form-button-reset {
