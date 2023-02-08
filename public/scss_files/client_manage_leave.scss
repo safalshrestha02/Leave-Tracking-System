@@ -1,0 +1,101 @@
+@import "./client_primary";
+
+
+.dashboard-content {
+    margin-top: 2.5rem;
+    min-height: 82vh;
+    padding: 2rem 4rem;
+}
+
+
+
+/* ------------------------------------------ leave requests overview on homepage ----------------------------------- */
+  
+  .pending-leave-container {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 5rem;
+    row-gap: 2rem;
+  }
+  
+  .pending-leave-details {
+    background-color: $grey-bg;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+  }
+  
+  .pending-leave-name{
+    font-weight: 500;
+    margin-left: 0.5rem;
+  }
+  
+  .pending-leave-date {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.8rem 0;
+
+    span {
+        opacity: 0.6;
+    }
+
+
+    
+  }
+  
+  .description {
+    margin: .7rem 0;
+    h1{
+        display: inline-block;
+        color: black;
+        font-size: 1rem;
+    }
+    .description-details {
+        display: inline-block;
+        opacity: 0.6;
+    }
+  }
+
+
+  .user-icon {
+    background-color: #3c79f5;
+    color: white;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    margin-right: 0.2rem;
+  }
+
+  .buttons-container {
+    width: 50%;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+  
+  .pending-leave-buttons {
+    width: 50%;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    padding: .5rem;
+  }
+
+  .approve-button{
+    background-color: #03C988;
+    &:hover {
+        cursor: pointer;
+        background-color: #03b67a;
+    }
+  }
+  .reject-button{
+    background-color: #FF0032;
+    &:hover {
+        &:hover {
+            cursor: pointer;
+            background-color: #df032f;
+        }
+    }
+  }
+  
