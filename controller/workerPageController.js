@@ -1,6 +1,6 @@
 const path = require("path");
 const worker = require("./../models/AddWorker");
-const messages = require('./../models/message')
+const messages = require('../models/RequestForLeave')
 
 exports.loginPage = (req, res, next) => {
   res.sendFile(path.join(__dirname, "../", "./views", "index.html"));
