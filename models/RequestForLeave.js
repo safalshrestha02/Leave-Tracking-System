@@ -36,6 +36,7 @@ const messageSchema = new mongoose.Schema({
     state: [{type : String, default: 'pending'}],
     otherStates : ["pending", "approved", "denied"]
   },
+  timestamp: {},
 });
 
 const someComment = mongoose.model("message", messageSchema);
