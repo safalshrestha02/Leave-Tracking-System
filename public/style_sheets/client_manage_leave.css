@@ -60,12 +60,18 @@ li {
   display: inline-block;
   color: white;
 }
+.nav-links:hover {
+  color: #fdb514;
+}
 
 .active {
   background-color: #fdb514;
 }
 
 .nav-active {
+  color: black;
+}
+.nav-active:hover {
   color: black;
 }
 
@@ -234,4 +240,4 @@ h2 {
 .reject-button:hover:hover {
   cursor: pointer;
   background-color: #df032f;
-}/*# sourceMappingURL=client_manage_leave.css.map */
+}

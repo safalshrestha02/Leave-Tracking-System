@@ -65,12 +65,18 @@ li {
   display: inline-block;
   color: white;
 }
+.nav-links:hover {
+  color: #fdb514;
+}
 
 .active {
   background-color: #fdb514;
 }
 
 .nav-active {
+  color: black;
+}
+.nav-active:hover {
   color: black;
 }
 
@@ -175,4 +181,4 @@ li {
 
 .details-body {
   font-weight: 500;
-}/*# sourceMappingURL=worker_profile.css.map */
+}

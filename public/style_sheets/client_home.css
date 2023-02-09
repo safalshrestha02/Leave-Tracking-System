@@ -60,12 +60,18 @@ li {
   display: inline-block;
   color: white;
 }
+.nav-links:hover {
+  color: #fdb514;
+}
 
 .active {
   background-color: #fdb514;
 }
 
 .nav-active {
+  color: black;
+}
+.nav-active:hover {
   color: black;
 }
 
@@ -359,4 +365,4 @@ li {
 
 .form-button-reset {
   background-color: white;
-}/*# sourceMappingURL=client_home.css.map */
+}

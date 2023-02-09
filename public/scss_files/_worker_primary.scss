@@ -65,6 +65,10 @@ li {
   padding: 1rem;
   display: inline-block;
   color: white;
+
+  &:hover {
+    color: $primary-yellow
+  }
 }
 
 .active {
@@ -73,6 +77,10 @@ li {
 
 .nav-active {
   color: black;
+
+  &:hover {
+    color: black;
+  }
 }
 
 .logout-button {
