@@ -4,10 +4,11 @@ const router = express.Router();
 //paths
 const loadPages = require("../controller/clientPageController");
 const clientRegistration = require("../controller/clientAuth");
-const clientLogin = require("../controller/clientAuth");
+//const clientLogin = require("../controller/clientAuth");
 
 //html pages
 router.get("/client_registration", loadPages.registerClient);
+router.get("/client_login", loadPages.clientLogin);
 router.get("/client_home", loadPages.homePage);
 router.get("/client_leave_history", loadPages.leaveHistory);
 router.get("/client_leave_settings", loadPages.leaveSettings);
@@ -18,6 +19,6 @@ router.get("/api/clients", loadPages.apiClient);
 
 //APIs
 router.post("/", clientRegistration.registerClient);
-router.post("/", clientLogin.login);
+//router.post("/", clientLogin.login);
 
 module.exports = router;

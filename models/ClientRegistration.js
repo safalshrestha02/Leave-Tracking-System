@@ -7,6 +7,7 @@ const clientSchema = new mongoose.Schema(
     companyName: {
       type: String,
       required: [true, "company name is required"],
+      unique: [true, "company is already taken"],
     },
     companyAddress: {
       type: String,
@@ -22,6 +23,7 @@ const clientSchema = new mongoose.Schema(
       required: [true, "email is required"],
       lowercase: true,
       validate: [isEmail, "please enter a valid email"],
+      unique: [true, "Please enter unique email"],
     },
     password: {
       type: String,
@@ -38,9 +40,11 @@ clientSchema.pre("save", async function (next) {
   this.password = await bcrypt.hash(this.password, salt);
   next();
 });
+
 clientSchema.post("save", async function (next) {
   console.log("you have been registered");
 });
+
 clientSchema.statics.login = async function (email, password, companyName) {
   const client = await this.findOne({ email, companyName });
   if (client) {
@@ -54,13 +58,4 @@ clientSchema.statics.login = async function (email, password, companyName) {
   throw Error("Invalid Email or Companyy Name");
 };
 
-clientSchema.statics.register = async function (email, companyName) {
-  const client = await this.findOne({ email, companyName });
-  if (client) {
-    return client;
-  }
-  throw Error("Invalid Email or Companyy Name");
-};
-
-const someClient = mongoose.model("Client", clientSchema);
-module.exports = someClient;
+module.exports = mongoose.model("registerClient", clientSchema);

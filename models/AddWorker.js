@@ -5,9 +5,9 @@ const Schema = mongoose.Schema
 
 const registerWorker = new mongoose.Schema(
   {
-    
     firstName: {
       type: String,
+      ref: "ClientRegistration",
       required: [true, "Please enter your first name"],
     },
     lastName: {
@@ -19,17 +19,17 @@ const registerWorker = new mongoose.Schema(
       require: [true, "Select your gender"],
       enum: ["Male", "Female", "Others"],
     },
-    workerID:{
+    workerID: {
       type: Number,
       require: [true, "Please enter worker ID"],
-      minlength : [4, "please enter 4 digit ID"],
-      unique : [true, "Please enter unique ID"],
+      minlength: [4, "please enter 4 digit ID"],
+      unique: [true, "Please enter unique ID"],
     },
     email: {
       type: String,
       required: [true, "Please enter your email"],
-      unique: true,
       validate: [isEmail, "Please enter a valid email"],
+      unique: [true, "Please enter unique email"],
     },
     password: {
       type: String,
@@ -43,7 +43,6 @@ const registerWorker = new mongoose.Schema(
   },
   { timestamps: {} }
 );
-
 
 registerWorker.pre("save", async function (next) {
   console.log("Please wait we are registering you...");

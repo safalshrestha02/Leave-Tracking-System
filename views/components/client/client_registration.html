@@ -44,6 +44,7 @@
               placeholder="Company name"
               class="register-input"
             />
+            <div class="cname-error"></div>
             <input
               type="text"
               name="cAddress"
@@ -62,6 +63,7 @@
               placeholder="Email Address"
               class="register-input"
             />
+            <div class="email-error"></div>
             <p class="password-field">
               <input
                 type="password"
@@ -71,6 +73,7 @@
               />
               <i class="fa-regular fa-eye-slash"></i>
             </p>
+            <div class="password-error"></div>
             <!-- <input
               type="password"
               placeholder="Confirm Password"
@@ -114,6 +117,8 @@
             }),
             headers: { "Content-type": "application/json" },
           });
+          const data = await res.json();
+          console.log(data);
         } catch (err) {
           console.log(err);
         }
