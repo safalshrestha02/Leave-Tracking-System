@@ -60,12 +60,18 @@ li {
   display: inline-block;
   color: white;
 }
+.nav-links:hover {
+  color: #fdb514;
+}
 
 .active {
   background-color: #fdb514;
 }
 
 .nav-active {
+  color: black;
+}
+.nav-active:hover {
   color: black;
 }
 
@@ -261,4 +267,4 @@ a {
   padding: 0.5rem;
   border-radius: 50%;
   margin-right: 0.2rem;
-}/*# sourceMappingURL=client_manage_worker.css.map */
+}
