@@ -1,5 +1,12 @@
 const Client = require("../models/ClientRegistration");
-// const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
+
+const maxAge = 3 * 24 * 60 * 60;
+const createToken = (id) => {
+  return jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET, {
+    expiresIn: "1d",
+  });
+};
 
 exports.registerClient = async (req, res) => {
   const { companyName, companyAddress, name, email, password } = req.body;
@@ -17,6 +24,8 @@ exports.registerClient = async (req, res) => {
       email,
       password,
     });
+    const token = createToken(client._id);
+    res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
     res.status(201).json({
       message: `Client registered successfully`,
     });

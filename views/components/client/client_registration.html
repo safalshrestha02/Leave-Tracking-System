@@ -1,62 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/style_sheets/client_registration.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
     <title>ecoBees</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="main-container">
-        <div class="left-container">
-            <div class="left-container-heading">
-                <img class="ecobees-trans-logo" src="/images/LOGO_IMG_Trans.png" alt="ecoBees logo" />
-                <h1 id="ecobees-text-logo"><span>e</span>coB<span>ee</span>s</h1>
-            </div>
+      <div class="left-container">
+        <div class="left-container-heading">
+          <img
+            class="ecobees-trans-logo"
+            src="/images/LOGO_IMG_Trans.png"
+            alt="ecoBees logo"
+          />
+          <h1 id="ecobees-text-logo"><span>e</span>coB<span>ee</span>s</h1>
         </div>
+      </div>
 
-        <div class="right-container">
-            <div class="right-container-wrapper">
-                <div class="right-container-heading">
-                    <h4>Register your Company</h4>
-                    <p>Already registered?<a href="/">Sign In</a> </p>
-                </div>
+      <div class="right-container">
+        <div class="right-container-wrapper">
+          <div class="right-container-heading">
+            <h4>Register your Company</h4>
+            <p>Already registered?<a href="/">Sign In</a></p>
+          </div>
 
-                <form class="login-form">
-                    <input type="text" name="" id="" placeholder="Company name" class="register-input">
-                    <input type="text" placeholder="Company Address" class="register-input">
-                    <input type="text" placeholder="Client's Name" class="register-input">
-                    <input type="email" placeholder="Email Address" class="register-input">
-                    <p class="password-field">
-                    <input type="password" placeholder="Choose Password" class="register-input">
-                    <i class="fa-regular fa-eye-slash"></i> 
-                    </p>
-                    <input type="password" placeholder="Confirm Password" class="register-input">
-                </form>
-
-                <div class="login-type">
-                    <button type="submit" class="login-button">Register Company</button>
-                </div>
+          <form class="login-form">
+            <input
+              type="text"
+              name="cName"
+              id=""
+              placeholder="Company name"
+              class="register-input"
+            />
+            <input
+              type="text"
+              name="cAddress"
+              placeholder="Company Address"
+              class="register-input"
+            />
+            <input
+              type="text"
+              name="cCName"
+              placeholder="Client's Name"
+              class="register-input"
+            />
+            <input
+              type="email"
+              name="cEmail"
+              placeholder="Email Address"
+              class="register-input"
+            />
+            <p class="password-field">
+              <input
+                type="password"
+                name="cPassword"
+                placeholder="Choose Password"
+                class="register-input"
+              />
+              <i class="fa-regular fa-eye-slash"></i>
+            </p>
+            <!-- <input
+              type="password"
+              placeholder="Confirm Password"
+              class="register-input"
+            /> -->
+            <div class="login-type">
+              <button class="login-button">Register Company</button>
             </div>
+          </form>
         </div>
+      </div>
     </div>
 
     <script>
-        const noPassword = document.querySelector(".fa-eye-slash")
-        
-        noPassword.addEventListener("click", () => {
-            noPassword.classList.toggle("fa-eye")
-        })
+      const noPassword = document.querySelector(".fa-eye-slash");
 
+      noPassword.addEventListener("click", () => {
+        noPassword.classList.toggle("fa-eye");
+      });
+
+      const form = document.querySelector("form");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const cName = form.cName.value;
+        const cAddress = form.cAddress.value;
+        const cCName = form.cCName.value;
+        const cEmail = form.cEmail.value;
+        const cPassword = form.cPassword.value;
+
+        try {
+          const res = await fetch("/client_registration", {
+            method: "POST",
+            body: JSON.stringify({
+              companyName: cName,
+              companyAddress: cAddress,
+              name: cCName,
+              email: cEmail,
+              password: cPassword,
+            }),
+            headers: { "Content-type": "application/json" },
+          });
+        } catch (err) {
+          console.log(err);
+        }
+      });
     </script>
-
-</body>
-
+  </body>
 </html>
