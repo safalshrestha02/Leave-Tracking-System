@@ -68,12 +68,12 @@
 
             <div class="form-field">
               <label for="start-date"> Start Date <span>*</span> </label>
-              <input type="date" />
+              <input type="date" id="start-date" />
             </div>
 
             <div class="form-field">
               <label for="end-date"> End Date <span>*</span> </label>
-              <input type="date" />
+              <input type="date" id="end-date" />
             </div>
 
             <div class="form-field">
@@ -87,7 +87,7 @@
 
             <div class="form-field">
               <label for="days-number">No. of days leaves required<span>*</span> </label>
-              <input type="text" value="Auto Generated" disabled />
+              <input type="text" value="-" disabled id="days-number" />
             </div>
 
             <div id="reason-box">
@@ -109,6 +109,7 @@
       </div>
     </div>
   </div>
+  <script src="/scripts/worker/worker_applyLeave.js"></script>
 </body>
 
 </html>
