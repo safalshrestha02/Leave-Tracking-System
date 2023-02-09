@@ -18,11 +18,12 @@ label {
 
 .form-container {
     width: 90%;
+    min-height: 70vh;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
-    margin: 0 auto;
+    margin: auto;
 }
 
 .form-field:nth-child(2n) {
@@ -79,7 +80,6 @@ select {
     width: 93%;
     display: flex;
     justify-content: flex-end;
-    margin-top: 4rem;
   }
   
   .form-buttons button {
