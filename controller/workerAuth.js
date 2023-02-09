@@ -19,7 +19,6 @@ const handleErr = (err) => {
       errors[properties.path] = properties.message;
     });
   }
-
   return errors;
 };
 

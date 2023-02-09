@@ -8,14 +8,32 @@ const createToken = (id) => {
   });
 };
 
+const handleErr = (err) => {
+  let errors = {
+    companyName: "",
+    companyAddress: "",
+    name: "",
+    email: "",
+    password: "",
+  };
+
+  if (err.code === 11000) {
+    errors.companyName = "That company is already registered";
+    errors.email = "That email is already registered";
+
+    return errors;
+  }
+
+  if (err.message.includes("registerClient validation failed")) {
+    Object.values(err.errors).forEach(({ properties }) => {
+      errors[properties.path] = properties.message;
+    });
+  }
+  return errors;
+};
+
 exports.registerClient = async (req, res) => {
   const { companyName, companyAddress, name, email, password } = req.body;
-  const FindCompany = await Client.findOne({
-    companyName: req.body.companyName,
-  });
-  if (FindCompany != null) {
-    console.log("Company name is already taken");
-  }
   try {
     const client = await Client.create({
       companyName,
@@ -27,27 +45,19 @@ exports.registerClient = async (req, res) => {
     const token = createToken(client._id);
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
     res.status(201).json({
-      message: `Client registered successfully`,
+      client: client._id,
     });
   } catch (err) {
-    res.status(400);
-    console.log(err.message);
+    const errors = handleErr(err);
+    res.status(401).json({ errors });
   }
 };
 
-exports.login = async (req, res, next) => {
-  const { email, password, companyName } = req.body;
-  try {
-    const client = await Client.login(email, password, companyName);
-  } catch (err) {
-    console.log(err.message);
-  }
-};
-exports.register = async (req, res, next) => {
-  const { email, companyName } = req.body;
-  try {
-    const client = await Client.register(email, companyName);
-  } catch (err) {
-    console.log(err.message);
-  }
-};
+// exports.login = async (req, res, next) => {
+//   const { email, password, companyName } = req.body;
+//   try {
+//     const client = await Client.login(email, password, companyName);
+//   } catch (err) {
+//     console.log(err.message);
+//   }
+// };

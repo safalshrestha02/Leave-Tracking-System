@@ -17,6 +17,19 @@ exports.registerClient = (req, res, next) => {
   );
 };
 
+exports.clientLogin = (req, res, next) => {
+  res.sendFile(
+    path.join(
+      __dirname,
+      "../",
+      "./views",
+      "./components",
+      "./login",
+      "client_login.html"
+    )
+  );
+};
+
 exports.homePage = (req, res, next) => {
   res.sendFile(
     path.join(
