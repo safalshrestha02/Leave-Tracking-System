@@ -80,11 +80,12 @@ li {
   margin-bottom: 3rem;
   color: white;
   border-radius: 0.5rem;
+  display: inline-block;
 }
 
 .logout-button:hover {
   background-color: #ff0032;
-  color: white;
+  border-radius: 0.5rem;
 }
 
 .nav-icon {
@@ -221,4 +222,4 @@ li {
 .rejected-leave {
   color: #ff0032;
   margin-right: 0.5rem;
-}
+}/*# sourceMappingURL=client_leave_history.css.map */

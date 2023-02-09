@@ -81,12 +81,14 @@ li {
   margin-bottom: 3rem;
   color: white;
   border-radius: 0.5rem;
+  display: inline-block;
 }
 
 .logout-button:hover {
   background-color: $red-bg;
-  color: white;
+  border-radius: 0.5rem;
 }
+
 
 .nav-icon {
   margin-right: 1.5rem;
