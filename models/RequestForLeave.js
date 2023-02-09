@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema
 
 const messageSchema = new mongoose.Schema({
   employeeName: {
-    type: String,
+    type: Schema.Types.ObjectID,
     ref: "AddWorker",
     required: [true, "employee name is required"],
   },
