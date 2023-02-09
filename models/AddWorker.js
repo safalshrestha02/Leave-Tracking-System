@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 
 const registerWorker = new mongoose.Schema(
   {
+    
     firstName: {
       type: String,
       ref : "ClientRegistration",
@@ -17,6 +18,12 @@ const registerWorker = new mongoose.Schema(
       type: String,
       require: [true, "Select your gender"],
       enum: ["Male", "Female", "Others"],
+    },
+    workerID:{
+      type: Number,
+      require: [true, "Please enter worker ID"],
+      minlength : [4, "please enter 4 digit ID"],
+      unique : [true, "Please enter unique ID"],
     },
     email: {
       type: String,
