@@ -80,11 +80,12 @@ li {
   margin-bottom: 3rem;
   color: white;
   border-radius: 0.5rem;
+  display: inline-block;
 }
 
 .logout-button:hover {
   background-color: #ff0032;
-  color: white;
+  border-radius: 0.5rem;
 }
 
 .nav-icon {
@@ -173,4 +174,4 @@ li {
 
 .details-body {
   font-weight: 500;
-}
+}/*# sourceMappingURL=client_profile.css.map */

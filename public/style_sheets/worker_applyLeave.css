@@ -79,10 +79,13 @@ li {
   padding: 0.8rem;
   margin-bottom: 3rem;
   color: white;
+  width: 100%;
+  display: inline-block;
 }
 
 .logout-button:hover {
-  color: #ff0032;
+  background-color: #ff0032;
+  border-radius: 0.5rem;
 }
 
 .nav-icon {
@@ -224,4 +227,4 @@ select {
 
 .form-button-reset {
   background-color: white;
-}
+}/*# sourceMappingURL=worker_applyLeave.css.map */

@@ -1,0 +1,226 @@
+@import "./client_primary";
+
+
+.workers-overview {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+  }
+  
+  .overview-container {
+    width: 25%;
+    padding: 1.7rem;
+    border-radius: 0.5rem;
+    text-align: center;
+  }
+  
+  .worker-overview-icon {
+    font-size: 2.5rem;
+  }
+  
+  .clock_check {
+    transform: translateX(0.6rem);
+  }
+  
+  .workers-total {
+    background-color: #3c79f5;
+  }
+  
+  .workers-leave {
+    background-color: #ff0032;
+  }
+  
+  .workers-active {
+    background-color: #03c988;
+  }
+  
+  .worker-overview-number {
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin: 0.2rem 0;
+  }
+  
+  .worker-overview-status {
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+  
+  /* ------------------------------------------ active leave overview on homepage ----------------------------------- */
+  
+  .homepage-workers-leave {
+    margin: 2rem 0;
+  }
+  
+  .active-leave-container {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .active-leave-details {
+    background-color: #f3f5f7;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+  }
+  
+  .active-leave-name {
+    font-weight: 500;
+    margin-left: 0.5rem;
+  }
+  
+  .active-leave-date {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.8rem 0;
+  }
+  
+  .active-leave-date span {
+    opacity: 0.6;
+  }
+  
+  .user-icon {
+    background-color: #3c79f5;
+    color: white;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    margin-right: 0.2rem;
+  }
+  
+  .green {
+    color: #03c988;
+    margin-right: 0.2rem;
+  }
+  
+  /* -----------------------------------------form container ------------------------------------------------- */
+  
+  .register-container {
+    display: none;
+    background-color: black;
+    background: linear-gradient(rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 50%);
+    height: 100%;
+    border-radius: 1rem;
+    left: 0;
+    top: 0;
+    right: 0;
+  }
+  
+  .form-active {
+    display: block;
+    position: absolute;
+    padding-top: 3%;
+  }
+  
+  .register-right-container {
+    background-color: white;
+    border-radius: 1rem;
+    width: 40%;
+    margin: 0 auto;
+  }
+  
+  .register-container-wrapper {
+    margin: 0 3rem;
+  }
+  
+  .register-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    margin-bottom: 3rem;
+    border-bottom: 2px solid rgb(207, 205, 205);
+  }
+  
+  .register-heading p {
+    font-size: 2rem;
+  }
+  
+  /* form */
+  .register-form {
+    padding-bottom: 2rem;
+  }
+  
+  .register-input-field {
+    width: 100%;
+    font-size: 1rem;
+    border: none;
+    padding: 1rem;
+    border-radius: 0.3rem;
+    background-color: #f3f5f7;
+    margin-bottom: 1.5rem;
+    color: rgb(22, 22, 22);
+  }
+  
+  .form-fullname {
+    display: flex;
+  }
+  
+  .select-gender {
+    margin-right: 2rem;
+  }
+  
+  .gender-check {
+    margin-bottom: 1.5rem;
+    display: flex;
+    padding: 0 0.5rem;
+    margin-top: 0.4rem;
+  }
+  
+  .gender-check {
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .register-form select {
+    width: 100%;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem;
+    padding-left: 0.7rem;
+    border-radius: 0.3rem;
+    background-color: #f3f5f7;
+    border-color: #f3f5f7;
+    padding: 0.8rem;
+  }
+  
+  .register-form p {
+    margin-bottom: 0.3rem;
+    padding-left: 0.7rem;
+  }
+  
+  .fa-circle-xmark {
+    font-size: 1.9rem;
+    cursor: pointer;
+    border-radius: 4rem;
+    color: #7d90a5;
+  }
+  
+  .fa-circle-xmark:hover {
+    color: #ff0033;
+  }
+  
+  .form-buttons {
+    text-align: right;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .form-buttons button {
+    border: none;
+    border-radius: 0.5rem;
+  }
+  
+  .form-buttons a {
+    display: inline-block;
+    padding: 0.7rem 3rem;
+  }
+  
+  .form-button-apply {
+    background-color: #fdb514;
+  }
+  
+  .form-button-reset {
+    background-color: white;
+  }

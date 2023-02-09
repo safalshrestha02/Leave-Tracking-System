@@ -80,10 +80,13 @@ li {
   padding: 0.8rem;
   margin-bottom: 3rem;
   color: white;
+  width: 100%;
+  display: inline-block;
 }
 
 .logout-button:hover {
-  color: $red-bg;
+  background-color: $red-bg;
+  border-radius: 0.5rem;
 }
 
 .nav-icon {
@@ -138,3 +141,4 @@ li {
   min-height: 82vh;
   padding: 2rem 4rem;
 }
+
