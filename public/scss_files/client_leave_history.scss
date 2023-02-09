@@ -17,24 +17,32 @@
 }
 
 .select-worker {
-  width: 12%;
   background-color: #f3f5f7;
   padding: 0.8rem;
   border: none;
   border-radius: 0.3rem;
   font-size: 1rem;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgb(230, 230, 230);
+  }
 }
 
 .filter-workers-leave-history {
-  width: 13%;
   background-color: #f3f5f7;
-  padding: 0.8rem 1rem;
+  padding: 0.8rem 1.2rem;
   border: none;
   border-radius: 0.3rem;
   font-size: 1rem;
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 0.6rem;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgb(230, 230, 230);
+  }
 }
 
 .filter-icon {
