@@ -38,18 +38,29 @@ clientSchema.pre("save", async function (next) {
   this.password = await bcrypt.hash(this.password, salt);
   next();
 });
-
+clientSchema.post("save", async function (next) {
+  console.log("you have been registered");
+});
 clientSchema.statics.login = async function (email, password, companyName) {
   const client = await this.findOne({ email, companyName });
   if (client) {
     const passcheck = await bcrypt.compare(password, client.password);
     if (passcheck) {
-      console.log('loggedin')
+      console.log("loggedin");
       return client;
     }
     throw Error("Invalid password");
   }
   throw Error("Invalid Email or Companyy Name");
 };
+
+clientSchema.statics.register = async function (email, companyName) {
+  const client = await this.findOne({ email, companyName });
+  if (client) {
+    return client;
+  }
+  throw Error("Invalid Email or Companyy Name");
+};
+
 const someClient = mongoose.model("Client", clientSchema);
 module.exports = someClient;
