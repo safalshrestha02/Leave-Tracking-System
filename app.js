@@ -34,3 +34,7 @@ const Person = mongoose.connect(DBrui).then((result) => {
     console.log("Server running on port 3000");
   });
 });
+
+app.use('', (req, res) => {
+  res.send('<h2>404 error</h2>')
+})

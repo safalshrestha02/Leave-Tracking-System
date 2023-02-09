@@ -43,3 +43,11 @@ exports.login = async (req, res, next) => {
     console.log(err.message);
   }
 };
+exports.register = async (req, res, next) => {
+  const { email, companyName } = req.body;
+  try {
+    const client = await Client.register(email, companyName);
+  } catch (err) {
+    console.log(err.message);
+  }
+};
