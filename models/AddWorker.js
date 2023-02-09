@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 const { isEmail } = require("validator");
 const bcrypt = require("bcrypt");
+const Schema = mongoose.Schema
 
 const registerWorker = new mongoose.Schema(
   {
     
     firstName: {
       type: String,
-      ref : "ClientRegistration",
       required: [true, "Please enter your first name"],
     },
     lastName: {
@@ -36,6 +36,10 @@ const registerWorker = new mongoose.Schema(
       required: [true, "Please enter a password"],
       minlength: [8, "Minimum password length is 8 characters"],
     },
+    leaveMessage : {
+      type : Schema.Types.ObjectID,
+      ref : "RequestForLeave"
+    }
   },
   { timestamps: {} }
 );
