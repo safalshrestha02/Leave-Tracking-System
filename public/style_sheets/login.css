@@ -59,6 +59,14 @@ a {
   text-align: center;
 }
 
+.client-bee-logo {
+  width: 600px;
+}
+
+.worker-bee-logo {
+  width: 600px;
+}
+
 /* ----right container-------- */
 .right-container {
   display: flex;
