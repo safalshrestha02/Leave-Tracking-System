@@ -23,13 +23,13 @@ const handleErr = (err) => {
 };
 
 exports.registerWorker = async (req, res) => {
-  const { firstName, lastName, gender, email, password } = req.body;
-
+  const { firstName, lastName, gender,workerID, email, password } = req.body;
   try {
     const worker = await Worker.create({
       firstName,
       lastName,
       gender,
+      workerID,
       email,
       password,
     });
