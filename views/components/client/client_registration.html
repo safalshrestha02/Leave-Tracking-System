@@ -44,7 +44,7 @@
               placeholder="Company name"
               class="register-input"
             />
-            <div class="cname-error"></div>
+            <div class="cname_error"></div>
             <input
               type="text"
               name="cAddress"
@@ -63,8 +63,8 @@
               placeholder="Email Address"
               class="register-input"
             />
-            <div class="email-error"></div>
-            <p class="password-field">
+            <div class="email_error"></div>
+            <p class="passwordfield">
               <input
                 type="password"
                 name="cPassword"
@@ -73,7 +73,7 @@
               />
               <i class="fa-regular fa-eye-slash"></i>
             </p>
-            <div class="password-error"></div>
+            <div class="password_error"></div>
             <!-- <input
               type="password"
               placeholder="Confirm Password"
@@ -95,9 +95,16 @@
       });
 
       const form = document.querySelector("form");
+      const cname_error = document.querySelector(".cname_error");
+      const email_error = document.querySelector(".email_error");
+      const password_error = document.querySelector(".password_error");
 
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
+
+        cname_error.textContent = " ";
+        email_error.textContent = " ";
+        password_error.textContent = " ";
 
         const cName = form.cName.value;
         const cAddress = form.cAddress.value;
@@ -119,6 +126,14 @@
           });
           const data = await res.json();
           console.log(data);
+          if (data.errors) {
+            cname_error.textContent = data.errors.companyName;
+            email_error.textContent = data.errors.email;
+            password_error.textContent = data.errors.password;
+          }
+          if (data.client) {
+            location.assign("/client_login");
+          }
         } catch (err) {
           console.log(err);
         }

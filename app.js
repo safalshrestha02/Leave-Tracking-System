@@ -21,8 +21,9 @@ app.use("/", worker); //worker side
 app.use("/", client); //client side
 
 //api routes
-app.use("/client_registration", client);
-app.use("/add-worker", worker);
+// app.use("/client_registration", client);
+// app.use("/client_login", client);
+// app.use("/add_worker", worker);
 //render all data
 app.get("/api/workers", worker);
 app.get("/api/clients", client);
