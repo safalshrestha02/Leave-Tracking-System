@@ -17,6 +17,12 @@ const handleErr = (err) => {
     password: "",
   };
 
+  if (err.message === "Invalid Credentials") {
+    errors.companyName = "Invalid Credentials";
+    errors.email = "Invalid Credentials";
+    errors.password = "Invalid Credentials";
+  }
+
   if (err.code === 11000) {
     errors.companyName = "That company is already registered";
     errors.email = "That email is already registered";
@@ -45,9 +51,7 @@ exports.registerClient = async (req, res) => {
     });
     const token = createToken(client._id);
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
-    res.status(201).json({
-      client: client._id,
-    });
+    res.status(201).redirect("/client_login");
   } catch (err) {
     const errors = handleErr(err);
     res.status(401).json({ errors });
@@ -58,8 +62,11 @@ exports.login = async (req, res, next) => {
   const { email, password, companyName } = req.body;
   try {
     const client = await Client.login(email, password, companyName);
-    res.status(200).json({ message: "User loggendin" });
+    const token = createToken(client._id);
+    res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
+    res.status(200).redirect("/client_home");
   } catch (err) {
-    res.status(400).json({});
+    const errors = handleErr(err);
+    res.status(400).json({ errors });
   }
 };
