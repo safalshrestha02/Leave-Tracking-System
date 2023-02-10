@@ -20,6 +20,7 @@ const handleErr = (err) => {
   if (err.code === 11000) {
     errors.companyName = "That company is already registered";
     errors.email = "That email is already registered";
+    errors.password = "Password must be 8 characters or above";
 
     return errors;
   }
@@ -53,11 +54,12 @@ exports.registerClient = async (req, res) => {
   }
 };
 
-// exports.login = async (req, res, next) => {
-//   const { email, password, companyName } = req.body;
-//   try {
-//     const client = await Client.login(email, password, companyName);
-//   } catch (err) {
-//     console.log(err.message);
-//   }
-// };
+exports.login = async (req, res, next) => {
+  const { email, password, companyName } = req.body;
+  try {
+    const client = await Client.login(email, password, companyName);
+    res.status(200).json({ message: "User loggendin" });
+  } catch (err) {
+    res.status(400).json({});
+  }
+};
