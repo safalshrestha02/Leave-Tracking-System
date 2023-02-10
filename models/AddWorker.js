@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { isEmail } = require("validator");
 const bcrypt = require("bcrypt");
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 
 const registerWorker = new mongoose.Schema(
   {
@@ -36,10 +36,10 @@ const registerWorker = new mongoose.Schema(
       required: [true, "Please enter a password"],
       minlength: [8, "Minimum password length is 8 characters"],
     },
-    leaveMessage : {
-      type : Schema.Types.ObjectID,
-      ref : "RequestForLeave"
-    }
+    companyName: {
+      type: Schema.Types.ObjectId,
+      ref: "client",
+    },
   },
   { timestamps: {} }
 );
@@ -49,6 +49,9 @@ registerWorker.pre("save", async function (next) {
   const salt = await bcrypt.genSalt();
   this.password = await bcrypt.hash(this.password, salt);
   next();
+});
+registerWorker.post("save", async function (next) {
+  console.log("you have been registered");
 });
 
 module.exports = mongoose.model("registerWorker", registerWorker);
