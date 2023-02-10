@@ -1,5 +1,10 @@
 @import "./login.scss";
 
+body {
+    padding: 3rem 10rem ;
+}
+
+
 .right-container-heading {
     text-align: left;
 
@@ -37,7 +42,7 @@
     position: absolute;
     color: black;
     font-size: 1rem;
-    right: 5%;
+    right:15rem;
     transform: translateY(100%);
     display: none;
     cursor: pointer;

@@ -59,8 +59,12 @@ a {
   text-align: center;
 }
 
+.client-bee-logo {
+  width: 37.5rem;
+}
+
 .worker-bee-logo {
-  width: 600px;
+  width: 37.5rem;
 }
 
 /* ----right container-------- */
@@ -151,6 +155,10 @@ a {
     font-size: 1.7rem;
   }
 }
+body {
+  padding: 3rem 10rem;
+}
+
 .right-container-heading {
   text-align: left;
 }
@@ -185,7 +193,7 @@ a {
   position: absolute;
   color: black;
   font-size: 1rem;
-  right: 5%;
+  right: 15rem;
   transform: translateY(100%);
   display: none;
   cursor: pointer;
@@ -193,4 +201,4 @@ a {
 
 .active {
   display: none !important;
-}/*# sourceMappingURL=client_registration.css.map */
+}
