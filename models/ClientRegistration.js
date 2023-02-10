@@ -53,9 +53,9 @@ clientSchema.statics.login = async function (email, password, companyName) {
       console.log("loggedin");
       return client;
     }
-    throw Error("Invalid password");
+    throw Error("Invalid Credentials");
   }
-  throw Error("Invalid Email or Companyy Name");
+  throw Error("Invalid Credentials");
 };
 
 module.exports = mongoose.model("registerClient", clientSchema);

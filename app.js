@@ -16,18 +16,14 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
 
-//html rendering
+//routes
 app.use("/", worker); //worker side
 app.use("/", client); //client side
 
-//api routes
-// app.use("/client_registration", client);
-// app.use("/client_login", client);
-// app.use("/add_worker", worker);
 //render all data
 app.get("/api/workers", worker);
 app.get("/api/clients", client);
-app.get("/api/leaveMessages", worker)
+app.get("/api/leaveMessages", worker);
 
 // connectDB();
 const Person = mongoose.connect(DBrui).then((result) => {
@@ -36,6 +32,6 @@ const Person = mongoose.connect(DBrui).then((result) => {
   });
 });
 
-app.use('', (req, res) => {
-  res.send('<h2>404 error</h2>')
-})
+app.use("", (req, res) => {
+  res.send("<h2>404 error</h2>");
+});
