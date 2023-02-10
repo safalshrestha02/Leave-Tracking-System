@@ -45,7 +45,7 @@
               name="cEmail"
               id="login-email"
               placeholder="Email"
-              class="login-input-field"
+              class="login-input-field worker-login-email"
               required
             />
             <input
@@ -53,11 +53,11 @@
               name="cPassword"
               id="login-password"
               placeholder="Password"
-              class="login-input-field"
+              class="login-input-field worker-login-password"
               required
             />
 
-            <select name="company-name" id="company-name">
+            <select name="company-name" id="company-name" class="worker-company-name">
               <option value="ecoBees">ecoBees</option>
               <option value="AbceDee">AbceDee</option>
             </select>
@@ -82,5 +82,6 @@
         console.log(compEmail, compPassword);
       });
     </script>
+    <script src="/scripts/login/worker_login.js"></script>
   </body>
 </html>
