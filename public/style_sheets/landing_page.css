@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: #dbe8f4;
+  height: 100vh;
+  padding: 2rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-container {
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: rgba(255, 255, 255, 0.925);
+  min-height: 90vh;
+  padding: 0rem 4rem 0rem 7rem;
+}
+
+.main-wrapper {
+  display: flex;
+}
+.main-wrapper .logo-and-about {
+  width: 70%;
+  margin-top: 3rem;
+}
+
+#landing-logo {
+  width: 30%;
+}
+
+.landing-image-container {
+  text-align: left;
+}
+
+#landing-image {
+  width: 90%;
+}
+
+.description-container {
+  width: 100%;
+  margin-top: 4rem;
+}
+.description-container p {
+  margin-top: 2.5rem;
+  font-size: 1.2rem;
+  width: 90%;
+}
+.description-container h1 {
+  font-size: 3rem;
+  text-transform: capitalize;
+  color: #fdb514;
+}
+
+.login-buttons {
+  text-align: center;
+  width: 100%;
+}
+.login-buttons a {
+  text-decoration: none;
+  color: white;
+}
+.login-buttons .login-button {
+  background-color: #3c4048;
+  padding: 1.5rem 6rem;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  transform: translateY(-40%);
+  display: inline-block;
+}
+.login-buttons .login-button:hover {
+  background-color: #464950;
+}
+
+.login-button:nth-child(1) {
+  margin-right: 2.5rem;
+}/*# sourceMappingURL=landing_page.css.map */
