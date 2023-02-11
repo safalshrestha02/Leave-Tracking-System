@@ -114,7 +114,56 @@
             </div>
         </div>
 
-        <script src="/public/scripts/client_dashboard.js"></script>
+
+        <!-- add-worker / register worker -->
+
+        <div class="register-container">
+            <div class="register-right-container">
+              <div class="register-container-wrapper">
+                <div class="register-heading">
+                  <p>Register Worker</p>
+                  <i class="fa-solid fa-circle-xmark" id="close-form"></i>
+                </div>
+
+                <form class="register-form">
+                  <input type="text" placeholder="First Name"
+                    class="register-input-field worker-name-register first-name" required />
+                  <input type="text" placeholder="Last Name" class="register-input-field worker-name-register"
+                    required />
+
+                  <p>Choose gender</p>
+
+                  <div class="form-fullname">
+                    <select class="select-gender">
+                      <option value="male">Male</option>
+                      <option value="">Female</option>
+                    </select>
+                    <input type="number" min="1000" max="9999" placeholder="Unique Worker ID(4 Digits)"
+                      class="register-input-field" required />
+                  </div>
+
+                  <input type="text" id="employee-email" placeholder="Employee's Email Address"
+                    class="register-input-field" required />
+                  <input type="password" placeholder="Choose Password" id="employee-password"
+                    class="register-input-field" required />
+                  <input type="password" placeholder="Confirm Password" id="employee-password-"
+                    class="register-input-field" />
+
+                  <div class="form-buttons">
+                    <button class="form-button-reset">
+                      <a href="#">Reset</a>
+                    </button>
+                    <button class="form-button-apply">
+                      <a href="#">ADD</a>
+                    </button>
+                  </div>
+                </form>
+                <div></div>
+              </div>
+            </div>
+          </div>
+
+        <script src="/scripts/client/client_dashboard.js"></script>
 </body>
 
 </html>
