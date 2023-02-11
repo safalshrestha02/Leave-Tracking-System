@@ -53,7 +53,6 @@ clientSchema.statics.login = async function (email, password, companyName) {
       console.log("loggedin");
       return client;
     }
-    throw Error("Invalid Credentials");
   }
   throw Error("Invalid Credentials");
 };
