@@ -175,6 +175,7 @@ body {
 }
 
 .register-input {
+  text-transform: capitalize;
   width: 100%;
   font-size: 1rem;
   border: none;
@@ -183,6 +184,10 @@ body {
   background-color: #F3F5F7;
   margin-bottom: 1.5rem;
   color: rgb(22, 22, 22);
+}
+
+.email-register-field, .password-register-field {
+  text-transform: none;
 }
 
 .password-field {
