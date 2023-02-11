@@ -3,6 +3,16 @@ const noPassword = document.querySelector(".fa-eye-slash");
 
 noPassword.addEventListener("click", () => {
   noPassword.classList.toggle("fa-eye");
+  console.log(noPassword.classList[1])
+
+  const cPasswordShow = document.querySelector(".password-register-field")
+  
+  if (noPassword.classList[2] === "fa-eye") {
+    cPasswordShow.setAttribute("type","text")
+  }
+  else {
+    cPasswordShow.setAttribute("type","password")
+  }
 });
 
 const form = document.querySelector("form");
