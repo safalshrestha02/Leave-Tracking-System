@@ -41,5 +41,5 @@ const messageSchema = new mongoose.Schema({
   timestamp: {},
 });
 
-const someComment = mongoose.model("message", messageSchema);
+const someComment = mongoose.model("LeaveRequest", messageSchema);
 module.exports = someComment;

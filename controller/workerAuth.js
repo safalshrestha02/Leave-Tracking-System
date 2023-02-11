@@ -23,7 +23,7 @@ const handleErr = (err) => {
 };
 
 exports.registerWorker = async (req, res) => {
-  const { firstName, lastName, gender,workerID, email, password } = req.body;
+  const { firstName, lastName, gender,workerID, email, password, country, city } = req.body;
   try {
     const worker = await Worker.create({
       firstName,
@@ -32,6 +32,8 @@ exports.registerWorker = async (req, res) => {
       workerID,
       email,
       password,
+      country,
+      city
     });
     res.status(201).json({ message: "Worker created successfully" });
   } catch (err) {

@@ -36,6 +36,14 @@ const registerWorker = new mongoose.Schema(
       required: [true, "Please enter a password"],
       minlength: [8, "Minimum password length is 8 characters"],
     },
+    country:{
+      type: String,
+      required : [true, "please enter your country"]
+    },
+    city:{
+      type: String,
+      required : [true, "please enter your city"]
+    },
     companyName: {
       type: Schema.Types.ObjectId,
       ref: "client",
