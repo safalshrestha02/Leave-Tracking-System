@@ -198,7 +198,7 @@ body {
   position: absolute;
   color: black;
   font-size: 1rem;
-  right: 15rem;
+  right: 16rem;
   transform: translateY(100%);
   display: none;
   cursor: pointer;
@@ -206,4 +206,9 @@ body {
 
 .active {
   display: none !important;
+}
+
+.register-errors {
+  color: rgb(255, 122, 122);
+  font-weight: 500;
 }
