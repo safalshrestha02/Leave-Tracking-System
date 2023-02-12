@@ -1,0 +1,356 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+}
+
+.main-container {
+  background-color: #f3f5f7;
+  display: flex;
+}
+
+#main-logo {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 3rem;
+  letter-spacing: 2px;
+  display: block;
+  text-align: center;
+  color: white;
+  margin-top: 0.5rem;
+  font-family: "Poppins", sans-serif;
+}
+
+#main-logo span {
+  font-weight: 500;
+  color: #fdb514;
+  font-family: "Poppins", sans-serif;
+}
+
+/* -----------------------left container ---------------- */
+.left-container {
+  background: #3c4048;
+  padding: 0.5rem 1rem 2rem 1rem;
+  min-width: 13vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+li {
+  list-style: none;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  width: 100%;
+  color: white;
+}
+
+.nav-links {
+  width: 100%;
+  padding: 1rem;
+  display: inline-block;
+  color: white;
+}
+.nav-links:hover {
+  color: #fdb514;
+}
+
+.active {
+  background-color: #fdb514;
+}
+
+.nav-active {
+  color: black;
+}
+.nav-active:hover {
+  color: black;
+}
+
+.logout-button-container {
+  width: 100%;
+}
+
+.logout-button {
+  text-decoration: none;
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 3rem;
+  color: white;
+  border-radius: 0.5rem;
+  display: inline-block;
+}
+
+.logout-button:hover {
+  background-color: #ff0032;
+  border-radius: 0.5rem;
+}
+
+.nav-icon {
+  margin-right: 1.5rem;
+}
+
+/* -----------------------right container ---------------- */
+.right-container {
+  width: 100%;
+}
+
+.navbar-name {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: rgba(182, 174, 174, 0.096);
+  width: 100%;
+}
+
+.navbar-left {
+  font-size: 2rem;
+}
+
+#button-add-worker {
+  padding: 0.7rem;
+  background-color: #fdb514;
+  border-radius: 0.5rem;
+  color: black;
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
+}
+
+#button-add-worker:hover {
+  background-color: #f5aa09;
+}
+
+.fa-user-plus {
+  margin-right: 0.5rem;
+}
+
+.dashboard-content {
+  padding: 2rem;
+  width: 90%;
+  background-color: white;
+  margin: 0 auto;
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-top: 2.5rem;
+  min-height: 82vh;
+  padding: 2rem 4rem;
+}
+
+/* -----------------------------------------register-form container ------------------------------------------------- */
+.register-container {
+  display: none;
+  background-color: black;
+  background: linear-gradient(rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 50%);
+  height: 100%;
+  border-radius: 1rem;
+  left: 0;
+  top: 0;
+  right: 0;
+}
+
+.form-active {
+  display: block;
+  position: absolute;
+  padding-top: 3%;
+}
+
+.register-right-container {
+  background-color: white;
+  border-radius: 1rem;
+  width: 40%;
+  margin: 0 auto;
+}
+
+.register-container-wrapper {
+  margin: 0 3rem;
+}
+
+.register-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  margin-bottom: 3rem;
+  border-bottom: 2px solid rgb(207, 205, 205);
+}
+
+.register-heading p {
+  font-size: 2rem;
+}
+
+/* form */
+.register-form {
+  padding-bottom: 2rem;
+}
+
+.register-input-field {
+  width: 100%;
+  font-size: 1rem;
+  border: none;
+  padding: 1rem;
+  border-radius: 0.3rem;
+  background-color: #f3f5f7;
+  margin-bottom: 1.5rem;
+  color: rgb(22, 22, 22);
+}
+
+.form-fullname {
+  display: flex;
+}
+
+.select-gender {
+  margin-right: 2rem;
+}
+
+.gender-check {
+  margin-bottom: 1.5rem;
+  display: flex;
+  padding: 0 0.5rem;
+  margin-top: 0.4rem;
+}
+
+.gender-check {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.register-form select {
+  width: 100%;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem;
+  padding-left: 0.7rem;
+  border-radius: 0.3rem;
+  background-color: #f3f5f7;
+  border-color: #f3f5f7;
+  padding: 0.8rem;
+}
+
+.register-form p {
+  margin-bottom: 0.3rem;
+  padding-left: 0.7rem;
+}
+
+.fa-circle-xmark {
+  font-size: 1.9rem;
+  cursor: pointer;
+  border-radius: 4rem;
+  color: #7d90a5;
+}
+
+.fa-circle-xmark:hover {
+  color: #ff0033;
+}
+
+.form-buttons {
+  text-align: right;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.form-buttons button {
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.form-buttons a {
+  display: inline-block;
+  padding: 0.7rem 3rem;
+}
+
+.form-button-apply {
+  background-color: #fdb514;
+}
+
+.form-button-reset {
+  background-color: white;
+}
+
+a {
+  color: black;
+}
+
+.dashboard-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 12rem;
+}
+
+.dashboard-heading {
+  position: relative;
+  align-self: flex-start;
+  font-weight: 500;
+  top: -2rem;
+}
+
+.leave-setting-options {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leave-option-gear {
+  font-size: 1.2rem;
+  position: relative;
+  top: -2rem;
+}
+
+.form-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-field {
+  background-color: #edeef0;
+  padding: 1.5rem 4rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+}
+
+.form-labels {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.form-field input {
+  border: none;
+  padding: 0.6rem;
+  border-radius: 0.3rem;
+  background-color: white;
+  margin-right: 2rem;
+  width: 100%;
+  font-size: 1rem;
+}
+
+select {
+  width: 100%;
+  background-color: white;
+  padding: 0.6rem;
+  margin-right: 2rem;
+  border: none;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+}
