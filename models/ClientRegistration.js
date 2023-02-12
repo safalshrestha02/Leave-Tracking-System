@@ -6,29 +6,29 @@ const clientSchema = new mongoose.Schema(
   {
     companyName: {
       type: String,
-      required: [true, "company name is required"],
-      unique: [true, "company is already taken"],
+      required: [true, "*company name is required"],
+      unique: [true, "*company is already taken"],
     },
     companyAddress: {
       type: String,
-      required: [true, "company address is required"],
+      required: [true, "*company address is required"],
     },
     name: {
       type: String,
-      required: [true, "username is required"],
+      required: [true, "*client name is required"],
       lowercase: true,
     },
     email: {
       type: String,
-      required: [true, "email is required"],
+      required: [true, "*email is required"],
       lowercase: true,
-      validate: [isEmail, "please enter a valid email"],
-      unique: [true, "Please enter unique email"],
+      validate: [isEmail, "*please enter a valid email"],
+      unique: [true, "*please enter unique email"],
     },
     password: {
       type: String,
-      required: [true, "password is required"],
-      minlength: [8, "minimum 8 words required"],
+      required: [true, "*password is required"],
+      minlength: [8, "*minimum 8 words required"],
     },
   },
   { timestamps: {} }

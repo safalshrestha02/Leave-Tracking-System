@@ -1,4 +1,6 @@
 
+
+
 const noPassword = document.querySelector(".fa-eye-slash");
 
 noPassword.addEventListener("click", () => {
@@ -17,6 +19,8 @@ noPassword.addEventListener("click", () => {
 
 const form = document.querySelector("form");
 const cname_error = document.querySelector(".cname_error");
+const caddress_error = document.querySelector(".caddress_error");
+const cNname_error = document.querySelector(".cNname_error");
 const email_error = document.querySelector(".email_error");
 const password_error = document.querySelector(".password_error");
 
@@ -25,6 +29,8 @@ form.addEventListener("submit", async (e) => {
 
   cname_error.textContent = " ";
   email_error.textContent = " ";
+  cNname_error.textContent = " ";
+  caddress_error.textContent = " ";
   password_error.textContent = " ";
 
   const cName = form.cName.value;
@@ -47,10 +53,21 @@ form.addEventListener("submit", async (e) => {
     });
     const data = await res.json();
     console.log(data);
+
     if (data.errors) {
       cname_error.textContent = data.errors.companyName;
       email_error.textContent = data.errors.email;
       password_error.textContent = data.errors.password;
+      cNname_error.textContent = data.errors.name;
+      caddress_error.textContent = data.errors.companyAddress;
+
+      const registerInputs = document.querySelectorAll(".register-input");
+
+      registerInputs.forEach((inputField) => {
+        inputField.setAttribute("style","border: 2px solid red")
+        console.log(inputField)
+      })
+      console.log(registerInputs)
     }
     if (data.client) {
       location.assign("/client_login");

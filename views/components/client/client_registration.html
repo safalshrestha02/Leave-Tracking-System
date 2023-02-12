@@ -37,6 +37,7 @@
           </div>
 
           <form class="login-form">
+            <div class="cname_error register-errors"></div>
             <input
               type="text"
               name="cName"
@@ -44,13 +45,14 @@
               placeholder="Company name"
               class="register-input"
             />
-            <div class="cname_error"></div>
+            <div class="caddress_error register-errors"></div>
             <input
               type="text"
               name="cAddress"
               placeholder="Company Address"
               class="register-input"
             />
+            <div class="cNname_error register-errors"></div>
             <input
               type="text"
               name="cCName"
@@ -58,13 +60,14 @@
               placeholder="Client's Name"
               class="register-input"
             />
+            <div class="email_error register-errors"></div>
             <input
               type="email"
               name="cEmail"
               placeholder="Email Address"
               class="register-input email-register-field"
             />
-            <div class="email_error"></div>
+            <div class="password_error register-errors"></div>
             <p class="passwordfield">
               <input
                 type="password"
@@ -74,7 +77,6 @@
               />
               <i class="fa-regular fa-eye-slash"></i>
             </p>
-            <div class="password_error"></div>
             <input
               type="password"
               placeholder="Confirm Password"
