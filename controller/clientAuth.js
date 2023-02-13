@@ -51,7 +51,7 @@ exports.registerClient = async (req, res) => {
     });
     const token = createToken(client._id);
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
-    res.status(201).json({ message: "registered" });
+    res.status(201).redirect("/client_login");
   } catch (err) {
     const errors = handleErr(err);
     res.status(401).json({ errors });
@@ -64,7 +64,7 @@ exports.login = async (req, res, next) => {
     const client = await Client.login(email, password, companyName);
     const token = createToken(client._id);
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
-    res.status(200).redirect("/client_home");
+    res.status(201).redirect("/client_home");
   } catch (err) {
     const errors = handleErr(err);
     res.status(400).json({ errors });
