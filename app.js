@@ -23,7 +23,7 @@ app.use("/", client); //client side
 //render all data
 app.get("/api/workers", worker);
 app.get("/api/clients", client);
-app.get("/api/leaveMessages", worker);
+app.get("/api/leaveRequests", worker);
 
 // connectDB();
 const Person = mongoose.connect(DBrui).then((result) => {
