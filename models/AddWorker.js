@@ -46,7 +46,7 @@ const registerWorker = new mongoose.Schema(
     },
     companyName: {
       type: Schema.Types.ObjectId,
-      ref: "client",
+      ref: "registerclients",
     },
   },
   { timestamps: {} }

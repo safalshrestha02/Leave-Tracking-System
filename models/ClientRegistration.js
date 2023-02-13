@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 
 const clientSchema = new mongoose.Schema(
   {
+    
     companyName: {
       type: String,
       required: [true, "company name is required"],
