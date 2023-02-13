@@ -1,5 +1,12 @@
 const Worker = require("../models/AddWorker");
 
+const maxAge = 3 * 24 * 60 * 60;
+const createToken = (id) => {
+  return jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET, {
+    expiresIn: "1d",
+  });
+};
+
 const handleErr = (err) => {
   let errors = {
     firstName: "",
@@ -28,7 +35,16 @@ const handleErr = (err) => {
 };
 
 exports.registerWorker = async (req, res) => {
-  const { firstName, lastName, gender,workerID, email, password, country, city } = req.body;
+  const {
+    firstName,
+    lastName,
+    gender,
+    workerID,
+    email,
+    password,
+    country,
+    city,
+  } = req.body;
   try {
     const worker = await Worker.create({
       firstName,
@@ -38,9 +54,11 @@ exports.registerWorker = async (req, res) => {
       email,
       password,
       country,
-      city
+      city,
     });
-    res.status(201).json({ message: "Worker created successfully" });
+    const token = createToken(worker._id);
+    res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
+    res.status(201).redirect("/worker_login");
   } catch (err) {
     const errors = handleErr(err);
     res.status(401).json({ errors });
@@ -50,10 +68,10 @@ exports.registerWorker = async (req, res) => {
 exports.login = async (req, res, next) => {
   const { email, password } = req.body;
   try {
-    const client = await Client.login(email, password, companyName);
+    const client = await Client.login(email, password);
     const token = createToken(client._id);
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
-    res.status(200).redirect("/client_home");
+    res.status(200).redirect("/worker_home");
   } catch (err) {
     const errors = handleErr(err);
     res.status(400).json({ errors });
