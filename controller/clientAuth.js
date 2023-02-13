@@ -18,15 +18,15 @@ const handleErr = (err) => {
   };
 
   if (err.message === "Invalid Credentials") {
-    errors.companyName = "Invalid Credentials";
-    errors.email = "Invalid Credentials";
-    errors.password = "Invalid Credentials";
+    errors.companyName = "*invalid Credentials";
+    errors.email = "*invalid Credentials";
+    errors.password = "*invalid Credentials";
   }
 
   if (err.code === 11000) {
-    errors.companyName = "That company is already registered";
-    errors.email = "That email is already registered";
-    errors.password = "Password must be 8 characters or above";
+    errors.companyName = "*that company is already registered";
+    errors.email = "*that email is already registered";
+    errors.password = "*password must be 8 characters or above";
 
     return errors;
   }
@@ -51,7 +51,7 @@ exports.registerClient = async (req, res) => {
     });
     const token = createToken(client._id);
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
-    res.status(201).redirect("/client_login");
+    res.status(201).json({ message: "registered" });
   } catch (err) {
     const errors = handleErr(err);
     res.status(401).json({ errors });

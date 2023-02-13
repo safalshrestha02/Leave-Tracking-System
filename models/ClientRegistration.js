@@ -4,11 +4,10 @@ const bcrypt = require("bcrypt");
 
 const clientSchema = new mongoose.Schema(
   {
-    
     companyName: {
       type: String,
       required: [true, "*company name is required"],
-      unique: [true, "*company is already taken"],
+      unique: true,
     },
     companyAddress: {
       type: String,
@@ -24,12 +23,12 @@ const clientSchema = new mongoose.Schema(
       required: [true, "*email is required"],
       lowercase: true,
       validate: [isEmail, "*please enter a valid email"],
-      unique: [true, "*please enter unique email"],
+      unique: true,
     },
     password: {
       type: String,
       required: [true, "*password is required"],
-      minlength: [8, "*minimum 8 words required"],
+      minlength: [8, "*password must be 8 characters or above"],
     },
   },
   { timestamps: {} }
