@@ -9,6 +9,11 @@ const handleErr = (err) => {
     password: "",
   };
 
+  if (err.message === "Invalid Credentials") {
+    errors.email = "Invalid Credentials";
+    errors.password = "Invalid Credentials";
+  }
+
   if (err.code === 11000) {
     errors.email = "That email is already registered";
     return errors;
@@ -39,5 +44,18 @@ exports.registerWorker = async (req, res) => {
   } catch (err) {
     const errors = handleErr(err);
     res.status(401).json({ errors });
+  }
+};
+
+exports.login = async (req, res, next) => {
+  const { email, password } = req.body;
+  try {
+    const client = await Client.login(email, password, companyName);
+    const token = createToken(client._id);
+    res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
+    res.status(200).redirect("/client_home");
+  } catch (err) {
+    const errors = handleErr(err);
+    res.status(400).json({ errors });
   }
 };

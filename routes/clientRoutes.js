@@ -4,7 +4,7 @@ const router = express.Router();
 //paths
 const loadPages = require("../controller/clientPageController");
 const clientRegistration = require("../controller/clientAuth");
-
+const addworker = require("../controller/workerAuth");
 //html pages
 router.get("/client_registration", loadPages.registerClient);
 router.get("/client_login", loadPages.clientLogin);
@@ -19,5 +19,6 @@ router.get("/api/clients", loadPages.apiClient);
 //APIs
 router.post("/client_registration", clientRegistration.registerClient);
 router.post("/client_login", clientRegistration.login);
+router.post("/client_add_worker", addworker.registerWorker);
 
 module.exports = router;
