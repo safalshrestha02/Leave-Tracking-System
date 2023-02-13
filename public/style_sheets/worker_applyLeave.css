@@ -139,7 +139,6 @@ li {
   width: 90%;
   background-color: white;
   margin: 0 auto;
-  border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-top: 2.5rem;
   min-height: 82vh;
@@ -233,4 +232,4 @@ select {
 
 .form-button-reset {
   background-color: white;
-}
+}/*# sourceMappingURL=worker_applyLeave.css.map */

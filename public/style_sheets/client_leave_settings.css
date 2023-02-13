@@ -142,7 +142,6 @@ li {
   width: 90%;
   background-color: white;
   margin: 0 auto;
-  border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-top: 2.5rem;
   min-height: 82vh;
@@ -154,8 +153,7 @@ li {
   display: none;
   background-color: black;
   background: linear-gradient(rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 50%);
-  height: 100%;
-  border-radius: 1rem;
+  height: 100dvh;
   left: 0;
   top: 0;
   right: 0;
@@ -164,14 +162,14 @@ li {
 .form-active {
   display: block;
   position: absolute;
-  padding-top: 3%;
+  padding-top: 1.5rem;
 }
 
 .register-right-container {
   background-color: white;
-  border-radius: 1rem;
-  width: 40%;
+  width: 60%;
   margin: 0 auto;
+  border-radius: 0.5rem;
 }
 
 .register-container-wrapper {
@@ -195,10 +193,16 @@ li {
 /* form */
 .register-form {
   padding-bottom: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+.register-form label {
+  padding-left: 0.2rem;
+  padding-bottom: 0.3rem;
 }
 
 .register-input-field {
-  width: 100%;
   font-size: 1rem;
   border: none;
   padding: 1rem;
@@ -206,43 +210,19 @@ li {
   background-color: #f3f5f7;
   margin-bottom: 1.5rem;
   color: rgb(22, 22, 22);
-}
-
-.form-fullname {
-  display: flex;
-}
-
-.select-gender {
-  margin-right: 2rem;
-}
-
-.gender-check {
-  margin-bottom: 1.5rem;
-  display: flex;
-  padding: 0 0.5rem;
-  margin-top: 0.4rem;
-}
-
-.gender-check {
-  justify-content: space-between;
-  align-items: center;
-}
-
-.register-form select {
   width: 100%;
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
-  padding: 0.5rem;
-  padding-left: 0.7rem;
-  border-radius: 0.3rem;
-  background-color: #f3f5f7;
-  border-color: #f3f5f7;
-  padding: 0.8rem;
+}
+
+input[type=radio] {
+  margin-right: 3rem;
+}
+
+.form-gender-container {
+  grid-column: span 2;
 }
 
 .register-form p {
-  margin-bottom: 0.3rem;
-  padding-left: 0.7rem;
+  margin-bottom: 0.8rem;
 }
 
 .fa-circle-xmark {
@@ -258,8 +238,11 @@ li {
 
 .form-buttons {
   text-align: right;
-  width: 100%;
-  margin-top: 1rem;
+  grid-column: span 2;
+}
+
+.employee-email-container {
+  grid-column: span 2;
 }
 
 .form-buttons button {
@@ -270,14 +253,22 @@ li {
 .form-buttons a {
   display: inline-block;
   padding: 0.7rem 3rem;
+  color: black;
+  font-size: 1rem;
 }
 
 .form-button-apply {
   background-color: #fdb514;
 }
+.form-button-apply:hover {
+  background-color: #f5aa09;
+}
 
 .form-button-reset {
   background-color: white;
+}
+.form-button-reset a:hover {
+  color: #f5aa09;
 }
 
 a {
@@ -353,4 +344,4 @@ select {
   border: none;
   border-radius: 0.3rem;
   font-size: 1rem;
-}
+}/*# sourceMappingURL=client_leave_settings.css.map */
