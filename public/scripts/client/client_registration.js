@@ -1,19 +1,15 @@
-
-
-
 const noPassword = document.querySelector(".fa-eye-slash");
 
 noPassword.addEventListener("click", () => {
   noPassword.classList.toggle("fa-eye");
-  console.log(noPassword.classList[1])
+  console.log(noPassword.classList[1]);
 
-  const cPasswordShow = document.querySelector(".password-register-field")
-  
+  const cPasswordShow = document.querySelector(".password-register-field");
+
   if (noPassword.classList[2] === "fa-eye") {
-    cPasswordShow.setAttribute("type","text")
-  }
-  else {
-    cPasswordShow.setAttribute("type","password")
+    cPasswordShow.setAttribute("type", "text");
+  } else {
+    cPasswordShow.setAttribute("type", "password");
   }
 });
 
@@ -64,11 +60,12 @@ form.addEventListener("submit", async (e) => {
       const registerInputs = document.querySelectorAll(".register-input");
 
       registerInputs.forEach((inputField) => {
-        inputField.setAttribute("style","border: 2px solid red")
-        console.log(inputField)
-      })
-      console.log(registerInputs)
+        inputField.setAttribute("style", "border: 2px solid red");
+        console.log(inputField);
+      });
+      console.log(registerInputs);
     }
+
     if (data.client) {
       location.assign("/client_login");
     }
