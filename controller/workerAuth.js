@@ -1,4 +1,5 @@
 const Worker = require("../models/AddWorker");
+const jwt = require("jsonwebtoken");
 
 const maxAge = 3 * 24 * 60 * 60;
 const createToken = (id) => {

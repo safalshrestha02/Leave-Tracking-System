@@ -9,7 +9,11 @@ const cookieParser = require("cookie-parser");
 const worker = require("./routes/workerRoutes");
 const client = require("./routes/clientRoutes");
 
-const clientMiddleware = require("./middleware/clientAuthMiddleware");
+const clientAuth = require("./controller/clientPageController");
+const workerAuth = require("./controller/workerPageController");
+const landingPage = require("./controller/workerPageController");
+
+//const { requireAuth } = require("./middleware/clientAuthMiddleware");
 
 const DBrui = process.env.DBrui;
 app.use(bodyParser.json());
@@ -17,8 +21,14 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
 
 //routes
+app.get("/", landingPage.landingPage);
+app.get("/client_registration", clientAuth.registerClient);
+app.get("/client_login", clientAuth.clientLogin);
+app.get("/worker_login", workerAuth.workerLogin);
+
+//app.use("/", requireAuth, client); //client side
+app.use("/", client);
 app.use("/", worker); //worker side
-app.use("/", client); //client side
 
 //render all data
 app.get("/api/workers", worker);
