@@ -36,13 +36,13 @@ const registerWorker = new mongoose.Schema(
       required: [true, "Please enter a password"],
       minlength: [8, "Minimum password length is 8 characters"],
     },
-    country:{
+    country: {
       type: String,
-      required : [true, "please enter your country"]
+      required: [true, "please enter your country"],
     },
-    city:{
+    city: {
       type: String,
-      required : [true, "please enter your city"]
+      required: [true, "please enter your city"],
     },
     companyName: {
       type: Schema.Types.ObjectId,
@@ -58,8 +58,21 @@ registerWorker.pre("save", async function (next) {
   this.password = await bcrypt.hash(this.password, salt);
   next();
 });
+
 registerWorker.post("save", async function (next) {
   console.log("you have been registered");
 });
+
+registerWorker.statics.login = async function (email, password) {
+  const worker = await this.findOne({ email });
+  if (worker) {
+    const passcheck = await bcrypt.compare(password, worker.password);
+    if (passcheck) {
+      console.log("loggedin");
+      return worker;
+    }
+  }
+  throw Error("Invalid Credentials");
+};
 
 module.exports = mongoose.model("registerWorker", registerWorker);

@@ -16,6 +16,7 @@ router.get("/api/workers", loadPages.apiWorkers);
 router.get("/api/leaveRequests", loadPages.apiMessages);
 
 //APIs
-router.post("/add_worker", workerRegistration.registerWorker);
+router.post("/worker_login", workerRegistration.login);
+router.post("/worker_applyLeave", workerRegistration.registerWorker);
 
 module.exports = router;
