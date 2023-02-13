@@ -5,7 +5,7 @@ const Schema = mongoose.Schema
 const messageSchema = new mongoose.Schema({
   employeeName: {
     type: Schema.Types.ObjectID,
-    ref: "AddWorker",
+    ref: "registerworkers",
     required: [true, "employee name is required"],
   },
   employeeID: {
@@ -36,7 +36,7 @@ const messageSchema = new mongoose.Schema({
   approvestate: {
     type: String ,
     state: [{type : String, default: 'pending'}],
-    otherStates : ["pending", "approved", "denied"]
+    enum : ["pending", "approved", "denied"]
   },
   timestamp: {},
 });
