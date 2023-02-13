@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-exports.requireAuth = (req, res, next) => {
+const requireAuth = (req, res, next) => {
   const token = req.cookies.jwt;
 
   if (token) {
@@ -15,3 +15,5 @@ exports.requireAuth = (req, res, next) => {
     res.redirect("/client_login");
   }
 };
+
+module.exports = { requireAuth };

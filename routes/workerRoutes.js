@@ -6,8 +6,6 @@ const loadPages = require("../controller/workerPageController");
 const workerRegistration = require("../controller/workerAuth");
 
 //html pages
-router.get("/", loadPages.loginPage); //landing page
-router.get("/worker_login", loadPages.workerLogin);
 router.get("/worker_home", loadPages.homePage);
 router.get("/worker_applyLeave", loadPages.leavePage);
 router.get("/worker_profile", loadPages.workerProfile);
