@@ -139,7 +139,6 @@ li {
   width: 90%;
   background-color: white;
   margin: 0 auto;
-  border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-top: 2.5rem;
   min-height: 82vh;
@@ -234,4 +233,4 @@ li {
 .rejected-leave {
   color: #ff0032;
   margin-right: 0.5rem;
-}
+}/*# sourceMappingURL=worker_leaveHistory.css.map */
