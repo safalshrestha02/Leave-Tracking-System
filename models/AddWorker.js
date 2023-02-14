@@ -59,10 +59,6 @@ registerWorker.pre("save", async function (next) {
   next();
 });
 
-registerWorker.post("save", async function (next) {
-  console.log("you have been registered");
-});
-
 registerWorker.statics.login = async function (email, password) {
   const worker = await this.findOne({ email });
   if (worker) {
