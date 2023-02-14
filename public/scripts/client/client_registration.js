@@ -1,3 +1,5 @@
+
+// ----------showing and hiding password------------------
 const noPassword = document.querySelector(".fa-eye-slash");
 
 noPassword.addEventListener("click", () => {
@@ -13,63 +15,74 @@ noPassword.addEventListener("click", () => {
   }
 });
 
+
+// -----------------form validation-----------------------
 const form = document.querySelector("form");
-const cname_error = document.querySelector(".cname_error");
-const caddress_error = document.querySelector(".caddress_error");
-const cNname_error = document.querySelector(".cNname_error");
+const companyName_error = document.querySelector(".cname_error");
+const companyAddress_error = document.querySelector(".caddress_error");
+const clientName_error = document.querySelector(".cNname_error");
 const email_error = document.querySelector(".email_error");
 const password_error = document.querySelector(".password_error");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  cname_error.textContent = " ";
+  companyName_error.textContent = " ";
   email_error.textContent = " ";
-  cNname_error.textContent = " ";
-  caddress_error.textContent = " ";
+  clientName_error.textContent = " ";
+  companyAddress_error.textContent = " ";
   password_error.textContent = " ";
 
-  const cName = form.cName.value;
-  const cAddress = form.cAddress.value;
-  const cCName = form.cCName.value;
-  const cEmail = form.cEmail.value;
-  const cPassword = form.cPassword.value;
+  const companyName = form.cName.value;
+  const companyAddress = form.cAddress.value;
+  const clientName = form.cCName.value;
+  const clientEmail = form.cEmail.value;
+  const clientPassword = form.cPassword.value;
 
   try {
     const res = await fetch("/client_registration", {
       method: "POST",
       body: JSON.stringify({
-        companyName: cName,
-        companyAddress: cAddress,
-        name: cCName,
-        email: cEmail,
-        password: cPassword,
+        companyName: companyName,
+        companyAddress: companyAddress,
+        name: clientName,
+        email: clientEmail,
+        password: clientPassword
       }),
-      headers: { "Content-type": "application/json" },
+      headers: { "Content-Type": "application/json" },
     });
     const data = await res.json();
     console.log(data);
 
     if (data.errors) {
-      cname_error.textContent = data.errors.companyName;
+
+      console.log(data.errors)
+
+      companyName_error.textContent = data.errors.companyName;
       email_error.textContent = data.errors.email;
       password_error.textContent = data.errors.password;
-      cNname_error.textContent = data.errors.name;
-      caddress_error.textContent = data.errors.companyAddress;
+      clientName_error.textContent = data.errors.name;
+      companyAddress_error.textContent = data.errors.companyAddress;
 
-      const registerInputs = document.querySelectorAll(".register-input");
+      // const registerInputs = document.querySelectorAll(".register-input");
 
-      registerInputs.forEach((inputField) => {
-        inputField.setAttribute("style", "border: 2px solid red");
-        console.log(inputField);
-      });
-      console.log(registerInputs);
+      // registerInputs.forEach((inputField) => {
+      //   inputField.setAttribute("style", "border: 2px solid red");
+      // });
+
     }
-
     if (data.client) {
-      location.assign("/client_login");
+      const success = document.querySelector(".success");
+      success.textContent = "You have been Registered.";
+
+      setTimeout(()=> {
+        console.log("redirection")
+        location.assign("/client_login");
+      }, 500)
+
     }
+
   } catch (err) {
-    console.log(err);
+    console.log(err)
   }
 });
