@@ -48,6 +48,7 @@
               class="login-input-field client-login-email"
               required
             />
+
             <input
               type="password"
               name="cPassword"
@@ -56,6 +57,8 @@
               class="login-input-field client-login-password"
               required
             />
+            <div class="login_error register-errors"></div>
+            <div class="success"></div>
 
             <div class="login-type">
               <button type="submit" class="login-button">Log In</button>
@@ -65,18 +68,6 @@
       </div>
     </div>
 
-    <script>
-      const form = document.querySelector("form");
-
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        const compEmail = form.cEmail.value;
-        const compPassword = form.cPassword.value;
-
-        console.log(compEmail, compPassword);
-      });
-    </script>
     <script src="/scripts/login/client_login.js"></script>
   </body>
 </html>
