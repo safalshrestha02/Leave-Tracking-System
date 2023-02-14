@@ -41,18 +41,48 @@ clientSchema.pre("save", async function (next) {
   next();
 });
 
-clientSchema.post("save", async function (next) {
-  console.log("you have been registered");
-});
+clientSchema.static.registerClient = async function (
+  companyName,
+  companyAddress,
+  name,
+  email,
+  password
+) {
+  const dupCompName = await this.findOne({ companyName });
 
-clientSchema.statics.login = async function (email, password, companyName) {
-  const client = await this.findOne({ email, companyName });
+  if (dupCompName) {
+    throw Error("*company is already registered");
+  }
+
+  const dupEmail = await this.findOne({ email });
+
+  if (dupEmail) {
+    throw Error("*email is already registered");
+  }
+
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
+
+  const client = await this.create({
+    companyName,
+    companyAddress,
+    name,
+    email,
+    password: hashedPassword,
+  });
+
+  return client;  
+};
+
+clientSchema.statics.login = async function (email, password) {
+  const client = await this.findOne({ email });
   if (client) {
     const passcheck = await bcrypt.compare(password, client.password);
     if (passcheck) {
-      console.log("loggedin");
+      console.log("logged in");
       return client;
     }
+    throw Error("Invalid Credentials");
   }
   throw Error("Invalid Credentials");
 };
