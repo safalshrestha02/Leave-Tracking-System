@@ -174,7 +174,7 @@ label {
   flex-basis: 50%;
 }
 
-.form-field:nth-child(2n+1) {
+.form-field:nth-child(2n + 1) {
   flex-basis: 50%;
 }
 
@@ -232,4 +232,10 @@ select {
 
 .form-button-reset {
   background-color: white;
+}
+
+.employee-name-field,
+.employee-id-field,
+#days-number {
+  cursor: not-allowed;
 }

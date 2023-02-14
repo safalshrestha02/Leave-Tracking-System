@@ -1,10 +1,20 @@
+const empNameField = document.querySelector('.employee-name-field')
+const empIDField = document.querySelector('.employee-id-field')
+
+
+const fetchEmpNameAndID = async () => {
+    const { fullName, workerID } = await fetchWorkerApi()
+    empNameField.value = fullName
+    empIDField.value = workerID
+}
+fetchEmpNameAndID()
 
 // <========== Generating Leave Days ==========>
 
 const startDateField = document.querySelector('#start-date')
 const endDateField = document.querySelector('#end-date')
 const leaveDaysField = document.querySelector('#days-number')
-leaveDaysField.style.cursor = "not-allowed"
+// leaveDaysField.style.cursor = "not-allowed"
 
 const currentDate = new Date()
 let currentYear = currentDate.getFullYear()
