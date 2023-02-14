@@ -15,8 +15,8 @@ const handleErr = (err) => {
   };
 
   if (err.message === "Invalid Credentials") {
-    errors.email = "*invalid Credentials";
-    errors.password = "*invalid Credentials";
+    errors.email = "*Invalid Credentials";
+    errors.password = "*Invalid Credentials";
   }
 
   if (err.code === 11000) {

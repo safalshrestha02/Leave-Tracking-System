@@ -226,26 +226,17 @@ li {
   min-width: 30%;
   margin-bottom: 1rem;
 }
-.pending-and-approved
-  .pending-and-approved-container
-  .worker-leaves
-  .leave-type {
+.pending-and-approved .pending-and-approved-container .worker-leaves .leave-type {
   font-weight: 500;
   font-size: 1.1rem;
 }
-.pending-and-approved
-  .pending-and-approved-container
-  .worker-leaves
-  .leave-date {
+.pending-and-approved .pending-and-approved-container .worker-leaves .leave-date {
   display: flex;
   justify-content: space-between;
   opacity: 0.6;
   margin: 0.8rem 0;
 }
-.pending-and-approved
-  .pending-and-approved-container
-  .worker-leaves
-  .fa-circle {
+.pending-and-approved .pending-and-approved-container .worker-leaves .fa-circle {
   margin-right: 0.8rem;
 }
 

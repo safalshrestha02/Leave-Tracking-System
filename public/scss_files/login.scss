@@ -141,6 +141,21 @@ a {
   background-color: $grey-bg;
 }
 
+.register-errors {
+  color: rgb(255, 122, 122);
+  font-weight: 500;
+  text-align: center;
+}
+
+.success {
+  color: $green-bg;
+  font-weight: 600;
+  text-align: center;
+  position: relative;
+  top: -1rem;
+}
+
+// ----------media query------------
 @media only screen and (max-width: 1560px) {
   #ecobees-text-logo {
     font-size: 1.4rem;
