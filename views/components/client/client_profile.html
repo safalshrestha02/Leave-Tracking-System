@@ -2,243 +2,201 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="/style_sheets/client_profile.css" />
+  <link rel="stylesheet" href="/style_sheets/client_profile.css" />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <title>ecoBees</title>
+  <title>ecoBees</title>
 </head>
 
 <body>
-    <div class="main-container">
-        <div class="left-container">
-            <nav>
-                <h1 id="main-logo"><span>e</span>coB<span>ee</span>s</h1>
-                <ul id="nav-ul ">
-                    <li>
-                        <a href="/client_home" class="nav-links "><i class="fa-solid fa-house nav-icon"></i>Home</a>
-                    </li>
-                    <li class="active">
-                        <a href="/client_profile" class="nav-links nav-active"><i
-                                class="fa-solid fa-user nav-icon"></i>Profile</a>
-                    </li>
-                    <li>
-                        <a href="/client_manage_leave" class="nav-links"><i
-                                class="fa-solid fa-right-from-bracket nav-icon"></i>Manage
-                            Leaves</a>
-                    </li>
-                    <li>
-                        <a href="/client_leave_history" class="nav-links"><i
-                                class="fa-solid fa-clock-rotate-left nav-icon"></i>Leave
-                            History</a>
-                    </li>
-                    <li>
-                        <a href="/client_manage_worker" class="nav-links"><i
-                                class="fa-solid fa-user-gear nav-icon"></i>Manage Workers</a>
-                    </li>
-                    <li>
-                        <a href="/client_leave_settings" class="nav-links"><i
-                                class="fa-solid fa-gear nav-icon"></i>Leave Settings</a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="logout-button-container">
-                <a href="#" class="logout-button"><i class="fa-solid fa-arrow-right-from-bracket nav-icon"
-                        style="rotate: 180deg"></i>Logout</a>
-            </div>
+  <div class="main-container">
+    <div class="left-container">
+      <nav>
+        <h1 id="main-logo"><span>e</span>coB<span>ee</span>s</h1>
+        <ul id="nav-ul ">
+          <li>
+            <a href="/client_home" class="nav-links "><i class="fa-solid fa-house nav-icon"></i>Home</a>
+          </li>
+          <li class="active">
+            <a href="/client_profile" class="nav-links nav-active"><i class="fa-solid fa-user nav-icon"></i>Profile</a>
+          </li>
+          <li>
+            <a href="/client_manage_leave" class="nav-links"><i
+                class="fa-solid fa-right-from-bracket nav-icon"></i>Manage
+              Leaves</a>
+          </li>
+          <li>
+            <a href="/client_leave_history" class="nav-links"><i
+                class="fa-solid fa-clock-rotate-left nav-icon"></i>Leave
+              History</a>
+          </li>
+          <li>
+            <a href="/client_manage_worker" class="nav-links"><i class="fa-solid fa-user-gear nav-icon"></i>Manage
+              Workers</a>
+          </li>
+          <li>
+            <a href="/client_leave_settings" class="nav-links"><i class="fa-solid fa-gear nav-icon"></i>Leave
+              Settings</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="logout-button-container">
+        <a href="#" class="logout-button"><i class="fa-solid fa-arrow-right-from-bracket nav-icon"
+            style="rotate: 180deg"></i>Logout</a>
+      </div>
+    </div>
+    <div class="right-container">
+      <div class="navbar-name">
+        <div class="navbar-left">
+          <p>Leave Tracking System</p>
         </div>
-        <div class="right-container">
-            <div class="navbar-name">
-                <div class="navbar-left">
-                    <p>Leave Tracking System</p>
-                </div>
-                <div class="navbar-right">
-                    <button id="button-add-worker">
-                        <i class="fa-solid fa-user-plus"></i>Add Worker
-                    </button>
-                </div>
-            </div>
-            <div class="dashboard-content">
-
-                <div class="client-details">
-
-                    <div class="client-name-and-sub-title">
-                        <p class="client-name">Elon Musk</p>
-                        <p class="client-sub-title">ecoBees Client</p>
-                    </div>
-
-                </div>
-
-                <div class="details-table">
-
-                    <div class="profile-client-email profile-details">
-                        <p class="details-head client-email">Email Address</p>
-                        <p class="details-body client-email-value">elon.musk9@gmail.com</p>
-                    </div>
-
-                    <div class="profile-client-company profile-details">
-                        <p class="details-head client-company">Company Name</p>
-                        <p class="details-body client-company-value">Tesla</p>
-                    </div>
-
-                    <div class="profile-client-company_address profile-details">
-                        <p class="details-head client-company_address">Company Address</p>
-                        <p class="details-body client-company_address-value">USA, Kathmandu</p>
-                    </div>
-
-                    <div class="profile-client-workers profile-details">
-                        <p class="details-head client-workers">Workers</p>
-                        <p class="details-body client-workers-value">1000</p>
-                    </div>
-
-                    <div class="profile-client-country profile-details">
-                        <p class="details-head client-country">Country</p>
-                        <p class="details-body client-country-value">Nepal</p>
-                    </div>
-
-
-                    <div class="profile-client-city profile-details">
-                        <p class="details-head client-city">City</p>
-                        <p class="details-body client-city-value">Kathmandu</p>
-                    </div>
-
-
-                </div>
-
-            </div>
+        <div class="navbar-right">
+          <button id="button-add-worker">
+            <i class="fa-solid fa-user-plus"></i>Add Worker
+          </button>
         </div>
+      </div>
+      <div class="dashboard-content">
 
+        <div class="client-details">
 
-        <!-- add-worker / register worker -->
-
-        <div class="register-container">
-            <div class="register-right-container">
-              <div class="register-container-wrapper">
-                <div class="register-heading">
-                  <p>Register Worker</p>
-                  <i class="fa-solid fa-circle-xmark" id="close-form"></i>
-                </div>
-
-                <form class="register-form">
-                  
-                  <div class="first-name-container">
-                  <input 
-                  type="text" 
-                  placeholder="First Name"  
-                  class="register-input-field worker-name-register first-name" 
-                  required 
-                  />
-                  </div>
-                  
-                <div class="last-name-container">
-                  <input 
-                  type="text" 
-                  placeholder="Last Name" 
-                  class="register-input-field worker-name-register"
-                  required 
-                  />
-                </div>
-
-                <div class="country-container">
-                  <input 
-                  type="text" 
-                  placeholder="Country" 
-                  class="register-input-field"
-                  />
-                </div>
-
-                <div class="city-container">
-
-                  <input 
-                  type="text"
-                  placeholder="City" 
-                  class="register-input-field"
-                  style="text-transform:capitalize ;"
-                  />
-                </div>
-
-                <div class="company-name-container">
-                  <input 
-                  type="text"
-                  placeholder="company-name" 
-                  value="ecobees" 
-                  class="register-input-field"
-                  disabled
-                  style="text-transform:capitalize ;"
-                  />
-                </div>
-                
-                  <div class="worker-id-container">
-                    <input 
-                    type="text" 
-                    placeholder="Unique Worker ID(4 Digits)"
-                    class="register-input-field" 
-                    required 
-                    />
-                    </div>
-
-                  <div class="form-gender-container">
-                        <p>Choose gender</p>
-                        <label for="">Male</label>
-                        <input type="radio" name="gender" />
-                      
-                        <label for="">Female</label>
-                        <input type="radio" name="gender">
-                      
-                        <label for="">Other</label>
-                        <input type="radio" name="gender">
-                  </div>
-
-                  <div class="employee-email-container">
-                    <input 
-                    type="text" 
-                    id="employee-email" 
-                    placeholder="Employee's Email Address"
-                    class="register-input-field" 
-                    required
-                    />
-
-                    </div>
-
-                  <div class="password-container">
-                  <input 
-                  type="password" 
-                  placeholder="Choose Password" 
-                  id="employee-password"
-                  class="register-input-field" 
-                  required 
-                  />
-                  </div>
-
-                  <div class="confirm-password-container">
-                    <input 
-                    type="password" 
-                    placeholder="Confirm Password" 
-                    id="employee-password-"
-                    class="register-input-field" 
-                    />
-                  </div>
-
-                  <div class="form-buttons">
-                    <button class="form-button-reset">
-                      <a href="#">Reset</a>
-                    </button>
-                    <button class="form-button-apply">
-                      <a href="#">ADD</a>
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
+          <div class="client-name-and-sub-title">
+            <p class="client-name"></p>
+            <p class="client-sub-title">ecoBees Client</p>
           </div>
 
-        <script src="/scripts/client/client_dashboard.js"></script>
+        </div>
+
+        <div class="details-table">
+
+          <div class="profile-client-email profile-details">
+            <p class="details-head client-email">Email Address</p>
+            <p class="details-body client-email-value"></p>
+          </div>
+
+          <div class="profile-client-company profile-details">
+            <p class="details-head client-company">Company Name</p>
+            <p class="details-body client-company-value"></p>
+          </div>
+
+          <div class="profile-client-company_address profile-details">
+            <p class="details-head client-company_address">Company Address</p>
+            <p class="details-body client-company_address-value"></p>
+          </div>
+
+          <div class="profile-client-workers profile-details">
+            <p class="details-head client-workers">Workers</p>
+            <p class="details-body client-workers-value"></p>
+          </div>
+
+          <div class="profile-client-country profile-details">
+            <p class="details-head client-country">Country</p>
+            <p class="details-body client-country-value"></p>
+          </div>
+
+
+          <div class="profile-client-city profile-details">
+            <p class="details-head client-city">City</p>
+            <p class="details-body client-city-value"></p>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- add-worker / register worker -->
+
+    <div class="register-container">
+      <div class="register-right-container">
+        <div class="register-container-wrapper">
+          <div class="register-heading">
+            <p>Register Worker</p>
+            <i class="fa-solid fa-circle-xmark" id="close-form"></i>
+          </div>
+
+          <form class="register-form">
+
+            <div class="first-name-container">
+              <input type="text" placeholder="First Name" class="register-input-field worker-name-register first-name"
+                required />
+            </div>
+
+            <div class="last-name-container">
+              <input type="text" placeholder="Last Name" class="register-input-field worker-name-register" required />
+            </div>
+
+            <div class="country-container">
+              <input type="text" placeholder="Country" class="register-input-field" />
+            </div>
+
+            <div class="city-container">
+
+              <input type="text" placeholder="City" class="register-input-field" style="text-transform:capitalize ;" />
+            </div>
+
+            <div class="company-name-container">
+              <input type="text" placeholder="company-name" value="ecobees" class="register-input-field" disabled
+                style="text-transform:capitalize ;" />
+            </div>
+
+            <div class="worker-id-container">
+              <input type="text" placeholder="Unique Worker ID(4 Digits)" class="register-input-field" required />
+            </div>
+
+            <div class="form-gender-container">
+              <p>Choose gender</p>
+              <label for="">Male</label>
+              <input type="radio" name="gender" />
+
+              <label for="">Female</label>
+              <input type="radio" name="gender">
+
+              <label for="">Other</label>
+              <input type="radio" name="gender">
+            </div>
+
+            <div class="employee-email-container">
+              <input type="text" id="employee-email" placeholder="Employee's Email Address" class="register-input-field"
+                required />
+
+            </div>
+
+            <div class="password-container">
+              <input type="password" placeholder="Choose Password" id="employee-password" class="register-input-field"
+                required />
+            </div>
+
+            <div class="confirm-password-container">
+              <input type="password" placeholder="Confirm Password" id="employee-password-"
+                class="register-input-field" />
+            </div>
+
+            <div class="form-buttons">
+              <button class="form-button-reset">
+                <a href="#">Reset</a>
+              </button>
+              <button class="form-button-apply">
+                <a href="#">ADD</a>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="/scripts/client/client_primary.js"></script>
+    <script src="/scripts/client/client_dashboard.js"></script>
+    <script src="/scripts/client/client_profile.js"></script>
 </body>
 
 </html>
