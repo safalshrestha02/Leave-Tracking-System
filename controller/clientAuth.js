@@ -24,12 +24,18 @@ const handleErr = (err) => {
   }
 
   if (err.code === 11000) {
-    errors.companyName = "*that company is already registered";
-    errors.email = "*that email is already registered";
-    errors.password = "*password must be 8 characters or above";
+
+    if (err.message.includes("companyName")) {
+      errors.companyName = "*that company is already registered";
+    };
+
+    if (err.message.includes("email")) {
+      errors.email = "*that email is already registered";
+    };
 
     return errors;
   }
+
 
   if (err.message.includes("registerClient validation failed")) {
     Object.values(err.errors).forEach(({ properties }) => {
@@ -51,7 +57,7 @@ exports.registerClient = async (req, res) => {
     });
     const token = createToken(client._id);
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
-    res.status(201).redirect("/client_login");
+    res.status(201).json({client: client._id});
   } catch (err) {
     const errors = handleErr(err);
     res.status(401).json({ errors });

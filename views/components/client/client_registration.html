@@ -37,7 +37,6 @@
           </div>
 
           <form class="login-form">
-            <div class="cname_error register-errors"></div>
             <input
               type="text"
               name="cName"
@@ -45,14 +44,15 @@
               placeholder="Company name"
               class="register-input"
             />
-            <div class="caddress_error register-errors"></div>
+            <div class="cname_error register-errors"></div>
             <input
               type="text"
               name="cAddress"
+              id="cAddress"
               placeholder="Company Address"
               class="register-input"
             />
-            <div class="cNname_error register-errors"></div>
+            <div class="caddress_error register-errors"></div>
             <input
               type="text"
               name="cCName"
@@ -60,31 +60,30 @@
               placeholder="Client's Name"
               class="register-input"
             />
-            <div class="email_error register-errors"></div>
+            <div class="cNname_error register-errors"></div>
             <input
               type="email"
               name="cEmail"
+              id="cEmail"
               placeholder="Email Address"
               class="register-input email-register-field"
             />
-            <div class="password_error register-errors"></div>
+            <div class="email_error register-errors"></div>
             <p class="passwordfield">
               <input
                 type="password"
                 name="cPassword"
+                id="cPassword"
                 placeholder="Choose Password"
                 class="register-input password-register-field"
               />
               <i class="fa-regular fa-eye-slash"></i>
             </p>
-            <!-- <input
-              type="password"
-              placeholder="Confirm Password"
-              class="register-input password-register-field"
-            /> -->
+            <div class="password_error register-errors"></div>
             <div class="login-type">
               <button type="submit" class="login-button">Register Company</button>
             </div>
+            <div class="success"></div>
           </form>
         </div>
       </div>

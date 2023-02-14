@@ -156,7 +156,7 @@ a {
   }
 }
 body {
-  padding: 3rem 10rem;
+  padding: 3.5rem 10rem;
 }
 
 .right-container-heading {
@@ -182,7 +182,6 @@ body {
   padding: 1rem;
   border-radius: 0.5rem;
   background-color: #F3F5F7;
-  margin-bottom: 1.5rem;
   color: rgb(22, 22, 22);
 }
 
@@ -211,4 +210,13 @@ body {
 .register-errors {
   color: rgb(255, 122, 122);
   font-weight: 500;
-}/*# sourceMappingURL=client_registration.css.map */
+  margin-bottom: 1.5rem;
+}
+
+.success {
+  color: #03c988;
+  font-weight: 600;
+  text-align: center;
+  position: relative;
+  top: -1rem;
+}

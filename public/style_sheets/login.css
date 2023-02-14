@@ -113,13 +113,6 @@ a {
   color: rgb(22, 22, 22);
 }
 
-#company-name {
-  width: 100%;
-  font-size: 1rem;
-  padding: 1rem;
-  border-radius: 0.5rem;
-}
-
 .login-button {
   background-color: white;
   width: 100%;
@@ -154,4 +147,4 @@ a {
   .right-container-heading {
     font-size: 1.7rem;
   }
-}/*# sourceMappingURL=login.css.map */
+}
