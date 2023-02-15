@@ -1,4 +1,3 @@
-const worker = require("../models/AddWorker");
 const jwt = require("jsonwebtoken");
 const client = require("./../models/ClientRegistration");
 const maxAge = 3 * 24 * 60 * 60;
