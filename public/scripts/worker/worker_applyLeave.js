@@ -1,6 +1,21 @@
+
+//----------------selecting dom elements
+const form = document.querySelector(".form-container")
+
 const empNameField = document.querySelector('.employee-name-field')
 const empIDField = document.querySelector('.employee-id-field')
 
+
+const startDateField = document.querySelector('#start-date')
+const endDateField = document.querySelector('#end-date')
+const leaveDaysField = document.querySelector('#days-number')
+
+const leaveTypeField = document.querySelector(".type-of-leave")
+const reasonField = document.querySelector(".reason-of-leave")
+
+
+
+// ------------------------------------------------------------------
 
 const fetchEmpNameAndID = async () => {
     const { fullName, workerID } = await fetchWorkerApi()
@@ -11,9 +26,6 @@ fetchEmpNameAndID()
 
 // <========== Generating Leave Days ==========>
 
-const startDateField = document.querySelector('#start-date')
-const endDateField = document.querySelector('#end-date')
-const leaveDaysField = document.querySelector('#days-number')
 // leaveDaysField.style.cursor = "not-allowed"
 
 const currentDate = new Date()
@@ -54,3 +66,72 @@ startDateField.addEventListener('change', generateLeaveDays)
 endDateField.addEventListener('change', generateLeaveDays)
 
 // <=============================================>
+
+
+
+// --------------fetch and send leave request----------------
+
+// ------------------getting input values
+
+    const empName = empNameField.value;
+    const empID = empIDField.value;
+    const startDate = startDateField.value;
+    const endDate = endDateField.value;
+    const leaveDays = leaveDaysField.value;
+    const reason = reasonField.value;
+
+
+    // getting leave type value
+    let leaveType = leaveTypeField.value
+    leaveTypeField.addEventListener("change", () => {
+        leaveType = leaveTypeField.value
+    });
+
+    console.log(empID,empName,startDate,endDate,leaveDays,reason,leaveType)
+    
+
+form.addEventListener("submit", async (e) => {
+    e.preventDefault()
+    console.log("hello")
+
+
+    // ------------------getting input values
+
+    const empName = empNameField.value;
+    const empID = empIDField.value;
+    const startDate = startDateField.value;
+    const endDate = endDateField.value;
+    const leaveDays = leaveDaysField.value;
+    const reason = reasonField.value;
+
+
+    // getting leave type value
+    let leaveType = leaveTypeField.value
+    leaveTypeField.addEventListener("change", () => {
+        leaveType = leaveTypeField.value
+    });
+
+    try{
+        const res = await fetch("/worker_applyLeave", {
+            method: "POST",
+            body: JSON.stringify({
+                employeeName: empName,
+                employeeID: empID,
+                startDate: startDate,
+                endDate: endDate,
+                typeOfLeave: leaveType,
+                leaveDays: leaveDays,
+                reason: reason
+            }),
+            headers: {"Content-Type" : "applicaiton/json"}
+        });
+        const data = await res.json();
+        console.log(data)
+
+    } catch(err) {
+        console.log(err)
+    }
+
+
+
+})

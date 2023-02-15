@@ -90,10 +90,11 @@ select {
     font-size: 1rem;
 }
 
-.form-button-apply {
-        background-color: $primary-yellow;
-}
+.form-button-reset, .form-button-apply {
+    background-color: $primary-yellow;
 
-.form-button-reset {
-    background-color: white;
+    &:hover{
+        background-color: $orange-bg;
+        cursor: pointer;
+    }
 }
