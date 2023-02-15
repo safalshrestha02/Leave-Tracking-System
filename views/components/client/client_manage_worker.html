@@ -12,6 +12,8 @@
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+
     <title>ecoBees</title>
 </head>
 
@@ -218,131 +220,91 @@
             </div>
 
             <!-- add-worker / register worker -->
-            
+
             <div class="register-container">
                 <div class="register-right-container">
-                  <div class="register-container-wrapper">
-                    <div class="register-heading">
-                      <p>Register Worker</p>
-                      <i class="fa-solid fa-circle-xmark" id="close-form"></i>
+                    <div class="register-container-wrapper">
+                        <div class="register-heading">
+                            <p>Register Worker</p>
+                            <i class="fa-solid fa-circle-xmark" id="close-form"></i>
+                        </div>
+
+                        <form class="register-form">
+
+                            <div class="first-name-container">
+                                <input type="text" placeholder="First Name"
+                                    class="register-input-field worker-name-register first-name" required />
+                            </div>
+
+                            <div class="last-name-container">
+                                <input type="text" placeholder="Last Name"
+                                    class="register-input-field worker-name-register" required />
+                            </div>
+
+                            <div class="country-container">
+                                <input type="text" placeholder="Country" class="register-input-field" />
+                            </div>
+
+                            <div class="city-container">
+
+                                <input type="text" placeholder="City" class="register-input-field"
+                                    style="text-transform:capitalize ;" />
+                            </div>
+
+                            <div class="company-name-container">
+                                <input type="text" placeholder="company-name" value="ecobees"
+                                    class="register-input-field" disabled style="text-transform:capitalize ;" />
+                            </div>
+
+                            <div class="worker-id-container">
+                                <input type="text" placeholder="Unique Worker ID(4 Digits)" class="register-input-field"
+                                    required />
+                            </div>
+
+                            <div class="form-gender-container">
+                                <p>Choose gender</p>
+                                <label for="">Male</label>
+                                <input type="radio" name="gender" />
+
+                                <label for="">Female</label>
+                                <input type="radio" name="gender">
+
+                                <label for="">Other</label>
+                                <input type="radio" name="gender">
+                            </div>
+
+                            <div class="employee-email-container">
+                                <input type="text" id="employee-email" placeholder="Employee's Email Address"
+                                    class="register-input-field" required />
+
+                            </div>
+
+                            <div class="password-container">
+                                <input type="password" placeholder="Choose Password" id="employee-password"
+                                    class="register-input-field" required />
+                            </div>
+
+                            <div class="confirm-password-container">
+                                <input type="password" placeholder="Confirm Password" id="employee-password-"
+                                    class="register-input-field" />
+                            </div>
+
+                            <div class="form-buttons">
+                                <button class="form-button-reset">
+                                    <a href="#">Reset</a>
+                                </button>
+                                <button class="form-button-apply">
+                                    <a href="#">ADD</a>
+                                </button>
+                            </div>
+                        </form>
                     </div>
-    
-                    <form class="register-form">
-                  
-                        <div class="first-name-container">
-                        <input 
-                        type="text" 
-                        placeholder="First Name"  
-                        class="register-input-field worker-name-register first-name" 
-                        required 
-                        />
-                        </div>
-                        
-                      <div class="last-name-container">
-                        <input 
-                        type="text" 
-                        placeholder="Last Name" 
-                        class="register-input-field worker-name-register"
-                        required 
-                        />
-                      </div>
-      
-                      <div class="country-container">
-                        <input 
-                        type="text" 
-                        placeholder="Country" 
-                        class="register-input-field"
-                        />
-                      </div>
-      
-                      <div class="city-container">
-      
-                        <input 
-                        type="text"
-                        placeholder="City" 
-                        class="register-input-field"
-                        style="text-transform:capitalize ;"
-                        />
-                      </div>
-      
-                      <div class="company-name-container">
-                        <input 
-                        type="text"
-                        placeholder="company-name" 
-                        value="ecobees" 
-                        class="register-input-field"
-                        disabled
-                        style="text-transform:capitalize ;"
-                        />
-                      </div>
-                      
-                        <div class="worker-id-container">
-                          <input 
-                          type="text" 
-                          placeholder="Unique Worker ID(4 Digits)"
-                          class="register-input-field" 
-                          required 
-                          />
-                          </div>
-      
-                        <div class="form-gender-container">
-                              <p>Choose gender</p>
-                              <label for="">Male</label>
-                              <input type="radio" name="gender" />
-                            
-                              <label for="">Female</label>
-                              <input type="radio" name="gender">
-                            
-                              <label for="">Other</label>
-                              <input type="radio" name="gender">
-                        </div>
-      
-                        <div class="employee-email-container">
-                          <input 
-                          type="text" 
-                          id="employee-email" 
-                          placeholder="Employee's Email Address"
-                          class="register-input-field" 
-                          required
-                          />
-      
-                          </div>
-      
-                        <div class="password-container">
-                        <input 
-                        type="password" 
-                        placeholder="Choose Password" 
-                        id="employee-password"
-                        class="register-input-field" 
-                        required 
-                        />
-                        </div>
-      
-                        <div class="confirm-password-container">
-                          <input 
-                          type="password" 
-                          placeholder="Confirm Password" 
-                          id="employee-password-"
-                          class="register-input-field" 
-                          />
-                        </div>
-      
-                        <div class="form-buttons">
-                          <button class="form-button-reset">
-                            <a href="#">Reset</a>
-                          </button>
-                          <button class="form-button-apply">
-                            <a href="#">ADD</a>
-                          </button>
-                        </div>
-                      </form>
-                  </div>
                 </div>
-              </div>
+            </div>
 
 
 
-        <script src="/scripts/client/client_dashboard.js"></script>
+            <script src="/scripts/client/client_dashboard.js"></script>
 </body>
 
 </html>
