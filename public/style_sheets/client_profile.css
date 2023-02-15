@@ -213,7 +213,7 @@ li {
   width: 100%;
 }
 
-input[type="radio"] {
+input[type=radio] {
   margin-right: 3rem;
 }
 

@@ -145,15 +145,9 @@ a {
   color: rgb(255, 122, 122);
   font-weight: 500;
   text-align: center;
+  margin-top: -1rem;
 }
 
-.success {
-  color: $green-bg;
-  font-weight: 600;
-  text-align: center;
-  position: relative;
-  top: -1rem;
-}
 
 // ----------media query------------
 @media only screen and (max-width: 1560px) {
@@ -177,4 +171,35 @@ a {
   .right-container-heading {
     font-size: 1.7rem;
   }
+}
+
+
+// ----------------alert message-------------------------
+.success-alert {
+  display: none;
+  position: absolute;
+  min-width: 15%;
+  top: .5rem;
+  right: 0;
+  color: rgb(26, 114, 55);
+  background-color: rgb(175, 231, 193);
+  padding: 1rem;
+  border-radius: .5rem 0 0 .5rem;
+  font-weight: 500;
+  text-align: center;
+
+  h4{
+      display: inline-flex;
+      font-size: 1.1rem;
+  }
+  
+  transition: all ease-in 2s;
+}
+
+.success-alert i:nth-child(1) {
+  background-color: rgb(56, 153, 90);
+  padding: 0.5rem;
+  color: white;
+  border-radius: 50%;
+  
 }
