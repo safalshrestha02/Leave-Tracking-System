@@ -3,8 +3,7 @@ const AddWorker = require("./AddWorker");
 
 const messageSchema = new mongoose.Schema({
   employeeName: {
-    type: mongoose.Schema.Types.ObjectID,
-    ref: "registerWorker",
+    type: String,
     required: [true, "employee name is required"],
   },
   employeeID: {
@@ -36,6 +35,10 @@ const messageSchema = new mongoose.Schema({
     type: String ,
     state: [{type : String, default: 'pending'}],
     enum : ["pending", "approved", "denied"]
+  },
+  workerID:{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "registerWorker"
   },
   timestamp: {},
 });
