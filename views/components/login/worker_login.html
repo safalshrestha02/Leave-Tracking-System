@@ -1,87 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="/style_sheets/login.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>ecoBees</title>
-  </head>
+  <link rel="stylesheet" href="/style_sheets/login.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <body>
-    <div class="main-container">
-      <div class="left-container">
-        <div class="left-container-heading">
-          <img
-            class="ecobees-trans-logo"
-            src="/images/LOGO_IMG_Trans.png"
-            alt="ecoBees logo"
-          />
-          <img src="/images/worker_bee.png" alt="Bee Image" class="worker-bee-logo">
-        </div>
+  <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+
+  <title>ecoBees</title>
+</head>
+
+<body>
+  <div class="main-container">
+    <div class="left-container">
+      <div class="left-container-heading">
+        <img class="ecobees-trans-logo" src="/images/LOGO_IMG_Trans.png" alt="ecoBees logo" />
+        <img src="/images/worker_bee.png" alt="Bee Image" class="worker-bee-logo">
       </div>
+    </div>
 
-      <div class="right-container">
-        <div class="right-container-wrapper">
-          <div class="right-container-heading">
-            <span>
-              SignIn as
-              <h1 id="ecobees-text-logo"><span>Worker</span></h1>
-            </span>
-          </div>
+    <div class="right-container">
+      <div class="right-container-wrapper">
+        <div class="right-container-heading">
+          <span>
+            SignIn as
+            <h1 id="ecobees-text-logo"><span>Worker</span></h1>
+          </span>
+        </div>
 
-          <form class="login-form">
-            <input
-              type="email"
-              name="cEmail"
-              id="login-email"
-              placeholder="Email"
-              class="login-input-field worker-login-email"
-              required
-            />
-            <input
-              type="password"
-              name="cPassword"
-              id="login-password"
-              placeholder="Password"
-              class="login-input-field worker-login-password"
-              required
-            />
+        <form class="login-form">
+          <input type="email" name="cEmail" id="login-email" placeholder="Email"
+            class="login-input-field worker-login-email" required />
+          <input type="password" name="cPassword" id="login-password" placeholder="Password"
+            class="login-input-field worker-login-password" required />
 
-            <!-- <select name="company-name" id="company-name" class="worker-company-name">
+          <!-- <select name="company-name" id="company-name" class="worker-company-name">
               <option value="ecoBees">ecoBees</option>
               <option value="AbceDee">AbceDee</option>
             </select> -->
 
-            <div class="login-type">
-              <button type="submit" class="login-button">Log In</button>
-            </div>
-          </form>
-        </div>
+          <div class="login-type">
+            <button type="submit" class="login-button">Log In</button>
+          </div>
+        </form>
       </div>
     </div>
+  </div>
 
-    <script>
-      const form = document.querySelector("form");
+  <script>
+    const form = document.querySelector("form");
 
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-        const compEmail = form.cEmail.value;
-        const compPassword = form.cPassword.value;
+      const compEmail = form.cEmail.value;
+      const compPassword = form.cPassword.value;
 
-        console.log(compEmail, compPassword);
-      });
-    </script>
-    <script src="/scripts/login/worker_login.js"></script>
-  </body>
+      console.log(compEmail, compPassword);
+    });
+  </script>
+  <script src="/scripts/login/worker_login.js"></script>
+</body>
+
 </html>

@@ -12,6 +12,8 @@
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+
     <title>ecoBees</title>
 </head>
 
@@ -22,25 +24,28 @@
                 <h1 id="main-logo"><span>e</span>coB<span>ee</span>s</h1>
                 <ul id="nav-ul ">
                     <li>
-                        <a href="/client_home" class="nav-links"><i
-                                class="fa-solid fa-house nav-icon"></i>Home</a>
+                        <a href="/client_home" class="nav-links"><i class="fa-solid fa-house nav-icon"></i>Home</a>
                     </li>
                     <li>
                         <a href="/client_profile" class="nav-links"><i class="fa-solid fa-user nav-icon"></i>Profile</a>
                     </li>
                     <li class="active">
-                        <a href="/client_manage_leave" class="nav-links  nav-active"><i class="fa-solid fa-right-from-bracket nav-icon"></i>Manage
+                        <a href="/client_manage_leave" class="nav-links  nav-active"><i
+                                class="fa-solid fa-right-from-bracket nav-icon"></i>Manage
                             Leaves</a>
                     </li>
                     <li>
-                        <a href="/client_leave_history" class="nav-links"><i class="fa-solid fa-clock-rotate-left nav-icon"></i>Leave
+                        <a href="/client_leave_history" class="nav-links"><i
+                                class="fa-solid fa-clock-rotate-left nav-icon"></i>Leave
                             History</a>
                     </li>
                     <li>
-                        <a href="/client_manage_worker" class="nav-links"><i class="fa-solid fa-user-gear nav-icon"></i>Manage Workers</a>
+                        <a href="/client_manage_worker" class="nav-links"><i
+                                class="fa-solid fa-user-gear nav-icon"></i>Manage Workers</a>
                     </li>
                     <li>
-                        <a href="/client_leave_settings" class="nav-links"><i class="fa-solid fa-gear nav-icon"></i>Leave Settings</a>
+                        <a href="/client_leave_settings" class="nav-links"><i
+                                class="fa-solid fa-gear nav-icon"></i>Leave Settings</a>
                     </li>
                 </ul>
             </nav>
@@ -70,7 +75,8 @@
                 <div>
                     <div class="pending-leave-container">
                         <div class="pending-leave-details">
-                            <i class="fa-regular fa-user user-icon"></i><span class="pending-leave-name">Suraj Khadka</span>
+                            <i class="fa-regular fa-user user-icon"></i><span class="pending-leave-name">Suraj
+                                Khadka</span>
 
                             <div class="pending-leave-date">
                                 <span>01/23/2023 - 01/29/2023</span>
@@ -96,7 +102,8 @@
                             </div>
                         </div>
                         <div class="pending-leave-details">
-                            <i class="fa-regular fa-user user-icon"></i><span class="pending-leave-name">Suraj Khadka</span>
+                            <i class="fa-regular fa-user user-icon"></i><span class="pending-leave-name">Suraj
+                                Khadka</span>
 
                             <div class="pending-leave-date">
                                 <span>01/23/2023 - 01/29/2023</span>
@@ -121,9 +128,10 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="pending-leave-details">
-                            <i class="fa-regular fa-user user-icon"></i><span class="pending-leave-name">Suraj Khadka</span>
+                            <i class="fa-regular fa-user user-icon"></i><span class="pending-leave-name">Suraj
+                                Khadka</span>
 
                             <div class="pending-leave-date">
                                 <span>01/23/2023 - 01/29/2023</span>
@@ -149,7 +157,8 @@
                             </div>
                         </div>
                         <div class="pending-leave-details">
-                            <i class="fa-regular fa-user user-icon"></i><span class="pending-leave-name">Suraj Khadka</span>
+                            <i class="fa-regular fa-user user-icon"></i><span class="pending-leave-name">Suraj
+                                Khadka</span>
 
                             <div class="pending-leave-date">
                                 <span>01/23/2023 - 01/29/2023</span>
@@ -180,132 +189,92 @@
                 </div>
             </div>
         </div>
-    <div>
+        <div>
 
-        <!-- add-worker / register worker -->
+            <!-- add-worker / register worker -->
 
-        <div class="register-container">
-            <div class="register-right-container">
-              <div class="register-container-wrapper">
-                <div class="register-heading">
-                  <p>Register Worker</p>
-                  <i class="fa-solid fa-circle-xmark" id="close-form"></i>
+            <div class="register-container">
+                <div class="register-right-container">
+                    <div class="register-container-wrapper">
+                        <div class="register-heading">
+                            <p>Register Worker</p>
+                            <i class="fa-solid fa-circle-xmark" id="close-form"></i>
+                        </div>
+
+                        <form class="register-form">
+
+                            <div class="first-name-container">
+                                <input type="text" placeholder="First Name"
+                                    class="register-input-field worker-name-register first-name" required />
+                            </div>
+
+                            <div class="last-name-container">
+                                <input type="text" placeholder="Last Name"
+                                    class="register-input-field worker-name-register" required />
+                            </div>
+
+                            <div class="country-container">
+                                <input type="text" placeholder="Country" class="register-input-field" />
+                            </div>
+
+                            <div class="city-container">
+
+                                <input type="text" placeholder="City" class="register-input-field"
+                                    style="text-transform:capitalize ;" />
+                            </div>
+
+                            <div class="company-name-container">
+                                <input type="text" placeholder="company-name" value="ecobees"
+                                    class="register-input-field" disabled style="text-transform:capitalize ;" />
+                            </div>
+
+                            <div class="worker-id-container">
+                                <input type="text" placeholder="Unique Worker ID(4 Digits)" class="register-input-field"
+                                    required />
+                            </div>
+
+                            <div class="form-gender-container">
+                                <p>Choose gender</p>
+                                <label for="">Male</label>
+                                <input type="radio" name="gender" />
+
+                                <label for="">Female</label>
+                                <input type="radio" name="gender">
+
+                                <label for="">Other</label>
+                                <input type="radio" name="gender">
+                            </div>
+
+                            <div class="employee-email-container">
+                                <input type="text" id="employee-email" placeholder="Employee's Email Address"
+                                    class="register-input-field" required />
+
+                            </div>
+
+                            <div class="password-container">
+                                <input type="password" placeholder="Choose Password" id="employee-password"
+                                    class="register-input-field" required />
+                            </div>
+
+                            <div class="confirm-password-container">
+                                <input type="password" placeholder="Confirm Password" id="employee-password-"
+                                    class="register-input-field" />
+                            </div>
+
+                            <div class="form-buttons">
+                                <button class="form-button-reset">
+                                    <a href="#">Reset</a>
+                                </button>
+                                <button class="form-button-apply">
+                                    <a href="#">ADD</a>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-
-                <form class="register-form">
-                  
-                    <div class="first-name-container">
-                    <input 
-                    type="text" 
-                    placeholder="First Name"  
-                    class="register-input-field worker-name-register first-name" 
-                    required 
-                    />
-                    </div>
-                    
-                  <div class="last-name-container">
-                    <input 
-                    type="text" 
-                    placeholder="Last Name" 
-                    class="register-input-field worker-name-register"
-                    required 
-                    />
-                  </div>
-  
-                  <div class="country-container">
-                    <input 
-                    type="text" 
-                    placeholder="Country" 
-                    class="register-input-field"
-                    />
-                  </div>
-  
-                  <div class="city-container">
-  
-                    <input 
-                    type="text"
-                    placeholder="City" 
-                    class="register-input-field"
-                    style="text-transform:capitalize ;"
-                    />
-                  </div>
-  
-                  <div class="company-name-container">
-                    <input 
-                    type="text"
-                    placeholder="company-name" 
-                    value="ecobees" 
-                    class="register-input-field"
-                    disabled
-                    style="text-transform:capitalize ;"
-                    />
-                  </div>
-                  
-                    <div class="worker-id-container">
-                      <input 
-                      type="text" 
-                      placeholder="Unique Worker ID(4 Digits)"
-                      class="register-input-field" 
-                      required 
-                      />
-                      </div>
-  
-                    <div class="form-gender-container">
-                          <p>Choose gender</p>
-                          <label for="">Male</label>
-                          <input type="radio" name="gender" />
-                        
-                          <label for="">Female</label>
-                          <input type="radio" name="gender">
-                        
-                          <label for="">Other</label>
-                          <input type="radio" name="gender">
-                    </div>
-  
-                    <div class="employee-email-container">
-                      <input 
-                      type="text" 
-                      id="employee-email" 
-                      placeholder="Employee's Email Address"
-                      class="register-input-field" 
-                      required
-                      />
-  
-                      </div>
-  
-                    <div class="password-container">
-                    <input 
-                    type="password" 
-                    placeholder="Choose Password" 
-                    id="employee-password"
-                    class="register-input-field" 
-                    required 
-                    />
-                    </div>
-  
-                    <div class="confirm-password-container">
-                      <input 
-                      type="password" 
-                      placeholder="Confirm Password" 
-                      id="employee-password-"
-                      class="register-input-field" 
-                      />
-                    </div>
-  
-                    <div class="form-buttons">
-                      <button class="form-button-reset">
-                        <a href="#">Reset</a>
-                      </button>
-                      <button class="form-button-apply">
-                        <a href="#">ADD</a>
-                      </button>
-                    </div>
-                  </form>
-              </div>
             </div>
-          </div>
 
-    <script src="/scripts/client/client_dashboard.js"></script>
+            <script src="/scripts/client/client_dashboard.js"></script>
 </body>
 
 </html>

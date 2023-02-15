@@ -9,7 +9,7 @@ const capitalize = (string) => {
 const fetchWorkerApi = async () => {
     const response = await fetch(workersApiUrl)
     const result = await response.json()
-    const { firstName, lastName, workerID, email, gender, country, city } = result[2]
+    const { firstName, lastName, workerID, email, gender, country, city } = result[3]
     const fullName = capitalize(firstName) + ' ' + capitalize(lastName)
     navTopWorkerName.innerHTML = fullName
     navTopWorkerID.innerHTML = workerID
