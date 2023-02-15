@@ -2,6 +2,8 @@ const Client = require("../models/ClientRegistration");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
+const maxAge = 2 * 24 * 60 * 60;
+
 const createToken = (id) => {
   return jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET, {
     expiresIn: "1d",
@@ -52,7 +54,7 @@ exports.registerClient = async (req, res) => {
 
     const token = createToken(client._id);
 
-    res.cookie("jwt", token, { httpOnly: true });
+    res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
     res.status(201).json({ client: client._id });
   } catch (err) {
     const errors = handleErr(err);
@@ -66,10 +68,15 @@ exports.login = async (req, res, next) => {
   try {
     const client = await Client.login(email, password);
     const token = createToken(client._id);
-    res.cookie("jwt", token, { httpOnly: true });
+    res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
     res.status(201).json({ message: "logged in" });
   } catch (err) {
     const errors = handleErr(err);
     res.status(400).json({ errors });
   }
+};
+
+exports.logout = async (req, res, next) => {
+  res.cookie("jwt", "", { maxAge: 1 });
+  res.redirect("/");
 };

@@ -13,7 +13,9 @@ const clientAuth = require("./controller/clientPageController");
 const workerAuth = require("./controller/workerPageController");
 const landingPage = require("./controller/workerPageController");
 
-//const { requireAuth } = require("./middleware/clientAuthMiddleware");
+const clientRegistration = require("./controller/clientAuth");
+
+const { requireAuth } = require("./middleware/clientAuthMiddleware");
 
 const DBrui = process.env.DBrui;
 app.use(bodyParser.json());
@@ -26,8 +28,11 @@ app.get("/client_registration", clientAuth.registerClient);
 app.get("/client_login", clientAuth.clientLogin);
 app.get("/worker_login", workerAuth.workerLogin);
 
-//app.use("/", requireAuth, client); //client side
-app.use("/", client);
+app.post("/client_registration", clientRegistration.registerClient);
+app.post("/client_login", clientRegistration.login);
+
+app.use("/", requireAuth, client); //client side
+//app.use("/", client);
 app.use("/", worker); //worker side
 
 //render all data
