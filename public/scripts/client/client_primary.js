@@ -5,4 +5,5 @@ const fetchClientsApi = async () => {
     const result = await response.json()
     const { companyName, companyAddress, name: clientName, email: clientEmail } = result[3]
     return { companyName, companyAddress, clientName, clientEmail }
+
 }

@@ -190,8 +190,8 @@
                   </div>
 
                   <div class="company-name-container">
-                    <input type="text" placeholder="company-name" value="ecobees" class="register-input-field" disabled
-                      style="text-transform:capitalize ;" />
+                    <input type="text" placeholder="company-name" value=""
+                      class="register-input-field company-name-value" disabled style="text-transform:capitalize ;" />
                   </div>
 
                   <div class="worker-id-container">
@@ -200,14 +200,14 @@
 
                   <div class="form-gender-container">
                     <p>Choose gender</p>
-                    <label for="">Male</label>
-                    <input type="radio" name="gender" />
+                    <label for="genderRadioMale">Male</label>
+                    <input id="genderRadioMale" type="radio" name="gender" value="Male" />
 
-                    <label for="">Female</label>
-                    <input type="radio" name="gender">
+                    <label for="genderRadioFemale">Female</label>
+                    <input id="genderRadioFemale" type="radio" name="gender" value="Female">
 
-                    <label for="">Other</label>
-                    <input type="radio" name="gender">
+                    <label for="genderRadioOthers">Other</label>
+                    <input id="genderRadioOthers" type="radio" name="gender" value="Others">
                   </div>
 
                   <div class="employee-email-container">
@@ -238,11 +238,13 @@
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </div>
   </div>
 
+  <script src="/scripts/client/client_primary.js"></script>
   <script src="/scripts/client/client_dashboard.js"></script>
 </body>
 

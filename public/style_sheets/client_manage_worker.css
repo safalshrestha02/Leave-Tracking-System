@@ -271,6 +271,10 @@ input[type=radio] {
   color: #f5aa09;
 }
 
+.company-name-value {
+  cursor: not-allowed;
+}
+
 a {
   color: black;
   text-decoration: none;
