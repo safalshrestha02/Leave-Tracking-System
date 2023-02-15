@@ -62,16 +62,15 @@ form.addEventListener("submit", async (e) => {
         login_error.textContent = data.errors.email;
     
     } else {
-        const success = document.querySelector(".success");
-        success.textContent = "Logging In";
+      const successAlert = document.querySelector(".success-alert");
+      successAlert.style.display = "block";
   
-        setTimeout(()=> {
-          console.log("redirection")
-          location.assign("/client_home");
-        }, 500)
+      setTimeout(()=> {
+        console.log("redirection")
+        location.assign("/client_home");
+      }, 1000)
   
     }
-
 
   } catch (err) {
     console.log(err)

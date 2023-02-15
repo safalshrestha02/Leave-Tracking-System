@@ -72,13 +72,13 @@ form.addEventListener("submit", async (e) => {
 
     }
     if (data.client) {
-      const success = document.querySelector(".success");
-      success.textContent = "You have been Registered.";
+      const successAlert = document.querySelector(".success-alert");
+      successAlert.style.display = "block";
 
       setTimeout(()=> {
         console.log("redirection")
         location.assign("/client_login");
-      }, 500)
+      }, 1000)
 
     }
 

@@ -132,7 +132,15 @@ a {
 .register-errors {
   color: rgb(255, 122, 122);
   font-weight: 500;
-  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.success {
+  color: #03c988;
+  font-weight: 600;
+  text-align: center;
+  position: relative;
+  top: -1rem;
 }
 
 @media only screen and (max-width: 1560px) {
@@ -154,6 +162,30 @@ a {
     font-size: 1.7rem;
   }
 }
+.success-alert {
+  display: none;
+  position: absolute;
+  top: 0.5rem;
+  right: 0;
+  color: rgb(26, 114, 55);
+  background-color: rgb(175, 231, 193);
+  padding: 1rem;
+  border-radius: 0.5rem 0 0 0.5rem;
+  font-weight: 500;
+  transition: all ease-in 2s;
+}
+.success-alert h4 {
+  display: inline-flex;
+  font-size: 1.1rem;
+}
+
+.success-alert i:nth-child(1) {
+  background-color: rgb(56, 153, 90);
+  padding: 0.5rem;
+  color: white;
+  border-radius: 50%;
+}
+
 body {
   padding: 3.5rem 10rem;
 }
@@ -210,12 +242,5 @@ body {
   color: rgb(255, 122, 122);
   font-weight: 500;
   margin-bottom: 1.5rem;
-}
-
-.success {
-  color: #03c988;
-  font-weight: 600;
-  text-align: center;
-  position: relative;
-  top: -1rem;
+  text-align: left;
 }

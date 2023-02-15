@@ -213,7 +213,7 @@ li {
   width: 100%;
 }
 
-input[type="radio"] {
+input[type=radio] {
   margin-right: 3rem;
 }
 
@@ -274,7 +274,6 @@ input[type="radio"] {
 .client-name {
   font-weight: 500;
   font-size: 2.5rem;
-  text-transform: capitalize;
 }
 
 .client-sub-title {
