@@ -1,11 +1,10 @@
 const mongoose = require("mongoose");
 const AddWorker = require("./AddWorker");
-const Schema = mongoose.Schema
 
 const messageSchema = new mongoose.Schema({
   employeeName: {
-    type: Schema.Types.ObjectID,
-    ref: "registerworkers",
+    type: mongoose.Schema.Types.ObjectID,
+    ref: "registerWorker",
     required: [true, "employee name is required"],
   },
   employeeID: {
