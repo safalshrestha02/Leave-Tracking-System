@@ -160,14 +160,16 @@ li {
   background: linear-gradient(rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 50%);
   height: 100dvh;
   left: 0;
-  top: 0;
   right: 0;
+  bottom: 0;
 }
 
 .form-active {
-  display: block;
+  display:flex;
+  align-items: center;
   position: absolute;
-  padding-top: 1.5rem;
+  z-index: 10;
+  
 }
 
 .register-right-container {
@@ -245,10 +247,6 @@ input[type="radio"] {
 
 .form-buttons {
   text-align: right;
-  grid-column: span 2;
-}
-
-.employee-email-container {
   grid-column: span 2;
 }
 

@@ -167,35 +167,35 @@
                   <i class="fa-solid fa-circle-xmark" id="close-form"></i>
                 </div>
 
-                <form class="register-form">
+                <form class="register-form" id="worker-register-form">
 
                   <div class="first-name-container">
                     <input type="text" placeholder="First Name"
-                      class="register-input-field worker-name-register first-name" required />
+                      class="register-input-field worker-name-register first-name" id="firstName"  />
                   </div>
 
                   <div class="last-name-container">
-                    <input type="text" placeholder="Last Name" class="register-input-field worker-name-register"
-                      required />
+                    <input type="text" placeholder="Last Name" class="register-input-field worker-name-register" id="lastName" 
+                       />
                   </div>
 
                   <div class="country-container">
-                    <input type="text" placeholder="Country" class="register-input-field" />
+                    <input type="text" placeholder="Country" class="register-input-field" id="country"/>
                   </div>
 
                   <div class="city-container">
 
                     <input type="text" placeholder="City" class="register-input-field"
-                      style="text-transform:capitalize ;" />
+                      style="text-transform:capitalize ;" id="city" />
                   </div>
 
                   <div class="company-name-container">
-                    <input type="text" value="" class="register-input-field company-name-value" disabled
-                      style="text-transform:capitalize ;" />
+                    <input type="text"
+                      class="register-input-field company-name-value" style="text-transform:capitalize ;" id="companyName" />
                   </div>
 
                   <div class="worker-id-container">
-                    <input type="text" placeholder="Unique Worker ID(4 Digits)" class="register-input-field" required />
+                    <input type="text" placeholder="Unique Worker ID(4 Digits)" class="register-input-field"  id="workerID" />
                   </div>
 
                   <div class="form-gender-container">
@@ -210,28 +210,23 @@
                     <input id="genderRadioOthers" type="radio" name="gender" value="Others">
                   </div>
 
-                  <div class="employee-email-container">
-                    <input type="text" id="employee-email" placeholder="Employee's Email Address"
-                      class="register-input-field" required />
+                  <div class="worker-email-container">
+                    <input type="text" id="workerEmail" placeholder="Worker Email Address"
+                      class="register-input-field"  />
 
                   </div>
 
                   <div class="password-container">
-                    <input type="password" placeholder="Choose Password" id="employee-password"
-                      class="register-input-field" required />
-                  </div>
-
-                  <div class="confirm-password-container">
-                    <input type="password" placeholder="Confirm Password" id="employee-password-"
-                      class="register-input-field" />
+                    <input type="password" placeholder="Choose Password" id="workerPassword"
+                      class="register-input-field"  />
                   </div>
 
                   <div class="form-buttons">
                     <button type="reset" class="form-button-reset">
                       Reset
                     </button>
-                    <button class="form-button-apply">
-                      ADD
+                    <button type="submit" class="form-button-apply">
+                      Add
                     </button>
                   </div>
                 </form>
@@ -239,8 +234,14 @@
             </div>
           </div>
 
-          <script src="/scripts/client/client_primary.js"></script>
-          <script src="/scripts/client/client_dashboard.js"></script>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/scripts/client/client_primary.js"></script>
+  <script src="/scripts/client/client_dashboard.js"></script>
+  <script src="/scripts/client/add_worker.js"></script>
 </body>
 
 </html>
