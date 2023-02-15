@@ -14,37 +14,31 @@ form.addEventListener("submit", async (e) => {
     const workerPassword = form.workerPassword.value
     const companyName = form.companyName.value
 
+    const formData =
+
+    {
+        "firstName": "dsadasd",
+        "lastName": "dsadasda",
+        "gender": "Male",
+        "workerID": "00123",
+        "email": "safal22@gmail.com",
+        "password": "safalsafl",
+        "country": "Nepal",
+        "city": "random",
+        "companyName": "ecobee"
+    }
+
     try {
 
-        // console.log(firstName)
-        // console.log(lastName)
-        // console.log(country)
-        // console.log(city)
-        // console.log(workerEmail)
-        // console.log(workerID)
-        // console.log(gender)
-        // console.log(workerPassword)
-        // console.log(companyName)
         const res = await fetch("/client_home", {
             method: "POST",
-            body: JSON.stringify({
-
-                firstName,
-                lastName,
-                gender,
-                workerID,
-                email:workerEmail,
-                password:workerPassword,
-                country,
-                city,
-                companyName,
-            }),
+            body: JSON.stringify(formData),
             headers: { "Content-Type": "application/json" },
         });
+
         console.log(res)
-        
-        const data = await res.json();
-        console.log(data)
+        // const data = await res.json();
+        // console.log(data)
 
     }
 
@@ -53,4 +47,8 @@ form.addEventListener("submit", async (e) => {
     }
 
 })
+
+
+
+
 
