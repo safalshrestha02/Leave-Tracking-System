@@ -1,7 +1,6 @@
 const Worker = require("../models/AddWorker");
 const jwt = require("jsonwebtoken");
-const client = require("./../models/ClientRegistration");
-
+const client = require('./../models/ClientRegistration')
 const maxAge = 3 * 24 * 60 * 60;
 const createToken = (id) => {
   return jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET, {
@@ -49,6 +48,8 @@ exports.registerWorker = async (req, res) => {
     companyName,
     companyID,
   } = req.body;
+  // client.findOne({_id: this._id}).populate("companyID".then(client=>{
+  //   res.json(client)}))
   try {
     const worker = await Worker.create({
       firstName,
@@ -61,14 +62,11 @@ exports.registerWorker = async (req, res) => {
       city,
       companyName,
       companyID,
-    });
+    }
+      );
     const token = createToken(worker._id);
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
-    res.status(201).redirect("/worker_login");
-    // client.findOne({_id: this._id}).populate("companyName".then(client=>{
-    //   res.json(client)
-    // })
-    res.status(201).json({ message: "Worker created successfully" });
+    res.status(201).redirect('/worker_login');
   } catch (err) {
     const errors = handleErr(err);
     res.status(401).json({ errors });
