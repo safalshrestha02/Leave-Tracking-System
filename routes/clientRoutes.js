@@ -15,8 +15,9 @@ router.get("/client_profile", loadPages.clientProfile);
 router.get("/api/clients", loadPages.apiClient);
 
 //APIs
-router.post("/client_registration", clientRegistration.registerClient);
-router.post("/client_login", clientRegistration.login);
+// router.post("/client_registration", clientRegistration.registerClient);
+// router.post("/client_login", clientRegistration.login);
+router.get("/logout", clientRegistration.logout);
 router.post("/client_add_worker", addworker.registerWorker);
 
 module.exports = router;

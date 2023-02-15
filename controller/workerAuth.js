@@ -2,7 +2,11 @@ const worker = require("../models/AddWorker");
 const jwt = require("jsonwebtoken");
 const client = require("./../models/ClientRegistration");
 const maxAge = 3 * 24 * 60 * 60;
+<<<<<<< HEAD
 const leave = require("./../models/RequestForLeave");
+=======
+const worker = require("./../models/AddWorker");
+>>>>>>> 38ca558 (feat: added logout feature)
 
 const createToken = (id) => {
   return jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET, {
@@ -71,9 +75,17 @@ exports.registerWorker = async (req, res) => {
         if (err) throw err;
       });
     });
+    client.findOne({ companyName }, (err, sources) => {
+      if (err) {
+        throw err;
+      }
+      worker.updateOne({ companyID: sources._id }, (err) => {
+        if (err) throw err;
+      });
+    });
     const token = createToken(worker._id);
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
-    res.status(201);
+    res.status(201).json({ message: "registered" });
   } catch (err) {
     const errors = handleErr(err);
     res.status(401).json({ errors });
@@ -86,7 +98,7 @@ exports.login = async (req, res, next) => {
     const client = await Client.login(email, password);
     const token = createToken(client._id);
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
-    res.status(200).redirect("/worker_home");
+    res.status(200).json({ message: "logged in" });
   } catch (err) {
     const errors = handleErr(err);
     res.status(400).json({ errors });
