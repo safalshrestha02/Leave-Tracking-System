@@ -226,10 +226,10 @@ select {
   font-size: 1rem;
 }
 
-.form-button-apply {
+.form-button-reset, .form-button-apply {
   background-color: #fdb514;
 }
-
-.form-button-reset {
-  background-color: white;
+.form-button-reset:hover, .form-button-apply:hover {
+  background-color: #f99417;
+  cursor: pointer;
 }

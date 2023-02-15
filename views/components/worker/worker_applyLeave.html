@@ -79,7 +79,7 @@
 
             <div class="form-field">
               <label for="leave-type"> Type of leave<span>*</span> </label>
-              <select name="type-of-leave" id="">
+              <select name="type-of-leave" class="type-of-leave" id="">
                 <option value="sick">Sick Leave</option>
                 <option value="vacation">Vacation Leave</option>
                 <option value="unpaid">Unpaid Leave</option>
@@ -94,15 +94,15 @@
 
             <div id="reason-box">
               <label for="reason">Reason for leave <span>*</span></label>
-              <textarea rows="4" placeholder="Type your reason for leave"></textarea>
+              <textarea maxlength="150" class="reason-of-leave" rows="4" placeholder="Type your reason for leave (max: 150 characters)"></textarea>
             </div>
 
             <div class="form-buttons">
               <button class="form-button-reset">
-                <a href="#">Reset</a>
+                Reset
               </button>
-              <button class="form-button-apply">
-                <a href="#">Apply</a>
+              <button type="submit" class="form-button-apply">
+                Apply
               </button>
             </div>
           </form>
