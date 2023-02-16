@@ -102,11 +102,13 @@ a {
   background-color: #f3f5f7;
   padding: 0.8rem;
   border-radius: 0.5rem;
+  padding-right: 1rem;
 }
 
 .worker-name {
   font-weight: 600;
   margin-left: 0.5rem;
+  text-transform: capitalize;
 }
 
 .topsection {
@@ -131,7 +133,7 @@ a {
   }
 
   .worker-delete-button {
-    width: 30%;
+    width: 10%;
     font-size: 1.1rem;
     border-radius: 5px;
     color: white;
