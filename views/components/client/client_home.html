@@ -1,247 +1,331 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style_sheets/client_home.css" />
 
-  <link rel="stylesheet" href="/style_sheets/client_home.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 
-  <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+    <title>ecoBees</title>
+  </head>
 
-  <title>ecoBees</title>
-</head>
-
-<body>
-  <div class="main-container">
-    <div class="left-container">
-      <nav>
-        <h1 id="main-logo"><span>e</span>coB<span>ee</span>s</h1>
-        <ul id="nav-ul ">
-          <li class="active">
-            <a href="/client_home" class="nav-links nav-active"><i class="fa-solid fa-house nav-icon"></i>Home</a>
-          </li>
-          <li>
-            <a href="/client_profile" class="nav-links"><i class="fa-solid fa-user nav-icon"></i>Profile</a>
-          </li>
-          <li>
-            <a href="/client_manage_leave" class="nav-links"><i
-                class="fa-solid fa-right-from-bracket nav-icon"></i>Manage
-              Leaves</a>
-          </li>
-          <li>
-            <a href="/client_leave_history" class="nav-links"><i
-                class="fa-solid fa-clock-rotate-left nav-icon"></i>Leave
-              History</a>
-          </li>
-          <li>
-            <a href="/client_manage_worker" class="nav-links"><i class="fa-solid fa-user-gear nav-icon"></i>Manage
-              Workers</a>
-          </li>
-          <li>
-            <a href="/client_leave_settings" class="nav-links"><i class="fa-solid fa-gear nav-icon"></i>Leave
-              Settings</a>
-          </li>
-        </ul>
-      </nav>
-      <div class="logout-button-container">
-        <a href="/logout" class="logout-button"><i class="fa-solid fa-arrow-right-from-bracket nav-icon"
-            style="rotate: 180deg"></i>Logout</a>
+  <body>
+    <div class="main-container">
+      <div class="left-container">
+        <nav>
+          <h1 id="main-logo"><span>e</span>coB<span>ee</span>s</h1>
+          <ul id="nav-ul ">
+            <li class="active">
+              <a href="/client_home" class="nav-links nav-active"
+                ><i class="fa-solid fa-house nav-icon"></i>Home</a
+              >
+            </li>
+            <li>
+              <a href="/client_profile" class="nav-links"
+                ><i class="fa-solid fa-user nav-icon"></i>Profile</a
+              >
+            </li>
+            <li>
+              <a href="/client_manage_leave" class="nav-links"
+                ><i class="fa-solid fa-right-from-bracket nav-icon"></i>Manage
+                Leaves</a
+              >
+            </li>
+            <li>
+              <a href="/client_leave_history" class="nav-links"
+                ><i class="fa-solid fa-clock-rotate-left nav-icon"></i>Leave
+                History</a
+              >
+            </li>
+            <li>
+              <a href="/client_manage_worker" class="nav-links"
+                ><i class="fa-solid fa-user-gear nav-icon"></i>Manage Workers</a
+              >
+            </li>
+            <li>
+              <a href="/client_leave_settings" class="nav-links"
+                ><i class="fa-solid fa-gear nav-icon"></i>Leave Settings</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <div class="logout-button-container">
+          <a href="/logout" class="logout-button"
+            ><i
+              class="fa-solid fa-arrow-right-from-bracket nav-icon"
+              style="rotate: 180deg"
+            ></i
+            >Logout</a
+          >
+        </div>
       </div>
-    </div>
-    <div class="right-container">
-      <div class="navbar-name">
-        <div class="navbar-left">
-          <p>Leave Tracking System</p>
-        </div>
-        <div class="navbar-right">
-          <button id="button-add-worker">
-            <i class="fa-solid fa-user-plus"></i>Add Worker
-          </button>
-        </div>
-      </div>
-      <div class="dashboard-content">
-        <div class="workers-overview">
-          <div class="workers-total overview-container">
-            <p><i class="fa-solid fa-user worker-overview-icon"></i></p>
-            <p class="worker-overview-number">100</p>
-            <p class="worker-overview-status">Total Workers</p>
+      <div class="right-container">
+        <div class="navbar-name">
+          <div class="navbar-left">
+            <p>Leave Tracking System</p>
           </div>
-          <div class="workers-leave overview-container">
-            <p>
-              <i class="fa-solid fa-user-clock worker-overview-icon clock_check"></i>
-            </p>
-            <p class="worker-overview-number">16</p>
-            <p class="worker-overview-status">Workers on Leave</p>
+          <div class="navbar-right">
+            <button id="button-add-worker">
+              <i class="fa-solid fa-user-plus"></i>Add Worker
+            </button>
+          </div>
+        </div>
+        <div class="dashboard-content">
+          <div class="workers-overview">
+            <div class="workers-total overview-container">
+              <p><i class="fa-solid fa-user worker-overview-icon"></i></p>
+              <p class="worker-overview-number">100</p>
+              <p class="worker-overview-status">Total Workers</p>
+            </div>
+            <div class="workers-leave overview-container">
+              <p>
+                <i
+                  class="fa-solid fa-user-clock worker-overview-icon clock_check"
+                ></i>
+              </p>
+              <p class="worker-overview-number">16</p>
+              <p class="worker-overview-status">Workers on Leave</p>
+            </div>
+
+            <div class="workers-active overview-container">
+              <p>
+                <i
+                  class="fa-solid fa-user-check worker-overview-icon clock_check"
+                ></i>
+              </p>
+              <p class="worker-overview-number">84</p>
+              <p class="worker-overview-status">Active Workers</p>
+            </div>
           </div>
 
-          <div class="workers-active overview-container">
-            <p>
-              <i class="fa-solid fa-user-check worker-overview-icon clock_check"></i>
-            </p>
-            <p class="worker-overview-number">84</p>
-            <p class="worker-overview-status">Active Workers</p>
-          </div>
-        </div>
+          <div class="homepage-workers-leave">
+            <h2>Workers on Leave</h2>
+            <div>
+              <div class="active-leave-container">
+                <div class="active-leave-details">
+                  <i class="fa-regular fa-user user-icon"></i
+                  ><span class="active-leave-name">Suraj Khadka</span>
+                  <div class="active-leave-date">
+                    <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
+                  </div>
+                  <div class="active-leave-date">
+                    <p>Unpaid Leave</p>
+                    <p><i class="fa-solid fa-circle green"></i>Approved</p>
+                  </div>
+                </div>
+                <div class="active-leave-details">
+                  <i class="fa-regular fa-user user-icon"></i
+                  ><span class="active-leave-name">Shardul Gautam</span>
+                  <div class="active-leave-date">
+                    <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
+                  </div>
+                  <div class="active-leave-date">
+                    <p>Urgent Leave</p>
+                    <p><i class="fa-solid fa-circle green"></i>Approved</p>
+                  </div>
+                </div>
+                <div class="active-leave-details">
+                  <i class="fa-regular fa-user user-icon"></i
+                  ><span class="active-leave-name">Safal Shrestha</span>
+                  <div class="active-leave-date">
+                    <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
+                  </div>
+                  <div class="active-leave-date">
+                    <p>Vacation</p>
+                    <p><i class="fa-solid fa-circle green"></i>Approved</p>
+                  </div>
+                </div>
+                <div class="active-leave-details">
+                  <i class="fa-regular fa-user user-icon"></i
+                  ><span class="active-leave-name">Trishan Wagle</span>
+                  <div class="active-leave-date">
+                    <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
+                  </div>
+                  <div class="active-leave-date">
+                    <p>Urgent Leave</p>
+                    <p><i class="fa-solid fa-circle green"></i>Approved</p>
+                  </div>
+                </div>
+                <div class="active-leave-details">
+                  <i class="fa-regular fa-user user-icon"></i
+                  ><span class="active-leave-name">Ishan Ghimire</span>
+                  <div class="active-leave-date">
+                    <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
+                  </div>
+                  <div class="active-leave-date">
+                    <p>Sick Leave</p>
+                    <p><i class="fa-solid fa-circle green"></i>Approved</p>
+                  </div>
+                </div>
+                <div class="active-leave-details">
+                  <i class="fa-regular fa-user user-icon"></i
+                  ><span class="active-leave-name">Ishan Ghimire</span>
+                  <div class="active-leave-date">
+                    <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
+                  </div>
+                  <div class="active-leave-date">
+                    <p>Sick Leave</p>
+                    <p><i class="fa-solid fa-circle green"></i>Approved</p>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-        <div class="homepage-workers-leave">
-          <h2>Workers on Leave</h2>
-          <div>
-            <div class="active-leave-container">
-              <div class="active-leave-details">
-                <i class="fa-regular fa-user user-icon"></i><span class="active-leave-name">Suraj Khadka</span>
-                <div class="active-leave-date">
-                  <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
-                </div>
-                <div class="active-leave-date">
-                  <p>Unpaid Leave</p>
-                  <p><i class="fa-solid fa-circle green"></i>Approved</p>
-                </div>
-              </div>
-              <div class="active-leave-details">
-                <i class="fa-regular fa-user user-icon"></i><span class="active-leave-name">Shardul Gautam</span>
-                <div class="active-leave-date">
-                  <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
-                </div>
-                <div class="active-leave-date">
-                  <p>Urgent Leave</p>
-                  <p><i class="fa-solid fa-circle green"></i>Approved</p>
-                </div>
-              </div>
-              <div class="active-leave-details">
-                <i class="fa-regular fa-user user-icon"></i><span class="active-leave-name">Safal Shrestha</span>
-                <div class="active-leave-date">
-                  <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
-                </div>
-                <div class="active-leave-date">
-                  <p>Vacation</p>
-                  <p><i class="fa-solid fa-circle green"></i>Approved</p>
-                </div>
-              </div>
-              <div class="active-leave-details">
-                <i class="fa-regular fa-user user-icon"></i><span class="active-leave-name">Trishan Wagle</span>
-                <div class="active-leave-date">
-                  <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
-                </div>
-                <div class="active-leave-date">
-                  <p>Urgent Leave</p>
-                  <p><i class="fa-solid fa-circle green"></i>Approved</p>
-                </div>
-              </div>
-              <div class="active-leave-details">
-                <i class="fa-regular fa-user user-icon"></i><span class="active-leave-name">Ishan Ghimire</span>
-                <div class="active-leave-date">
-                  <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
-                </div>
-                <div class="active-leave-date">
-                  <p>Sick Leave</p>
-                  <p><i class="fa-solid fa-circle green"></i>Approved</p>
-                </div>
-              </div>
-              <div class="active-leave-details">
-                <i class="fa-regular fa-user user-icon"></i><span class="active-leave-name">Ishan Ghimire</span>
-                <div class="active-leave-date">
-                  <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
-                </div>
-                <div class="active-leave-date">
-                  <p>Sick Leave</p>
-                  <p><i class="fa-solid fa-circle green"></i>Approved</p>
+            <!-- add-worker / register worker -->
+
+            <div class="register-container">
+              <div class="register-right-container">
+                <div class="register-container-wrapper">
+                  <div class="register-heading">
+                    <p>Register Worker</p>
+                    <i class="fa-solid fa-circle-xmark" id="close-form"></i>
+                  </div>
+
+                  <form class="register-form" id="worker-register-form">
+                    <div class="first-name-container">
+                      <input
+                        type="text"
+                        placeholder="First Name"
+                        class="register-input-field worker-name-register first-name"
+                        id="firstName"
+                      />
+                      <p class="firstName_error register-errors"></p>
+                    </div>
+
+                    <div class="last-name-container">
+                      <input
+                        type="text"
+                        placeholder="Last Name"
+                        class="register-input-field worker-name-register"
+                        id="lastName"
+                      />
+                      <p class="lastName_error register-errors"></p>
+                    </div>
+
+                    <div class="country-container">
+                      <input
+                        type="text"
+                        placeholder="Country"
+                        class="register-input-field"
+                        id="country"
+                      />
+                      <p class="country_error register-errors"></p>
+                    </div>
+
+                    <div class="city-container">
+                      <input
+                        type="text"
+                        placeholder="City"
+                        class="register-input-field"
+                        style="text-transform: capitalize"
+                        id="city"
+                      />
+                      <p class="city_error register-errors"></p>
+                    </div>
+
+                    <div class="company-name-container">
+                      <input
+                        type="text"
+                        placeholder="companyName"
+                        class="register-input-field company-name-value"
+                        style="text-transform: capitalize"
+                        id="companyName"
+                        disabled
+                      />
+                      <p class="companyName_error register-errors"></p>
+                    </div>
+
+                    <div class="worker-id-container">
+                      <input
+                        type="text"
+                        placeholder="Unique Worker ID(4 Digits)"
+                        class="register-input-field"
+                        id="workerID"
+                        maxlength="4"
+                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                      />
+                      <p class="workerID_error register-errors"></p>
+                    </div>
+
+                    <div class="form-gender-container">
+                      <p>Choose gender</p>
+                      <label for="genderRadioMale">Male</label>
+                      <input
+                        id="genderRadioMale"
+                        type="radio"
+                        name="gender"
+                        value="Male"
+                      />
+
+                      <label for="genderRadioFemale">Female</label>
+                      <input
+                        id="genderRadioFemale"
+                        type="radio"
+                        name="gender"
+                        value="Female"
+                      />
+
+                      <label for="genderRadioOthers">Other</label>
+                      <input
+                        id="genderRadioOthers"
+                        type="radio"
+                        name="gender"
+                        value="Others"
+                      />
+                      <p class="gender_error register-errors"></p>
+                    </div>
+
+                    <div class="worker-email-container">
+                      <input
+                        type="text"
+                        id="workerEmail"
+                        placeholder="Worker Email Address"
+                        class="register-input-field"
+                      />
+                      <p class="workerEmail_error register-errors"></p>
+                    </div>
+
+                    <div class="password-container">
+                      <input
+                        type="password"
+                        placeholder="Choose Password"
+                        id="workerPassword"
+                        class="register-input-field"
+                      />
+                      <i class="fa-regular fa-eye-slash"></i>
+                      <p class="workerPassword_error register-errors"></p>
+                    </div>
+
+                    <div class="form-buttons">
+                      <button type="reset" class="form-button-reset">
+                        Reset
+                      </button>
+                      <button type="submit" class="form-button-apply">
+                        Add
+                      </button>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
           </div>
-
-
-          <!-- add-worker / register worker -->
-
-          <div class="register-container">
-            <div class="register-right-container">
-              <div class="register-container-wrapper">
-                <div class="register-heading">
-                  <p>Register Worker</p>
-                  <i class="fa-solid fa-circle-xmark" id="close-form"></i>
-                </div>
-
-                <form class="register-form" id="worker-register-form">
-
-                  <div class="first-name-container">
-                    <input type="text" placeholder="First Name"
-                      class="register-input-field worker-name-register first-name" id="firstName"  />
-                  </div>
-
-                  <div class="last-name-container">
-                    <input type="text" placeholder="Last Name" class="register-input-field worker-name-register" id="lastName" 
-                       />
-                  </div>
-
-                  <div class="country-container">
-                    <input type="text" placeholder="Country" class="register-input-field" id="country"/>
-                  </div>
-
-                  <div class="city-container">
-
-                    <input type="text" placeholder="City" class="register-input-field"
-                      style="text-transform:capitalize ;" id="city" />
-                  </div>
-
-                  <div class="company-name-container">
-                    <input type="text"
-                      class="register-input-field company-name-value" style="text-transform:capitalize ;" id="companyName" />
-                  </div>
-
-                  <div class="worker-id-container">
-                    <input type="text" placeholder="Unique Worker ID(4 Digits)" class="register-input-field"  id="workerID" />
-                  </div>
-
-                  <div class="form-gender-container">
-                    <p>Choose gender</p>
-                    <label for="genderRadioMale">Male</label>
-                    <input id="genderRadioMale" type="radio" name="gender" value="Male" />
-
-                    <label for="genderRadioFemale">Female</label>
-                    <input id="genderRadioFemale" type="radio" name="gender" value="Female">
-
-                    <label for="genderRadioOthers">Other</label>
-                    <input id="genderRadioOthers" type="radio" name="gender" value="Others">
-                  </div>
-
-                  <div class="worker-email-container">
-                    <input type="text" id="workerEmail" placeholder="Worker Email Address"
-                      class="register-input-field"  />
-
-                  </div>
-
-                  <div class="password-container">
-                    <input type="password" placeholder="Choose Password" id="workerPassword"
-                      class="register-input-field"  />
-                  </div>
-
-                  <div class="form-buttons">
-                    <button type="reset" class="form-button-reset">
-                      Reset
-                    </button>
-                    <button type="submit" class="form-button-apply">
-                      Add
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
     </div>
-  </div>
 
-  <script src="/scripts/client/client_primary.js"></script>
-  <script src="/scripts/client/client_dashboard.js"></script>
-  <script src="/scripts/client/add_worker.js"></script>
-</body>
-
+    <script src="/scripts/client/client_primary.js"></script>
+    <script src="/scripts/client/client_dashboard.js"></script>
+    <script src="/scripts/client/add_worker.js"></script>
+  </body>
 </html>

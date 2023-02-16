@@ -3,15 +3,17 @@
 
 .workers-overview {
     display: flex;
-    justify-content: space-between;
     color: white;
+    padding: 2rem 0;
+    justify-content: space-between;
   }
   
   .overview-container {
-    width: 25%;
+    width: 30%;
     padding: 1.7rem;
     border-radius: 0.5rem;
-    text-align: center;
+    text-align: center; 
+    margin-right: 2rem;
   }
   
   .worker-overview-icon {
@@ -41,7 +43,7 @@
   }
   
   .worker-overview-status {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 400;
   }
   

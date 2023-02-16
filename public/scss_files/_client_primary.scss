@@ -234,6 +234,20 @@ input[type="radio"] {
   margin-bottom: 0.8rem;
 }
 
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.fa-eye-slash {
+  position: absolute;
+  right: 1rem;
+  transform: translateY(-60%);
+  cursor: pointer;
+  
+}
+
 .fa-circle-xmark {
   font-size: 1.9rem;
   cursor: pointer;
@@ -249,6 +263,7 @@ input[type="radio"] {
   text-align: right;
   grid-column: span 2;
 }
+
 
 .form-buttons button {
   border: none;
@@ -277,8 +292,15 @@ input[type="radio"] {
     color: #f5aa09;
     cursor: pointer;
   }
+  
 }
 
+
+
+.form-button-reset {
+  margin-right: 1rem;
+}
+ 
 .company-name-value {
   cursor: not-allowed;
 }

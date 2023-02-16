@@ -226,6 +226,19 @@ input[type=radio] {
   margin-bottom: 0.8rem;
 }
 
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.fa-eye-slash {
+  position: absolute;
+  right: 1rem;
+  transform: translateY(-60%);
+  cursor: pointer;
+}
+
 .fa-circle-xmark {
   font-size: 1.9rem;
   cursor: pointer;
@@ -271,21 +284,27 @@ input[type=radio] {
   cursor: pointer;
 }
 
+.form-button-reset {
+  margin-right: 1rem;
+}
+
 .company-name-value {
   cursor: not-allowed;
 }
 
 .workers-overview {
   display: flex;
-  justify-content: space-between;
   color: white;
+  padding: 2rem 0;
+  justify-content: space-between;
 }
 
 .overview-container {
-  width: 25%;
+  width: 30%;
   padding: 1.7rem;
   border-radius: 0.5rem;
   text-align: center;
+  margin-right: 2rem;
 }
 
 .worker-overview-icon {
@@ -315,7 +334,7 @@ input[type=radio] {
 }
 
 .worker-overview-status {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 400;
 }
 

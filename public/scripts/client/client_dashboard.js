@@ -2,6 +2,7 @@ const addWorker = document.querySelector("#button-add-worker")
 const formContainer = document.querySelector(".register-container")
 const formClose = document.querySelector("#close-form")
 const companyNameField = document.querySelector('.company-name-value')
+const form = document.querySelector(".register-form")
 
 addWorker.addEventListener("click", () => {
     formContainer.classList.add("form-active");
