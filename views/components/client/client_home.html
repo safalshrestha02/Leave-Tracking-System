@@ -197,7 +197,7 @@
                       <input
                         type="text"
                         placeholder="First Name"
-                        class="register-input-field worker-name-register first-name"
+                        class="register-input-field worker-name-register first-name clear-input"
                         id="firstName"
                       />
                       <p class="firstName_error register-errors"></p>
@@ -207,7 +207,7 @@
                       <input
                         type="text"
                         placeholder="Last Name"
-                        class="register-input-field worker-name-register"
+                        class="register-input-field worker-name-register clear-input"
                         id="lastName"
                       />
                       <p class="lastName_error register-errors"></p>
@@ -217,7 +217,7 @@
                       <input
                         type="text"
                         placeholder="Country"
-                        class="register-input-field"
+                        class="register-input-field clear-input"
                         id="country"
                       />
                       <p class="country_error register-errors"></p>
@@ -227,7 +227,7 @@
                       <input
                         type="text"
                         placeholder="City"
-                        class="register-input-field"
+                        class="register-input-field clear-input"
                         style="text-transform: capitalize"
                         id="city"
                       />
@@ -250,7 +250,7 @@
                       <input
                         type="text"
                         placeholder="Unique Worker ID(4 Digits)"
-                        class="register-input-field"
+                        class="register-input-field clear-input"
                         id="workerID"
                         maxlength="4"
                         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
@@ -291,7 +291,7 @@
                         type="text"
                         id="workerEmail"
                         placeholder="Worker Email Address"
-                        class="register-input-field"
+                        class="register-input-field clear-input"
                       />
                       <p class="workerEmail_error register-errors"></p>
                     </div>
@@ -301,14 +301,14 @@
                         type="password"
                         placeholder="Choose Password"
                         id="workerPassword"
-                        class="register-input-field"
+                        class="register-input-field clear-input"
                       />
                       <i class="fa-regular fa-eye-slash"></i>
                       <p class="workerPassword_error register-errors"></p>
                     </div>
 
                     <div class="form-buttons">
-                      <button type="reset" class="form-button-reset">
+                      <button type="button" class="form-button-reset">
                         Reset
                       </button>
                       <button type="submit" class="form-button-apply">

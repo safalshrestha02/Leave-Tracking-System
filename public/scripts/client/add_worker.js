@@ -1,7 +1,24 @@
-const form = document.querySelector("#worker-register-form");
+const addWorkerForm = document.querySelector("#worker-register-form");
 const noPassword = document.querySelector(".fa-eye-slash")
-const workerPassword = document.querySelector("#workerPassword")
 const formcompanyName = document.querySelector(".company-name-value")
+const resetButton = document.querySelector(".form-button-reset")
+
+// ----------showing and hiding password------------------
+
+noPassword.addEventListener("click", () => {
+  console.log("gay")
+  noPassword.classList.toggle("fa-eye");
+  console.log(noPassword.classList[1]);
+
+  const cPasswordShow = document.querySelector("#workerPassword");
+
+  if (noPassword.classList[2] === "fa-eye") {
+    cPasswordShow.setAttribute("type", "text");
+  } else {
+    cPasswordShow.setAttribute("type", "password");
+  }
+});
+
 
 
 // ERROR  
@@ -19,18 +36,18 @@ const workerPassword_error = document.querySelector(".workerPassword_error")
 
 // SUBMIT ACTION
 
-form.addEventListener("submit", async (e) => {
+addWorkerForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  firstName_error.textContent = "";
-  lastName_error.textContent = "";
-  country_error.textContent = "";
-  city_error.textContent = "";
-  companyName_error.textContent = "";
-  workerID_error.textContent = "";
-  gender_error.textContent = "";
-  workerEmail_error.textContent = "";
-  workerPassword_error.textContent = "";
+  firstName_error.textContent = " ";
+  lastName_error.textContent = " ";
+  country_error.textContent = " ";
+  city_error.textContent = " ";
+  companyName_error.textContent = " ";
+  workerID_error.textContent = " ";
+  gender_error.textContent = " ";
+  workerEmail_error.textContent = " ";
+  workerPassword_error.textContent = " ";
   
 
 
@@ -68,7 +85,7 @@ form.addEventListener("submit", async (e) => {
     const data = await res.json();
 
     if(data.errors){
-      console.log(data.errors)
+      console.log(data.errors,"shardul")
     }
 
   } catch (error) {
@@ -77,22 +94,6 @@ form.addEventListener("submit", async (e) => {
 });
 
 
-reset.addEventListener("reset", (e)=> {
-  e.preventDefault()
-})
 
 
-// ----------showing and hiding password------------------
 
-noPassword.addEventListener("click", () => {
-  noPassword.classList.toggle("fa-eye");
-  console.log(noPassword.classList[1]);
-
-  const cPasswordShow = document.querySelector("#workerPassword");
-
-  if (noPassword.classList[2] === "fa-eye") {
-    cPasswordShow.setAttribute("type", "text");
-  } else {
-    cPasswordShow.setAttribute("type", "password");
-  }
-});
