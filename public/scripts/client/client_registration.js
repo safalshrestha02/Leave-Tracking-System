@@ -103,7 +103,7 @@ form.addEventListener("submit", async (e) => {
 
     }
 
-    if (res.status === 201) {
+    if (res2.status === 201) {
       const registerInputs = document.querySelectorAll(".register-input");
 
       registerInputs.forEach((inputField) => {
