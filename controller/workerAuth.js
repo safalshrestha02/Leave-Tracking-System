@@ -71,14 +71,6 @@ exports.registerWorker = async (req, res) => {
         if (err) throw err;
       });
     });
-    client.findOne({ companyName }, (err, sources) => {
-      if (err) {
-        throw err;
-      }
-      worker.updateOne({ companyID: sources._id }, (err) => {
-        if (err) throw err;
-      });
-    });
     const token = createToken(worker._id);
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
     res.status(201).json({ message: "registered" });
