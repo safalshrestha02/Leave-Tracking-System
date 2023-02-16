@@ -10,27 +10,6 @@ const form = document.querySelector("form")
 const login_error = document.querySelector(".login_error");
 
 
-// ------fetching client info----------------
-// const fetchClients = async () => {
-//     const res =  await fetch("http://localhost:3000/api/clients");
-//     const data = await res.json();
-//     console.log(data)
-
-//     data.forEach(client_info => {
-//         const companyNameAdd = `<option value="${client_info.companyName}">
-//                                     ${client_info.companyName}
-//                                 </option>`;
-//         const  companyName = document.querySelector(".client-company-name");
-
-//         companyName.innerHTML += companyNameAdd
-//         console.log(companyName)
-//     });
-// }
-
-// fetchClients()
-
-
-
 // ----------fetch and send data for validation------------
 
 form.addEventListener("submit", async (e) => {
@@ -40,8 +19,6 @@ form.addEventListener("submit", async (e) => {
   const clientPassword = form.cPassword.value;
 
   login_error.textContent = " ";
-
-  console.log(clientEmail, clientPassword);
 
   try {
 
@@ -54,14 +31,27 @@ form.addEventListener("submit", async (e) => {
         headers: {"Content-Type": "application/json"}
     });
     const data = await res.json();
-    console.log(data)  
+
 
     if (data.errors) {
+      login_error.textContent = data.errors.email;
 
-        console.log(data.errors)
-        login_error.textContent = data.errors.email;
+      if(login_error.textContent) {
+        const loginInputs = document.querySelectorAll(".login-input-field");
+
+        loginInputs.forEach((inputField) => {
+          inputField.setAttribute("style", "border: 2px solid red");
+        });
+      }
     
     } else {
+
+      const loginInputs = document.querySelectorAll(".login-input-field");
+
+      loginInputs.forEach((inputField) => {
+        inputField.setAttribute("style", "border: 2px solid #03c988");
+      });
+
       const successAlert = document.querySelector(".success-alert");
       successAlert.style.display = "block";
   

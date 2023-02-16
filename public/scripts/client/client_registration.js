@@ -4,7 +4,6 @@ const noPassword = document.querySelector(".fa-eye-slash");
 
 noPassword.addEventListener("click", () => {
   noPassword.classList.toggle("fa-eye");
-  console.log(noPassword.classList[1]);
 
   const cPasswordShow = document.querySelector(".password-register-field");
 
@@ -40,7 +39,7 @@ form.addEventListener("submit", async (e) => {
   const clientPassword = form.cPassword.value;
 
   try {
-    const res = await fetch("/client_registration", {
+    const res = await fetch("http://localhost:3000/client_registration", {
       method: "POST",
       body: JSON.stringify({
         companyName: companyName,
@@ -52,11 +51,14 @@ form.addEventListener("submit", async (e) => {
       headers: { "Content-Type": "application/json" },
     });
     const data = await res.json();
-    console.log(data);
 
     if (data.errors) {
 
-      console.log(data.errors)
+      const registerInputs = document.querySelectorAll(".register-input");
+
+      registerInputs.forEach((inputField) => {
+        inputField.setAttribute("style", "border: 2px solid #03c988");
+      });
 
       companyName_error.textContent = data.errors.companyName;
       email_error.textContent = data.errors.email;
@@ -64,19 +66,40 @@ form.addEventListener("submit", async (e) => {
       clientName_error.textContent = data.errors.name;
       companyAddress_error.textContent = data.errors.companyAddress;
 
-      // const registerInputs = document.querySelectorAll(".register-input");
-
-      // registerInputs.forEach((inputField) => {
-      //   inputField.setAttribute("style", "border: 2px solid red");
-      // });
+      if (companyName_error.textContent) {
+        const companyNameInput = document.querySelector("#cName");
+        companyNameInput.setAttribute("style", "border: 2px solid red");
+      }
+      if (email_error.textContent) {
+        const emailInput = document.querySelector("#cEmail");
+        emailInput.setAttribute("style", "border: 2px solid red");
+      }
+      if (password_error.textContent ) {
+        const passwordInput = document.querySelector("#cPassword");
+        passwordInput.setAttribute("style", "border: 2px solid red");
+      }
+      if (clientName_error.textContent) {
+        const clientNameInput = document.querySelector("#cCName");
+        clientNameInput.setAttribute("style", "border: 2px solid red");
+      }
+      if (companyAddress_error.textContent) {
+        const companyAddressInput = document.querySelector("#cAddress");
+        companyAddressInput.setAttribute("style", "border: 2px solid red");
+      }
 
     }
+
     if (data.client) {
+      const registerInputs = document.querySelectorAll(".register-input");
+
+      registerInputs.forEach((inputField) => {
+        inputField.setAttribute("style", "border: 2px solid #03c988");
+      });
+
       const successAlert = document.querySelector(".success-alert");
       successAlert.style.display = "block";
 
       setTimeout(()=> {
-        console.log("redirection")
         location.assign("/client_login");
       }, 1000)
 
