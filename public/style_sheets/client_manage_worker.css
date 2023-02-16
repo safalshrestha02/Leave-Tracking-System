@@ -196,7 +196,8 @@ li {
   padding-bottom: 2rem;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.5rem;
+  row-gap: 0.5rem;
+  column-gap: 2rem;
 }
 .register-form label {
   padding-left: 0.2rem;
@@ -209,7 +210,7 @@ li {
   padding: 1rem;
   border-radius: 0.3rem;
   background-color: #f3f5f7;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   color: rgb(22, 22, 22);
   width: 100%;
 }
@@ -222,21 +223,20 @@ input[type=radio] {
   grid-column: span 2;
 }
 
-.register-form p {
+.choose-gender {
   margin-bottom: 0.8rem;
 }
 
 .password-container {
   position: relative;
-  display: flex;
-  align-items: center;
 }
 
 .fa-eye-slash {
   position: absolute;
   right: 1rem;
-  transform: translateY(-60%);
   cursor: pointer;
+  top: 0;
+  transform: translateY(100%);
 }
 
 .fa-circle-xmark {
@@ -258,29 +258,14 @@ input[type=radio] {
 .form-buttons button {
   border: none;
   border-radius: 0.5rem;
-}
-
-.form-button-apply {
   background-color: #fdb514;
   display: inline-block;
   padding: 0.7rem 3rem;
   color: black;
   font-size: 1rem;
 }
-.form-button-apply:hover {
+.form-buttons button:hover {
   background-color: #f5aa09;
-  cursor: pointer;
-}
-
-.form-button-reset {
-  background-color: white;
-  display: inline-block;
-  padding: 0.7rem 3rem;
-  color: black;
-  font-size: 1rem;
-}
-.form-button-reset:hover {
-  color: #f5aa09;
   cursor: pointer;
 }
 
@@ -290,6 +275,11 @@ input[type=radio] {
 
 .company-name-value {
   cursor: not-allowed;
+}
+
+.register-errors {
+  color: #ff0032;
+  min-height: 4vh;
 }
 
 a {

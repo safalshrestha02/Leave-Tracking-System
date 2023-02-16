@@ -237,7 +237,6 @@
                     <div class="company-name-container">
                       <input
                         type="text"
-                        placeholder="companyName"
                         class="register-input-field company-name-value"
                         style="text-transform: capitalize"
                         id="companyName"
@@ -259,13 +258,14 @@
                     </div>
 
                     <div class="form-gender-container">
-                      <p>Choose gender</p>
+                      <p class="choose-gender">Choose gender</p>
                       <label for="genderRadioMale">Male</label>
                       <input
                         id="genderRadioMale"
                         type="radio"
                         name="gender"
                         value="Male"
+                        checked="checked"
                       />
 
                       <label for="genderRadioFemale">Female</label>
@@ -303,12 +303,12 @@
                         id="workerPassword"
                         class="register-input-field clear-input"
                       />
-                      <i class="fa-regular fa-eye-slash"></i>
                       <p class="workerPassword_error register-errors"></p>
+                      <i class="fa-regular fa-eye-slash"></i>
                     </div>
 
                     <div class="form-buttons">
-                      <button type="button" class="form-button-reset">
+                      <button type="reset" class="form-button-reset">
                         Reset
                       </button>
                       <button type="submit" class="form-button-apply">

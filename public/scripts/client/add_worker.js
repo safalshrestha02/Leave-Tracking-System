@@ -48,6 +48,7 @@ addWorkerForm.addEventListener("submit", async (e) => {
   gender_error.textContent = " ";
   workerEmail_error.textContent = " ";
   workerPassword_error.textContent = " ";
+  country_error.textContent = " ";
   
 
 
@@ -85,7 +86,17 @@ addWorkerForm.addEventListener("submit", async (e) => {
     const data = await res.json();
 
     if(data.errors){
-      console.log(data.errors,"shardul")
+      console.log(data.errors)
+      firstName_error.textContent=data.errors.firstName
+      lastName_error.textContent=data.errors.lastName
+      city_error.textContent=data.errors.city
+      // companyName_error.textContent=data.error.companyName
+      country_error.textContent=data.errors.country
+      workerEmail_error.textContent=data.errors.email
+      gender_error.textContent=data.errors.gender
+      workerPassword_error.textContent =  data.errors.password
+      workerID_error.textContent = data.errors.workerID
+
     }
 
   } catch (error) {

@@ -4,6 +4,8 @@ const formClose = document.querySelector("#close-form")
 const companyNameField = document.querySelector('.company-name-value')
 const form = document.querySelector(".register-form")
 
+
+
 addWorker.addEventListener("click", () => {
     formContainer.classList.add("form-active");
 })
@@ -32,6 +34,20 @@ const fetchCompanyName = async () => {
 fetchCompanyName()
 
 const reset = document.querySelector('.form-button-reset')
+
 reset.addEventListener('click', () => {
     fetchCompanyName()
+
+
+    firstName_error.textContent = " ";
+    lastName_error.textContent = " ";
+    country_error.textContent = " ";
+    city_error.textContent = " ";
+    companyName_error.textContent = " ";
+    workerID_error.textContent = " ";
+    gender_error.textContent = " ";
+    workerEmail_error.textContent = " ";
+    workerPassword_error.textContent = " ";
+    country_error.textContent = " ";
+
 })
