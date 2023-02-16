@@ -5,46 +5,46 @@ const bcrypt = require("bcrypt");
 const registerWorker = new mongoose.Schema({
   firstName: {
     type: String,
-    required: [true, "Please enter your first name"],
+    required: [true, "*please enter your first name"],
   },
   lastName: {
     type: String,
-    required: [true, "Please enter your last name"],
+    required: [true, "*please enter your last name"],
   },
   country: {
     type: String,
-    required: [true, "please enter your country"],
+    required: [true, "*please enter your country"],
   },
   city: {
     type: String,
-    required: [true, "please enter your city"],
+    required: [true, "*please enter your city"],
   },
   companyName: {
     type: String,
-    required: [true, "please enter your company name"],
+    required: [true, "*please enter your company name"],
   },  
   workerID: {
     type: String,
-    require: [true, "Please enter worker ID"],
-    minlength: [4, "please enter 4 digit ID"],
-    unique: [true, "Please enter unique ID"],
+    require: [true, "*please enter worker ID"],
+    minlength: [4, "*please enter 4 digit ID"],
+    unique: [true, "*please enter unique ID"],
   },
   gender: {
     type: String,
-    require: [true, "Select your gender"],
+    require: [true, "*Select your gender"],
     enum: ["Male", "Female", "Others"],
   },
 
   email: {
     type: String,
-    required: [true, "Please enter your email"],
-    validate: [isEmail, "Please enter a valid email"],
-    unique: [true, "Please enter unique email"],
+    required: [true, "*please enter your email"],
+    validate: [isEmail, "*please enter a valid email"],
+    unique: [true, "*please enter unique email"],
   },
   password: {
     type: String,
-    required: [true, "Please enter a password"],
-    minlength: [8, "Minimum password length is 8 characters"],
+    required: [true, "*please enter a password"],
+    minlength: [8, "*minimum password length is 8 characters"],
   },
   companyID: {
     type: mongoose.Schema.Types.ObjectId,

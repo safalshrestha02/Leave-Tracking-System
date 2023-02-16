@@ -25,7 +25,13 @@ const handleErr = (err) => {
   }
 
   if (err.code === 11000) {
-    errors.email = "That email is already registered";
+
+    if (err.message.includes("workerID")) {
+      errors.workerID = "*this workerID already registered";
+    }
+    if (err.message.includes("email")) {
+      errors.email = "*that email is already registered";
+    }
     return errors;
   }
 
