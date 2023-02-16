@@ -7,3 +7,13 @@ const fetchClientsApi = async () => {
     return { companyName, companyAddress, clientName, clientEmail }
 
 }
+
+const leaveRequestsApiUrl = 'http://localhost:3000/api/leaveRequests'
+
+const fetchLeaveRequestsApi = async () => {
+    const response = await fetch(leaveRequestsApiUrl)
+    const leaveRequestsData = await response.json()
+    return leaveRequestsData
+}
+
+fetchLeaveRequestsApi()
