@@ -69,12 +69,12 @@
 
             <div class="form-field">
               <label for="start-date"> Start Date <span>*</span> </label>
-              <input type="date" id="start-date" required />
+              <input type="date" id="start-date" class="reset-input" required/>
             </div>
 
             <div class="form-field">
               <label for="end-date"> End Date <span>*</span> </label>
-              <input type="date" id="end-date" required />
+              <input type="date" id="end-date" class="reset-input" required/>
             </div>
 
             <div class="form-field">
@@ -94,17 +94,24 @@
 
             <div id="reason-box">
               <label for="reason">Reason for leave <span>*</span></label>
-              <textarea maxlength="150" class="reason-of-leave" rows="4"
-                placeholder="Type your reason for leave (max: 150 characters)" required></textarea>
+              <textarea maxlength="150" class="reason-of-leave reset-input" rows="4" placeholder="Type your reason for leave (max: 150 characters)" required></textarea>
             </div>
 
             <div class="form-buttons">
-              <button class="form-button-reset">
+              <button type="reset" class="form-button-reset">
                 Reset
               </button>
               <button type="submit" class="form-button-apply">
                 Apply
               </button>
+            </div>
+
+            <div class="success-alert alert-boxes">
+              <i class="fa-solid fa-check alert-icon"></i>
+              <span class="alert-description">
+                <h4>Success:</h4>
+                Your Leave Request has been sent !
+              </span>
             </div>
           </form>
 

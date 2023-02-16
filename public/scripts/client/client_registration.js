@@ -58,13 +58,6 @@ form.addEventListener("submit", async (e) => {
     console.log(res2)
     const data = await res2.json();
 
-    // const res = await fetch("http://localhost:3000/client_registration", {
-    //   method: "POST",
-    //   body: JSON.stringify(formData),
-    //   headers: { "Content-Type": "application/json" },
-    // });
-    // const data = await res.json()
-
     // ---------------handling errors---------
     if (data.errors) {
 

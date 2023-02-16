@@ -11,6 +11,7 @@ const leaveDaysField = document.querySelector("#days-number");
 const leaveTypeField = document.querySelector(".type-of-leave");
 const reasonField = document.querySelector(".reason-of-leave");
 
+
 // ------------------------------------------------------------------
 
 const fetchEmpNameAndID = async () => {
@@ -74,7 +75,6 @@ endDateField.addEventListener("change", generateLeaveDays);
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-
   // ------------------getting input values
 
   const employeeName = empNameField.value;
@@ -102,12 +102,28 @@ form.addEventListener("submit", async (e) => {
 
   try {
 
+    // -----------error handling-----------
+    if (startDate === null){
+      
+    }
+
+
+    // ---submitting form data------------
     const res2 = await submitFormData(formData);
+    const data = await res2.json()
 
     if (res2.status === 201){
-        const data = await res2.json();
-        console.log(data, "datadata")
-        return data;
+      form.reset()
+
+      const successAlert = document.querySelector(".success-alert");
+      successAlert.style.display = "block";
+
+      setTimeout(() => {
+        successAlert.style.display = "none";
+      },2500);
+
+      console.log(data, "datadata")
+      return data;
     }
     
   } catch (err) {
@@ -133,3 +149,7 @@ const submitFormData = async (formData) => {
     return res;
 };
 
+
+// ---------------RESETTING FORM INPUTS---------------
+
+form.addEventListener("reset",fetchEmpNameAndID);

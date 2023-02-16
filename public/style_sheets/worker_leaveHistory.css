@@ -145,6 +145,34 @@ li {
   padding: 2rem 4rem;
 }
 
+.success-alert {
+  display: none;
+  position: absolute;
+  min-width: 15%;
+  top: 0.5rem;
+  right: 0;
+  color: rgb(26, 114, 55);
+  background-color: rgb(175, 231, 193);
+  padding: 1rem;
+  border-radius: 0.5rem 0 0 0.5rem;
+  font-weight: 500;
+  text-align: center;
+  border-left: 10px solid rgb(26, 114, 55);
+  transition: all ease-in 2s;
+}
+.success-alert h4 {
+  display: inline-flex;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.success-alert i:nth-child(1) {
+  background-color: rgb(56, 153, 90);
+  padding: 0.5rem;
+  color: white;
+  border-radius: 50%;
+}
+
 /* ------------------------------------------ active and pending leaves ----------------------------------- */
 .pending-active-leave--heading {
   font-weight: 500;
@@ -233,4 +261,4 @@ li {
 .rejected-leave {
   color: #ff0032;
   margin-right: 0.5rem;
-}/*# sourceMappingURL=worker_leaveHistory.css.map */
+}
