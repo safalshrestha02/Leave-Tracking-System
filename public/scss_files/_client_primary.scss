@@ -207,9 +207,16 @@ li {
   column-gap: 2rem;
 
   label {
-    padding-left: 0.2rem;
-    padding-bottom: 0.3rem;
+    padding-left: 0.3rem;
+    padding-bottom: 0.5rem;
+    display: inline-block;
   }
+}
+
+.register-errors{
+  color: $red-bg;
+  min-height: 4vh;
+  font-size: 0.9rem;
 }
 
 .register-input-field {
@@ -243,8 +250,7 @@ input[type="radio"] {
   position: absolute;
   right: 1rem;
   cursor: pointer;
-  top:0;
-  transform: translateY(100%);  
+  top: 38%;
 }
 
 .fa-circle-xmark {
@@ -278,18 +284,6 @@ input[type="radio"] {
   }
 }
 
-.form-button-reset {
-  background-color: white;
-  display: inline-block;
-  padding: 0.7rem 3rem;
-  color: black;
-  font-size: 1rem;
-  &:hover {
-    color: #f5aa09;
-    cursor: pointer;
-  }
-  
-}
 
 .form-button-reset {
   margin-right: 1rem;

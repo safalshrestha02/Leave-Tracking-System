@@ -3,6 +3,7 @@ const formContainer = document.querySelector(".register-container")
 const formClose = document.querySelector("#close-form")
 const companyNameField = document.querySelector('.company-name-value')
 const form = document.querySelector(".register-form")
+const inputFields = document.querySelectorAll(".register-input-field")
 
 
 
@@ -49,5 +50,11 @@ reset.addEventListener('click', () => {
     workerEmail_error.textContent = " ";
     workerPassword_error.textContent = " ";
     country_error.textContent = " ";
+
+    inputFields.forEach((inputs)=>{
+        inputs.setAttribute("style", "border: initial");
+    });
+
+
 
 })
