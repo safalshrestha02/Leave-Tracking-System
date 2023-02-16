@@ -270,6 +270,18 @@ input[type=radio] {
 }
 
 .form-button-reset {
+  background-color: white;
+  display: inline-block;
+  padding: 0.7rem 3rem;
+  color: black;
+  font-size: 1rem;
+}
+.form-button-reset:hover {
+  color: #f5aa09;
+  cursor: pointer;
+}
+
+.form-button-reset {
   margin-right: 1rem;
 }
 
@@ -277,9 +289,32 @@ input[type=radio] {
   cursor: not-allowed;
 }
 
-.register-errors {
-  color: #ff0032;
-  min-height: 4vh;
+.success-alert {
+  display: none;
+  position: absolute;
+  min-width: 15%;
+  top: 0.5rem;
+  right: 0;
+  color: rgb(26, 114, 55);
+  background-color: rgb(175, 231, 193);
+  padding: 1rem;
+  border-radius: 0.5rem 0 0 0.5rem;
+  font-weight: 500;
+  text-align: center;
+  border-left: 10px solid rgb(26, 114, 55);
+  transition: all ease-in 2s;
+}
+.success-alert h4 {
+  display: inline-flex;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.success-alert i:nth-child(1) {
+  background-color: rgb(56, 153, 90);
+  padding: 0.5rem;
+  color: white;
+  border-radius: 50%;
 }
 
 .client-leave-history {
@@ -371,4 +406,4 @@ input[type=radio] {
 .rejected-leave {
   color: #ff0032;
   margin-right: 0.5rem;
-}/*# sourceMappingURL=client_leave_history.css.map */
+}
