@@ -29,3 +29,8 @@ const fetchCompanyName = async () => {
 
 }
 fetchCompanyName()
+
+const reset = document.querySelector('.form-button-reset')
+reset.addEventListener('click', () => {
+    fetchCompanyName()
+})

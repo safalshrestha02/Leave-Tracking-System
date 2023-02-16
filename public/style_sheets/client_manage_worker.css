@@ -250,25 +250,28 @@ input[type=radio] {
   border-radius: 0.5rem;
 }
 
-.form-buttons a {
+.form-button-apply {
+  background-color: #fdb514;
   display: inline-block;
   padding: 0.7rem 3rem;
   color: black;
   font-size: 1rem;
 }
-
-.form-button-apply {
-  background-color: #fdb514;
-}
 .form-button-apply:hover {
   background-color: #f5aa09;
+  cursor: pointer;
 }
 
 .form-button-reset {
   background-color: white;
+  display: inline-block;
+  padding: 0.7rem 3rem;
+  color: black;
+  font-size: 1rem;
 }
-.form-button-reset a:hover {
+.form-button-reset:hover {
   color: #f5aa09;
+  cursor: pointer;
 }
 
 .company-name-value {
