@@ -133,6 +133,7 @@ exports.applyLeave = async (req, res, next) => {
         if (err) throw err;
       });
     });
+    res.status(201).json({ success: true});
   } catch (err) {
     console.log(err.message);
   }
