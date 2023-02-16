@@ -3,6 +3,7 @@ const client = require("./../models/ClientRegistration");
 const maxAge = 3 * 24 * 60 * 60;
 const leave = require("./../models/RequestForLeave");
 const worker = require("./../models/AddWorker");
+const { populate } = require("./../models/RequestForLeave");
 
 const createToken = (id) => {
   return jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET, {
@@ -48,7 +49,8 @@ exports.registerWorker = async (req, res) => {
     gender,
     email,
     password,
-    companyID
+    companyN,
+    companyI,
   } = req.body;
   try {
     const Worker = await worker.create({
@@ -61,13 +63,14 @@ exports.registerWorker = async (req, res) => {
       gender,
       email,
       password,
-      companyID
+      companyN,
+      companyI,
     });
     client.findOne({ companyName }, (err, sources) => {
       if (err) {
         throw err;
       }
-      Worker.updateOne({ companyID: sources._id }, (err) => {
+      Worker.update({ companyN: sources.companyName, companyI : sources._id }, (err) => {
         if (err) throw err;
       });
     });
@@ -103,6 +106,7 @@ exports.applyLeave = async (req, res, next) => {
     reason,
     approveState,
     workerID,
+    workerN
   } = req.body;
   try {
     leaveRequest = await leave.create({
@@ -115,17 +119,17 @@ exports.applyLeave = async (req, res, next) => {
       reason,
       approveState,
       workerID,
+      workerN
     });
     worker.findOne({ employeeID }, (err, sources) => {
       if (err) {
         throw err;
       }
-      leaveRequest.updateOne({ workerID: sources._id }, (err) => {
-        console.log("hi");
+      leaveRequest.update({ workerID: sources._id , workerN : sources.workerID}, (err) => {
         if (err) throw err;
       });
     });
-    res.status(201).json({ success: true});
+    res.status(201).json({ success: true });
   } catch (err) {
     console.log(err.message);
   }

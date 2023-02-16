@@ -46,6 +46,7 @@ clientSchema.pre("save", async function (next) {
 });
 
 clientSchema.static.registerClient = async function (
+  clientID,
   companyName,
   companyAddress,
   name,
@@ -68,13 +69,13 @@ clientSchema.static.registerClient = async function (
   const hashedPassword = await bcrypt.hash(password, salt);
 
   const client = await this.create({
+    clientID,
     companyName,
     companyAddress,
     name,
     email,
     password: hashedPassword,
   });
-
   return client;  
 };
 
@@ -91,4 +92,4 @@ clientSchema.statics.login = async function (email, password) {
   throw Error("Invalid Credentials");
 };
 
-module.exports = mongoose.model("registerClient", clientSchema);
+module.exports = mongoose.model("client", clientSchema);
