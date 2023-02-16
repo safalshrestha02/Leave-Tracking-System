@@ -1,6 +1,17 @@
+//----------------selectiong dom elements------------------
+const form = document.querySelector("form");
+
+const companyName_error = document.querySelector(".cname_error");
+const companyAddress_error = document.querySelector(".caddress_error");
+const clientName_error = document.querySelector(".cNname_error");
+const email_error = document.querySelector(".email_error");
+const password_error = document.querySelector(".password_error");
+
+const noPassword = document.querySelector(".fa-eye-slash");
+
+
 
 // ----------showing and hiding password------------------
-const noPassword = document.querySelector(".fa-eye-slash");
 
 noPassword.addEventListener("click", () => {
   noPassword.classList.toggle("fa-eye");
@@ -15,13 +26,9 @@ noPassword.addEventListener("click", () => {
 });
 
 
-// -----------------form validation-----------------------
-const form = document.querySelector("form");
-const companyName_error = document.querySelector(".cname_error");
-const companyAddress_error = document.querySelector(".caddress_error");
-const clientName_error = document.querySelector(".cNname_error");
-const email_error = document.querySelector(".email_error");
-const password_error = document.querySelector(".password_error");
+// ===========form validation====================================
+
+//-------------------- form event listener
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -38,20 +45,27 @@ form.addEventListener("submit", async (e) => {
   const clientEmail = form.cEmail.value;
   const clientPassword = form.cPassword.value;
 
-  try {
-    const res = await fetch("http://localhost:3000/client_registration", {
-      method: "POST",
-      body: JSON.stringify({
-        companyName: companyName,
-        companyAddress: companyAddress,
-        name: clientName,
-        email: clientEmail,
-        password: clientPassword
-      }),
-      headers: { "Content-Type": "application/json" },
-    });
-    const data = await res.json();
+  const formData = {
+    companyName: companyName,
+    companyAddress: companyAddress,
+    name: clientName,
+    email: clientEmail,
+    password: clientPassword
+  }
 
+  try {
+    const res2= await submitFormData(formData);
+    console.log(res2)
+    const data = await res2.json();
+
+    // const res = await fetch("http://localhost:3000/client_registration", {
+    //   method: "POST",
+    //   body: JSON.stringify(formData),
+    //   headers: { "Content-Type": "application/json" },
+    // });
+    // const data = await res.json()
+
+    // ---------------handling errors---------
     if (data.errors) {
 
       const registerInputs = document.querySelectorAll(".register-input");
@@ -89,7 +103,7 @@ form.addEventListener("submit", async (e) => {
 
     }
 
-    if (data.client) {
+    if (res2.status === 201) {
       const registerInputs = document.querySelectorAll(".register-input");
 
       registerInputs.forEach((inputField) => {
@@ -100,7 +114,7 @@ form.addEventListener("submit", async (e) => {
       successAlert.style.display = "block";
 
       setTimeout(()=> {
-        location.assign("/client_login");
+        location.assign("http://localhost:3000/client_login");
       }, 1000)
 
     }
@@ -109,3 +123,16 @@ form.addEventListener("submit", async (e) => {
     console.log(err)
   }
 });
+
+
+// ---submitting form data--------
+
+const submitFormData = async (formData) => {
+  const res = await fetch("http://localhost:3000/client_registration", {
+    method: "POST",
+    body: JSON.stringify(formData),
+    headers: { "Content-Type": "application/json" },
+  });
+  return res;
+};
+

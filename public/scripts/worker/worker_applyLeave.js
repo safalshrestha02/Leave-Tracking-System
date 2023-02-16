@@ -65,22 +65,11 @@ endDateField.addEventListener("change", generateLeaveDays);
 
 // <=============================================>
 
+
+
+
 // --------------fetch and send leave request----------------
 
-// ------------------getting input values
-
-const empName = empNameField.value;
-const empID = empIDField.value;
-const startDate = startDateField.value;
-const endDate = endDateField.value;
-const leaveDays = leaveDaysField.value;
-const reason = reasonField.value;
-
-// getting leave type value
-let leaveType = leaveTypeField.value;
-leaveTypeField.addEventListener("change", () => {
-  leaveType = leaveTypeField.value;
-});
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -101,41 +90,37 @@ form.addEventListener("submit", async (e) => {
     typeOfLeave = leaveTypeField.value;
   });
 
-    const formData = {
-      employeeName,
-      employeeID,
-      startDate,
-      endDate,
-      typeOfLeave,
-      leaveDays,
-      reason,
-    };
-    // console.log(formData)
-
-    // submitFormData(formData)
+  const formData = {
+    employeeName,
+    employeeID,
+    startDate,
+    endDate,
+    typeOfLeave,
+    leaveDays,
+    reason,
+  };
 
   try {
-    const res = await fetch("http://localhost:3000/worker_applyLeave", {
-      method: "POST",
-      body: JSON.stringify(formData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    // console.log(res);
 
-    if (res.status === 201){
-        const data = await res.json();
+    const res2 = await submitFormData(formData);
+
+    if (res2.status === 201){
+        const data = await res2.json();
         console.log(data, "datadata")
         return data;
     }
     
   } catch (err) {
     console.log(err);
+    return err;
   }
 
 });
 
+
+
+
+// -------SUBMIT FORM DATA-------------
 const submitFormData = async (formData) => {
 
     const res = await fetch("http://localhost:3000/worker_applyLeave", {
@@ -145,5 +130,6 @@ const submitFormData = async (formData) => {
         "Content-Type": "application/json",
     },
     });
-    console.log(res)
+    return res;
 };
+
