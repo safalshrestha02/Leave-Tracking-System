@@ -131,25 +131,6 @@ a {
   background-color: #edeef0;
 }
 
-@media only screen and (max-width: 1560px) {
-  #ecobees-text-logo {
-    font-size: 1.4rem;
-  }
-  .right-container {
-    justify-content: center;
-    flex-basis: 35%;
-    display: flex;
-    background-color: #3c4048;
-    border-radius: 0 2rem 2rem 0;
-    color: white;
-  }
-  .right-container-wrapper {
-    margin: 2rem;
-  }
-  .right-container-heading {
-    font-size: 1.7rem;
-  }
-}
 .success-alert {
   display: none;
   position: absolute;
@@ -220,9 +201,8 @@ body {
   position: absolute;
   color: black;
   font-size: 1rem;
-  right: 16rem;
+  right: .5rem;
   transform: translateY(100%);
-  display: none;
   cursor: pointer;
 }
 
@@ -236,4 +216,27 @@ body {
   margin-bottom: 1.5rem;
   text-align: left;
   height: 0.6vh;
+}
+
+
+
+
+@media only screen and (max-width: 1560px) {
+  #ecobees-text-logo {
+    font-size: 1.4rem;
+  }
+  .right-container {
+    justify-content: center;
+    flex-basis: 35%;
+    display: flex;
+    background-color: #3c4048;
+    border-radius: 0 2rem 2rem 0;
+    color: white;
+  }
+  .right-container-wrapper {
+    margin: 2rem;
+  }
+  .right-container-heading {
+    font-size: 1.7rem;
+  }
 }
