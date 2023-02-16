@@ -5,6 +5,7 @@ const app = express();
 const mongoose = require("mongoose");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const PORT = process.env.PORT
 
 const worker = require("./routes/workerRoutes");
 const client = require("./routes/clientRoutes");
@@ -42,7 +43,7 @@ app.get("/api/leaveRequests", worker);
 
 // connectDB();
 const Person = mongoose.connect(DBrui).then((result) => {
-  app.listen(3000, () => {
-    console.log("Server running on port 3000");
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
   });
 });

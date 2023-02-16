@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const AddWorker = require("./AddWorker");
 
 const messageSchema = new mongoose.Schema({
   employeeName: {
@@ -28,7 +27,7 @@ const messageSchema = new mongoose.Schema({
   },
   reason: {
     type: String,
-    maxLength: [200, "message must be maximum of 500 words"],
+    maxLength: [150, "message must be maximum of 150 character"],
     required: [true, "Please specify a reson for your leave"],
   },
   approvestate: {
