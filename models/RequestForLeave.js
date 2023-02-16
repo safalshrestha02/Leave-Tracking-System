@@ -36,11 +36,13 @@ const messageSchema = new mongoose.Schema({
     enum : ["pending", "approved", "denied"]
   },
   workerID:{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "registerWorker"
-  },
+    type: mongoose.Schema.Types.Object,
+    ref: "worker"
+  },workerN:{
+    type: mongoose.Schema.Types.Object,
+    ref: "worker"},
   timestamp: {},
 });
 
-const someComment = mongoose.model("LeaveRequest", messageSchema);
+const someComment = mongoose.model("leaveRequest", messageSchema);
 module.exports = someComment;
