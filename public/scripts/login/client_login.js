@@ -22,13 +22,13 @@ form.addEventListener("submit", async (e) => {
 
   try {
 
-    const res = await fetch("/client_login" , {
-        method: "POST",
-        body: JSON.stringify({
-            email: clientEmail,
-            password: clientPassword
-        }),
-        headers: {"Content-Type": "application/json"}
+    const res = await fetch("/client_login", {
+      method: "POST",
+      body: JSON.stringify({
+        email: clientEmail,
+        password: clientPassword
+      }),
+      headers: { "Content-Type": "application/json" }
     });
     const data = await res.json();
 
@@ -36,15 +36,17 @@ form.addEventListener("submit", async (e) => {
     if (data.errors) {
       login_error.textContent = data.errors.email;
 
-      if(login_error.textContent) {
+      if (login_error.textContent) {
         const loginInputs = document.querySelectorAll(".login-input-field");
 
         loginInputs.forEach((inputField) => {
           inputField.setAttribute("style", "border: 2px solid red");
         });
       }
-    
-    } else {
+
+    }
+
+    else {
 
       const loginInputs = document.querySelectorAll(".login-input-field");
 
@@ -54,12 +56,12 @@ form.addEventListener("submit", async (e) => {
 
       const successAlert = document.querySelector(".success-alert");
       successAlert.style.display = "block";
-  
-      setTimeout(()=> {
+
+      setTimeout(() => {
         console.log("redirection")
         location.assign("/client_home");
       }, 1000)
-  
+
     }
 
   } catch (err) {

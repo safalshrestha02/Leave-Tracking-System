@@ -35,15 +35,23 @@
         </div>
 
         <form class="login-form">
-          <input type="email" name="cEmail" id="login-email" placeholder="Email"
-            class="login-input-field worker-login-email" required />
+          <input type="text" name="cWorkerID" id="login-workerID" placeholder="Worker ID"
+            class="login-input-field worker-login-workerID" required />
+
           <input type="password" name="cPassword" id="login-password" placeholder="Password"
             class="login-input-field worker-login-password" required />
 
-          <!-- <select name="company-name" id="company-name" class="worker-company-name">
-              <option value="ecoBees">ecoBees</option>
-              <option value="AbceDee">AbceDee</option>
-            </select> -->
+          <div class="login_error register-errors"></div>
+
+          <div class="success-alert alert-boxes">
+
+            <i class="fa-solid fa-check alert-icon"></i>
+
+            <span class="alert-description">
+              <h4>Success:</h4> Logging In!
+            </span>
+
+          </div>
 
           <div class="login-type">
             <button type="submit" class="login-button">Log In</button>
@@ -53,18 +61,6 @@
     </div>
   </div>
 
-  <script>
-    const form = document.querySelector("form");
-
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      const compEmail = form.cEmail.value;
-      const compPassword = form.cPassword.value;
-
-      console.log(compEmail, compPassword);
-    });
-  </script>
   <script src="/scripts/login/worker_login.js"></script>
 </body>
 
