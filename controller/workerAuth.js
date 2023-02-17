@@ -1,9 +1,10 @@
 const jwt = require("jsonwebtoken");
 const client = require("./../models/ClientRegistration");
-const maxAge = 3 * 24 * 60 * 60;
 const leave = require("./../models/RequestForLeave");
-const worker = require("./../models/AddWorker");
+const Worker = require("./../models/AddWorker");
 const { populate } = require("./../models/RequestForLeave");
+
+const maxAge = 3 * 24 * 60 * 60;
 
 const createToken = (id) => {
   return jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET, {
@@ -13,20 +14,15 @@ const createToken = (id) => {
 
 const handleErr = (err) => {
   let errors = {
-    firstName: "",
-    lastName: "",
-    gender: "",
     email: "",
     password: "",
+    workerID: "",
   };
-
   if (err.message === "Invalid Credentials") {
-    errors.email = "Invalid Credentials";
-    errors.password = "Invalid Credentials";
+    errors.workerID = "*Invalid Credentials";
+    errors.password = "*Invalid Credentials";
   }
-
   if (err.code === 11000) {
-
     if (err.message.includes("workerID")) {
       errors.workerID = "*this workerID already registered";
     }
@@ -35,13 +31,13 @@ const handleErr = (err) => {
     }
     return errors;
   }
-
-  if (err.message.includes("registerWorker validation failed")) {
+  if (err.message.includes("worker validation failed")) {
     Object.values(err.errors).forEach(({ properties }) => {
       errors[properties.path] = properties.message;
     });
   }
   return errors;
+  // console.log(err.message, err.code);
 };
 
 exports.registerWorker = async (req, res) => {
@@ -55,11 +51,9 @@ exports.registerWorker = async (req, res) => {
     gender,
     email,
     password,
-    companyN,
-    companyI,
   } = req.body;
   try {
-    const Worker = await worker.create({
+    const worker = await Worker.create({
       firstName,
       lastName,
       country,
@@ -69,17 +63,18 @@ exports.registerWorker = async (req, res) => {
       gender,
       email,
       password,
-      companyN,
-      companyI,
     });
-    client.findOne({ companyName }, (err, sources) => {
-      if (err) {
-        throw err;
-      }
-      Worker.update({ companyN: sources.companyName, companyI : sources._id }, (err) => {
-        if (err) throw err;
-      });
-    });
+    // client.findOne({ companyName }, (err, sources) => {
+    //   if (err) {
+    //     throw err;
+    //   }
+    //   worker.update(
+    //     { companyN: sources.companyName, companyI: sources._id },
+    //     (err) => {
+    //       if (err) throw err;
+    //     }
+    //   );
+    // });
     const token = createToken(worker._id);
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
     res.status(201).json({ message: "registered" });
@@ -90,10 +85,10 @@ exports.registerWorker = async (req, res) => {
 };
 
 exports.login = async (req, res, next) => {
-  const { email, password } = req.body;
+  const { workerID, password } = req.body;
   try {
-    const client = await Client.login(email, password);
-    const token = createToken(client._id);
+    const worker = await Worker.login(workerID, password);
+    const token = createToken(worker._id);
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
     res.status(200).json({ message: "logged in" });
   } catch (err) {
@@ -101,6 +96,7 @@ exports.login = async (req, res, next) => {
     res.status(400).json({ errors });
   }
 };
+
 exports.applyLeave = async (req, res, next) => {
   const {
     employeeName,
@@ -112,7 +108,7 @@ exports.applyLeave = async (req, res, next) => {
     reason,
     approveState,
     workerID,
-    workerN
+    workerN,
   } = req.body;
   try {
     leaveRequest = await leave.create({
@@ -125,15 +121,18 @@ exports.applyLeave = async (req, res, next) => {
       reason,
       approveState,
       workerID,
-      workerN
+      workerN,
     });
     worker.findOne({ employeeID }, (err, sources) => {
       if (err) {
         throw err;
       }
-      leaveRequest.update({ workerID: sources._id , workerN : sources.workerID}, (err) => {
-        if (err) throw err;
-      });
+      leaveRequest.update(
+        { workerID: sources._id, workerN: sources.workerID },
+        (err) => {
+          if (err) throw err;
+        }
+      );
     });
     res.status(201).json({ success: true });
   } catch (err) {
