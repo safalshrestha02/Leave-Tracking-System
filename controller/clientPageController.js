@@ -108,8 +108,3 @@ exports.clientProfile = (req, res, next) => {
   );
 };
 
-exports.apiClient = (req, res, next) => {
-  Clients.find().then((result) => {
-    res.send(result);
-  });
-};

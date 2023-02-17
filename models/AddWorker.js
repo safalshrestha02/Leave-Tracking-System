@@ -22,7 +22,7 @@ const registerWorker = new mongoose.Schema({
   companyName: {
     type: String,
     required: [true, "*please enter your company name"],
-  },  
+  },
   workerID: {
     type: String,
     require: [true, "*please enter worker ID"],
@@ -34,7 +34,6 @@ const registerWorker = new mongoose.Schema({
     require: [true, "*Select your gender"],
     enum: ["Male", "Female", "Others"],
   },
-
   email: {
     type: String,
     required: [true, "*please enter your email"],
@@ -46,14 +45,14 @@ const registerWorker = new mongoose.Schema({
     required: [true, "*please enter a password"],
     minlength: [8, "*minimum password length is 8 characters"],
   },
-  companyN: {
-    type: mongoose.Schema.Types.Object,
-    ref: "registerClient",
-  },
-  companyI:{
-    type: mongoose.Schema.Types.Object,
-    ref: "registerClient",
-  },
+  // companyN: {
+  //   type: mongoose.Schema.Types.Object,
+  //   ref: "registerClient",
+  // },
+  // companyI: {
+  //   type: mongoose.Schema.Types.Object,
+  //   ref: "registerClient",
+  // },
   timestamps: {},
 });
 
@@ -64,15 +63,57 @@ registerWorker.pre("save", async function (next) {
   next();
 });
 
-registerWorker.statics.login = async function (email, password) {
-  const worker = await this.findOne({ email });
+registerWorker.static.registerWorker = async function (
+  firstName,
+  lastName,
+  country,
+  city,
+  companyName,
+  workerID,
+  gender,
+  email,
+  password
+) {
+  const dupWorkerId = await this.findOne({ workerID });
+
+  if (dupWorkerId) {
+    throw Error("*worker is already registered");
+  }
+
+  const dupEmail = await this.findOne({ email });
+
+  if (dupEmail) {
+    throw Error("*email is already registered");
+  }
+
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
+
+  const worker = await this.create({
+    firstName,
+    lastName,
+    country,
+    city,
+    companyName,
+    workerID,
+    gender,
+    email,
+    password: hashedPassword,
+  });
+  return worker;
+};
+
+registerWorker.statics.login = async function (workerID, password) {
+  const worker = await this.findOne({ workerID });
   if (worker) {
     const passcheck = await bcrypt.compare(password, worker.password);
     if (passcheck) {
       console.log("loggedin");
       return worker;
     }
+    throw Error("Invalid Credentials");
   }
   throw Error("Invalid Credentials");
 };
+
 module.exports = mongoose.model("worker", registerWorker);

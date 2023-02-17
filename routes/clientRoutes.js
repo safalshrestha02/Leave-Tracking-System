@@ -5,18 +5,21 @@ const router = express.Router();
 const loadPages = require("../controller/clientPageController");
 const clientRegistration = require("../controller/clientAuth");
 const addworker = require("../controller/workerAuth");
+const { requireClientAuth } = require("../middleware/clientAuthMiddleware");
+
 //html pages
-router.get("/client_home", loadPages.homePage);
-router.get("/client_leave_history", loadPages.leaveHistory);
-router.get("/client_leave_settings", loadPages.leaveSettings);
-router.get("/client_manage_leave", loadPages.manageLeave);
-router.get("/client_manage_worker", loadPages.manageWorker);
-router.get("/client_profile", loadPages.clientProfile);
-router.get("/api/clients", loadPages.apiClient);
+router.get("/client_home", requireClientAuth, loadPages.homePage);
+router.get("/client_leave_history", requireClientAuth, loadPages.leaveHistory);
+router.get(
+  "/client_leave_settings",
+  requireClientAuth,
+  loadPages.leaveSettings
+);
+router.get("/client_manage_leave", requireClientAuth, loadPages.manageLeave);
+router.get("/client_manage_worker", requireClientAuth, loadPages.manageWorker);
+router.get("/client_profile", requireClientAuth, loadPages.clientProfile);
 
 //APIs
-// router.post("/client_registration", clientRegistration.registerClient);
-// router.post("/client_login", clientRegistration.login);
 router.get("/logout", clientRegistration.logout);
 router.post("/client_add_worker", addworker.registerWorker);
 
