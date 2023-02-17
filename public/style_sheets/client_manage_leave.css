@@ -336,16 +336,19 @@ h2 {
   margin-left: 0.5rem;
 }
 
-.pending-leave-type-status, .pending-leave-date {
+.pending-leave-type-status,
+.pending-leave-date {
   display: flex;
   justify-content: space-between;
   margin: 0.8rem 0;
 }
-.pending-leave-type-status p, .pending-leave-date p {
+.pending-leave-type-status p,
+.pending-leave-date p {
   align-self: center;
   font-weight: 500;
 }
-.pending-leave-type-status span, .pending-leave-date span {
+.pending-leave-type-status span,
+.pending-leave-date span {
   opacity: 0.6;
 }
 
@@ -393,7 +396,7 @@ h2 {
 }
 
 .approve-button {
-  background-color: #03C988;
+  background-color: #03c988;
 }
 .approve-button:hover {
   cursor: pointer;
@@ -401,9 +404,21 @@ h2 {
 }
 
 .reject-button {
-  background-color: #FF0032;
+  background-color: #ff0032;
 }
 .reject-button:hover:hover {
   cursor: pointer;
   background-color: #df032f;
+}
+
+.no-leaves {
+  font-size: 1.2rem;
+  color: #f99417;
+  font-weight: 600;
+}
+
+.fail {
+  font-size: 1.2rem;
+  color: #ff0032;
+  font-weight: 600;
 }

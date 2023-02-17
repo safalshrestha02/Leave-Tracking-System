@@ -6,7 +6,6 @@ const form = document.querySelector(".register-form")
 const inputFields = document.querySelectorAll(".register-input-field")
 
 
-
 addWorker.addEventListener("click", () => {
     formContainer.classList.add("form-active");
 })
@@ -39,7 +38,6 @@ const reset = document.querySelector('.form-button-reset')
 reset.addEventListener('click', () => {
     fetchCompanyName()
 
-
     firstName_error.textContent = " ";
     lastName_error.textContent = " ";
     country_error.textContent = " ";
@@ -51,7 +49,7 @@ reset.addEventListener('click', () => {
     workerPassword_error.textContent = " ";
     country_error.textContent = " ";
 
-    inputFields.forEach((inputs)=>{
+    inputFields.forEach((inputs) => {
         inputs.setAttribute("style", "border: initial");
     });
 
