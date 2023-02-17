@@ -60,14 +60,12 @@ a {
   text-align: center;
 }
 
-
-.client-bee-logo{
+.client-bee-logo {
   width: 37.5rem;
 }
-.worker-bee-logo{
+.worker-bee-logo {
   width: 37.5rem;
 }
-
 
 /* ----right container-------- */
 
@@ -148,7 +146,6 @@ a {
   margin-top: -1rem;
 }
 
-
 // ----------media query------------
 @media only screen and (max-width: 1560px) {
   #ecobees-text-logo {
@@ -173,28 +170,27 @@ a {
   }
 }
 
-
 // ----------------alert message-------------------------
 .success-alert {
   display: none;
   position: absolute;
   min-width: 15%;
-  top: .5rem;
+  top: 0.5rem;
   right: 0;
   color: rgb(26, 114, 55);
   background-color: rgb(175, 231, 193);
   padding: 1rem;
-  border-radius: .5rem 0 0 .5rem;
+  border-radius: 0.5rem 0 0 0.5rem;
   font-weight: 500;
   text-align: center;
   border-left: 10px solid rgb(26, 114, 55);
 
-  h4{
-      display: inline-flex;
-      font-size: 1.1rem;
-      font-weight: 500;
+  h4 {
+    display: inline-flex;
+    font-size: 1.1rem;
+    font-weight: 500;
   }
-  
+
   transition: all ease-in 2s;
 }
 
@@ -203,5 +199,4 @@ a {
   padding: 0.5rem;
   color: white;
   border-radius: 50%;
-  
 }
