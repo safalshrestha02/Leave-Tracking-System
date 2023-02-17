@@ -200,8 +200,15 @@ li {
   column-gap: 2rem;
 }
 .register-form label {
-  padding-left: 0.2rem;
-  padding-bottom: 0.3rem;
+  padding-left: 0.3rem;
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.register-errors {
+  color: #ff0032;
+  min-height: 4vh;
+  font-size: 0.9rem;
 }
 
 .register-input-field {
@@ -235,8 +242,7 @@ input[type=radio] {
   position: absolute;
   right: 1rem;
   cursor: pointer;
-  top: 0;
-  transform: translateY(100%);
+  top: 38%;
 }
 
 .fa-circle-xmark {
@@ -266,18 +272,6 @@ input[type=radio] {
 }
 .form-buttons button:hover {
   background-color: #f5aa09;
-  cursor: pointer;
-}
-
-.form-button-reset {
-  background-color: white;
-  display: inline-block;
-  padding: 0.7rem 3rem;
-  color: black;
-  font-size: 1rem;
-}
-.form-button-reset:hover {
-  color: #f5aa09;
   cursor: pointer;
 }
 
@@ -412,4 +406,4 @@ h2 {
 .reject-button:hover:hover {
   cursor: pointer;
   background-color: #df032f;
-}
+}/*# sourceMappingURL=client_manage_leave.css.map */

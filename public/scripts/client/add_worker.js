@@ -86,16 +86,62 @@ addWorkerForm.addEventListener("submit", async (e) => {
     const data = await res.json();
 
     if(data.errors){
+      inputFields.forEach((inputs)=>{
+        inputs.setAttribute("style", "border: initial");
+      });
+
       console.log(data.errors)
       firstName_error.textContent=data.errors.firstName
       lastName_error.textContent=data.errors.lastName
       city_error.textContent=data.errors.city
-      // companyName_error.textContent=data.error.companyName
       country_error.textContent=data.errors.country
       workerEmail_error.textContent=data.errors.email
-      gender_error.textContent=data.errors.gender
       workerPassword_error.textContent =  data.errors.password
       workerID_error.textContent = data.errors.workerID
+
+      if (firstName_error.textContent) {
+        const firstNameInput = document.getElementById("firstName")
+        firstNameInput.setAttribute("style", "border: 1px solid #ff0032");
+      }
+      if (lastName_error.textContent) {
+        const lastNameInput = document.getElementById("lastName")
+        lastNameInput.setAttribute("style", "border: 1px solid #ff0032");
+      }
+      if (city_error.textContent) {
+        const cityInput = document.getElementById("city")
+        cityInput.setAttribute("style", "border: 1px solid #ff0032");
+      }
+      if (country_error.textContent) {
+        const countryInput = document.getElementById("country")
+        countryInput.setAttribute("style", "border: 1px solid #ff0032");
+      }
+      if (workerEmail_error.textContent) {
+        const emailInput = document.getElementById("workerEmail")
+        emailInput.setAttribute("style", "border: 1px solid #ff0032");
+      }
+      if (workerPassword_error.textContent) {
+        const passwordInput = document.getElementById("workerPassword")
+        passwordInput.setAttribute("style", "border: 1px solid #ff0032");
+      }
+      if (workerID_error.textContent) {
+        const workerIDInput = document.getElementById("workerID")
+        workerIDInput.setAttribute("style", "border: 1px solid #ff0032");
+      }
+    }
+
+    if (res.status === 201) {
+
+      inputFields.forEach((inputField) => {
+        inputField.setAttribute("style", "border: initial");
+      });
+
+      addWorkerForm.reset()
+      
+      const successAlert = document.querySelector(".success-alert");
+      successAlert.style.display = "block";
+      setTimeout(()=> {
+        successAlert.style.display = "none";
+      }, 2500)
 
     }
 
