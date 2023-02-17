@@ -33,7 +33,7 @@ const handleErr = (err) => {
     return errors;
   }
 
-  if (err.message.includes("registerClient validation failed")) {
+  if (err.message.includes("client validation failed")) {
     Object.values(err.errors).forEach(({ properties }) => {
       errors[properties.path] = properties.message;
     });
