@@ -6,7 +6,7 @@ const messageSchema = new mongoose.Schema({
     required: [true, "employee name is required"],
   },
   employeeID: {
-    type: Number,
+    type: [Number],
     required: [true, "employee ID is required"],
   },
   startDate: {
@@ -14,7 +14,7 @@ const messageSchema = new mongoose.Schema({
     required: [true, "Start date is required"],
   },
   endDate: {
-    type: Date,
+    type: [Date, "date should be date"],
     required: [true, "End Date is required"],
   },
   typeOfLeave: {
@@ -31,16 +31,18 @@ const messageSchema = new mongoose.Schema({
     required: [true, "Please specify a reson for your leave"],
   },
   approvestate: {
-    type: String ,
-    state: [{type : String, default: 'pending'}],
-    enum : ["pending", "approved", "denied"]
+    type: String,
+    state: [{ type: String, default: "pending" }],
+    enum: ["pending", "approved", "denied"],
   },
-  workerID:{
+  workerID: {
     type: mongoose.Schema.Types.Object,
-    ref: "worker"
-  },workerN:{
+    ref: "worker",
+  },
+  workerN: {
     type: mongoose.Schema.Types.Object,
-    ref: "worker"},
+    ref: "worker",
+  },
   timestamp: {},
 });
 

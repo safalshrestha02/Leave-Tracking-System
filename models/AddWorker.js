@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const registerWorker = new mongoose.Schema({
   firstName: {
     type: String,
-    required: [true, "*please enter your first name"],
+    required: [true, "please enter your first name"],
   },
   lastName: {
     type: String,
@@ -45,14 +45,14 @@ const registerWorker = new mongoose.Schema({
     required: [true, "*please enter a password"],
     minlength: [8, "*minimum password length is 8 characters"],
   },
-  // companyN: {
-  //   type: mongoose.Schema.Types.Object,
-  //   ref: "registerClient",
-  // },
-  // companyI: {
-  //   type: mongoose.Schema.Types.Object,
-  //   ref: "registerClient",
-  // },
+  companyN: {
+    type: mongoose.Schema.Types.Object,
+    ref: "registerClient",
+  },
+  companyI: {
+    type: mongoose.Schema.Types.Object,
+    ref: "registerClient",
+  },
   timestamps: {},
 });
 

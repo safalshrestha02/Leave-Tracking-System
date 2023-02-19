@@ -1,7 +1,4 @@
 const path = require("path");
-const Client = require("./../models/ClientRegistration");
-const jwt = require("jsonwebtoken");
-const maxage = 1 * 24 * 60 * 60;
 const Clients = require("./../models/ClientRegistration");
 
 exports.registerClient = (req, res, next) => {

@@ -19,7 +19,7 @@ router.get("/client_manage_leave", requireClientAuth, loadPages.manageLeave);
 router.get("/client_manage_worker", requireClientAuth, loadPages.manageWorker);
 router.get("/client_profile", requireClientAuth, loadPages.clientProfile);
 
-//APIs
+
 router.get("/logout", clientRegistration.logout);
 router.post("/client_add_worker", addworker.registerWorker);
 
