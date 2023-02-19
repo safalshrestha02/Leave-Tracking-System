@@ -4,9 +4,9 @@ const bcrypt = require("bcrypt");
 
 const clientSchema = new mongoose.Schema(
   {
-    clientID : {
+    clientID: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "client"
+      ref: "client",
     },
     companyName: {
       type: String,
@@ -45,7 +45,7 @@ clientSchema.pre("save", async function (next) {
   next();
 });
 
-clientSchema.static.registerClient = async function (
+clientSchema.statics.registerClient = async function (
   clientID,
   companyName,
   companyAddress,
@@ -76,7 +76,7 @@ clientSchema.static.registerClient = async function (
     email,
     password: hashedPassword,
   });
-  return client;  
+  return client;
 };
 
 clientSchema.statics.login = async function (email, password) {
