@@ -261,3 +261,10 @@ select {
   background-color: #f99417;
   cursor: pointer;
 }
+
+.error-content {
+  width: 100%;
+  text-align: center;
+  height: 2vh;
+  margin-block: 0.5rem 1rem;
+}

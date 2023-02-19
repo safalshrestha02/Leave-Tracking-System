@@ -123,7 +123,7 @@ exports.applyLeave = async (req, res, next) => {
       workerID,
       workerN,
     });
-    worker.findOne({ employeeID }, (err, sources) => {
+    Worker.findOne({ employeeID }, (err, sources) => {
       if (err) {
         throw err;
       }

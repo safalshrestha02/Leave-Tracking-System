@@ -23,8 +23,6 @@ fetchEmpNameAndID();
 
 // <========== Generating Leave Days ==========>
 
-// leaveDaysField.style.cursor = "not-allowed"
-
 const currentDate = new Date();
 let currentYear = currentDate.getFullYear();
 let currentMonth = currentDate.getMonth() + 1;
@@ -99,21 +97,27 @@ form.addEventListener("submit", async (e) => {
     leaveDays,
     reason,
   };
-
   try {
 
     // -----------error handling-----------
-    if (startDate === null){
-      
-    }
+    const errorField = document.querySelector(".error-field")
+
+    if (employeeName || employeeID || startDate || endDate || typeOfLeave || leaveDays || reason === null){
+      errorField.style.color = "red";
+      errorField.textContent = "*all fields are required";
+    } else {
+      errorField.textContent = "";
+    };
 
 
     // ---submitting form data------------
     const res2 = await submitFormData(formData);
-    const data = await res2.json()
+    const data = await res2.json();
 
     if (res2.status === 201){
-      form.reset()
+      form.reset();
+
+      errorField.textContent = "";
 
       const successAlert = document.querySelector(".success-alert");
       successAlert.style.display = "block";
@@ -122,7 +126,6 @@ form.addEventListener("submit", async (e) => {
         successAlert.style.display = "none";
       },2500);
 
-      console.log(data, "datadata")
       return data;
     }
     
@@ -138,7 +141,6 @@ form.addEventListener("submit", async (e) => {
 
 // -------SUBMIT FORM DATA-------------
 const submitFormData = async (formData) => {
-
     const res = await fetch("http://localhost:3000/worker_applyLeave", {
     method: "POST",
     body: JSON.stringify(formData),
@@ -151,5 +153,4 @@ const submitFormData = async (formData) => {
 
 
 // ---------------RESETTING FORM INPUTS---------------
-
 form.addEventListener("reset",fetchEmpNameAndID);

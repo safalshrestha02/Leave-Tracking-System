@@ -38,7 +38,7 @@
           </ul>
         </nav>
         <div class="logout-button-container">
-          <a href="/" class="logout-button"><i class="fa-solid fa-arrow-right-from-bracket nav-icon"
+          <a href="/logout" class="logout-button"><i class="fa-solid fa-arrow-right-from-bracket nav-icon"
               style="rotate: 180deg"></i>Logout</a>
         </div>
       </div>
@@ -59,11 +59,11 @@
 
           <form class="form-container">
             <div class="form-field">
-              <label for="name"> Employee Name <span>*</span> </label>
+              <label for="name"> Worker Name <span>*</span> </label>
               <input class="employee-name-field" type="text" disabled />
             </div>
             <div class="form-field">
-              <label for="Employee ID"> Employee ID <span>*</span> </label>
+              <label for="Employee ID"> Worker ID <span>*</span> </label>
               <input class="employee-id-field" type="text" disabled />
             </div>
 
@@ -94,8 +94,12 @@
 
             <div id="reason-box">
               <label for="reason">Reason for leave <span>*</span></label>
-              <textarea maxlength="150" class="reason-of-leave reset-input" rows="4" placeholder="Type your reason for leave (max: 150 characters)" required></textarea>
+              <textarea maxlength="150" class="reason-of-leave reset-input" rows="4" placeholder="Type your reason for leave (max: 150 characters)" ></textarea>
             </div>
+            <div class="error-content">
+              <p class="error-field"></p>
+            </div>
+            
 
             <div class="form-buttons">
               <button type="reset" class="form-button-reset">
