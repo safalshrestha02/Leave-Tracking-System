@@ -49,10 +49,10 @@ const registerWorker = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectID,
     ref: "client",
   },
-  companyI: {
-    type: mongoose.Schema.Types.ObjectID,
-    ref: "client",
-  },
+  // companyI: {
+  //   type: mongoose.Schema.Types.ObjectID,
+  //   ref: "client",
+  // },
   timestamps: {},
 });
 
