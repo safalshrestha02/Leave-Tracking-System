@@ -85,7 +85,7 @@
           <div class="workers-overview">
             <div class="workers-total overview-container">
               <p><i class="fa-solid fa-user worker-overview-icon"></i></p>
-              <p class="worker-overview-number">100</p>
+              <p class="worker-overview-number total-workers">Loading...</p>
               <p class="worker-overview-status">Total Workers</p>
             </div>
             <div class="workers-leave overview-container">
@@ -94,7 +94,7 @@
                   class="fa-solid fa-user-clock worker-overview-icon clock_check"
                 ></i>
               </p>
-              <p class="worker-overview-number">16</p>
+              <p class="worker-overview-number leave-workers">Loading...</p>
               <p class="worker-overview-status">Workers on Leave</p>
             </div>
 
@@ -104,7 +104,7 @@
                   class="fa-solid fa-user-check worker-overview-icon clock_check"
                 ></i>
               </p>
-              <p class="worker-overview-number">84</p>
+              <p class="worker-overview-number active-workers">Loading...</p>
               <p class="worker-overview-status">Active Workers</p>
             </div>
           </div>
@@ -113,73 +113,8 @@
             <h2>Workers on Leave</h2>
             <div>
               <div class="active-leave-container">
-                <div class="active-leave-details">
-                  <i class="fa-regular fa-user user-icon"></i
-                  ><span class="active-leave-name">Suraj Khadka</span>
-                  <div class="active-leave-date">
-                    <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
-                  </div>
-                  <div class="active-leave-date">
-                    <p>Unpaid Leave</p>
-                    <p><i class="fa-solid fa-circle green"></i>Approved</p>
-                  </div>
-                </div>
-                <div class="active-leave-details">
-                  <i class="fa-regular fa-user user-icon"></i
-                  ><span class="active-leave-name">Shardul Gautam</span>
-                  <div class="active-leave-date">
-                    <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
-                  </div>
-                  <div class="active-leave-date">
-                    <p>Urgent Leave</p>
-                    <p><i class="fa-solid fa-circle green"></i>Approved</p>
-                  </div>
-                </div>
-                <div class="active-leave-details">
-                  <i class="fa-regular fa-user user-icon"></i
-                  ><span class="active-leave-name">Safal Shrestha</span>
-                  <div class="active-leave-date">
-                    <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
-                  </div>
-                  <div class="active-leave-date">
-                    <p>Vacation</p>
-                    <p><i class="fa-solid fa-circle green"></i>Approved</p>
-                  </div>
-                </div>
-                <div class="active-leave-details">
-                  <i class="fa-regular fa-user user-icon"></i
-                  ><span class="active-leave-name">Trishan Wagle</span>
-                  <div class="active-leave-date">
-                    <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
-                  </div>
-                  <div class="active-leave-date">
-                    <p>Urgent Leave</p>
-                    <p><i class="fa-solid fa-circle green"></i>Approved</p>
-                  </div>
-                </div>
-                <div class="active-leave-details">
-                  <i class="fa-regular fa-user user-icon"></i
-                  ><span class="active-leave-name">Ishan Ghimire</span>
-                  <div class="active-leave-date">
-                    <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
-                  </div>
-                  <div class="active-leave-date">
-                    <p>Sick Leave</p>
-                    <p><i class="fa-solid fa-circle green"></i>Approved</p>
-                  </div>
-                </div>
-                <div class="active-leave-details">
-                  <i class="fa-regular fa-user user-icon"></i
-                  ><span class="active-leave-name">Ishan Ghimire</span>
-                  <div class="active-leave-date">
-                    <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
-                  </div>
-                  <div class="active-leave-date">
-                    <p>Sick Leave</p>
-                    <p><i class="fa-solid fa-circle green"></i>Approved</p>
-                  </div>
-                </div>
-              </div>
+                <!-- All workers actively on leave -->
+               </div> 
             </div>
 
             <!-- add-worker / register worker -->
@@ -343,5 +278,6 @@
     <script src="/scripts/client/client_primary.js"></script>
     <script src="/scripts/client/client_dashboard.js"></script>
     <script src="/scripts/client/add_worker.js"></script>
+    <script src="/scripts/client/client_home.js"></script>
   </body>
 </html>
