@@ -1,17 +1,31 @@
 const clientsApiUrl = 'http://localhost:3000/api/clients'
 const fetchClientsApi = async () => {
-    const response = await fetch(clientsApiUrl)
-    const result = await response.json()
-    const { companyName, companyAddress, name: clientName, email: clientEmail } = result[0]
-    return { companyName, companyAddress, clientName, clientEmail }
+    try {
+        const response = await fetch(clientsApiUrl)
+        const result = await response.json()
+        const { companyName, companyAddress, name: clientName, email: clientEmail } = result[1]
+        return { companyName, companyAddress, clientName, clientEmail }
+    }
+
+    catch (err) {
+        console.log(err)
+    }
+
 }
 
 
 const workersApiUrl = 'http://localhost:3000/api/workers'
 const fetchWorkersApi = async () => {
-    const response = await fetch(workersApiUrl)
-    const workersData = await response.json()
-    return workersData
+    try {
+        const response = await fetch(workersApiUrl)
+        const workersData = await response.json()
+        return workersData
+    }
+
+    catch (err) {
+        console.log(err.message)
+    }
+
 }
 
 
@@ -20,4 +34,5 @@ const fetchLeaveRequestsApi = async () => {
     const response = await fetch(leaveRequestsApiUrl)
     const leaveRequestsData = await response.json()
     return leaveRequestsData
+
 }
