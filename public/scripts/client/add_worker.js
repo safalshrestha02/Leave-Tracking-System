@@ -52,15 +52,15 @@ addWorkerForm.addEventListener("submit", async (e) => {
   
 
 
-  const firstName = form.firstName.value;
-  const lastName = form.lastName.value;
-  const country = form.country.value;
-  const city = form.city.value;
-  const email = form.workerEmail.value;
+  const firstName = form.firstName.value.toLowerCase();
+  const lastName = form.lastName.value.toLowerCase();
+  const country = form.country.value.toLowerCase();
+  const city = form.city.value.toLowerCase();
+  const email = form.workerEmail.value.toLowerCase();
   const workerID = form.workerID.value;
-  const gender = document.querySelector("input[name='gender']:checked").value;
+  const gender = document.querySelector("input[name='gender']:checked").value.toLowerCase();
   const password = form.workerPassword.value;
-  const companyName = form.companyName.value;
+  const companyName = form.companyName.value.toLowerCase();
 
   const formData = {
     firstName,
