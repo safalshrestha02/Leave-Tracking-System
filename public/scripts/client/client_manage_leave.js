@@ -3,35 +3,21 @@ const pendingLeaveContainer = document.querySelector('.pending-leave-container')
 
 const manageLeavesFunc = async () => {
     try {
-        const workers = await fetchWorkersApi()
-        const { companyName } = await fetchClientsApi()
+
         const leaveRequestsData = await fetchLeaveRequestsApi()
 
-        const companyWorkers = workers.filter((worker) => {
-            const { companyName: workerCompanyName } = worker
-            return workerCompanyName === companyName
-        })
 
         const filterAndFetchLeaves = async () => {
 
-            const companyLeaves = companyWorkers.map((data) => {
-                const filteredData = leaveRequestsData.filter((leaves) => {
-                    const { employeeName } = leaves
-                    const { firstName, lastName } = data
-                    const fullName = `${firstName} ${lastName}`
-                    return fullName === employeeName
-                })
-                return filteredData
-            })
 
-            if (companyLeaves.length === 0) {
+            if (leaveRequestsData.length === 0) {
                 pendingLeaveContainer.innerHTML = ` <p class="no-leaves">No any Pending Leave Requests...</p>`
             }
 
             const fetchLeaves = () => {
+                leaveRequestsData.forEach((leaves) => {
 
-                companyLeaves.map((data) => {
-                    const [{ employeeName, startDate, endDate, typeOfLeave, leaveDays, reason }] = data
+                    const { employeeName, startDate, endDate, typeOfLeave, leaveDays, reason } = leaves
                     let approveState = 'Pending'
                     const dayOrDays = leaveDays > 1 ? 'Days' : 'Day'
                     let ihtml = `
@@ -86,6 +72,7 @@ const manageLeavesFunc = async () => {
                         // rejectLeaveFunc()
                     }
                 })
+
             }
             fetchLeaves()
         }
