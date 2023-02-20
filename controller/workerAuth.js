@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const client = require("./../models/ClientRegistration");
 const leave = require("./../models/RequestForLeave");
-const Worker = require("./../models/AddWorker");
+const Worker = require("../models/AddWorker");
 const { populate } = require("./../models/RequestForLeave");
 
 const maxAge = 3 * 24 * 60 * 60;
@@ -65,6 +65,7 @@ exports.registerWorker = async (req, res) => {
       password,
     });
     // client.findOne({ companyName }, (err, sources) => {
+    //   //const filling = await Filling.find({}).populate({path : "Reffing", model:"Reffing"}) 
     //   if (err) {
     //     throw err;
     //   }

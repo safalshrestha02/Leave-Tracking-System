@@ -46,13 +46,13 @@ const registerWorker = new mongoose.Schema({
     minlength: [8, "*minimum password length is 8 characters"],
   },
   companyN: {
-    type: mongoose.Schema.Types.Object,
-    ref: "registerClient",
+    type: mongoose.Schema.Types.ObjectID,
+    ref: "client",
   },
-  companyI: {
-    type: mongoose.Schema.Types.Object,
-    ref: "registerClient",
-  },
+  // companyI: {
+  //   type: mongoose.Schema.Types.ObjectID,
+  //   ref: "client",
+  // },
   timestamps: {},
 });
 
