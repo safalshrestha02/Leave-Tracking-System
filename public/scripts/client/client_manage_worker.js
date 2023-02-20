@@ -2,7 +2,15 @@ const manageWorkersSection = document.querySelector(".manage-workers-leave");
 const dashboardSearch = document.querySelector(".dashboard-search");
 
 const fetchWorkers = async () => {
-  const workersData = await fetchWorkersApi();
+  // Getting the actual workers from the company
+  const workers = await fetchWorkersApi()
+  const { companyName } = await fetchClientsApi()
+
+  const companyWorkers = workers.filter((worker) => {
+    const { companyName: workerCompanyName } = worker
+    return workerCompanyName === companyName
+  })
+
 
   //-------------------- Confirm delete function ------------------------------//
 
@@ -24,52 +32,62 @@ const fetchWorkers = async () => {
   // ----------------------- search Function ------------------------------------//
 
   const searchFunc = () => {
-    const filtered = workersData.filter((workerInfo) => {
-      return workerInfo.firstName.startsWith(dashboardSearch.value);
+    const filtered = companyWorkers.filter((workerInfo) => {
+      const userInput = dashboardSearch.value.toLowerCase()
+      const { firstName } = workerInfo
+      return firstName.toLowerCase().startsWith(userInput);
     });
-    manageWorkersSection.innerHTML = "";
-    filtered.map((data) => {
-      const { firstName, lastName, workerID, gender, email } = data;
-      const fullName = `${firstName} ${lastName}`;
-      let ihtml = `
-            <div class="worker-details">
 
-                <div class="topsection">
-                
-                    <span>
-                        <i class="fa-regular fa-user user-icon"></i>
-                        <span class="worker-name">${fullName}</span>
-                    </span>
-                    <a href="#" class="worker-profile">
-                        <i class="fa-solid fa-ellipsis"></i>
-                    </a>
+    if (filtered.length == 0) {
+      manageWorkersSection.innerHTML = `No search results found for ${dashboardSearch.value}`
+    }
 
-                </div>
+    else {
+      manageWorkersSection.innerHTML = "";
+      filtered.map((data) => {
+        const { firstName, lastName, workerID, gender, email } = data;
+        const fullName = `${firstName} ${lastName}`;
+        let ihtml = `
+          <div class="worker-details">
+
+              <div class="topsection">
+              
+                  <span>
+                      <i class="fa-regular fa-user user-icon"></i>
+                      <span class="worker-name">${fullName}</span>
+                  </span>
+                  <a href="#" class="worker-profile">
+                      <i class="fa-solid fa-ellipsis"></i>
+                  </a>
+
+              </div>
 
 
-                <div class="worker-id">
-                    <span>Worker ID: ${workerID}</span>
-                </div>
+              <div class="worker-id">
+                  <span>Worker ID: ${workerID}</span>
+              </div>
 
-                <div class="worker-gender-delete">
-                    <p class="gender">${gender}</p>
+              <div class="worker-gender-delete">
+                  <p class="gender">${gender}</p>
 
-                    <button class="worker-delete-button">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
+                  <button class="worker-delete-button">
+                      <i class="fa-solid fa-trash"></i>
+                  </button>
 
-                </div>
+              </div>
 
-            </div>
-            `;
-      manageWorkersSection.innerHTML += ihtml;
-      confirmDelete();
-    });
+          </div>
+          `;
+        manageWorkersSection.innerHTML += ihtml;
+        confirmDelete();
+      });
+    }
+
   };
 
   dashboardSearch.addEventListener("input", searchFunc);
   manageWorkersSection.innerHTML = "";
-  workersData.map((data) => {
+  companyWorkers.map((data) => {
     const { firstName, lastName, workerID, gender, email } = data;
     const fullName = `${firstName} ${lastName}`;
     let ihtml = `
