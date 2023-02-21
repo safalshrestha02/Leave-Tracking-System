@@ -46,7 +46,7 @@ const fetchAllWorkersLeave = async () => {
         ><span class="active-leave-name">${worker.employeeName}</span>
 
         <div class="active-leave-date">
-          <span>${worker.startDate.slice(0, 10).replaceAll("-", "/")} - ${worker.endDate[0].slice(0, 10).replaceAll("-", "/")}</span> <span> ${worker.leaveDays} days</span>
+          <span>${worker.startDate.slice(0, 10).replaceAll("-", "/")} - ${worker.endDate.slice(0, 10).replaceAll("-", "/")}</span> <span> ${worker.leaveDays} days</span>
         </div>
 
         <div class="active-leave-date">
