@@ -228,7 +228,7 @@ li {
   width: 100%;
 }
 
-.worker-name-register {
+.capitalize-input {
   text-transform: capitalize;
 }
 
@@ -458,3 +458,7 @@ a {
   border-radius: 50%;
   margin-right: 0.2rem;
 }
+
+.main-body-overflow {
+  overflow-y: hidden;
+}/*# sourceMappingURL=client_manage_worker.css.map */

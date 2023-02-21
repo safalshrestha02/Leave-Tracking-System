@@ -227,7 +227,7 @@ li {
   width: 100%;
 }
 
-.worker-name-register {
+.capitalize-input {
   text-transform: capitalize;
 }
 
@@ -411,4 +411,4 @@ input[type=radio] {
 .green {
   color: #03c988;
   margin-right: 0.2rem;
-}
+}/*# sourceMappingURL=client_home.css.map */
