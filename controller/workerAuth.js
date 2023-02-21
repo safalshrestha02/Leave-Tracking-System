@@ -7,7 +7,7 @@ const { populate } = require("./../models/RequestForLeave");
 const maxAge = 3 * 24 * 60 * 60;
 
 const createToken = (id) => {
-  return jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET, {
+  return jwt.sign({ id }, process.env.WORKER_TOKEN_SECRET, {
     expiresIn: "1d",
   });
 };
