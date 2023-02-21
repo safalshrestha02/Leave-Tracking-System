@@ -1,5 +1,6 @@
 const manageWorkersSection = document.querySelector(".manage-workers-leave");
 const dashboardSearch = document.querySelector(".dashboard-search");
+const mainBody = document.querySelector(".main-body")
 
 const fetchWorkers = async () => {
   // Getting the actual workers from the company
@@ -22,9 +23,12 @@ const fetchWorkers = async () => {
     deleteButtons.forEach((deleteButton) => {
       deleteButton.addEventListener("click", () => {
         confirmBox.style.display = "flex";
+        mainBody.classList.add("main-body-overflow")
       });
       cancelButton.addEventListener("click", () => {
         confirmBox.style.display = "none";
+        mainBody.classList.remove("main-body-overflow")
+
       });
     });
   };

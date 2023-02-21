@@ -1,14 +1,14 @@
 .confirm-container {
     width: 100%;
     background: linear-gradient(rgba(0,0,0,0.4)50%,rgba(0,0,0,0.4)50%);
-    height: 100vh;
+    min-height: 100vh;
     justify-content: center;
     align-items: center;
     display: none;
     position: absolute;
     top: 0;
     right: 0;
-
+    position: fixed;
 }
 
 
