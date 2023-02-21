@@ -1,5 +1,10 @@
 @import "./variables";
 
+::selection {
+  background-color: #fdb514;
+  color: black;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -149,28 +154,27 @@ li {
   padding: 2rem 4rem;
 }
 
-
 // ----------------alert message-------------------------
 .success-alert {
   display: none;
   position: absolute;
   min-width: 15%;
-  top: .5rem;
+  top: 0.5rem;
   right: 0;
   color: rgb(26, 114, 55);
   background-color: rgb(175, 231, 193);
   padding: 1rem;
-  border-radius: .5rem 0 0 .5rem;
+  border-radius: 0.5rem 0 0 0.5rem;
   font-weight: 500;
   text-align: center;
   border-left: 10px solid rgb(26, 114, 55);
 
-  h4{
-      display: inline-flex;
-      font-weight: 500;
-      font-size: 1.1rem;
+  h4 {
+    display: inline-flex;
+    font-weight: 500;
+    font-size: 1.1rem;
   }
-  
+
   transition: all ease-in 2s;
 }
 
@@ -179,5 +183,4 @@ li {
   padding: 0.5rem;
   color: white;
   border-radius: 50%;
-  
 }
