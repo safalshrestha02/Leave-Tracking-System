@@ -11,8 +11,7 @@ const leaveWorkers = document.querySelector(".leave-workers");
 const activeWorkers = document.querySelector(".active-workers");
 
 const workersOnLeave = document.querySelector(".active-leave-container");
-
-
+console.log(workersOnLeave)
 
 
 // -------fetching total workers and display----------------
@@ -20,7 +19,15 @@ const fetchAllWorkers = async () => {
     const allWorkers = await fetchWorkersApi();
     totalNumWorkers.textContent = allWorkers.length
     activeWorkers.textContent = (parseInt(totalNumWorkers.textContent) - parseInt(leaveWorkers.textContent));
-    console.log(leaveWorkers)
+    // console.log(leaveWorkers)
+    // console.log(workersOnLeave)
+    // workersOnLeave.innerHTML = ""
+
+    if (workersOnLeave.innerHTML === "") {
+        workersOnLeave.innerHTML = "<p> No Workers on Leave. </p>"
+        console.log("hello im empty")
+    }
+
 ;}
 
 
@@ -54,3 +61,7 @@ const fetchAllWorkersLeave = async () => {
 
 fetchAllWorkersLeave()
     .then(() => fetchAllWorkers());
+
+
+
+
