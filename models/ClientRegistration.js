@@ -15,7 +15,7 @@ const clientSchema = new mongoose.Schema(
     },
     companyID: {
       type: Number,
-      // require : [true, "*company ID is required" ],
+      required : [true, "*company ID is required" ],
       unique: true,
     },
     companyAddress: {

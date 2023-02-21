@@ -2,6 +2,7 @@
 const form = document.querySelector("form");
 
 const companyName_error = document.querySelector(".cname_error");
+const companyID_error = document.querySelector(".companyID_error");
 const companyAddress_error = document.querySelector(".caddress_error");
 const clientName_error = document.querySelector(".cNname_error");
 const email_error = document.querySelector(".email_error");
@@ -36,22 +37,28 @@ form.addEventListener("submit", async (e) => {
   companyName_error.textContent = " ";
   email_error.textContent = " ";
   clientName_error.textContent = " ";
+  companyID_error.textContent = " ";
   companyAddress_error.textContent = " ";
   password_error.textContent = " ";
 
   const companyName = form.cName.value;
   const companyAddress = form.cAddress.value;
   const clientName = form.cCName.value;
+  const companyID = form.companyID.value;
   const clientEmail = form.cEmail.value;
   const clientPassword = form.cPassword.value;
+
+  console.log(companyID)
 
   const formData = {
     companyName: companyName,
     companyAddress: companyAddress,
+    companyID: companyID,
     name: clientName,
     email: clientEmail,
     password: clientPassword
   }
+  console.log(formData)
 
   try {
     const res2= await submitFormData(formData);
@@ -60,7 +67,7 @@ form.addEventListener("submit", async (e) => {
 
     // ---------------handling errors---------
     if (data.errors) {
-
+      console.log(data.errors)
       const registerInputs = document.querySelectorAll(".register-input");
 
       registerInputs.forEach((inputField) => {
@@ -68,6 +75,7 @@ form.addEventListener("submit", async (e) => {
       });
 
       companyName_error.textContent = data.errors.companyName;
+      companyID_error.textContent = data.errors.companyID;
       email_error.textContent = data.errors.email;
       password_error.textContent = data.errors.password;
       clientName_error.textContent = data.errors.name;
@@ -76,6 +84,10 @@ form.addEventListener("submit", async (e) => {
       if (companyName_error.textContent) {
         const companyNameInput = document.querySelector("#cName");
         companyNameInput.setAttribute("style", "border: 2px solid red");
+      }
+      if (companyID_error.textContent) {
+        const companyIDInput = document.querySelector("#companyID");
+        companyIDInput.setAttribute("style", "border: 2px solid red");
       }
       if (email_error.textContent) {
         const emailInput = document.querySelector("#cEmail");

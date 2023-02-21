@@ -30,6 +30,10 @@ const handleErr = (err) => {
       errors.email = "*that email is already registered";
     }
 
+    if (err.message.includes("companyID")) {
+      errors.companyID = "*that companyID is already registered";
+    }
+
     return errors;
   }
 
