@@ -24,15 +24,15 @@ const handleErr = (err) => {
   if (err.code === 11000) {
     if (err.message.includes("companyName")) {
       errors.companyName = "*that company is already registered";
-    }
-
-    if (err.message.includes("email")) {
-      errors.email = "*that email is already registered";
-    }
+    };
 
     if (err.message.includes("companyID")) {
       errors.companyID = "*that companyID is already registered";
-    }
+    };
+
+    if (err.message.includes("email")) {
+      errors.email = "*that email is already registered";
+    };
 
     return errors;
   }
