@@ -49,7 +49,7 @@ addWorkerForm.addEventListener("submit", async (e) => {
   workerEmail_error.textContent = " ";
   workerPassword_error.textContent = " ";
   country_error.textContent = " ";
-  
+
 
 
   const firstName = form.firstName.value.toLowerCase();
@@ -79,24 +79,24 @@ addWorkerForm.addEventListener("submit", async (e) => {
       method: "POST",
       body: JSON.stringify(formData),
       headers: {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
       },
     });
 
     const data = await res.json();
 
-    if(data.errors){
-      inputFields.forEach((inputs)=>{
+    if (data.errors) {
+      inputFields.forEach((inputs) => {
         inputs.setAttribute("style", "border: initial");
       });
 
       console.log(data.errors)
-      firstName_error.textContent=data.errors.firstName
-      lastName_error.textContent=data.errors.lastName
-      city_error.textContent=data.errors.city
-      country_error.textContent=data.errors.country
-      workerEmail_error.textContent=data.errors.email
-      workerPassword_error.textContent =  data.errors.password
+      firstName_error.textContent = data.errors.firstName
+      lastName_error.textContent = data.errors.lastName
+      city_error.textContent = data.errors.city
+      country_error.textContent = data.errors.country
+      workerEmail_error.textContent = data.errors.email
+      workerPassword_error.textContent = data.errors.password
       workerID_error.textContent = data.errors.workerID
 
       if (firstName_error.textContent) {
@@ -136,10 +136,10 @@ addWorkerForm.addEventListener("submit", async (e) => {
       });
 
       addWorkerForm.reset()
-      
+
       const successAlert = document.querySelector(".success-alert");
       successAlert.style.display = "block";
-      setTimeout(()=> {
+      setTimeout(() => {
         successAlert.style.display = "none";
       }, 2500)
 

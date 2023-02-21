@@ -8,7 +8,7 @@ const fetchWorkers = async () => {
 
   const companyWorkers = workers.filter((worker) => {
     const { companyName: workerCompanyName } = worker
-    return workerCompanyName === companyName
+    return workerCompanyName.toLowerCase() === companyName.toLowerCase()
   })
 
 
@@ -87,6 +87,11 @@ const fetchWorkers = async () => {
 
   dashboardSearch.addEventListener("input", searchFunc);
   manageWorkersSection.innerHTML = "";
+
+
+  if (companyWorkers.length == 0) {
+    manageWorkersSection.innerHTML = '<p>You have no any workers. Add some to manage...</p>'
+  }
   companyWorkers.map((data) => {
     const { firstName, lastName, workerID, gender, email } = data;
     const fullName = `${firstName} ${lastName}`;
