@@ -14,8 +14,9 @@ const clientSchema = new mongoose.Schema(
       unique: true,
     },
     companyID: {
-      type: Number,
+      type: String,
       required : [true, "*company ID is required" ],
+      minlength: [6, "*please enter 6 digit ID"],
       unique: true,
     },
     companyAddress: {

@@ -47,12 +47,13 @@
             />
             <div class="cname_error register-errors"></div>
             <input
-              type="number"
-              maxlength="5"
+              type="text"
+              maxlength="6"
               name="companyID"
               id="companyID"
               placeholder="Company ID"
               class="register-input"
+              oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
             />
             <div class="companyID_error register-errors"></div>
             <input

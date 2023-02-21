@@ -98,28 +98,27 @@ form.addEventListener("submit", async (e) => {
     const errorField = document.querySelector(".error-field");
 
     if (
-      employeeName ||
-      employeeID ||
-      startDate ||
-      endDate ||
-      typeOfLeave ||
-      leaveDays ||
+      employeeName === null ||
+      employeeID === null ||
+      startDate === null ||
+      endDate === null ||
+      typeOfLeave === null ||
+      leaveDays=== null ||
       reason === null
     ) {
       errorField.style.color = "red";
       errorField.textContent = "*all fields are required";
-    } else {
+    } 
+    else {
       errorField.textContent = "";
     }
 
     // ---submitting form data------------
     const res2 = await submitFormData(formData);
-    const data = await res2.json();
 
     if (res2.status === 201) {
-      form.reset();
-
       errorField.textContent = "";
+      form.reset();
 
       const successAlert = document.querySelector(".success-alert");
       successAlert.style.display = "block";
@@ -128,6 +127,7 @@ form.addEventListener("submit", async (e) => {
         successAlert.style.display = "none";
       }, 2500);
 
+      const data = await res2.json();
       return data;
     }
   } catch (err) {
