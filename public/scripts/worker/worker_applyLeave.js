@@ -11,7 +11,6 @@ const leaveDaysField = document.querySelector("#days-number");
 const leaveTypeField = document.querySelector(".type-of-leave");
 const reasonField = document.querySelector(".reason-of-leave");
 
-
 // ------------------------------------------------------------------
 
 const fetchEmpNameAndID = async () => {
@@ -64,11 +63,7 @@ endDateField.addEventListener("change", generateLeaveDays);
 
 // <=============================================>
 
-
-
-
 // --------------fetch and send leave request----------------
-
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -87,7 +82,7 @@ form.addEventListener("submit", async (e) => {
   leaveTypeField.addEventListener("change", () => {
     typeOfLeave = leaveTypeField.value;
   });
-
+  let approveState = "pending";
   const formData = {
     employeeName,
     employeeID,
@@ -96,25 +91,32 @@ form.addEventListener("submit", async (e) => {
     typeOfLeave,
     leaveDays,
     reason,
+    approveState,
   };
   try {
-
     // -----------error handling-----------
-    const errorField = document.querySelector(".error-field")
+    const errorField = document.querySelector(".error-field");
 
-    if (employeeName || employeeID || startDate || endDate || typeOfLeave || leaveDays || reason === null){
+    if (
+      employeeName ||
+      employeeID ||
+      startDate ||
+      endDate ||
+      typeOfLeave ||
+      leaveDays ||
+      reason === null
+    ) {
       errorField.style.color = "red";
       errorField.textContent = "*all fields are required";
     } else {
       errorField.textContent = "";
-    };
-
+    }
 
     // ---submitting form data------------
     const res2 = await submitFormData(formData);
     const data = await res2.json();
 
-    if (res2.status === 201){
+    if (res2.status === 201) {
       form.reset();
 
       errorField.textContent = "";
@@ -124,33 +126,27 @@ form.addEventListener("submit", async (e) => {
 
       setTimeout(() => {
         successAlert.style.display = "none";
-      },2500);
+      }, 2500);
 
       return data;
     }
-    
   } catch (err) {
     console.log(err);
     return err;
   }
-
 });
-
-
-
 
 // -------SUBMIT FORM DATA-------------
 const submitFormData = async (formData) => {
-    const res = await fetch("http://localhost:3000/worker_applyLeave", {
+  const res = await fetch("http://localhost:3000/worker_applyLeave", {
     method: "POST",
     body: JSON.stringify(formData),
     headers: {
-        "Content-Type": "application/json",
+      "Content-Type": "application/json",
     },
-    });
-    return res;
+  });
+  return res;
 };
 
-
 // ---------------RESETTING FORM INPUTS---------------
-form.addEventListener("reset",fetchEmpNameAndID);
+form.addEventListener("reset", fetchEmpNameAndID);

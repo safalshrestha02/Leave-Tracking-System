@@ -42,12 +42,20 @@ const handleErr = (err) => {
 };
 
 exports.registerClient = async (req, res) => {
-  const { clientID, companyName, companyAddress, name, email, password } =
-    req.body;
+  const {
+    clientID,
+    companyName,
+    companyID,
+    companyAddress,
+    name,
+    email,
+    password,
+  } = req.body;
   try {
     const client = await Client.create({
       clientID,
       companyName,
+      companyID,
       companyAddress,
       name,
       email,

@@ -32,7 +32,7 @@ const registerWorker = new mongoose.Schema({
   gender: {
     type: String,
     require: [true, "*Select your gender"],
-    enum: ["Male", "Female", "Others"],
+    enum: ["male", "female", "others"],
   },
   email: {
     type: String,
@@ -46,15 +46,15 @@ const registerWorker = new mongoose.Schema({
     minlength: [8, "*minimum password length is 8 characters"],
   },
   companyN: {
-    type: mongoose.Schema.Types.ObjectID,
+    type: mongoose.Schema.Types.Object,
     ref: "client",
   },
-  // companyI: {
-  //   type: mongoose.Schema.Types.ObjectID,
-  //   ref: "client",
-  // },
-  timestamps: {},
-});
+  companyI: {
+    type: mongoose.Schema.Types.Object,
+    ref: "client",
+  }},
+{timestamps: true }
+);
 
 registerWorker.pre("save", async function (next) {
   console.log("Please wait we are registering you...");

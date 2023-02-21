@@ -13,6 +13,11 @@ const clientSchema = new mongoose.Schema(
       required: [true, "*company name is required"],
       unique: true,
     },
+    companyID: {
+      type: Number,
+      // require : [true, "*company ID is required" ],
+      unique: true,
+    },
     companyAddress: {
       type: String,
       required: [true, "*company address is required"],
@@ -35,8 +40,7 @@ const clientSchema = new mongoose.Schema(
       minlength: [8, "*password must be 8 characters or above"],
     },
   },
-  { timestamps: {} }
-);
+  { timestamps: true });
 
 clientSchema.pre("save", async function (next) {
   console.log("Please wait we are registering you...");
@@ -48,6 +52,7 @@ clientSchema.pre("save", async function (next) {
 clientSchema.statics.registerClient = async function (
   clientID,
   companyName,
+  companyID,
   companyAddress,
   name,
   email,
@@ -71,6 +76,7 @@ clientSchema.statics.registerClient = async function (
   const client = await this.create({
     clientID,
     companyName,
+    companyID,
     companyAddress,
     name,
     email,

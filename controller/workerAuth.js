@@ -64,18 +64,18 @@ exports.registerWorker = async (req, res) => {
       email,
       password,
     });
-    // client.findOne({ companyName }, (err, sources) => {
-    //   //const filling = await Filling.find({}).populate({path : "Reffing", model:"Reffing"}) 
-    //   if (err) {
-    //     throw err;
-    //   }
-    //   worker.update(
-    //     { companyN: sources.companyName, companyI: sources._id },
-    //     (err) => {
-    //       if (err) throw err;
-    //     }
-    //   );
-    // });
+    client.findOne({ companyName }, (err, sources) => {
+      //const filling = await Filling.find({}).populate({path : "Reffing", model:"Reffing"})
+      if (err) {
+        throw err;
+      }
+      worker.update(
+        { companyN: sources.companyName, companyI: sources._id },
+        (err) => {
+          if (err) throw err;
+        }
+      );
+    });
     const token = createToken(worker._id);
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
     res.status(201).json({ message: "registered" });
