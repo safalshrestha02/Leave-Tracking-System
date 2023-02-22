@@ -6,7 +6,6 @@ const resetButton = document.querySelector(".form-button-reset")
 // ----------showing and hiding password------------------
 
 noPassword.addEventListener("click", () => {
-  console.log("gay")
   noPassword.classList.toggle("fa-eye");
   console.log(noPassword.classList[1]);
 
@@ -61,6 +60,7 @@ addWorkerForm.addEventListener("submit", async (e) => {
   const gender = document.querySelector("input[name='gender']:checked").value.toLowerCase();
   const password = form.workerPassword.value;
   const companyName = form.companyName.value.toLowerCase();
+  const fixedCompanyName = companyName
 
   const formData = {
     firstName,
@@ -136,6 +136,7 @@ addWorkerForm.addEventListener("submit", async (e) => {
       });
 
       addWorkerForm.reset()
+      formcompanyName.value = fixedCompanyName
 
       const successAlert = document.querySelector(".success-alert");
       successAlert.style.display = "block";

@@ -228,7 +228,7 @@ li {
   width: 100%;
 }
 
-.worker-name-register {
+.capitalize-input {
   text-transform: capitalize;
 }
 
@@ -402,6 +402,7 @@ a {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
+  position: relative;
 }
 
 .worker-details {
@@ -458,3 +459,15 @@ a {
   border-radius: 50%;
   margin-right: 0.2rem;
 }
+
+.main-body-overflow {
+  overflow-y: hidden;
+}
+
+.empty-workers {
+  opacity: 0.5;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}/*# sourceMappingURL=client_manage_worker.css.map */

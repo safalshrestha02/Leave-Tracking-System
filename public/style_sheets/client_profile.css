@@ -227,7 +227,7 @@ li {
   width: 100%;
 }
 
-.worker-name-register {
+.capitalize-input {
   text-transform: capitalize;
 }
 
@@ -356,4 +356,4 @@ input[type=radio] {
 
 .details-body {
   font-weight: 500;
-}
+}/*# sourceMappingURL=client_profile.css.map */

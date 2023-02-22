@@ -227,7 +227,7 @@ li {
   width: 100%;
 }
 
-.worker-name-register {
+.capitalize-input {
   text-transform: capitalize;
 }
 
@@ -430,4 +430,4 @@ h2 {
   font-size: 1.2rem;
   color: #ff0032;
   font-weight: 600;
-}
+}/*# sourceMappingURL=client_manage_leave.css.map */
