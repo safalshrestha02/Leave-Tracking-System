@@ -10,8 +10,6 @@ const password_error = document.querySelector(".password_error");
 
 const noPassword = document.querySelector(".fa-eye-slash");
 
-
-
 // ----------showing and hiding password------------------
 
 noPassword.addEventListener("click", () => {
@@ -25,7 +23,6 @@ noPassword.addEventListener("click", () => {
     cPasswordShow.setAttribute("type", "password");
   }
 });
-
 
 // ===========form validation====================================
 
@@ -48,7 +45,7 @@ form.addEventListener("submit", async (e) => {
   const clientEmail = form.cEmail.value;
   const clientPassword = form.cPassword.value;
 
-  console.log(companyID)
+  console.log(companyID);
 
   const formData = {
     companyName: companyName,
@@ -56,18 +53,18 @@ form.addEventListener("submit", async (e) => {
     companyID: companyID,
     name: clientName,
     email: clientEmail,
-    password: clientPassword
-  }
-  console.log(formData)
+    password: clientPassword,
+  };
+  console.log(formData);
 
   try {
-    const res2= await submitFormData(formData);
-    console.log(res2)
+    const res2 = await submitFormData(formData);
+    console.log(res2);
     const data = await res2.json();
 
     // ---------------handling errors---------
     if (data.errors) {
-      console.log(data.errors)
+      console.log(data.errors);
       const registerInputs = document.querySelectorAll(".register-input");
 
       registerInputs.forEach((inputField) => {
@@ -93,7 +90,7 @@ form.addEventListener("submit", async (e) => {
         const emailInput = document.querySelector("#cEmail");
         emailInput.setAttribute("style", "border: 2px solid red");
       }
-      if (password_error.textContent ) {
+      if (password_error.textContent) {
         const passwordInput = document.querySelector("#cPassword");
         passwordInput.setAttribute("style", "border: 2px solid red");
       }
@@ -105,7 +102,6 @@ form.addEventListener("submit", async (e) => {
         const companyAddressInput = document.querySelector("#cAddress");
         companyAddressInput.setAttribute("style", "border: 2px solid red");
       }
-
     }
 
     if (res2.status === 201) {
@@ -118,17 +114,14 @@ form.addEventListener("submit", async (e) => {
       const successAlert = document.querySelector(".success-alert");
       successAlert.style.display = "block";
 
-      setTimeout(()=> {
+      setTimeout(() => {
         location.assign("http://localhost:3000/client_login");
-      }, 1000)
-
+      }, 1000);
     }
-
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
 });
-
 
 // ---submitting form data--------
 
@@ -140,4 +133,3 @@ const submitFormData = async (formData) => {
   });
   return res;
 };
-

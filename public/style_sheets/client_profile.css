@@ -231,7 +231,7 @@ li {
   text-transform: capitalize;
 }
 
-input[type=radio] {
+input[type="radio"] {
   margin-right: 3rem;
 }
 
@@ -356,4 +356,4 @@ input[type=radio] {
 
 .details-body {
   font-weight: 500;
-}/*# sourceMappingURL=client_profile.css.map */
+} /*# sourceMappingURL=client_profile.css.map */

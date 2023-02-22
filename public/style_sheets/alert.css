@@ -1,83 +1,82 @@
 .alert-container {
-    width: 100vw;
-    height: 100vh;
-    display: flex; 
-    justify-content: center;
-    align-items: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .alert-boxes {
-    padding: 1rem 0.5rem;
-    border-radius: 0.5rem;
-    margin-bottom: 2rem;
-    position: relative;
+  padding: 1rem 0.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+  position: relative;
 }
 
 .alert-wrapper {
-    width: 50%;
+  width: 50%;
 }
 
 .alert-icon {
-    font-size: 1rem;
-    margin-left: 1.5rem;
-    color: white;
-    border-radius: 50%;
+  font-size: 1rem;
+  margin-left: 1.5rem;
+  color: white;
+  border-radius: 50%;
 }
 
 .alert-description {
-    margin: 0 2rem;
-    font-size: 1.3rem;
-
+  margin: 0 2rem;
+  font-size: 1.3rem;
 }
 
 .warning-alert {
-    color: rgb(151, 101, 7) ;
-    background-color: rgb(240, 209, 152);
+  color: rgb(151, 101, 7);
+  background-color: rgb(240, 209, 152);
 }
 
 .warning-alert i {
-    background-color: rgb(199, 141, 34);
-    padding: 0.5rem 0.9rem;
+  background-color: rgb(199, 141, 34);
+  padding: 0.5rem 0.9rem;
 }
 
 .success-alert {
-    color: rgb(26, 114, 55);
-    background-color: rgb(175, 231, 193);
+  color: rgb(26, 114, 55);
+  background-color: rgb(175, 231, 193);
 }
 
 .success-alert i:nth-child(1) {
-    background-color: rgb(56, 153, 90);
-    padding: 0.5rem;
+  background-color: rgb(56, 153, 90);
+  padding: 0.5rem;
 }
 
 .danger-alert {
-    background-color: rgb(255, 150, 150);
-    color: rgb(189, 2, 2);
+  background-color: rgb(255, 150, 150);
+  color: rgb(189, 2, 2);
 }
 
 .danger-alert i {
-    padding: 0.7rem;
-    background-color: rgb(224, 41, 41);
+  padding: 0.7rem;
+  background-color: rgb(224, 41, 41);
 }
 
 .info-alert {
-    color: rgb(15, 116, 156);
-    background-color: rgb(139, 222, 243);
+  color: rgb(15, 116, 156);
+  background-color: rgb(139, 222, 243);
 }
 
 .info-alert i {
-    background-color: rgb(15, 116, 156) ;
-    padding: 0.5rem 0.9rem;
+  background-color: rgb(15, 116, 156);
+  padding: 0.5rem 0.9rem;
 }
 
 .alert-close-icon {
-    position: absolute;
-    right: 2rem;
-    border-radius: 50%;
-    font-size: 1rem;
-    color: white;
-    bottom:30%;
-    background-color: green;
-    padding: 0.3rem 0.4rem;
-    cursor: pointer;
+  position: absolute;
+  right: 2rem;
+  border-radius: 50%;
+  font-size: 1rem;
+  color: white;
+  bottom: 30%;
+  background-color: green;
+  padding: 0.3rem 0.4rem;
+  cursor: pointer;
 }

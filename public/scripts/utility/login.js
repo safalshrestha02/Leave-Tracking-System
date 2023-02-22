@@ -1,7 +1,3 @@
-
-
-
-
 // ---------------clients-login-page----------------------------
 
 // const clientLoginEmail = document.querySelector(".client-login-email")
@@ -27,7 +23,6 @@
 
 // fetchClients()
 
-
 // ---------------------workers-ogin-page--------------
 
 // const workerLoginEmail = document.querySelector('.worker-login-email');
@@ -41,15 +36,15 @@
 //     const data = await res.json();
 //     console.log(data)
 
-    // data.forEach(worker_info => {
-    //     const companyNameAdd = `<option value="${worker_info.firstName}">
-    //                                 ${worker_info.firstName}
-    //                             </option>`;
-    //     const  companyName = document.querySelector(".worker-company-name");
+// data.forEach(worker_info => {
+//     const companyNameAdd = `<option value="${worker_info.firstName}">
+//                                 ${worker_info.firstName}
+//                             </option>`;
+//     const  companyName = document.querySelector(".worker-company-name");
 
-    //     companyName.innerHTML += companyNameAdd
-    //     console.log(companyName)
-    // });
+//     companyName.innerHTML += companyNameAdd
+//     console.log(companyName)
+// });
 // }
 
 // fetchWorkers()

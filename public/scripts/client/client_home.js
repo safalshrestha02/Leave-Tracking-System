@@ -1,9 +1,6 @@
 // WORK REMAINING
 // * Filtering with company name to display active workers on leave
 
-
-
-
 // ------Selectiong DOM elements-------------------------
 
 const totalNumWorkers = document.querySelector(".total-workers");
@@ -12,30 +9,26 @@ const activeWorkers = document.querySelector(".active-workers");
 
 const workersOnLeave = document.querySelector(".active-leave-container");
 
-
-
 // -------fetching total workers and display----------------
 const fetchAllWorkers = async () => {
-    const allWorkers = await workersUnderClient();
-    totalNumWorkers.textContent = allWorkers.length
-    activeWorkers.textContent = (parseInt(totalNumWorkers.textContent) - parseInt(leaveWorkers.textContent));
-;}
-
-
+  const allWorkers = await workersUnderClient();
+  totalNumWorkers.textContent = allWorkers.length;
+  activeWorkers.textContent =
+    parseInt(totalNumWorkers.textContent) - parseInt(leaveWorkers.textContent);
+};
 
 // -------fetching active workers on leave and adding in dashboard--------
 const fetchAllWorkersLeave = async () => {
-
-  const activeClient = await fetchClientsApi()
+  const activeClient = await fetchClientsApi();
   const allWorkersLeave = await fetchLeaveRequestsApi();
   // console.log(activeClient.companyName)
   // console.log(allWorkersLeave[0].workerDetails.companyName )
 
   const companyWorkersLeave = allWorkersLeave.filter((worker) => {
-    return (worker.workerDetails.companyName === activeClient.companyName);
-  })
+    return worker.workerDetails.companyName === activeClient.companyName;
+  });
 
-  console.log(companyWorkersLeave)
+  console.log(companyWorkersLeave);
   // ------getting current date
   const currentDate = new Date();
   let currentYear = currentDate.getFullYear();
@@ -45,13 +38,18 @@ const fetchAllWorkersLeave = async () => {
     ? (currentMonth = `0${currentMonth}`)
     : (currentMonth = currentMonth);
   currentDay < 10 ? (currentDay = `0${currentDay}`) : (currentDay = currentDay);
-  const fullDate = `${currentYear}${currentMonth}${currentDay}`
-
+  const fullDate = `${currentYear}${currentMonth}${currentDay}`;
 
   // --filtering workers based on today
   const activeLeaveWorkers = companyWorkersLeave.filter((worker) => {
-    const startDateLeave = `${worker.startDate.slice(0,4)}${worker.startDate.slice(5,7)}${worker.startDate.slice(8,10)}`
-    const endDateLeave = `${worker.endDate.slice(0,4)}${worker.endDate.slice(5,7)}${worker.endDate.slice(8,10)}`
+    const startDateLeave = `${worker.startDate.slice(
+      0,
+      4
+    )}${worker.startDate.slice(5, 7)}${worker.startDate.slice(8, 10)}`;
+    const endDateLeave = `${worker.endDate.slice(0, 4)}${worker.endDate.slice(
+      5,
+      7
+    )}${worker.endDate.slice(8, 10)}`;
 
     let startDateCheck = parseInt(fullDate) - parseInt(startDateLeave);
     let endDateCheck = parseInt(fullDate) - parseInt(endDateLeave);
@@ -79,7 +77,11 @@ const fetchAllWorkersLeave = async () => {
           ><span class="active-leave-name">${worker.employeeName}</span>
 
           <div class="active-leave-date">
-            <span>${worker.startDate.slice(0, 10).replaceAll("-", "/")} - ${worker.endDate.slice(0, 10).replaceAll("-", "/")}</span> <span> ${worker.leaveDays} days</span>
+            <span>${worker.startDate
+              .slice(0, 10)
+              .replaceAll("-", "/")} - ${worker.endDate
+        .slice(0, 10)
+        .replaceAll("-", "/")}</span> <span> ${worker.leaveDays} days</span>
           </div>
 
           <div class="active-leave-date">
@@ -87,17 +89,11 @@ const fetchAllWorkersLeave = async () => {
             <p><i class="fa-solid fa-circle green"></i>Approved</p>
           </div>
           `;
-      workersOnLeave.innerHTML += ihtml
+      workersOnLeave.innerHTML += ihtml;
     });
   } else {
-    workersOnLeave.innerHTML = `<p class="display-none">Nothing to display here<p>`
+    workersOnLeave.innerHTML = `<p class="display-none">Nothing to display here<p>`;
   }
-  
 };
 
-fetchAllWorkersLeave()
-    .then(() => fetchAllWorkers());
-
-
-
-
+fetchAllWorkersLeave().then(() => fetchAllWorkers());

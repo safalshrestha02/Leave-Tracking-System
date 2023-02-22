@@ -64,4 +64,3 @@ exports.leaveHistory = (req, res, next) => {
     )
   );
 };
-

@@ -47,7 +47,7 @@ const registerWorker = new mongoose.Schema(
       minlength: [8, "*minimum password length is 8 characters"],
     },
     companyDetail: {
-      _id: { type: mongoose.Schema.Types.ObjectId, ref: "client" ,},
+      _id: { type: mongoose.Schema.Types.ObjectId, ref: "client" },
       clientID: Number,
       companyName: String,
       companyID: Number,
@@ -101,7 +101,7 @@ registerWorker.static.registerWorker = async function (
     gender,
     email,
     password: hashedPassword,
-    companyDetail
+    companyDetail,
   });
   return worker;
 };

@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const messageSchema = new mongoose.Schema(
   {
-    employeeName: {
+    workerName: {
       type: String,
       required: [true, "*employee name is required"],
     },
@@ -38,9 +38,9 @@ const messageSchema = new mongoose.Schema(
     },
     workerDetails: {
       _id: { type: mongoose.Schema.Types.ObjectID, ref: "worker" },
-      workerId : Number,
+      workerId: Number,
       companyName: String,
-      companyDetail : Object
+      companyDetail: Object,
     },
   },
   { timestamps: true }
