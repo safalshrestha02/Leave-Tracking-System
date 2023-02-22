@@ -1,59 +1,61 @@
 const mongoose = require("mongoose");
 const { isEmail } = require("validator");
 const bcrypt = require("bcrypt");
+const ClientRegistration = require("./ClientRegistration");
 
-const registerWorker = new mongoose.Schema({
-  firstName: {
-    type: String,
-    required: [true, "please enter your first name"],
+const registerWorker = new mongoose.Schema(
+  {
+    firstName: {
+      type: String,
+      required: [true, "please enter your first name"],
+    },
+    lastName: {
+      type: String,
+      required: [true, "*please enter your last name"],
+    },
+    country: {
+      type: String,
+      required: [true, "*please enter your country"],
+    },
+    city: {
+      type: String,
+      required: [true, "*please enter your city"],
+    },
+    companyName: {
+      type: String,
+      required: [true, "*please enter your company name"],
+    },
+    workerID: {
+      type: String,
+      require: [true, "*please enter worker ID"],
+      minlength: [4, "*please enter 4 digit ID"],
+      unique: [true, "*please enter unique ID"],
+    },
+    gender: {
+      type: String,
+      require: [true, "*Select your gender"],
+      enum: ["male", "female", "others"],
+    },
+    email: {
+      type: String,
+      required: [true, "*please enter your email"],
+      validate: [isEmail, "*please enter a valid email"],
+      unique: [true, "*please enter unique email"],
+    },
+    password: {
+      type: String,
+      required: [true, "*please enter a password"],
+      minlength: [8, "*minimum password length is 8 characters"],
+    },
+    companyDetail: {
+      _id: { type: mongoose.Schema.Types.ObjectId, ref: "client" ,},
+      clientID: Number,
+      companyName: String,
+      companyID: Number,
+      companyAddress: String,
+    },
   },
-  lastName: {
-    type: String,
-    required: [true, "*please enter your last name"],
-  },
-  country: {
-    type: String,
-    required: [true, "*please enter your country"],
-  },
-  city: {
-    type: String,
-    required: [true, "*please enter your city"],
-  },
-  companyName: {
-    type: String,
-    required: [true, "*please enter your company name"],
-  },
-  workerID: {
-    type: String,
-    require: [true, "*please enter worker ID"],
-    minlength: [4, "*please enter 4 digit ID"],
-    unique: [true, "*please enter unique ID"],
-  },
-  gender: {
-    type: String,
-    require: [true, "*Select your gender"],
-    enum: ["male", "female", "others"],
-  },
-  email: {
-    type: String,
-    required: [true, "*please enter your email"],
-    validate: [isEmail, "*please enter a valid email"],
-    unique: [true, "*please enter unique email"],
-  },
-  password: {
-    type: String,
-    required: [true, "*please enter a password"],
-    minlength: [8, "*minimum password length is 8 characters"],
-  },
-  companyN: {
-    type: mongoose.Schema.Types.Object,
-    ref: "client",
-  },
-  companyI: {
-    type: mongoose.Schema.Types.Object,
-    ref: "client",
-  }},
-{timestamps: true }
+  { timestamps: true }
 );
 
 registerWorker.pre("save", async function (next) {

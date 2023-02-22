@@ -51,8 +51,10 @@ exports.registerWorker = async (req, res) => {
     gender,
     email,
     password,
+    companyDetail,
   } = req.body;
   try {
+    const company = await client.findOne({ companyName });
     const worker = await Worker.create({
       firstName,
       lastName,
@@ -63,19 +65,9 @@ exports.registerWorker = async (req, res) => {
       gender,
       email,
       password,
+      companyDetail: company,
     });
-    client.findOne({ companyName }, (err, sources) => {
-      //const filling = await Filling.find({}).populate({path : "Reffing", model:"Reffing"})
-      if (err) {
-        throw err;
-      }
-      worker.update(
-        { companyN: sources.companyName, companyI: sources._id },
-        (err) => {
-          if (err) throw err;
-        }
-      );
-    });
+
     const token = createToken(worker._id);
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
     res.status(201).json({ message: "registered" });
@@ -91,7 +83,7 @@ exports.login = async (req, res, next) => {
     const worker = await Worker.login(workerID, password);
     const token = createToken(worker._id);
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
-    res.status(200).json({ message: "logged in" });
+    res.status(200).json({ message: `${workerID} is logged in` });
   } catch (err) {
     const errors = handleErr(err);
     res.status(400).json({ errors });
@@ -108,10 +100,10 @@ exports.applyLeave = async (req, res, next) => {
     leaveDays,
     reason,
     approveState,
-    workerID,
-    workerN,
+    workerDetails,
   } = req.body;
   try {
+    const workerDetail = await Worker.findOne({ workerID: employeeID });
     leaveRequest = await leave.create({
       employeeName,
       employeeID,
@@ -121,8 +113,7 @@ exports.applyLeave = async (req, res, next) => {
       leaveDays,
       reason,
       approveState,
-      workerID,
-      workerN,
+      workerDetails: workerDetail,
     });
     Worker.findOne({ employeeID }, (err, sources) => {
       if (err) {
