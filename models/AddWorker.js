@@ -74,7 +74,8 @@ registerWorker.static.registerWorker = async function (
   workerID,
   gender,
   email,
-  password
+  password,
+  companyDetail
 ) {
   const dupWorkerId = await this.findOne({ workerID });
 
@@ -101,6 +102,7 @@ registerWorker.static.registerWorker = async function (
     gender,
     email,
     password: hashedPassword,
+    companyDetail
   });
   return worker;
 };

@@ -54,7 +54,7 @@ exports.registerWorker = async (req, res) => {
     companyDetail,
   } = req.body;
   try {
-    const company = await client.findOne({ companyName });
+    const companyDetail = await client.findOne({ companyName });
     const worker = await Worker.create({
       firstName,
       lastName,
@@ -65,7 +65,7 @@ exports.registerWorker = async (req, res) => {
       gender,
       email,
       password,
-      companyDetail: company,
+      companyDetail,
     });
 
     const token = createToken(worker._id);
@@ -114,17 +114,6 @@ exports.applyLeave = async (req, res, next) => {
       reason,
       approveState,
       workerDetails: workerDetail,
-    });
-    Worker.findOne({ employeeID }, (err, sources) => {
-      if (err) {
-        throw err;
-      }
-      leaveRequest.update(
-        { workerID: sources._id, workerN: sources.workerID },
-        (err) => {
-          if (err) throw err;
-        }
-      );
     });
     res.status(201).json({ success: true });
   } catch (err) {
