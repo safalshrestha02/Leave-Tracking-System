@@ -1,130 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leave Tracking System</title>
+    <link rel="stylesheet" href="/style_sheets/worker_applyLeave.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Leave Tracking System</title>
-  <link rel="stylesheet" href="/style_sheets/worker_applyLeave.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
-</head>
-
-<body>
-  <div>
-    <div class="main-container">
-      <div class="left-container">
-        <nav>
-          <h1 id="main-logo"><span>e</span>coB<span>ee</span>s</h1>
-          <ul id="nav-ul ">
-            <li>
-              <a href="/worker_home" class="nav-links"><i class="fa-solid fa-house nav-icon"></i>Home</a>
-            </li>
-            <li>
-              <a href="./worker_profile" class="nav-links"><i class="fa-solid fa-user nav-icon"></i>Profile</a>
-            </li>
-            <li class="active">
-              <a href="/worker_applyLeave" class="nav-links  nav-active"><i
-                  class="fa-solid fa-right-from-bracket nav-icon"></i>Apply
-                for Leave</a>
-            </li>
-            <li>
-              <a href="/leave_history" class="nav-links"><i class="fa-solid fa-clock-rotate-left nav-icon"></i>Leave
-                History</a>
-            </li>
-          </ul>
-        </nav>
-        <div class="logout-button-container">
-          <a href="/logout" class="logout-button"><i class="fa-solid fa-arrow-right-from-bracket nav-icon"
-              style="rotate: 180deg"></i>Logout</a>
+  <body>
+    <div>
+      <div class="main-container">
+        <div class="left-container">
+          <nav>
+            <h1 id="main-logo"><span>e</span>coB<span>ee</span>s</h1>
+            <ul id="nav-ul ">
+              <li>
+                <a href="/worker_home" class="nav-links"
+                  ><i class="fa-solid fa-house nav-icon"></i>Home</a
+                >
+              </li>
+              <li>
+                <a href="./worker_profile" class="nav-links"
+                  ><i class="fa-solid fa-user nav-icon"></i>Profile</a
+                >
+              </li>
+              <li class="active">
+                <a href="/worker_applyLeave" class="nav-links nav-active"
+                  ><i class="fa-solid fa-right-from-bracket nav-icon"></i>Apply
+                  for Leave</a
+                >
+              </li>
+              <li>
+                <a href="/leave_history" class="nav-links"
+                  ><i class="fa-solid fa-clock-rotate-left nav-icon"></i>Leave
+                  History</a
+                >
+              </li>
+            </ul>
+          </nav>
+          <div class="logout-button-container">
+            <a href="/logout" class="logout-button"
+              ><i
+                class="fa-solid fa-arrow-right-from-bracket nav-icon"
+                style="rotate: 180deg"
+              ></i
+              >Logout</a
+            >
+          </div>
         </div>
-      </div>
-      <div class="right-container">
-        <div class="navbar-name">
-          <div>
-            <p class="worker-name"></p>
+        <div class="right-container">
+          <div class="navbar-name">
+            <div>
+              <p class="worker-name"></p>
+            </div>
+
+            <div class="navbar-id">
+              <p class="worker-id">Worker ID:<span id="id-number"></span></p>
+            </div>
           </div>
 
-          <div class="navbar-id">
-            <p class="worker-id">Worker ID:<span id="id-number"></span></p>
+          <div class="dashboard-content">
+            <form class="form-container">
+              <div class="form-field">
+                <label for="name"> Worker Name <span>*</span> </label>
+                <input class="employee-name-field" type="text" disabled />
+              </div>
+              <div class="form-field">
+                <label for="Employee ID"> Worker ID <span>*</span> </label>
+                <input class="employee-id-field" type="text" disabled />
+              </div>
 
+              <div class="form-field">
+                <label for="start-date"> Start Date <span>*</span> </label>
+                <input
+                  type="date"
+                  id="start-date"
+                  class="reset-input"
+                  required
+                />
+              </div>
+
+              <div class="form-field">
+                <label for="end-date"> End Date <span>*</span> </label>
+                <input type="date" id="end-date" class="reset-input" required />
+              </div>
+
+              <div class="form-field">
+                <label for="leave-type"> Type of leave<span>*</span> </label>
+                <select name="type-of-leave" class="type-of-leave" id="">
+                  <option value="Sick Leave">Sick Leave</option>
+                  <option value="Vacation Leave">Vacation Leave</option>
+                  <option value="Unpaid Leave">Unpaid Leave</option>
+                  <option value="Urgent Leave">Urgent Leave</option>
+                </select>
+              </div>
+
+              <div class="form-field">
+                <label for="days-number"
+                  >No. of days leaves required<span>*</span>
+                </label>
+                <input
+                  type="text"
+                  value="-"
+                  disabled
+                  id="days-number"
+                  required
+                />
+              </div>
+
+              <div id="reason-box">
+                <label for="reason">Reason for leave <span>*</span></label>
+                <textarea
+                  maxlength="150"
+                  class="reason-of-leave reset-input"
+                  rows="4"
+                  placeholder="Type your reason for leave (max: 150 characters)"
+                  required
+                ></textarea>
+              </div>
+              <div class="error-content">
+                <p class="error-field"></p>
+              </div>
+
+              <div class="form-buttons">
+                <button type="reset" class="form-button-reset">Reset</button>
+                <button type="submit" class="form-button-apply">Apply</button>
+              </div>
+
+              <div class="success-alert alert-boxes">
+                <i class="fa-solid fa-check alert-icon"></i>
+                <span class="alert-description">
+                  <h4>Success:</h4>
+                  Your Leave Request has been sent !
+                </span>
+              </div>
+            </form>
           </div>
-        </div>
-
-
-        <div class="dashboard-content">
-
-          <form class="form-container">
-            <div class="form-field">
-              <label for="name"> Worker Name <span>*</span> </label>
-              <input class="employee-name-field" type="text" disabled />
-            </div>
-            <div class="form-field">
-              <label for="Employee ID"> Worker ID <span>*</span> </label>
-              <input class="employee-id-field" type="text" disabled />
-            </div>
-
-            <div class="form-field">
-              <label for="start-date"> Start Date <span>*</span> </label>
-              <input type="date" id="start-date" class="reset-input" required/>
-            </div>
-
-            <div class="form-field">
-              <label for="end-date"> End Date <span>*</span> </label>
-              <input type="date" id="end-date" class="reset-input" required/>
-            </div>
-
-            <div class="form-field">
-              <label for="leave-type"> Type of leave<span>*</span> </label>
-              <select name="type-of-leave" class="type-of-leave" id="">
-                <option value="Sick Leave">Sick Leave</option>
-                <option value="Vacation Leave">Vacation Leave</option>
-                <option value="Unpaid Leave">Unpaid Leave</option>
-                <option value="Urgent Leave">Urgent Leave</option>
-              </select>
-            </div>
-
-            <div class="form-field">
-              <label for="days-number">No. of days leaves required<span>*</span> </label>
-              <input type="text" value="-" disabled id="days-number" required />
-            </div>
-
-            <div id="reason-box">
-              <label for="reason">Reason for leave <span>*</span></label>
-              <textarea maxlength="150" class="reason-of-leave reset-input" rows="4" placeholder="Type your reason for leave (max: 150 characters)" required></textarea>
-            </div>
-            <div class="error-content">
-              <p class="error-field"></p>
-            </div>
-            
-
-            <div class="form-buttons">
-              <button type="reset" class="form-button-reset">
-                Reset
-              </button>
-              <button type="submit" class="form-button-apply">
-                Apply
-              </button>
-            </div>
-
-            <div class="success-alert alert-boxes">
-              <i class="fa-solid fa-check alert-icon"></i>
-              <span class="alert-description">
-                <h4>Success:</h4>
-                Your Leave Request has been sent !
-              </span>
-            </div>
-          </form>
-
         </div>
       </div>
     </div>
-  </div>
-  <script src="/scripts/worker/worker_primary.js"></script>
-  <script src="/scripts/worker/worker_applyLeave.js"></script>
-</body>
-
+    <script src="/scripts/worker/worker_primary.js"></script>
+    <script src="/scripts/worker/worker_applyLeave.js"></script>
+  </body>
 </html>

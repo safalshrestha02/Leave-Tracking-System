@@ -15,7 +15,7 @@ const clientSchema = new mongoose.Schema(
     },
     companyID: {
       type: String,
-      required : [true, "*company ID is required" ],
+      required: [true, "*company ID is required"],
       minlength: [6, "*please enter 6 digit ID"],
       unique: true,
     },
@@ -41,7 +41,8 @@ const clientSchema = new mongoose.Schema(
       minlength: [8, "*password must be 8 characters or above"],
     },
   },
-  { timestamps: true });
+  { timestamps: true }
+);
 
 clientSchema.pre("save", async function (next) {
   console.log("Please wait we are registering you...");

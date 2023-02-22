@@ -231,7 +231,7 @@ li {
   text-transform: capitalize;
 }
 
-input[type=radio] {
+input[type="radio"] {
   margin-right: 3rem;
 }
 
@@ -430,4 +430,4 @@ h2 {
   font-size: 1.2rem;
   color: #ff0032;
   font-weight: 600;
-}/*# sourceMappingURL=client_manage_leave.css.map */
+} /*# sourceMappingURL=client_manage_leave.css.map */

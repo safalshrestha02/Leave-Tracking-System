@@ -207,7 +207,7 @@ label {
   flex-basis: 50%;
 }
 
-.form-field:nth-child(2n+1) {
+.form-field:nth-child(2n + 1) {
   flex-basis: 50%;
 }
 
@@ -259,10 +259,12 @@ select {
   font-size: 1rem;
 }
 
-.form-button-reset, .form-button-apply {
+.form-button-reset,
+.form-button-apply {
   background-color: #fdb514;
 }
-.form-button-reset:hover, .form-button-apply:hover {
+.form-button-reset:hover,
+.form-button-apply:hover {
   background-color: #f99417;
   cursor: pointer;
 }
@@ -272,4 +274,4 @@ select {
   text-align: center;
   height: 2vh;
   margin-block: 0.5rem 1rem;
-}/*# sourceMappingURL=worker_applyLeave.css.map */
+} /*# sourceMappingURL=worker_applyLeave.css.map */

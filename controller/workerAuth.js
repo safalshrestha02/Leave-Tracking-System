@@ -89,8 +89,8 @@ exports.login = async (req, res, next) => {
 
 exports.applyLeave = async (req, res, next) => {
   const {
-    employeeName,
-    employeeID,
+    workerName,
+    workerID,
     startDate,
     endDate,
     typeOfLeave,
@@ -100,10 +100,10 @@ exports.applyLeave = async (req, res, next) => {
     workerDetails,
   } = req.body;
   try {
-    const workerDetail = await Worker.findOne({ workerID: employeeID });
+    const workerDetail = await Worker.findOne({ workerID: workerID });
     leaveRequest = await leave.create({
-      employeeName,
-      employeeID,
+      workerName,
+      workerID,
       startDate,
       endDate,
       typeOfLeave,

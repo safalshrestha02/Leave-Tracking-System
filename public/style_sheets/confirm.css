@@ -1,79 +1,74 @@
 .confirm-container {
-    width: 100%;
-    background: linear-gradient(rgba(0,0,0,0.4)50%,rgba(0,0,0,0.4)50%);
-    min-height: 100vh;
-    justify-content: center;
-    align-items: center;
-    display: none;
-    position: absolute;
-    top: 0;
-    right: 0;
-    position: fixed;
+  width: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.4) 50%);
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  position: fixed;
 }
 
-
 .confirm-wrapper {
-    width: 30%;
-    padding:2rem;
-    text-align: center;
-    background-color: white;
-    border-radius: 1rem;
-
+  width: 30%;
+  padding: 2rem;
+  text-align: center;
+  background-color: white;
+  border-radius: 1rem;
 }
 
 .confirm-icon {
-    font-size: 3rem;
-    color: #FF0032;
+  font-size: 3rem;
+  color: #ff0032;
 }
 
 .warning-title {
-    font-size: 1rem;
-    opacity: 0.8;
-    margin-top: 1.5rem;
-    display: block;
+  font-size: 1rem;
+  opacity: 0.8;
+  margin-top: 1.5rem;
+  display: block;
 }
 
 .warning-about {
-    opacity: 0.4;
-    margin: 0.5rem 0;
+  opacity: 0.4;
+  margin: 0.5rem 0;
 }
 
 .confirm {
-    padding: 0.7rem;
-    cursor: pointer;
-    border: none;
-    border-radius: 0.3rem;
-    color: white;
-    font-weight: bold;
-    font-size: 1rem;
-    opacity: 0.9;
+  padding: 0.7rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.3rem;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  opacity: 0.9;
 }
 
 .button-container {
-    text-align: right;
-    margin-top: 1rem;
+  text-align: right;
+  margin-top: 1rem;
 }
 
 .cancel-button {
-    margin-right: 1rem;
-    background-color: rgb(124, 124, 124);
-    font-size: 0.9rem;
+  margin-right: 1rem;
+  background-color: rgb(124, 124, 124);
+  font-size: 0.9rem;
 }
 
 .confirm-button {
-    background-color: #FF0032;
-    font-size: 0.9rem;
+  background-color: #ff0032;
+  font-size: 0.9rem;
 }
 
 .confirm-button:hover {
-    background-color: #e73357;
-    opacity: 1;
+  background-color: #e73357;
+  opacity: 1;
 }
 
-.cancel-button:hover{
-    background-color: rgb(145, 139, 139);
-    opacity: 1;
+.cancel-button:hover {
+  background-color: rgb(145, 139, 139);
+  opacity: 1;
 }
-
-
-

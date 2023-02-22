@@ -103,13 +103,12 @@ form.addEventListener("submit", async (e) => {
       startDate === null ||
       endDate === null ||
       typeOfLeave === null ||
-      leaveDays=== null ||
+      leaveDays === null ||
       reason === null
     ) {
       errorField.style.color = "red";
       errorField.textContent = "*all fields are required";
-    } 
-    else {
+    } else {
       errorField.textContent = "";
     }
 

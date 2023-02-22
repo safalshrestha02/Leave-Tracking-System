@@ -1,140 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Leave Tracking System</title>
     <link rel="stylesheet" href="/style_sheets/worker_home.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+  </head>
 
-<body>
+  <body>
     <div>
-        <div class="main-container">
-            <div class="left-container">
-                <nav>
-                    <h1 id="main-logo"><span>e</span>coB<span>ee</span>s</h1>
-                    <ul id="nav-ul ">
-                        <li class="active">
-                            <a href="/worker_home" class="nav-links nav-active"><i
-                                    class="fa-solid fa-house nav-icon"></i>Home</a>
-                        </li>
-                        <li>
-                            <a href="/worker_profile" class="nav-links"><i
-                                    class="fa-solid fa-user nav-icon"></i>Profile</a>
-                        </li>
-                        <li>
-                            <a href="/worker_applyLeave" class="nav-links"><i
-                                    class="fa-solid fa-right-from-bracket nav-icon"></i>Apply
-                                for Leave</a>
-                        </li>
-                        <li>
-                            <a href="/leave_history" class="nav-links"><i
-                                    class="fa-solid fa-clock-rotate-left nav-icon"></i>Leave
-                                History</a>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="logout-button-container">
-                    <a href="/logout" class="logout-button"><i class="fa-solid fa-arrow-right-from-bracket nav-icon"
-                            style="rotate: 180deg"></i>Logout</a>
-                </div>
-            </div>
-            <div class="right-container">
-                <div class="navbar-name">
-                    <div>
-                        <p class="worker-name"></p>
-                    </div>
-
-                    <div class="navbar-id">
-                        <p class="worker-id">Worker ID:<span id="id-number"></span></p>
-
-                    </div>
-                </div>
-
-
-                <div class="dashboard-content">
-
-                    <div class="worker-leave-overview">
-
-                        <div class="worker-total-leave overview">
-                            <p class="leaves-data">Total Leaves</p>
-                            <p class="leaves-number">30</p>
-                        </div>
-
-                        <div class="worker-leaves-taken overview">
-                            <p class="leaves-data">Leaves Taken</p>
-                            <p class="leaves-number">5</p>
-
-                        </div>
-
-                        <div class="worker-leaves-remaining overview">
-                            <p class="leaves-data">Remaining</p>
-                            <p class="leaves-number">25</p>
-                        </div>
-
-                    </div>
-                    <div class="active-leave-container">
-                        <h2>Active Leave</h2>
-                        <div class="active-leave-details">
-                            <p class="leave-type">Unpaid Leave</p>
-                            <div class="active-leave-date">
-                                <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
-                            </div>
-                            <p class="leave-status"><i class="fa-solid fa-circle green"></i>Approved</p>
-                        </div>
-                    </div>
-                    <div class="pending-and-approved">
-                        <h2>Pending/Approved Leaves</h2>
-                        <div class="pending-and-approved-container">
-                            <div class="worker-leaves">
-                                <p class="leave-type">Urgent Leave</p>
-                                <div class="leave-date">
-                                    <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
-                                </div>
-                                <p><i class="fa-solid fa-circle orange"></i>Pending</p>
-
-                            </div>
-
-                            <div class="worker-leaves">
-                                <p class="leave-type">Urgent Leave</p>
-                                <div class="leave-date">
-                                    <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
-                                </div>
-                                <p><i class="fa-solid fa-circle green"></i>Approved</p>
-                            </div>
-
-                            <div class="worker-leaves">
-                                <p class="leave-type">Sick Leave</p>
-                                <div class="leave-date">
-                                    <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
-                                </div>
-                                <p><i class="fa-solid fa-circle green"></i>Approved</p>
-                            </div>
-
-                            <div class="worker-leaves">
-                                <p class="leave-type">Urgent Leave</p>
-                                <div class="leave-date">
-                                    <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
-                                </div>
-                                <p><i class="fa-solid fa-circle orange"></i>Pending</p>
-
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+      <div class="main-container">
+        <div class="left-container">
+          <nav>
+            <h1 id="main-logo"><span>e</span>coB<span>ee</span>s</h1>
+            <ul id="nav-ul ">
+              <li class="active">
+                <a href="/worker_home" class="nav-links nav-active"
+                  ><i class="fa-solid fa-house nav-icon"></i>Home</a
+                >
+              </li>
+              <li>
+                <a href="/worker_profile" class="nav-links"
+                  ><i class="fa-solid fa-user nav-icon"></i>Profile</a
+                >
+              </li>
+              <li>
+                <a href="/worker_applyLeave" class="nav-links"
+                  ><i class="fa-solid fa-right-from-bracket nav-icon"></i>Apply
+                  for Leave</a
+                >
+              </li>
+              <li>
+                <a href="/leave_history" class="nav-links"
+                  ><i class="fa-solid fa-clock-rotate-left nav-icon"></i>Leave
+                  History</a
+                >
+              </li>
+            </ul>
+          </nav>
+          <div class="logout-button-container">
+            <a href="/logout" class="logout-button"
+              ><i
+                class="fa-solid fa-arrow-right-from-bracket nav-icon"
+                style="rotate: 180deg"
+              ></i
+              >Logout</a
+            >
+          </div>
         </div>
+        <div class="right-container">
+          <div class="navbar-name">
+            <div>
+              <p class="worker-name"></p>
+            </div>
+
+            <div class="navbar-id">
+              <p class="worker-id">Worker ID:<span id="id-number"></span></p>
+            </div>
+          </div>
+
+          <div class="dashboard-content">
+            <div class="worker-leave-overview">
+              <div class="worker-total-leave overview">
+                <p class="leaves-data">Total Leaves</p>
+                <p class="leaves-number">30</p>
+              </div>
+
+              <div class="worker-leaves-taken overview">
+                <p class="leaves-data">Leaves Taken</p>
+                <p class="leaves-number">5</p>
+              </div>
+
+              <div class="worker-leaves-remaining overview">
+                <p class="leaves-data">Remaining</p>
+                <p class="leaves-number">25</p>
+              </div>
+            </div>
+            <div class="active-leave-container">
+              <h2>Active Leave</h2>
+              <div class="active-leave-details">
+                <p class="leave-type">Unpaid Leave</p>
+                <div class="active-leave-date">
+                  <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
+                </div>
+                <p class="leave-status">
+                  <i class="fa-solid fa-circle green"></i>Approved
+                </p>
+              </div>
+            </div>
+            <div class="pending-and-approved">
+              <h2>Pending/Approved Leaves</h2>
+              <div class="pending-and-approved-container">
+                <div class="worker-leaves">
+                  <p class="leave-type">Urgent Leave</p>
+                  <div class="leave-date">
+                    <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
+                  </div>
+                  <p><i class="fa-solid fa-circle orange"></i>Pending</p>
+                </div>
+
+                <div class="worker-leaves">
+                  <p class="leave-type">Urgent Leave</p>
+                  <div class="leave-date">
+                    <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
+                  </div>
+                  <p><i class="fa-solid fa-circle green"></i>Approved</p>
+                </div>
+
+                <div class="worker-leaves">
+                  <p class="leave-type">Sick Leave</p>
+                  <div class="leave-date">
+                    <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
+                  </div>
+                  <p><i class="fa-solid fa-circle green"></i>Approved</p>
+                </div>
+
+                <div class="worker-leaves">
+                  <p class="leave-type">Urgent Leave</p>
+                  <div class="leave-date">
+                    <span>01/23/2023 - 01/29/2023</span> <span> 7 days</span>
+                  </div>
+                  <p><i class="fa-solid fa-circle orange"></i>Pending</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script src="/scripts/worker/worker_primary.js"></script>
-</body>
-
+  </body>
 </html>

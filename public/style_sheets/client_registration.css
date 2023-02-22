@@ -202,7 +202,7 @@ body {
   position: absolute;
   color: black;
   font-size: 1rem;
-  right: .5rem;
+  right: 0.5rem;
   transform: translateY(100%);
   cursor: pointer;
 }
@@ -218,9 +218,6 @@ body {
   text-align: left;
   height: 0.6vh;
 }
-
-
-
 
 @media only screen and (max-width: 1560px) {
   #ecobees-text-logo {
