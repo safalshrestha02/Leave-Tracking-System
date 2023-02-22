@@ -41,9 +41,9 @@ form.addEventListener("submit", async (e) => {
   companyAddress_error.textContent = " ";
   password_error.textContent = " ";
 
-  const companyName = form.cName.value;
-  const companyAddress = form.cAddress.value;
-  const clientName = form.cCName.value;
+  const companyName = form.cName.value.toLowerCase();
+  const companyAddress = form.cAddress.value.toLowerCase();
+  const clientName = form.cCName.value.toLowerCase();
   const companyID = form.companyID.value;
   const clientEmail = form.cEmail.value;
   const clientPassword = form.cPassword.value;
