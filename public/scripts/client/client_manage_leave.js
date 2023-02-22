@@ -7,31 +7,27 @@ const manageLeavesFunc = async () => {
 
         // getting actual workers of the company
         const workers = await fetchWorkersApi()
-        const { companyName } = await fetchClientsApi()
+        const { _id: clientID } = await fetchClientsApi()
         const leaveRequestsData = await fetchLeaveRequestsApi()
 
-
         const companyWorkers = workers.filter((worker) => {
-            const { companyName: workerCompanyName } = worker
-            return workerCompanyName.toLowerCase() === companyName.toLowerCase()
+            const { companyI } = worker
+            return companyI === clientID
         })
 
 
         const filterAndFetchLeaves = () => {
-            const a = companyWorkers.map((worker) => {
+            const actualLeaveRequests = companyWorkers.map((worker) => {
 
                 // getting actual leave requests
-                const companyLeaveRequests = leaveRequestsData.filter((request) => {
-                    const { employeeName } = request
-                    const { firstName, lastName } = worker
-                    const fullName = `${firstName} ${lastName}`.toLowerCase()
-                    return fullName == employeeName.toLowerCase()
+                const companyLeaveRequests = leaveRequestsData.filter((leaveRequest) => {
+                    const { employeeID } = leaveRequest
+                    const { workerID } = worker
+                    return employeeID == workerID
                 })
-                // console.table(companyLeaveRequests)
-                // console.log(companyLeaveRequests.length)
 
                 const fetchLeaves = () => {
-                    companyLeaveRequests.map((leaves) => {
+                    companyLeaveRequests.forEach((leaves) => {
 
                         const { employeeName, startDate, endDate, typeOfLeave, leaveDays, reason, approveState } = leaves
                         const dayOrDays = leaveDays > 1 ? 'Days' : 'Day'
@@ -94,7 +90,8 @@ const manageLeavesFunc = async () => {
                 fetchLeaves()
                 return companyLeaveRequests
             })
-            if (a.length == 0) {
+
+            if (actualLeaveRequests.length == 0) {
                 pendingLeaveContainer.innerHTML = ` <p class="no-leaves">No any Pending Leave Requests...</p>`
             }
         }
