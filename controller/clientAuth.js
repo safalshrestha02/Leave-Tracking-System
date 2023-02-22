@@ -2,6 +2,7 @@ const Client = require("../models/ClientRegistration");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
+
 const maxAge = 2 * 24 * 60 * 60;
 
 const createToken = (id) => {

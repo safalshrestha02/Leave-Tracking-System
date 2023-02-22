@@ -91,7 +91,7 @@ clientSchema.statics.login = async function (email, password) {
   if (client) {
     const passcheck = await bcrypt.compare(password, client.password);
     if (passcheck) {
-      console.log("logged in");
+      console.log(`${email} is registered`);
       return client;
     }
     throw Error("Invalid Credentials");
