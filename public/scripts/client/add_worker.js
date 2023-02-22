@@ -6,7 +6,6 @@ const resetButton = document.querySelector(".form-button-reset")
 // ----------showing and hiding password------------------
 
 noPassword.addEventListener("click", () => {
-  console.log("gay")
   noPassword.classList.toggle("fa-eye");
   console.log(noPassword.classList[1]);
 

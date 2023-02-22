@@ -98,6 +98,7 @@ a {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
+  position: relative;
 }
 
 .worker-details {
@@ -160,4 +161,12 @@ a {
 
 .main-body-overflow {
   overflow-y: hidden;
+}
+
+.empty-workers {
+  opacity: 0.5;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
 }
