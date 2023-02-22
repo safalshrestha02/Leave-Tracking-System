@@ -1,9 +1,28 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
-const requireClientAuth = (req, res, next) => {
+const requireClientAuth = async (req, res, next) => {
+
+  // const { authorization } = req.headers;
+
+  // if (!authorization) {
+  //   return res.status(401).redirect("/client_login");
+  // }
+
+  // const token = authorization.split(" ")[1];
+
+  // try {
+  //   const { _id } = jwt.verify(token, process.env.CLIENT_TOKEN_SECRET);
+
+  //   req.client = await Client.findOne({ _id }).select("_id");
+  //   next();
+  // } catch (error) {
+  //   console.log(error);
+  //   res.status(401).redirect("/client_login");
+  // }
+
   const token = req.cookies.jwt;
-  console.log("cliewnt jwt", "tokentokentoken");
+
   if (token) {
     jwt.verify(token, process.env.CLIENT_TOKEN_SECRET, (err, decodedToken) => {
       if (err) {
