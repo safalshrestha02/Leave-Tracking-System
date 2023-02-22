@@ -36,3 +36,14 @@ const fetchLeaveRequestsApi = async () => {
     return leaveRequestsData
 
 }
+
+
+
+const workersUnderClient = async () => {
+    const activeClient = await fetchClientsApi();
+    const totalWOrkers = await fetchWorkersApi();
+    const workersClient = totalWOrkers.filter((worker) => {
+        return worker.companyName === activeClient.companyName;
+    })
+    return workersClient;
+}

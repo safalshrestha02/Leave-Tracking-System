@@ -16,7 +16,7 @@ const workersOnLeave = document.querySelector(".active-leave-container");
 
 // -------fetching total workers and display----------------
 const fetchAllWorkers = async () => {
-    const allWorkers = await fetchWorkersApi();
+    const allWorkers = await workersUnderClient();
     totalNumWorkers.textContent = allWorkers.length
     activeWorkers.textContent = (parseInt(totalNumWorkers.textContent) - parseInt(leaveWorkers.textContent));
 ;}
@@ -25,10 +25,17 @@ const fetchAllWorkers = async () => {
 
 // -------fetching active workers on leave and adding in dashboard--------
 const fetchAllWorkersLeave = async () => {
-  const allWorkersLeave = await fetchLeaveRequestsApi();
-  const totalWOrkers = await fetchWorkersApi()
-  console.log(totalWOrkers)
 
+  const activeClient = await fetchClientsApi()
+  const allWorkersLeave = await fetchLeaveRequestsApi();
+  // console.log(activeClient.companyName)
+  // console.log(allWorkersLeave[0].workerDetails.companyName )
+
+  const companyWorkersLeave = allWorkersLeave.filter((worker) => {
+    return (worker.workerDetails.companyName === activeClient.companyName);
+  })
+
+  console.log(companyWorkersLeave)
   // ------getting current date
   const currentDate = new Date();
   let currentYear = currentDate.getFullYear();
@@ -38,12 +45,11 @@ const fetchAllWorkersLeave = async () => {
     ? (currentMonth = `0${currentMonth}`)
     : (currentMonth = currentMonth);
   currentDay < 10 ? (currentDay = `0${currentDay}`) : (currentDay = currentDay);
-  // const currentFullDate = `${currentYear}-${currentMonth}-${currentDay}`;
   const fullDate = `${currentYear}${currentMonth}${currentDay}`
 
 
   // --filtering workers based on today
-  const activeLeaveWorkers = allWorkersLeave.filter((worker) => {
+  const activeLeaveWorkers = companyWorkersLeave.filter((worker) => {
     const startDateLeave = `${worker.startDate.slice(0,4)}${worker.startDate.slice(5,7)}${worker.startDate.slice(8,10)}`
     const endDateLeave = `${worker.endDate.slice(0,4)}${worker.endDate.slice(5,7)}${worker.endDate.slice(8,10)}`
 
@@ -59,14 +65,14 @@ const fetchAllWorkersLeave = async () => {
     }
   });
 
-  console.log(activeLeaveWorkers)
+  // console.log(activeLeaveWorkers)
 
   leaveWorkers.textContent = activeLeaveWorkers.length;
 
   if (activeLeaveWorkers.length !== 0) {
     // ---mapping filtered workers
     activeLeaveWorkers.forEach((worker) => {
-      console.log(worker);
+      // console.log(worker);
       let ihtml = `
           <div class="active-leave-details">
           <i class="fa-regular fa-user user-icon"></i
