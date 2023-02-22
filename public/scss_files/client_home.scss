@@ -54,6 +54,7 @@
   }
   
   .active-leave-container {
+    position: relative;
     margin-top: 1rem;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -93,4 +94,14 @@
   .green {
     color: #03c988;
     margin-right: 0.2rem;
+  }
+
+  .display-none{
+    position: absolute;
+    color: rgba(128, 128, 128, 0.596);
+    font-weight: 700;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    margin-top: 8rem;
   }
