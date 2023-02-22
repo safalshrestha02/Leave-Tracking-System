@@ -1,5 +1,4 @@
 const path = require("path");
-const Clients = require("./../models/ClientRegistration");
 
 exports.registerClient = (req, res, next) => {
   res.sendFile(
@@ -104,4 +103,3 @@ exports.clientProfile = (req, res, next) => {
     )
   );
 };
-

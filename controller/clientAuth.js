@@ -2,7 +2,6 @@ const Client = require("../models/ClientRegistration");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
-
 const maxAge = 2 * 24 * 60 * 60;
 
 const createToken = (id) => {
@@ -25,15 +24,15 @@ const handleErr = (err) => {
   if (err.code === 11000) {
     if (err.message.includes("companyName")) {
       errors.companyName = "*that company is already registered";
-    };
+    }
 
     if (err.message.includes("companyID")) {
       errors.companyID = "*that companyID is already registered";
-    };
+    }
 
     if (err.message.includes("email")) {
       errors.email = "*that email is already registered";
-    };
+    }
 
     return errors;
   }
@@ -69,7 +68,6 @@ exports.registerClient = async (req, res) => {
 
     const token = createToken(client._id);
 
-    res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
     res.status(201).json({ client: client._id });
   } catch (err) {
     const errors = handleErr(err);
@@ -84,7 +82,7 @@ exports.login = async (req, res, next) => {
     const client = await Client.login(email, password);
     const token = createToken(client._id);
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
-    res.status(201).json({ message: "logged in" });
+    res.status(201).json({ token });
   } catch (err) {
     const errors = handleErr(err);
     res.status(400).json({ errors });
@@ -92,6 +90,16 @@ exports.login = async (req, res, next) => {
 };
 
 exports.logout = async (req, res, next) => {
-  res.cookie("jwt", "", { maxAge: 1 });
-  res.redirect("/");
+  try {
+    res.cookie("jwt", "none", {
+      expiresIn: { maxAge: 1 },
+      httpOnly: true,
+    });
+
+    res.status(200).redirect("/");
+  } catch (error) {
+    next(error);
+  }
+  // res.cookie("jwt", "", { maxAge: 1 });
+  // res.redirect("/");
 };

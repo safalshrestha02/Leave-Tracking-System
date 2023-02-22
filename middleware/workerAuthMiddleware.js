@@ -3,7 +3,7 @@ require("dotenv").config();
 
 const requireWorkerAuth = (req, res, next) => {
   const token = req.cookies.jwt;
-  console.log("worker jwt", "tokentokentoken");
+
   if (token) {
     jwt.verify(token, process.env.WORKER_TOKEN_SECRET, (err, decodedToken) => {
       if (err) {

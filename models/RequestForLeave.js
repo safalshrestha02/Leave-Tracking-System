@@ -6,7 +6,7 @@ const messageSchema = new mongoose.Schema(
       type: String,
       required: [true, "*employee name is required"],
     },
-    employeeID: {
+    workerID: {
       type: Number,
       required: [true, "*employee ID is required"],
     },

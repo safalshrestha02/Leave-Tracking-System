@@ -1,6 +1,4 @@
 const path = require("path");
-const worker = require("./../models/AddWorker");
-const messages = require("../models/RequestForLeave");
 
 exports.workerLogin = (req, res, next) => {
   res.sendFile(

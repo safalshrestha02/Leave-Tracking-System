@@ -2,7 +2,6 @@ const jwt = require("jsonwebtoken");
 const client = require("./../models/ClientRegistration");
 const leave = require("./../models/RequestForLeave");
 const Worker = require("../models/AddWorker");
-const { populate } = require("./../models/RequestForLeave");
 
 const maxAge = 3 * 24 * 60 * 60;
 
@@ -37,7 +36,6 @@ const handleErr = (err) => {
     });
   }
   return errors;
-  // console.log(err.message, err.code);
 };
 
 exports.registerWorker = async (req, res) => {
@@ -69,7 +67,6 @@ exports.registerWorker = async (req, res) => {
     });
 
     const token = createToken(worker._id);
-    res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
     res.status(201).json({ message: "registered" });
   } catch (err) {
     const errors = handleErr(err);
