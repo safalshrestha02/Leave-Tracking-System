@@ -1,5 +1,4 @@
 // WORK REMAINING
-// * Filtering with company name to display active workers on leave
 
 // ------Selectiong DOM elements-------------------------
 
@@ -19,14 +18,7 @@ const fetchAllWorkers = async () => {
 
 // -------fetching active workers on leave and adding in dashboard--------
 const fetchAllWorkersLeave = async () => {
-  const activeClient = await fetchClientsApi();
-  const allWorkersLeave = await fetchLeaveRequestsApi();
-  // console.log(activeClient.companyName)
-  // console.log(allWorkersLeave[0].workerDetails.companyName )
-
-  const companyWorkersLeave = allWorkersLeave.filter((worker) => {
-    return worker.workerDetails.companyName === activeClient.companyName;
-  });
+  const companyWorkersLeave = await leaveRequestsUnderClient();
 
   console.log(companyWorkersLeave);
   // ------getting current date
@@ -68,13 +60,14 @@ const fetchAllWorkersLeave = async () => {
   leaveWorkers.textContent = activeLeaveWorkers.length;
 
   if (activeLeaveWorkers.length !== 0) {
+
     // ---mapping filtered workers
     activeLeaveWorkers.forEach((worker) => {
-      // console.log(worker);
+
       let ihtml = `
           <div class="active-leave-details">
           <i class="fa-regular fa-user user-icon"></i
-          ><span class="active-leave-name">${worker.employeeName}</span>
+          ><span class="active-leave-name">${worker.workerName}</span>
 
           <div class="active-leave-date">
             <span>${worker.startDate
@@ -92,7 +85,7 @@ const fetchAllWorkersLeave = async () => {
       workersOnLeave.innerHTML += ihtml;
     });
   } else {
-    workersOnLeave.innerHTML = `<p class="display-none">Nothing to display here<p>`;
+    workersOnLeave.innerHTML = `<p class="display-none">No workers actively on leave<p>`;
   }
 };
 

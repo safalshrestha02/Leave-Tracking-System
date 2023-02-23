@@ -14,14 +14,14 @@ const manageLeavesFunc = async () => {
             else if (companyLeaveRequests.length > 0) {
                 companyLeaveRequests.forEach((leaves) => {
 
-                    const { employeeName, startDate, endDate, typeOfLeave, leaveDays, reason, approveState } = leaves
+                    const { workerName, startDate, endDate, typeOfLeave, leaveDays, reason, approveState } = leaves
                     const dayOrDays = leaveDays > 1 ? 'Days' : 'Day'
                     let ihtml = `
                         <div class="pending-leave-details">
                         
                             <i class="fa-regular fa-user user-icon"></i>
                         
-                            <span class="pending-leave-name">${employeeName}</span>
+                            <span class="pending-leave-name">${workerName}</span>
             
                             <div class="pending-leave-date">
             

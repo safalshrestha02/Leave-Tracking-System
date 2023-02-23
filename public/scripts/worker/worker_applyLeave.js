@@ -24,7 +24,7 @@ fetchEmpNameAndID();
 
 const currentDate = new Date();
 let currentYear = currentDate.getFullYear();
-let currentMonth = currentDate.getMonth() + 1;
+let currentMonth = curremployeeNameentDate.getMonth() + 1;
 let currentDay = currentDate.getDate();
 currentMonth < 10
   ? (currentMonth = `0${currentMonth}`)
@@ -70,8 +70,8 @@ form.addEventListener("submit", async (e) => {
 
   // ------------------getting input values
 
-  const employeeName = empNameField.value;
-  const employeeID = empIDField.value;
+  const workerName = empNameField.value;
+  const workerID = empIDField.value;
   const startDate = startDateField.value;
   const endDate = endDateField.value;
   const leaveDays = leaveDaysField.value;
@@ -84,8 +84,8 @@ form.addEventListener("submit", async (e) => {
   });
   let approveState = "pending";
   const formData = {
-    employeeName,
-    employeeID,
+    workerName,
+    workerID,
     startDate,
     endDate,
     typeOfLeave,
@@ -98,8 +98,8 @@ form.addEventListener("submit", async (e) => {
     const errorField = document.querySelector(".error-field");
 
     if (
-      employeeName === null ||
-      employeeID === null ||
+      workerName === null ||
+      workerID === null ||
       startDate === null ||
       endDate === null ||
       typeOfLeave === null ||
