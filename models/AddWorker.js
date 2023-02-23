@@ -6,7 +6,7 @@ const registerWorker = new mongoose.Schema(
   {
     firstName: {
       type: String,
-      required: [true, "please enter your first name"],
+      required: [true, "*please enter your last name"],
     },
     lastName: {
       type: String,
@@ -65,8 +65,7 @@ registerWorker.pre("save", async function (next) {
 });
 
 registerWorker.static.registerWorker = async function (
-  firstName,
-  lastName,
+  workerName,
   country,
   city,
   companyName,
@@ -92,8 +91,7 @@ registerWorker.static.registerWorker = async function (
   const hashedPassword = await bcrypt.hash(password, salt);
 
   const worker = await this.create({
-    firstName,
-    lastName,
+    workerName,
     country,
     city,
     companyName,
