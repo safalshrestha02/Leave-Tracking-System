@@ -97,7 +97,7 @@ const fetchWorkers = async () => {
             <div class="worker-gender-delete">
                 <p class="gender">${gender}</p>
 
-                <button class="worker-delete-button" onClick='confirmDelete(${workerID},${index})'>
+                <button class="worker-delete-button" onClick='confirmDelete(${workerID})'>
                     <i class="fa-solid fa-trash"></i>
                 </button>
             </div>
@@ -110,19 +110,18 @@ const fetchWorkers = async () => {
 
 fetchWorkers();
 
-const confirmDelete = (deleteWorkerID, index) => {
-  console.log(deleteWorkerID)
-  const deleteButtons = document.querySelectorAll(".worker-delete-button");
+const confirmDelete = (deleteWorkerID) => {
+
   const confirmBox = document.querySelector(".confirm-container");
   const cancelButton = document.querySelector(".cancel-button");
   const confirmButton = document.querySelector(".confirm-button");
+  
+  confirmBox.style.display = "flex";
+  mainBody.classList.add("main-body-overflow");
+  
+  
 
-  deleteButtons.forEach((deleteButton) => {
-    deleteButton.addEventListener("click", () => {
-      confirmBox.style.display = "flex";
-      mainBody.classList.add("main-body-overflow");
-    });
-  });
+
   cancelButton.addEventListener("click", () => {
     confirmBox.style.display = "none";
     mainBody.classList.remove("main-body-overflow");
