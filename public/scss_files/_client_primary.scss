@@ -242,10 +242,6 @@ input[type="radio"] {
   margin-right: 3rem;
 }
 
-.form-gender-container {
-  grid-column: span 2;
-}
-
 .choose-gender {
   margin-bottom: 0.8rem;
 }
@@ -295,7 +291,7 @@ input[type="radio"] {
   margin-right: 1rem;
 }
 
-.company-name-value {
+.company-name-value, #clientID {
   cursor: not-allowed;
 }
 

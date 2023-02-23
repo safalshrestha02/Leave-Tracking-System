@@ -207,7 +207,7 @@ label {
   flex-basis: 50%;
 }
 
-.form-field:nth-child(2n + 1) {
+.form-field:nth-child(2n+1) {
   flex-basis: 50%;
 }
 
@@ -274,4 +274,4 @@ select {
   text-align: center;
   height: 2vh;
   margin-block: 0.5rem 1rem;
-} /*# sourceMappingURL=worker_applyLeave.css.map */
+}/*# sourceMappingURL=worker_applyLeave.css.map */

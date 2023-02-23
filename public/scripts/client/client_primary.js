@@ -3,8 +3,9 @@ const fetchClientsApi = async () => {
     try {
         const response = await fetch(clientsApiUrl)
         const result = await response.json()
-        const { companyName, companyAddress, name: clientName, email: clientEmail, _id } = result[0]
-        return { companyName, companyAddress, clientName, clientEmail, _id }
+        console.log(result)
+        const { companyName, companyAddress, name: clientName, email: clientEmail, _id, companyID } = result[0]
+        return { companyName, companyAddress, clientName, clientEmail, _id, companyID }
     }
 
     catch (err) {

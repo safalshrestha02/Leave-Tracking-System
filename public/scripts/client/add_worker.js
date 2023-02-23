@@ -2,6 +2,7 @@ const addWorkerForm = document.querySelector("#worker-register-form");
 const noPassword = document.querySelector(".fa-eye-slash");
 const formcompanyName = document.querySelector(".company-name-value");
 const resetButton = document.querySelector(".form-button-reset");
+const formcompanyID = document.querySelector(".client-ID-value")
 
 // ----------showing and hiding password------------------
 
@@ -29,6 +30,7 @@ const workerID_error = document.querySelector(".workerID_error");
 const gender_error = document.querySelector(".gender_error");
 const workerEmail_error = document.querySelector(".workerEmail_error");
 const workerPassword_error = document.querySelector(".workerPassword_error");
+const companyID_error = document.querySelector(".companyID_error")
 
 // SUBMIT ACTION
 
@@ -45,6 +47,7 @@ addWorkerForm.addEventListener("submit", async (e) => {
   workerEmail_error.textContent = " ";
   workerPassword_error.textContent = " ";
   country_error.textContent = " ";
+  companyID_error.textContent = " ";
 
   const firstName = form.firstName.value.toLowerCase();
   const lastName = form.lastName.value.toLowerCase();
@@ -58,6 +61,8 @@ addWorkerForm.addEventListener("submit", async (e) => {
   const password = form.workerPassword.value;
   const companyName = form.companyName.value.toLowerCase();
   const fixedCompanyName = companyName;
+  const clientID = form.clientID.value
+  const fixedClientID = clientID
 
   const formData = {
     firstName,
@@ -69,6 +74,7 @@ addWorkerForm.addEventListener("submit", async (e) => {
     country,
     city,
     companyName,
+    clientID
   };
 
   try {
@@ -133,6 +139,8 @@ addWorkerForm.addEventListener("submit", async (e) => {
 
       addWorkerForm.reset();
       formcompanyName.value = fixedCompanyName;
+      formcompanyID.value = fixedClientID
+
 
       const successAlert = document.querySelector(".success-alert");
       successAlert.style.display = "block";

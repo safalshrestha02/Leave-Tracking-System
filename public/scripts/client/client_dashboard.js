@@ -4,6 +4,8 @@ const formClose = document.querySelector("#close-form");
 const companyNameField = document.querySelector(".company-name-value");
 const form = document.querySelector(".register-form");
 const inputFields = document.querySelectorAll(".register-input-field");
+const companyIDField = document.querySelector(".client-ID-value")
+console.log(companyIDField)
 
 addWorker.addEventListener("click", () => {
   formContainer.classList.add("form-active");
@@ -29,10 +31,23 @@ const fetchCompanyName = async () => {
 };
 fetchCompanyName();
 
+const fetchCompanyID = async () => {
+  try {
+    const { companyID } = await fetchClientsApi();
+    companyIDField.value = companyID
+
+  } catch(err) {
+    console.log(err.message)
+  }
+}
+
+fetchCompanyID();
+
 const reset = document.querySelector(".form-button-reset");
 
 reset.addEventListener("click", () => {
   fetchCompanyName();
+  fetchCompanyID();
 
   firstName_error.textContent = " ";
   lastName_error.textContent = " ";
