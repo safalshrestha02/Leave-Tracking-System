@@ -19,20 +19,17 @@ exports.apiWorkers = async (req, res, next) => {
 };
 
 exports.ClientbyId = async (req, res) => {
-  console.log(req.params["id"]);
   Clients.findById(req.params["id"]).then((result) => {
     res.json(result);
   });
 };
 
 exports.WorkerbyId = async (req, res) => {
-  console.log(req.params["id"]);
   worker.findById(req.params["id"]).then((result) => {
     res.json(result);
   });
 };
 exports.LeavebyId = async (req, res) => {
-  console.log(req.params["id"]);
   messages.findById(req.params["id"]).then((result) => {
     res.json(result);
   });
@@ -41,12 +38,15 @@ exports.LeavebyId = async (req, res) => {
 exports.workerDelete = async (req, res, next) => {
   const { id } = req.params;
   const deleteallworkerleaves = await messages.deleteMany({
+    approveState: "pending",
     "workerDetails._id": id,
   });
   const workerDelete = await worker.findOneAndDelete(id);
+  res.send("<h3>worker along with his leave requests are deleted</h3>");
 };
 
 exports.leaveRequestDelete = async (req, res, next) => {
   const { id } = req.params;
   const deleting = await messages.findOneAndDelete(id);
+  res.send("<h3>leave request is deleted</h3>");
 };
