@@ -37,3 +37,16 @@ exports.LeavebyId = async (req, res) => {
     res.json(result);
   });
 };
+
+exports.workerDelete = async (req, res, next) => {
+  const { id } = req.params;
+  const deleteallworkerleaves = await messages.deleteMany({
+    "workerDetails._id": id,
+  });
+  const workerDelete = await worker.findOneAndDelete(id);
+};
+
+exports.leaveRequestDelete = async (req, res, next) => {
+  const { id } = req.params;
+  const deleting = await messages.findOneAndDelete(id);
+};
