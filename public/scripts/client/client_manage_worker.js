@@ -111,6 +111,7 @@ const fetchWorkers = async () => {
 fetchWorkers();
 
 const confirmDelete = (deleteWorkerID, index) => {
+  console.log(deleteWorkerID)
   const deleteButtons = document.querySelectorAll(".worker-delete-button");
   const confirmBox = document.querySelector(".confirm-container");
   const cancelButton = document.querySelector(".cancel-button");
@@ -128,7 +129,8 @@ const confirmDelete = (deleteWorkerID, index) => {
     console.log("you cancelled");
   });
   confirmButton.addEventListener("click", () => {
-    console.log(`deleted worker ID ${deleteWorkerID}`);
+    const parsedID = `"${deleteWorkerID}"`
+    console.log(`deleted worker ID ${parsedID}`);
     deleteWorkerID = null;
     confirmBox.style.display = "none";
     mainBody.classList.remove("main-body-overflow");

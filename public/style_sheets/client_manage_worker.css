@@ -232,12 +232,8 @@ li {
   text-transform: capitalize;
 }
 
-input[type="radio"] {
+input[type=radio] {
   margin-right: 3rem;
-}
-
-.form-gender-container {
-  grid-column: span 2;
 }
 
 .choose-gender {
@@ -289,7 +285,7 @@ input[type="radio"] {
   margin-right: 1rem;
 }
 
-.company-name-value {
+.company-name-value, #clientID {
   cursor: not-allowed;
 }
 
@@ -470,4 +466,4 @@ a {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-} /*# sourceMappingURL=client_manage_worker.css.map */
+}/*# sourceMappingURL=client_manage_worker.css.map */
