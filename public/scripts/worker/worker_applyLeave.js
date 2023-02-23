@@ -24,7 +24,7 @@ fetchEmpNameAndID();
 
 const currentDate = new Date();
 let currentYear = currentDate.getFullYear();
-let currentMonth = curremployeeNameentDate.getMonth() + 1;
+let currentMonth = currentDate.getMonth() + 1;
 let currentDay = currentDate.getDate();
 currentMonth < 10
   ? (currentMonth = `0${currentMonth}`)
