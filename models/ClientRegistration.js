@@ -45,7 +45,6 @@ const clientSchema = new mongoose.Schema(
 );
 
 clientSchema.pre("save", async function (next) {
-  console.log("Please wait we are registering you...");
   const salt = await bcrypt.genSalt();
   this.password = await bcrypt.hash(this.password, salt);
   next();
@@ -92,7 +91,6 @@ clientSchema.statics.login = async function (email, password) {
   if (client) {
     const passcheck = await bcrypt.compare(password, client.password);
     if (passcheck) {
-      console.log(`${email} is registered`);
       return client;
     }
     throw Error("Invalid Credentials");
