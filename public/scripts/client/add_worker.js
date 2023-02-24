@@ -78,7 +78,7 @@ addWorkerForm.addEventListener("submit", async (e) => {
   };
 
   try {
-    const res = await fetch("http://localhost:3000/client_add_worker", {
+    const res = await fetch("http://localhost:3000/api/addWorker", {
       method: "POST",
       body: JSON.stringify(formData),
       headers: {

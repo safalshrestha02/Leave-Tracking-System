@@ -115,7 +115,7 @@ form.addEventListener("submit", async (e) => {
       successAlert.style.display = "block";
 
       setTimeout(() => {
-        location.assign("http://localhost:3000/client_login");
+        location.assign("http://localhost:3000/api/clientLogin");
       }, 1000);
     }
   } catch (err) {
@@ -126,7 +126,7 @@ form.addEventListener("submit", async (e) => {
 // ---submitting form data--------
 
 const submitFormData = async (formData) => {
-  const res = await fetch("http://localhost:3000/client_registration", {
+  const res = await fetch("api/clientRegister", {
     method: "POST",
     body: JSON.stringify(formData),
     headers: { "Content-Type": "application/json" },

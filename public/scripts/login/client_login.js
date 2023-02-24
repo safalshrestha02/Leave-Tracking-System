@@ -18,7 +18,7 @@ form.addEventListener("submit", async (e) => {
   login_error.textContent = " ";
 
   try {
-    const res = await fetch("/client_login", {
+    const res = await fetch("/api/clientLogin", {
       method: "POST",
       body: JSON.stringify({
         email: clientEmail,
