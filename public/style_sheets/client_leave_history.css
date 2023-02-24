@@ -284,7 +284,8 @@ input[type=radio] {
   margin-right: 1rem;
 }
 
-.company-name-value, #clientID {
+.company-name-value,
+#clientID {
   cursor: not-allowed;
 }
 
