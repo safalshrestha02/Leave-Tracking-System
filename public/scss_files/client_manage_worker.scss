@@ -55,6 +55,8 @@ a {
   }
 
   .dashboard-filtersection {
+    position: relative;
+    margin-right: 3rem;
     .filter-button {
       padding: 0 1.2rem;
       font-size: 1rem;
@@ -133,6 +135,7 @@ a {
 
   .gender {
     font-size: 1.2rem;
+    text-transform: capitalize;
   }
 
   .worker-delete-button {
@@ -169,4 +172,54 @@ a {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+
+//  filter 
+
+.filter-container {
+  background-color: $grey-bg;
+  position: absolute;
+  width: 15em;
+  padding:1rem 0.5rem;
+  text-align: center;
+  left: -4rem;
+  margin-top: 1rem;
+  display: none;
+  z-index: 10;
+}
+
+
+.name-container {
+  border-bottom: 1px solid rgb(192, 188, 188);
+}
+
+.filter-title {
+  padding: 0.5rem 0.3rem;
+  margin: 0 1rem;
+  display: inline-block;
+  font-weight: bolder;
+  margin-bottom: 1rem;
+}
+
+.active-filter-title {
+  color: $blue-bg;
+  border-bottom: 3px solid $blue-bg;
+}
+
+.filter-buttons {
+  width: 100%;
+  cursor: pointer;
+  margin: 1rem 0;
+  border: none;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.filter-container-active{
+  display: block;
+} 
+
+.fa-circle-xmark {
+  color: black !important;
 }
