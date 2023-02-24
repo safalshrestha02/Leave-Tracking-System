@@ -1,9 +1,38 @@
 @import "./client_primary";
 
 /* ------------------------------------------ leave requests overview on homepage ----------------------------------- */
-h2 {
-  font-weight: 500;
+
+.manage-leaves-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 2rem;
+
+  h2 {
+    font-weight: 500;
+  }
+
+  .filter-leaveRequests {
+    background-color: $light-bg;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgb(230, 230, 230);
+    }
+  }
 }
 
 .pending-leave-container {
@@ -12,91 +41,91 @@ h2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2rem;
   row-gap: 2rem;
-}
 
-.pending-leave-details {
-  background-color: $grey-bg;
-  padding: 0.8rem;
-  border-radius: 0.5rem;
-}
+  .pending-leave-details {
+    background-color: $light-bg;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
 
-.pending-leave-name {
-  font-weight: 600;
-  margin-left: 0.5rem;
-}
+    .pending-leave-name {
+      font-weight: 600;
+      margin-left: 0.5rem;
+    }
 
-.pending-leave-type-status,
-.pending-leave-date {
-  display: flex;
-  justify-content: space-between;
-  margin: 0.8rem 0;
+    .pending-leave-type-status,
+    .pending-leave-date {
+      display: flex;
+      justify-content: space-between;
+      margin: 0.8rem 0;
 
-  p {
-    align-self: center;
-    font-weight: 500;
-  }
+      p {
+        align-self: center;
+        font-weight: 500;
+      }
 
-  span {
-    opacity: 0.6;
-  }
-}
+      span {
+        opacity: 0.6;
+      }
+    }
 
-.pending-leave-type-status {
-  margin-top: 1.1rem;
-}
+    .pending-leave-type-status {
+      margin-top: 1.1rem;
+    }
 
-.description {
-  margin: 0.7rem 0;
-  h1 {
-    display: inline-block;
-    color: black;
-    font-size: 1rem;
-    font-weight: 600;
-  }
-  .description-details {
-    display: inline-block;
-    opacity: 0.6;
-  }
-}
+    .description {
+      margin: 0.7rem 0;
+      h1 {
+        display: inline-block;
+        color: black;
+        font-size: 1rem;
+        font-weight: 600;
+      }
+      .description-details {
+        display: inline-block;
+        opacity: 0.6;
+      }
+    }
 
-.user-icon {
-  background-color: #3c79f5;
-  color: white;
-  font-size: 1rem;
-  padding: 0.5rem;
-  border-radius: 50%;
-  margin-right: 0.2rem;
-}
+    .user-icon {
+      background-color: $blue-bg;
+      color: white;
+      font-size: 1rem;
+      padding: 0.5rem;
+      border-radius: 50%;
+      margin-right: 0.2rem;
+    }
 
-.buttons-container {
-  width: 50%;
-  display: flex;
-  gap: 1rem;
-  justify-content: flex-end;
-}
+    .buttons-container {
+      width: 50%;
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-end;
+    }
 
-.pending-leave-buttons {
-  width: 50%;
-  font-size: 1.1rem;
-  border-radius: 5px;
-  color: white;
-  border: none;
-  padding: 0.5rem;
-}
+    .pending-leave-buttons {
+      width: 50%;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      color: white;
+      border: none;
+      padding: 0.5rem;
+    }
 
-.approve-button {
-  background-color: #03c988;
-  &:hover {
-    cursor: pointer;
-    background-color: #03b67a;
-  }
-}
-.reject-button {
-  background-color: #ff0032;
-  &:hover {
-    &:hover {
-      cursor: pointer;
-      background-color: #df032f;
+    .approve-button {
+      background-color: $green-bg;
+      &:hover {
+        cursor: pointer;
+        background-color: #03b67a;
+      }
+    }
+    .reject-button {
+      background-color: $red-bg;
+      &:hover {
+        &:hover {
+          cursor: pointer;
+          background-color: #df032f;
+        }
+      }
     }
   }
 }

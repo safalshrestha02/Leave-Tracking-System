@@ -5,7 +5,6 @@ const companyNameField = document.querySelector(".company-name-value");
 const form = document.querySelector(".register-form");
 const inputFields = document.querySelectorAll(".register-input-field");
 const companyIDField = document.querySelector(".client-ID-value")
-console.log(companyIDField)
 
 addWorker.addEventListener("click", () => {
   formContainer.classList.add("form-active");
@@ -36,7 +35,7 @@ const fetchCompanyID = async () => {
     const { companyID } = await fetchClientsApi();
     companyIDField.value = companyID
 
-  } catch(err) {
+  } catch (err) {
     console.log(err.message)
   }
 }

@@ -1,5 +1,6 @@
+const filterDropDown = document.querySelector('.filter-leaveRequests')
+const filterOption = document.querySelector('.filter-leaveRequests-title')
 const pendingLeaveContainer = document.querySelector('.pending-leave-container')
-
 
 const manageLeavesFunc = async () => {
 
@@ -7,12 +8,18 @@ const manageLeavesFunc = async () => {
         const companyLeaveRequests = await leaveRequestsUnderClient()
         const fetchLeaveRequests = () => {
 
-            if (companyLeaveRequests.length === 0) {
+            const filteredLeaveRequests = companyLeaveRequests.sort((leaves1, leaves2) => {
+                const { startDate: startDate1 } = leaves1
+                const { startDate: startDate2 } = leaves2
+                return startDate1.slice(0, 10) > startDate2.slice(0, 10) ? -1 : startDate1.slice(0, 10) < startDate2.slice(0, 10) ? 1 : 0
+            })
+
+            if (filteredLeaveRequests.length === 0) {
                 pendingLeaveContainer.innerHTML = ` <p class="no-leaves">No any Pending Leave Requests...</p>`
             }
 
-            else if (companyLeaveRequests.length > 0) {
-                companyLeaveRequests.forEach((leaves) => {
+            else if (filteredLeaveRequests.length > 0) {
+                filteredLeaveRequests.forEach((leaves) => {
 
                     const { workerName, startDate, endDate, typeOfLeave, leaveDays, reason, approveState } = leaves
                     const dayOrDays = leaveDays > 1 ? 'Days' : 'Day'
