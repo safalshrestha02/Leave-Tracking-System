@@ -8,15 +8,18 @@ const companyIDField = document.querySelector(".client-ID-value")
 
 addWorker.addEventListener("click", () => {
   formContainer.classList.add("form-active");
+  document.body.style.overflow = 'hidden'
 });
 
 formClose.addEventListener("click", () => {
   formContainer.classList.remove("form-active");
+  document.body.style.overflow = 'auto'
 });
 
 window.addEventListener("click", (event) => {
   if (event.target === formContainer) {
     formContainer.classList.remove("form-active");
+    document.body.style.overflow = 'auto'
   }
 });
 
