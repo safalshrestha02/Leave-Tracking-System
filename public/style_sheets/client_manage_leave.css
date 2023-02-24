@@ -393,6 +393,7 @@ input[type=radio] {
 .pending-leave-container .pending-leave-details .description .description-details {
   display: inline-block;
   opacity: 0.6;
+  width: 90%;
 }
 .pending-leave-container .pending-leave-details .user-icon {
   background-color: #3c79f5;

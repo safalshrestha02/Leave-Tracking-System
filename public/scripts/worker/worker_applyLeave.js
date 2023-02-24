@@ -137,7 +137,7 @@ form.addEventListener("submit", async (e) => {
 
 // -------SUBMIT FORM DATA-------------
 const submitFormData = async (formData) => {
-  const res = await fetch("http://localhost:3000/worker_applyLeave", {
+  const res = await fetch("http://localhost:3000/api/applyForLeave", {
     method: "POST",
     body: JSON.stringify(formData),
     headers: {

@@ -17,7 +17,7 @@ loginForm.addEventListener("submit", async (event) => {
   login_error.textContent = " ";
 
   try {
-    const response = await fetch("/worker_login", {
+    const response = await fetch("/api/workerLogin", {
       method: "POST",
       body: JSON.stringify({
         workerID: workerID,
