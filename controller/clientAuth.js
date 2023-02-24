@@ -1,49 +1,9 @@
-const Client = require("../models/ClientRegistration");
-const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const Client = require("../models/ClientRegistration");
+const { clientErrHandle } = require("../utils/errorHandler");
+const { createClientToken } = require("../utils/createToken");
 
 const maxAge = 2 * 24 * 60 * 60;
-
-const createToken = (id) => {
-  return jwt.sign({ id }, process.env.CLIENT_TOKEN_SECRET, {
-    expiresIn: "1d",
-  });
-};
-
-const handleErr = (err) => {
-  let errors = {
-    email: "",
-    password: "",
-  };
-
-  if (err.message === "Invalid Credentials") {
-    errors.email = "*Invalid Credentials";
-    errors.password = "*Invalid Credentials";
-  }
-
-  if (err.code === 11000) {
-    if (err.message.includes("companyName")) {
-      errors.companyName = "*that company is already registered";
-    }
-
-    if (err.message.includes("companyID")) {
-      errors.companyID = "*that companyID is already registered";
-    }
-
-    if (err.message.includes("email")) {
-      errors.email = "*that email is already registered";
-    }
-
-    return errors;
-  }
-
-  if (err.message.includes("client validation failed")) {
-    Object.values(err.errors).forEach(({ properties }) => {
-      errors[properties.path] = properties.message;
-    });
-  }
-  return errors;
-};
 
 exports.registerClient = async (req, res) => {
   const {
@@ -66,11 +26,9 @@ exports.registerClient = async (req, res) => {
       password,
     });
 
-    const token = createToken(client._id);
-
     res.status(201).json({ client: client._id });
   } catch (err) {
-    const errors = handleErr(err);
+    const errors = clientErrHandle(err);
     res.status(401).json({ errors });
   }
 };
@@ -80,26 +38,37 @@ exports.login = async (req, res, next) => {
 
   try {
     const client = await Client.login(email, password);
-    const token = createToken(client._id);
-    res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
+    const token = createClientToken(client._id);
+    res.cookie("jwt", token, {
+      httpOnly: true,
+      maxAge: maxAge * 1000,
+    });
     res.status(201).json({ token });
   } catch (err) {
-    const errors = handleErr(err);
+    const errors = clientErrHandle(err);
     res.status(400).json({ errors });
+  }
+};
+
+exports.activeClient = async (req, res, next) => {
+  try {
+    const client = await Client.findById(req.client.id)
+      .select("companyName companyID companyAddress name email createdAt")
+      .exec();
+    res.status(200).json({ data: client });
+  } catch (error) {
+    return error;
   }
 };
 
 exports.logout = async (req, res, next) => {
   try {
-    res.cookie("jwt", "none", {
+    res.cookie("jwt", " ", {
       expiresIn: { maxAge: 1 },
       httpOnly: true,
     });
-
     res.status(200).redirect("/");
   } catch (error) {
-    next(error);
+    return error;
   }
-  // res.cookie("jwt", "", { maxAge: 1 });
-  // res.redirect("/");
 };

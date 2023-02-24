@@ -1,37 +1,35 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const Client = require("../models/ClientRegistration");
 
 const requireClientAuth = async (req, res, next) => {
-  // const { authorization } = req.headers;
+  try {
+    let token;
 
-  // if (!authorization) {
-  //   return res.status(401).redirect("/client_login");
-  // }
+    if (
+      req.headers.authorization &&
+      req.headers.authorization.startsWith("Bearer")
+    ) {
+      token = req.headers.authorization.split(" ")[1];
+    } else if (req.cookies.jwt) {
+      token = req.cookies.jwt;
+    }
 
-  // const token = authorization.split(" ")[1];
+    if (!token) {
+      return res.redirect("/client_login");
+    }
 
-  // try {
-  //   const { _id } = jwt.verify(token, process.env.CLIENT_TOKEN_SECRET);
+    try {
+      const decoded = jwt.verify(token, process.env.CLIENT_TOKEN_SECRET);
 
-  //   req.client = await Client.findOne({ _id }).select("_id");
-  //   next();
-  // } catch (error) {
-  //   console.log(error);
-  //   res.status(401).redirect("/client_login");
-  // }
+      req.client = await Client.findById(decoded.id);
 
-  const token = req.cookies.jwt;
-
-  if (token) {
-    jwt.verify(token, process.env.CLIENT_TOKEN_SECRET, (err, decodedToken) => {
-      if (err) {
-        res.redirect("/client_login");
-      } else {
-        next();
-      }
-    });
-  } else {
-    res.redirect("/client_login");
+      next();
+    } catch (error) {
+      return res.redirect("/client_login");
+    }
+  } catch (error) {
+    next(error);
   }
 };
 

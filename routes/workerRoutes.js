@@ -3,7 +3,7 @@ const router = express.Router();
 
 //paths
 const loadPages = require("../controller/workerPageController");
-const workerRegistration = require("../controller/workerAuth");
+const workerAuth = require("../controller/workerAuth");
 const { requireWorkerAuth } = require("../middleware/workerAuthMiddleware");
 
 //html pages
@@ -12,13 +12,11 @@ router.get("/worker_home", requireWorkerAuth, loadPages.homePage);
 router.get("/worker_applyLeave", requireWorkerAuth, loadPages.leavePage);
 router.get("/worker_profile", requireWorkerAuth, loadPages.workerProfile);
 router.get("/leave_history", requireWorkerAuth, loadPages.leaveHistory);
+router.get("/logoutWorker", workerAuth.logout);
 
 //APIs
-router.post(
-  "/worker_applyLeave",
-  requireWorkerAuth,
-  workerRegistration.applyLeave
-);
-router.post("/worker_login", workerRegistration.login);
+router.post("/api/workerLogin", workerAuth.login);
+router.post("/api/applyForLeave", requireWorkerAuth, workerAuth.applyLeave);
+router.post("/api/activeWorker", requireWorkerAuth, workerAuth.activeWorker);
 
 module.exports = router;

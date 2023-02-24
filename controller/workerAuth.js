@@ -1,42 +1,10 @@
-const jwt = require("jsonwebtoken");
-const client = require("./../models/ClientRegistration");
-const leave = require("./../models/RequestForLeave");
+const Client = require("./../models/ClientRegistration");
+const Leave = require("./../models/RequestForLeave");
 const Worker = require("../models/AddWorker");
+const { workerErrHandle } = require("../utils/errorHandler");
+const { createWorkerToken } = require("../utils/createToken");
 
-const maxAge = 3 * 24 * 60 * 60;
-
-const createToken = (id) => {
-  return jwt.sign({ id }, process.env.WORKER_TOKEN_SECRET, {
-    expiresIn: "1d",
-  });
-};
-
-const handleErr = (err) => {
-  let errors = {
-    email: "",
-    password: "",
-    workerID: "",
-  };
-  if (err.message === "Invalid Credentials") {
-    errors.workerID = "*Invalid Credentials";
-    errors.password = "*Invalid Credentials";
-  }
-  if (err.code === 11000) {
-    if (err.message.includes("workerID")) {
-      errors.workerID = "*this workerID already registered";
-    }
-    if (err.message.includes("email")) {
-      errors.email = "*that email is already registered";
-    }
-    return errors;
-  }
-  if (err.message.includes("worker validation failed")) {
-    Object.values(err.errors).forEach(({ properties }) => {
-      errors[properties.path] = properties.message;
-    });
-  }
-  return errors;
-};
+const maxAge = 2 * 24 * 60 * 60;
 
 exports.registerWorker = async (req, res) => {
   const {
@@ -52,7 +20,7 @@ exports.registerWorker = async (req, res) => {
     companyDetail,
   } = req.body;
   try {
-    const companyDetail = await client.findOne({ companyName });
+    const companyDetail = await Client.findOne({ companyName });
     const worker = await Worker.create({
       firstName,
       lastName,
@@ -65,11 +33,9 @@ exports.registerWorker = async (req, res) => {
       password,
       companyDetail,
     });
-
-    const token = createToken(worker._id);
     res.status(201).json({ message: "registered" });
   } catch (err) {
-    const errors = handleErr(err);
+    const errors = workerErrHandle(err);
     res.status(401).json({ errors });
   }
 };
@@ -78,11 +44,14 @@ exports.login = async (req, res, next) => {
   const { workerID, password } = req.body;
   try {
     const worker = await Worker.login(workerID, password);
-    const token = createToken(worker._id);
-    res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
+    const token = createWorkerToken(worker._id);
+    res.cookie("jwt", token, {
+      httpOnly: true,
+      maxAge: maxAge * 1000,
+    });
     res.status(200).json({ message: `${workerID} is logged in` });
   } catch (err) {
-    const errors = handleErr(err);
+    const errors = workerErrHandle(err);
     res.status(400).json({ errors });
   }
 };
@@ -101,7 +70,7 @@ exports.applyLeave = async (req, res, next) => {
   } = req.body;
   try {
     const workerDetail = await Worker.findOne({ workerID: workerID });
-    leaveRequest = await leave.create({
+    leaveRequest = await Leave.create({
       workerName,
       workerID,
       startDate,
@@ -115,5 +84,28 @@ exports.applyLeave = async (req, res, next) => {
     res.status(201).json({ success: true });
   } catch (err) {
     console.log(err.message);
+  }
+};
+
+exports.activeWorker = async (req, res, next) => {
+  try {
+    const worker = await Worker.findById(req.worker.id).select(
+      "companyDetail firstName lastName country city companyName workerID gender email createdAt"
+    );
+    res.status(200).json({ data: worker });
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.logout = async (req, res, next) => {
+  try {
+    res.cookie("jwt", " ", {
+      expiresIn: { maxAge: 1 },
+      httpOnly: true,
+    });
+    res.status(200).redirect("/");
+  } catch (error) {
+    next(error);
   }
 };

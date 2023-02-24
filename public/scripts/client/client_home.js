@@ -60,10 +60,8 @@ const fetchAllWorkersLeave = async () => {
   leaveWorkers.textContent = activeLeaveWorkers.length;
 
   if (activeLeaveWorkers.length !== 0) {
-
     // ---mapping filtered workers
     activeLeaveWorkers.forEach((worker) => {
-
       let ihtml = `
           <div class="active-leave-details">
           <i class="fa-regular fa-user user-icon"></i
