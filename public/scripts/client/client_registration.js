@@ -115,7 +115,7 @@ form.addEventListener("submit", async (e) => {
       successAlert.style.display = "block";
 
       setTimeout(() => {
-        location.assign("http://localhost:3000/api/clientLogin");
+        location.assign("http://localhost:3000/client_login");
       }, 1000);
     }
   } catch (err) {
