@@ -9,6 +9,7 @@
 .client-sub-title {
   font-weight: 200;
   color: black;
+  text-transform: capitalize;
 }
 
 .details-table {
@@ -36,4 +37,9 @@
 
 .details-body {
   font-weight: 500;
+  text-transform: capitalize;
+}
+
+.client-email-value {
+  text-transform: none;
 }

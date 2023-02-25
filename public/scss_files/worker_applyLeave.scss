@@ -51,6 +51,12 @@ select {
   margin-right: 2rem;
   width: 90%;
   font-size: 1rem;
+  text-transform: capitalize;
+}
+
+#end-date,
+#start-date {
+  text-transform: none;
 }
 
 #reason-box {

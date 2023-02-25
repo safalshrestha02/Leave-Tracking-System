@@ -1,4 +1,5 @@
-// WORK REMAINING
+// WORK REMAINING\
+
 
 // ------Selectiong DOM elements-------------------------
 
@@ -69,10 +70,10 @@ const fetchAllWorkersLeave = async () => {
 
           <div class="active-leave-date">
             <span>${worker.startDate
-              .slice(0, 10)
-              .replaceAll("-", "/")} - ${worker.endDate
-        .slice(0, 10)
-        .replaceAll("-", "/")}</span> <span> ${worker.leaveDays} days</span>
+          .slice(0, 10)
+          .replaceAll("-", "/")} - ${worker.endDate
+            .slice(0, 10)
+            .replaceAll("-", "/")}</span> <span> ${worker.leaveDays} days</span>
           </div>
 
           <div class="active-leave-date">

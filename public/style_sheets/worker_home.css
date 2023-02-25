@@ -120,6 +120,7 @@ li {
 
 .worker-name {
   font-size: 2rem;
+  text-transform: capitalize;
 }
 
 #welcome-worker {
@@ -279,4 +280,4 @@ li {
 
 .orange {
   color: #fdb514;
-}/*# sourceMappingURL=worker_home.css.map */
+}

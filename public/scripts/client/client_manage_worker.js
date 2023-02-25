@@ -6,14 +6,9 @@ const filterContainer = document.querySelector(".filter-container");
 
 const fetchWorkers = async () => {
   // Getting the actual workers from the company
-  const workers = await fetchWorkersApi();
-  const { companyName } = await fetchClientsApi();
+  const workersUnderActiveClient = await workersUnderClient()
+  const { workers: companyWorkers } = workersUnderActiveClient
 
-  const companyWorkers = workers.filter((worker) => {
-    const { companyName: workerCompanyName } = worker;
-    return workerCompanyName.toLowerCase() === companyName.toLowerCase();
-  });
-  console.log(companyWorkers);
 
   // ----------------------- search Function ------------------------------------//
 
@@ -117,10 +112,10 @@ const fetchWorkers = async () => {
   // ----------------------------- SORTING BY ASCENDING NAME -------------------//
 
   nameAsc.addEventListener("click", () => {
-    
+
     filterContainer.classList.remove("filter-container-active");
     icon.classList.remove("fa-circle-xmark");
-    
+
     if (companyWorkers.length == 0) {
       manageWorkersSection.innerHTML =
         '<p class="empty-workers">You have no any workers to filter. Add workers to filter out</p>';

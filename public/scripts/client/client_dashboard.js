@@ -25,7 +25,7 @@ window.addEventListener("click", (event) => {
 
 const fetchCompanyName = async () => {
   try {
-    const { companyName } = await fetchClientsApi();
+    const { companyName } = await fetchActiveClientApi();
     companyNameField.value = companyName;
   } catch (err) {
     console.log(err.message);
@@ -35,7 +35,7 @@ fetchCompanyName();
 
 const fetchCompanyID = async () => {
   try {
-    const { companyID } = await fetchClientsApi();
+    const { companyID } = await fetchActiveClientApi();
     companyIDField.value = companyID
 
   } catch (err) {
