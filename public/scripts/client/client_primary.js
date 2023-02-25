@@ -1,9 +1,16 @@
-const clientsApiUrl = 'http://localhost:3000/api/clients'
-const fetchClientsApi = async () => {
+const activeClientApiUrl = 'http://localhost:3000/api/activeClient'
+const fetchActiveClientApi = async () => {
     try {
-        const response = await fetch(clientsApiUrl)
+        const response = await fetch(activeClientApiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+
+            })
+        })
         const result = await response.json()
-        const { companyName, companyAddress, name: clientName, email: clientEmail, _id, companyID } = result[0]
+        const { data } = result
+        const { companyName, companyAddress, name: clientName, email: clientEmail, _id, companyID } = data
         return { companyName, companyAddress, clientName, clientEmail, _id, companyID }
     }
 
@@ -12,44 +19,26 @@ const fetchClientsApi = async () => {
     }
 }
 
-
-const workersApiUrl = 'http://localhost:3000/api/workers'
-const fetchWorkersApi = async () => {
-    try {
-        const response = await fetch(workersApiUrl)
-        const workersData = await response.json()
-        return workersData
-    }
-
-    catch (err) {
-        console.log(err.message)
-    }
+// Getting the actual workers
+const workersUnderClient = async () => {
+    const activeClient = await fetchActiveClientApi();
+    const { _id } = activeClient
+    const workersResponse = await fetch(`http://localhost:3000/api/clients_workers/${_id}`)
+    const workersResult = await workersResponse.json()
+    return workersResult
 }
-
 
 const leaveRequestsApiUrl = 'http://localhost:3000/api/leaveRequests'
 const fetchLeaveRequestsApi = async () => {
     const response = await fetch(leaveRequestsApiUrl)
     const leaveRequestsData = await response.json()
     return leaveRequestsData
-
-}
-
-
-// Getting the actual workers
-const workersUnderClient = async () => {
-    const activeClient = await fetchClientsApi();
-    const totalWorkers = await fetchWorkersApi();
-    const workersClient = totalWorkers.filter((worker) => {
-        return worker.companyName === activeClient.companyName;
-    })
-    return workersClient;
 }
 
 
 // Getting the actual leave requests
 const leaveRequestsUnderClient = async () => {
-    const activeClient = await fetchClientsApi();
+    const activeClient = await fetchActiveClientApi();
     const totalLeaveRequests = await fetchLeaveRequestsApi()
     const leaveRequestsClient = totalLeaveRequests.filter((leaveRequest) => {
         const { workerDetails } = leaveRequest

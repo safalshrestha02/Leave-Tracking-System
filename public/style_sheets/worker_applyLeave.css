@@ -120,6 +120,7 @@ li {
 
 .worker-name {
   font-size: 2rem;
+  text-transform: capitalize;
 }
 
 #welcome-worker {
@@ -229,6 +230,12 @@ select {
   margin-right: 2rem;
   width: 90%;
   font-size: 1rem;
+  text-transform: capitalize;
+}
+
+#end-date,
+#start-date {
+  text-transform: none;
 }
 
 #reason-box {
@@ -274,4 +281,4 @@ select {
   text-align: center;
   height: 2vh;
   margin-block: 0.5rem 1rem;
-}/*# sourceMappingURL=worker_applyLeave.css.map */
+}

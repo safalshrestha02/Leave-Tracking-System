@@ -14,7 +14,7 @@ const reasonField = document.querySelector(".reason-of-leave");
 // ------------------------------------------------------------------
 
 const fetchEmpNameAndID = async () => {
-  const { fullName, workerID } = await fetchWorkerApi();
+  const { fullName, workerID } = await fetchActiveWorkerApi();
   empNameField.value = fullName;
   empIDField.value = workerID;
 };

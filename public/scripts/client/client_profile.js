@@ -11,7 +11,7 @@ const companyNameFieldProfile = document.querySelector('#company-name');
 const fetchClientProfile = async () => {
   try {
     const totalWorkers = await workersUnderClient()
-    const { companyName, companyAddress, clientName, clientEmail, companyID } = await fetchClientsApi();
+    const { companyName, companyAddress, clientName, clientEmail, companyID } = await fetchActiveClientApi();
     dashboardClientName.innerHTML = clientName;
     dashboardClientEmail.innerHTML = clientEmail;
     dashboardCompanyName.innerHTML = companyName;

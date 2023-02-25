@@ -120,6 +120,7 @@ li {
 
 .worker-name {
   font-size: 2rem;
+  text-transform: capitalize;
 }
 
 #welcome-worker {
@@ -214,4 +215,9 @@ li {
 
 .details-body {
   font-weight: 500;
-}/*# sourceMappingURL=worker_profile.css.map */
+  text-transform: capitalize;
+}
+
+.emp-email-value {
+  text-transform: none;
+}

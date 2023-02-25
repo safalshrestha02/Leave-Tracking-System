@@ -326,6 +326,7 @@ input[type=radio] {
 .client-sub-title {
   font-weight: 200;
   color: black;
+  text-transform: capitalize;
 }
 
 .details-table {
@@ -353,4 +354,9 @@ input[type=radio] {
 
 .details-body {
   font-weight: 500;
-}/*# sourceMappingURL=client_profile.css.map */
+  text-transform: capitalize;
+}
+
+.client-email-value {
+  text-transform: none;
+}
