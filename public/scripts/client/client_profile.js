@@ -11,13 +11,14 @@ const companyNameFieldProfile = document.querySelector('#company-name');
 const fetchClientProfile = async () => {
   try {
     const totalWorkers = await workersUnderClient()
+    const { workers } = totalWorkers
     const { companyName, companyAddress, clientName, clientEmail, companyID } = await fetchActiveClientApi();
     dashboardClientName.innerHTML = clientName;
     dashboardClientEmail.innerHTML = clientEmail;
     dashboardCompanyName.innerHTML = companyName;
     companyNameFieldProfile.innerHTML = companyName;
     dashboardCompanyAddress.innerHTML = companyAddress;
-    dashboardWorkers.innerHTML = totalWorkers.length;
+    dashboardWorkers.innerHTML = workers.length;
     dashboardCompanyID.innerHTML = companyID;
   } catch (err) {
     dashboard.innerHTML = `<p class = "fetch-error">${err.message}....</p>`;
