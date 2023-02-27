@@ -4,9 +4,7 @@ const fetchActiveClientApi = async () => {
         const response = await fetch(activeClientApiUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-
-            })
+            body: JSON.stringify({})
         })
         const result = await response.json()
         const { data } = result
@@ -28,21 +26,12 @@ const workersUnderClient = async () => {
     return workersResult
 }
 
-const leaveRequestsApiUrl = 'http://localhost:3000/api/leaveRequests'
-const fetchLeaveRequestsApi = async () => {
-    const response = await fetch(leaveRequestsApiUrl)
-    const leaveRequestsData = await response.json()
-    return leaveRequestsData
-}
-
-
 // Getting the actual leave requests
 const leaveRequestsUnderClient = async () => {
     const activeClient = await fetchActiveClientApi();
-    const totalLeaveRequests = await fetchLeaveRequestsApi()
-    const leaveRequestsClient = totalLeaveRequests.filter((leaveRequest) => {
-        const { workerDetails } = leaveRequest
-        return workerDetails.companyName === activeClient.companyName
-    })
-    return leaveRequestsClient
+    const { _id } = activeClient
+    const leavesResponse = await fetch(`http://localhost:3000/api/clients_workers_leaves/${_id}`)
+    const leavesResult = await leavesResponse.json()
+    const { Leaves } = leavesResult
+    return Leaves
 }

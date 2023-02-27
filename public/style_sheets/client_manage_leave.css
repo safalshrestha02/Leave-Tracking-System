@@ -361,6 +361,7 @@ input[type=radio] {
   border-radius: 0.5rem;
 }
 .pending-leave-container .pending-leave-details .pending-leave-name {
+  text-transform: capitalize;
   font-weight: 600;
   margin-left: 0.5rem;
 }
