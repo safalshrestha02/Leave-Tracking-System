@@ -14,6 +14,7 @@ exports.registerClient = async (req, res) => {
     name,
     email,
     password,
+    leavesYearly
   } = req.body;
   try {
     const client = await Client.create({
@@ -24,6 +25,7 @@ exports.registerClient = async (req, res) => {
       name,
       email,
       password,
+      leavesYearly
     });
 
     res.status(201).json({ client: client._id });

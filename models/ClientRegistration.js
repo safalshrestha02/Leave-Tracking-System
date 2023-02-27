@@ -16,7 +16,7 @@ const clientSchema = new mongoose.Schema(
     companyID: {
       type: String,
       required: [true, "*company ID is required"],
-      minlength: [6, "*please enter 6 digit ID"],
+      minlength: [5, "*please enter 5 digit ID"],
       unique: true,
     },
     companyAddress: {
@@ -40,16 +40,18 @@ const clientSchema = new mongoose.Schema(
       required: [true, "*password is required"],
       minlength: [8, "*password must be 8 characters or above"],
     },
+    leavesYearly:{
+      type : Number,
+      default: 30
+    }
   },
   { timestamps: true }
 );
-
 clientSchema.pre("save", async function (next) {
   const salt = await bcrypt.genSalt();
   this.password = await bcrypt.hash(this.password, salt);
   next();
 });
-
 clientSchema.statics.registerClient = async function (
   clientID,
   companyName,
@@ -71,8 +73,8 @@ clientSchema.statics.registerClient = async function (
     throw Error("*email is already registered");
   }
 
-  const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(password, salt);
+  const salt = await bcrypt.genSalt();
+  const hashedPassword = bcrypt.hash(this.password, salt);
 
   const client = await this.create({
     clientID,
