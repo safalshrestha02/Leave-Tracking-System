@@ -33,6 +33,7 @@ exports.registerWorker = async (req, res) => {
       password,
       companyDetail,
     });
+    console.log({companyDetail})
     res.status(201).json({ message: "registered" });
   } catch (err) {
     const errors = workerErrHandle(err);

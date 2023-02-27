@@ -52,6 +52,7 @@ const registerWorker = new mongoose.Schema(
       companyName: String,
       companyID: Number,
       companyAddress: String,
+      leavesYearly : Number
     },
   },
   { timestamps: true }

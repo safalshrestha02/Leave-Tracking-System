@@ -47,7 +47,7 @@ exports.workerDelete = async (req, res, next) => {
 
 exports.leaveRequestDelete = async (req, res, next) => {
   const id = req.params["id"];
-  const deleting = await Messages.findOneAndDelete(id);
+  const deleting = await Messages.findByIdAndDelete(id);
   res.status(201).json({"successfully Deleted" : id})
 };
 
