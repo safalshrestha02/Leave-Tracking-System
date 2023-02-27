@@ -223,13 +223,16 @@ a {
 .fa-circle-xmark {
   color: black !important;
 }
-<<<<<<< HEAD
-=======
 
 .details-icon {
   cursor: pointer;
   font-size: 1.3rem !important;
   color: $dark-bg;
+}
+
+.active-option{
+  color: $orange-bg;
+  font-weight: 600;
 }
 
 //  worker details pop up 
@@ -276,7 +279,12 @@ a {
 }
 
 .details-close-icon {
+  color: #7d90a5 !important;
   font-size: 1.3rem;
+  &:hover{
+    color: #ff0033 !important;
+  }
+
 }
 
 .capitalize-field {
@@ -286,4 +294,3 @@ a {
 .detail-title {
   font-weight: 600;
 }
->>>>>>> 11a7ee5 (feat: completed worker details)

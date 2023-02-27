@@ -121,6 +121,12 @@ const fetchWorkers = async () => {
         '<p class="empty-workers">You have no any workers to filter. Add workers to filter out</p>';
     }
     if (companyWorkers.length > 0) {
+
+      filteroptions.forEach(button=> {
+        button.classList.remove("active-option")
+      })
+      nameAsc.classList.add("active-option")
+
       let nameAscending = companyWorkers.sort((a, b) => {
         if (a.firstName.toLowerCase() < b.firstName.toLowerCase()) {
           return -1;
@@ -183,6 +189,11 @@ const fetchWorkers = async () => {
     }
 
     if (companyWorkers.length > 0) {
+      filteroptions.forEach(button=> {
+        button.classList.remove("active-option")
+      })
+      nameDes.classList.add("active-option")
+
       let nameDescending = companyWorkers.sort((a, b) => {
         if (a.firstName.toLowerCase() < b.firstName.toLowerCase()) {
           return 1;
@@ -244,6 +255,11 @@ const fetchWorkers = async () => {
         '<p class="empty-workers">You have no any workers to filter. Add workers to filter out</p>';
     }
     if (companyWorkers.length > 0) {
+      filteroptions.forEach(button=> {
+        button.classList.remove("active-option")
+      })
+      idAsc.classList.add("active-option")
+      
       let idAscending = companyWorkers.sort((a, b) => {
         return a.workerID - b.workerID;
       });
@@ -300,6 +316,12 @@ const fetchWorkers = async () => {
     }
 
     if (companyWorkers.length > 0) {
+
+      filteroptions.forEach(button=> {
+        button.classList.remove("active-option")
+      })
+      idDes.classList.add("active-option")
+      
       let idDescending = companyWorkers.sort((a, b) => {
         return b.workerID - a.workerID;
       });
@@ -359,12 +381,11 @@ const confirmDelete = (deleteWorkerID, monID) => {
   cancelButton.addEventListener("click", () => {
     confirmBox.style.display = "none";
     mainBody.classList.remove("main-body-overflow");
-    console.log("you cancelled");
-  });
+    deleteWorkerID = null
+    monID = null
+  }, {once: true});
+  
   confirmButton.addEventListener("click", () => {
-    const parsedID = `"${deleteWorkerID}"`;
-    console.log(`deleted worker ID ${parsedID}`);
-    deleteWorkerID = null;
     confirmBox.style.display = "none";
     mainBody.classList.remove("main-body-overflow");
     if (deleteWorkerID !== null){

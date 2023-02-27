@@ -516,20 +516,19 @@ a {
   display: block;
 }
 
-<<<<<<< HEAD
 .fa-circle-xmark {
   color: black !important;
-}
-=======
-.active-option {
-  color: #f99417;
-  font-weight: 600;
 }
 
 .details-icon {
   cursor: pointer;
   font-size: 1.3rem !important;
   color: #3c4048;
+}
+
+.active-option {
+  color: #f99417;
+  font-weight: 600;
 }
 
 .more-worker-details {
@@ -573,7 +572,11 @@ a {
 }
 
 .details-close-icon {
+  color: #7d90a5 !important;
   font-size: 1.3rem;
+}
+.details-close-icon:hover {
+  color: #ff0033 !important;
 }
 
 .capitalize-field {
@@ -583,4 +586,3 @@ a {
 .detail-title {
   font-weight: 600;
 }/*# sourceMappingURL=client_manage_worker.css.map */
->>>>>>> 11a7ee5 (feat: completed worker details)
