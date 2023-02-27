@@ -42,18 +42,20 @@ exports.workerDelete = async (req, res, next) => {
     "workerDetails._id": id,
   });
   const workerDelete = await Worker.findOneAndDelete(id);
+  res.status(201).json({"successfully Deleted" : id})
 };
 
 exports.leaveRequestDelete = async (req, res, next) => {
   const id = req.params["id"];
   const deleting = await Messages.findOneAndDelete(id);
+  res.status(201).json({"successfully Deleted" : id})
 };
 
 exports.clientsWorkers = async (req, res, next) => {
   const id = req.params["id"];
   const client = await Clients.findOne({ id }).then((result) => {
     const worker = Worker.find({ "companyDetail._id": id }).then((workers) => {
-      res.json({ client: result, workers: workers });
+      res.status(201).json({ client: result, workers: workers });
     });
   });
 };
@@ -62,7 +64,7 @@ exports.workersLeaves = async (req, res, next) => {
   const id = req.params["id"];
   const worker = await Worker.findOne({ id }).then((result) => {
     const leave = Messages.find({ "workerDetails._id": id }).then((leaves) => {
-      res.json({ worker: result, leaveHistory: leaves });
+      res.status(201).json({ worker: result, leaveHistory: leaves });
     });
   });
 };
@@ -79,7 +81,7 @@ exports.clientsWorkersLeaves = async (req, res, next) => {
         "workerDetails.CompanyDetail._id": id,
         "workerDetails.companyName": specificClient.companyName,
       }).then((allLeaves) => {
-        res.json({
+        res.status(201).json({
           Client: specificClient,
           Workers: workersClient,
           Leaves: allLeaves,

@@ -35,7 +35,7 @@ const messageSchema = new mongoose.Schema(
     approveState: {
       type: String,
       state: { type: String, default: "pending" },
-      enum: ["pending", "approved", "denied"],
+      enum: ["pending", "approved", "rejceted"],
     },
     workerDetails: {
       _id: { type: mongoose.Schema.Types.ObjectID, ref: "worker" },
