@@ -11,8 +11,9 @@ const workersOnLeave = document.querySelector(".active-leave-container");
 
 // -------fetching total workers and display----------------
 const fetchAllWorkers = async () => {
-  const allWorkers = await workersUnderClient();
-  totalNumWorkers.textContent = allWorkers.length;
+  const {workers: workers} = await workersUnderClient();
+  console.log(workers)
+  totalNumWorkers.textContent = workers.length;
   activeWorkers.textContent =
     parseInt(totalNumWorkers.textContent) - parseInt(leaveWorkers.textContent);
 };
@@ -21,7 +22,6 @@ const fetchAllWorkers = async () => {
 const fetchAllWorkersLeave = async () => {
   const companyWorkersLeave = await leaveRequestsUnderClient();
 
-  console.log(companyWorkersLeave);
   // ------getting current date
   const currentDate = new Date();
   let currentYear = currentDate.getFullYear();

@@ -216,7 +216,7 @@ li {
 .active-leave-container {
   margin-top: 3rem;
   padding-bottom: 2rem;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgba(128, 124, 124, 0.507);
 }
 .active-leave-container .active-leave-details {
   margin-top: 1rem;
@@ -280,4 +280,13 @@ li {
 
 .orange {
   color: #fdb514;
+}
+
+.display-none {
+  color: rgba(128, 128, 128, 0.596);
+  font-weight: 700;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  width: 100%;
+  text-align: center;
 }
