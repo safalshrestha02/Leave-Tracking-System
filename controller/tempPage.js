@@ -70,14 +70,20 @@ exports.workersLeaves = async (req, res, next) => {
 exports.clientsWorkersLeaves = async (req, res, next) => {
   const { id } = req.params;
   const client = await Clients.findOne({ id }).then((specificClient) => {
-    const worker = Worker.find({ "companyDetails._id": id }).then(
-      (workersClient) => {
-        const leave = Messages.find(
-          { "workerDetails.CompanyDetail._id": id }).then((allLeaves) => {
-            res.json({"Client":specificClient,"Workers":workersClient,"Leaves":allLeaves})
-          }
-        );
-      }
-    );
+    const worker = Worker.find({
+      "companyDetails._id": id,
+      companyName: specificClient.companyName,
+    }).then((workersClient) => {
+      const leave = Messages.find({
+        "workerDetails.CompanyDetail._id": id,
+        "workerDetails.companyName": specificClient.companyName,
+      }).then((allLeaves) => {
+        res.json({
+          Client: specificClient,
+          Workers: workersClient,
+          Leaves: allLeaves,
+        });
+      });
+    });
   });
 };
