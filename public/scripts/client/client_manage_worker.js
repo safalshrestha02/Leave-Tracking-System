@@ -370,7 +370,7 @@ fetchWorkers();
 
 // ---------------------- CONFIRM DELETE ----------------------//
 
-const confirmDelete = (deleteWorkerID, monID) => {
+const confirmDelete =  (deleteWorkerID, monID) => {
   const confirmBox = document.querySelector(".confirm-container");
   const cancelButton = document.querySelector(".cancel-button");
   const confirmButton = document.querySelector(".confirm-button");
@@ -385,11 +385,23 @@ const confirmDelete = (deleteWorkerID, monID) => {
     monID = null
   }, {once: true});
   
-  confirmButton.addEventListener("click", () => {
+  confirmButton.addEventListener("click", async() => {
     confirmBox.style.display = "none";
     mainBody.classList.remove("main-body-overflow");
     if (deleteWorkerID !== null){
-    console.log(`The deleted ID was ${deleteWorkerID} ${monID}`)}
+      const deleteURL = `http://localhost:3000/api/workers/${monID}`
+      const deleteWorker = await fetch(deleteURL, {method: "DELETE"})
+      
+      if (deleteWorker.status === 201){
+
+        const successAlert = document.querySelector("#alert");
+        successAlert.style.display = "block";
+        setTimeout(()=>{
+          location.reload(); 
+          successAlert.style.display = "none";
+      },2500)
+
+      }} 
   }, {once: true})
 };
 

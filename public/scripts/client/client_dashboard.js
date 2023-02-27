@@ -14,6 +14,7 @@ addWorker.addEventListener("click", () => {
 formClose.addEventListener("click", () => {
   formContainer.classList.remove("form-active");
   document.body.style.overflow = 'auto'
+  location.reload()
 });
 
 window.addEventListener("click", (event) => {
