@@ -41,7 +41,7 @@ exports.workerDelete = async (req, res, next) => {
     approveState: "pending",
     "workerDetails._id": id,
   });
-  const workerDelete = await Worker.findOneAndDelete(id);
+  const workerDelete = await Worker.findByIdAndDelete(id);
   res.status(201).json({"successfully Deleted" : id})
 };
 
