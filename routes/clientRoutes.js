@@ -28,4 +28,9 @@ router.post("/api/activeClient", requireClientAuth, clientAuth.activeClient);
 router.post("/api/clientRegister", clientAuth.registerClient);
 router.post("/api/clientLogin", clientAuth.login);
 
+router.patch("/api/approveLeave/:id", clientAuth.approveLeave);
+router.patch("/api/denyLeave/:id", clientAuth.denyLeave);
+
+
+
 module.exports = router;

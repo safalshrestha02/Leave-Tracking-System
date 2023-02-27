@@ -59,7 +59,8 @@ clientSchema.statics.registerClient = async function (
   companyAddress,
   name,
   email,
-  password
+  password,
+  leavesYearly
 ) {
   const dupCompName = await this.findOne({ companyName });
 
@@ -84,6 +85,7 @@ clientSchema.statics.registerClient = async function (
     name,
     email,
     password: hashedPassword,
+    leavesYearly
   });
   return client;
 };
