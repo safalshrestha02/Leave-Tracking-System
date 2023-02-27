@@ -84,7 +84,7 @@ exports.approveLeave = async (req, res, next) => {
 
 exports.denyLeave = async (req, res, next) => {
   const id = req.params["id"];
-  const deny = { approveState: "denied" };
+  const deny = { approveState: "rejected" };
   const leave = await Leaves.findByIdAndUpdate(id, deny);
 };
 
