@@ -34,9 +34,9 @@ const fetchWorkers = async () => {
                       <i class="fa-regular fa-user user-icon"></i>
                       <span class="worker-name">${fullName}</span>
                   </span>
-                  <a href="#" class="worker-profile">
-                      <i class="fa-solid fa-ellipsis"></i>
-                  </a>
+                  <div class="worker-profile">
+                    <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}")'></i>
+                  </div>
 
               </div>
 
@@ -71,7 +71,7 @@ const fetchWorkers = async () => {
       '<p class="empty-workers">You have no any workers. Add some to manage...</p>';
   }
   companyWorkers.map((data, index) => {
-    const { firstName, lastName, workerID, gender, email } = data;
+    const { firstName, lastName, workerID, gender, email, city, country,_id } = data;
     const fullName = `${firstName} ${lastName}`;
     let ihtml = `
         <div class="worker-details">
@@ -83,9 +83,9 @@ const fetchWorkers = async () => {
                     <span class="worker-name">${fullName}</span>
                 </span>
 
-                <a href="#" class="worker-profile">
-                    <i class="fa-solid fa-ellipsis"></i>
-                </a>
+                <div class="worker-profile">
+                    <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}","${city}", "${country}")'></i>
+                </div>
 
             </div>
 
@@ -97,7 +97,7 @@ const fetchWorkers = async () => {
             <div class="worker-gender-delete">
                 <p class="gender">${gender}</p>
 
-                <button class="worker-delete-button" onClick='confirmDelete(${workerID})'>
+                <button class="worker-delete-button" onClick='confirmDelete("${workerID}","${_id}")'>
                     <i class="fa-solid fa-trash"></i>
                 </button>
             </div>
@@ -144,9 +144,9 @@ const fetchWorkers = async () => {
                     <span class="worker-name">${fullName}</span>
                 </span>
 
-                <a href="#" class="worker-profile">
-                    <i class="fa-solid fa-ellipsis"></i>
-                </a>
+                <div class="worker-profile">
+                    <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}")'></i>
+                </div>
 
             </div>
 
@@ -206,9 +206,9 @@ const fetchWorkers = async () => {
                     <span class="worker-name">${fullName}</span>
                 </span>
 
-                <a href="#" class="worker-profile">
-                    <i class="fa-solid fa-ellipsis"></i>
-                </a>
+                <div class="worker-profile">
+                    <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}")'></i>
+                </div>
 
             </div>
 
@@ -261,9 +261,9 @@ const fetchWorkers = async () => {
                     <span class="worker-name">${fullName}</span>
                 </span>
 
-                <a href="#" class="worker-profile">
-                    <i class="fa-solid fa-ellipsis"></i>
-                </a>
+                <div class="worker-profile">
+                    <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}")'></i>
+                </div>
 
             </div>
 
@@ -317,9 +317,9 @@ const fetchWorkers = async () => {
                     <span class="worker-name">${fullName}</span>
                 </span>
 
-                <a href="#" class="worker-profile">
-                    <i class="fa-solid fa-ellipsis"></i>
-                </a>
+                <div class="worker-profile">
+                    <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}")'></i>
+                </div>
 
             </div>
 
@@ -346,7 +346,9 @@ const fetchWorkers = async () => {
 
 fetchWorkers();
 
-const confirmDelete = (deleteWorkerID) => {
+// ---------------------- CONFIRM DELETE ----------------------//
+
+const confirmDelete = (deleteWorkerID, monID) => {
   const confirmBox = document.querySelector(".confirm-container");
   const cancelButton = document.querySelector(".cancel-button");
   const confirmButton = document.querySelector(".confirm-button");
@@ -365,7 +367,9 @@ const confirmDelete = (deleteWorkerID) => {
     deleteWorkerID = null;
     confirmBox.style.display = "none";
     mainBody.classList.remove("main-body-overflow");
-  });
+    if (deleteWorkerID !== null){
+    console.log(`The deleted ID was ${deleteWorkerID} ${monID}`)}
+  }, {once: true})
 };
 
 // ---------- filter ------- //
@@ -381,3 +385,62 @@ filterButton.addEventListener("click", () => {
   filterContainer.classList.toggle("filter-container-active");
   icon.classList.toggle("fa-circle-xmark");
 });
+
+// ---------------------- HANDLE DETAILS ------------------------//
+
+const handleDetails = (id,full,gender,email,city,country) => {
+
+  const workerDetailBox = document.querySelector(".more-worker-details")
+  workerDetailBox.classList.add("details-active")
+
+  workerDetailBox.innerHTML = "";
+
+  let details = `
+      <div class="absolute-worker-details">
+
+            <div class="close-icon-container">
+                <i class="fa-solid fa-circle-xmark details-close-icon"></i>
+            </div>
+
+            <div class="worker-name-container details-container">
+                <p class="detail-title">Worker Name</p>
+                <p class="capitalize-field">${full}</p>
+            </div>
+            
+            <div class="worker-id-container details-container">
+                <p class="detail-title">Worker ID</p>
+                <p class="capitalize-field">${id}</p>
+            </div>
+            
+            <div class="worker-gender-container details-container">
+                <p class="detail-title">Gender</p>
+                <p class="capitalize-field">${gender}</p>
+            </div>
+            
+            <div class="worker-email-container details-container">
+                <p class="detail-title">Email</p>
+                <p>${email}</p>
+            </div>
+            
+            <div class="worker-country-container details-container">
+                <p class="detail-title">Country</p>
+                <p class="capitalize-field">${country}</p>
+            </div>
+            
+            <div class="worker-city-container details-container">
+                <p class="detail-title">City</p>
+                <p class="capitalize-field">${city}</p>
+            </div>
+      </div>
+  `
+  workerDetailBox.innerHTML += details 
+
+  const closeDetails = document.querySelector(".details-close-icon")
+  
+  closeDetails.addEventListener("click", ()=> {
+    workerDetailBox.classList.remove("details-active")
+  })
+
+}
+
+
