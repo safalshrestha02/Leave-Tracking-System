@@ -246,10 +246,11 @@ li {
   margin-top: 3rem;
 }
 .pending-and-approved .pending-and-approved-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+  position: relative;
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 1.5rem;
 }
 .pending-and-approved .pending-and-approved-container .worker-leaves {
   background-color: #f3f5f7;
@@ -289,4 +290,9 @@ li {
   font-size: 1.2rem;
   width: 100%;
   text-align: center;
+  margin: 2rem 0;
+}
+
+.no-pending-approved {
+  margin: 3rem 0;
 }
