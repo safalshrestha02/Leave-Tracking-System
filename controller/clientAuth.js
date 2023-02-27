@@ -91,6 +91,6 @@ exports.denyLeave = async (req, res, next) => {
 exports.changeLeaveDays = async (req, res, next) => {
   const id = req.params["id"];
   const day = req.params["days"];
-  days = {leavesYearly : day};
+  const days = {leavesYearly : day};
   const client = await Client.findByIdAndUpdate(id, days);
 };
