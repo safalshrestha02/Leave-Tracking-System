@@ -1,10 +1,15 @@
 const filterDropDown = document.querySelector('.filter-leaveRequests')
 const pendingLeaveContainer = document.querySelector('.pending-leave-container')
 
+window.addEventListener('load', () => {
+    filterDropDown.value = 'all'
+})
+
 const manageLeavesFunc = async () => {
 
     try {
         const companyLeaveRequests = await leaveRequestsUnderClient()
+
         const fetchLeaveRequests = () => {
 
             const filteredLeaveRequests = companyLeaveRequests.sort((leaves1, leaves2) => {
@@ -31,6 +36,10 @@ const manageLeavesFunc = async () => {
                         return typeOfLeave === clientChoiceLeaveType
                     })
                     fetchLeavesHtml(clientChoiceLeaves)
+
+                    if (pendingLeaveContainer.innerHTML == '') {
+                        pendingLeaveContainer.innerHTML = ` <p class="no-leaves">No any ${filterDropDown.value} Requests...</p>`
+                    }
                 }
             }
             filterDropDown.addEventListener('change', filterLeavesWithType)
@@ -44,62 +53,98 @@ const manageLeavesFunc = async () => {
                 else {
                     leaveType.forEach((leaves) => {
 
-                        const { workerName, startDate, endDate, typeOfLeave, leaveDays, reason, approveState } = leaves
+                        const { workerName, startDate, endDate, typeOfLeave, leaveDays, reason, approveState, _id } = leaves
                         const dayOrDays = leaveDays > 1 ? 'Days' : 'Day'
                         let ihtml = `
-                            <div class="pending-leave-details">
-                            
-                                <i class="fa-regular fa-user user-icon"></i>
-                            
-                                <span class="pending-leave-name">${workerName}</span>
-                
-                                <div class="pending-leave-date">
-                
-                                    <span>${startDate.slice(0, 10).replaceAll("-", "/")} - ${endDate.slice(0, 10).replaceAll("-", "/")}</span>
-                                    <span>${leaveDays} ${dayOrDays}</span>
+                                <div class="pending-leave-details">
                                 
-                                </div>
-                
-                                <div class="description">
-                
-                                    <h1>Reason:</h1>
-                
-                                    <p class="description-details">
-                                        ${reason}
-                                    </p>
-                
-                                </div>
-                
-                                <div class="pending-leave-type-status">
-                
-                                    <p>${typeOfLeave}</p>
-                
-                                    <div class="buttons-container">
-                                        <button class="pending-leave-buttons approve-button">
-                                            Approve
-                                        </button>
-                
-                                        <button class="pending-leave-buttons reject-button">
-                                            Reject
-                                        </button>
+                                    <i class="fa-regular fa-user user-icon"></i>
+                                
+                                    <span class="pending-leave-name">${workerName}</span>
+                    
+                                    <div class="pending-leave-date">
+                    
+                                        <span>${startDate.slice(0, 10).replaceAll("-", "/")} - ${endDate.slice(0, 10).replaceAll("-", "/")}</span>
+                                        <span>${leaveDays} ${dayOrDays}</span>
+                                    
                                     </div>
-                
-                                </div>
-                
-                            </div>`
+                    
+                                    <div class="description">
+                    
+                                        <h1>Reason:</h1>
+                    
+                                        <p class="description-details">
+                                            ${reason}
+                                        </p>
+                    
+                                    </div>
+                    
+                                    <div class="pending-leave-type-status">
+                    
+                                        <p>${typeOfLeave}</p>
+                    
+                                        <div class="buttons-container">
+                                            <button value = ${_id} class="pending-leave-buttons approve-button">
+                                                Approve
+                                            </button>
+                    
+                                            <button value = ${_id} class="pending-leave-buttons reject-button">
+                                                Reject
+                                            </button>
+                                        </div>
+                    
+                                    </div>
+                    
+                                </div>`
 
                         if (approveState === 'pending') {
                             pendingLeaveContainer.insertAdjacentHTML('afterbegin', ihtml)
                         }
-
-                        // if (approveState === 'approved') {
-                        //     approveLeaveFunc()
-                        // }
-
-                        // if (approveState === 'rejected') {
-                        //     rejectLeaveFunc()
-                        // }
                     })
+
+                    // Approve Leaves
+                    const approveButtons = document.querySelectorAll('.approve-button')
+
+                    const approveLeaves = async (btn) => {
+                        filterDropDown.value = 'all'
+                        pendingLeaveContainer.innerHTML = ''
+                        manageLeavesFunc()
+
+                        const leaveID = btn.value
+                        console.log(leaveID, 'is approved')
+
+                        const approveLeaveApiUrl = `http://localhost:3000/api/approveLeave/${leaveID}`
+                        const response = await fetch(approveLeaveApiUrl, {
+                            method: 'PATCH',
+                            headers: { 'Content-Type': 'application/json' }
+                        })
+                    }
+                    approveButtons.forEach((btn) => {
+                        btn.addEventListener('click', () => { approveLeaves(btn) })
+                    })
+
+
+                    // Reject leaves
+                    const rejectButtons = document.querySelectorAll('.reject-button')
+
+                    const rejectLeaves = async (btn) => {
+                        filterDropDown.value = 'all'
+                        pendingLeaveContainer.innerHTML = ''
+                        manageLeavesFunc()
+
+                        const leaveID = btn.value
+                        console.log(leaveID, 'is rejected')
+
+                        const rejectLeaveApiUrl = `http://localhost:3000/api/denyLeave/${leaveID}`
+                        const response = await fetch(rejectLeaveApiUrl, {
+                            method: 'PATCH',
+                            headers: { 'Content-Type': 'application/json' }
+                        })
+                    }
+                    rejectButtons.forEach((btn) => {
+                        btn.addEventListener('click', () => { rejectLeaves(btn) })
+                    })
+
                 }
 
             }
@@ -108,6 +153,7 @@ const manageLeavesFunc = async () => {
                 fetchLeavesHtml(filteredLeaveRequests)
             }
         }
+
         fetchLeaveRequests()
 
     }
@@ -120,4 +166,3 @@ const manageLeavesFunc = async () => {
 }
 
 manageLeavesFunc()
-
