@@ -15,7 +15,7 @@ exports.registerClient = async (req, res) => {
     name,
     email,
     password,
-    leavesYearly
+    leavesYearly,
   } = req.body;
   try {
     const client = await Client.create({
@@ -26,7 +26,7 @@ exports.registerClient = async (req, res) => {
       name,
       email,
       password,
-      leavesYearly
+      leavesYearly,
     });
 
     res.status(201).json({ client: client._id });
@@ -77,13 +77,20 @@ exports.logout = async (req, res, next) => {
 };
 
 exports.approveLeave = async (req, res, next) => {
-  const id = req.params["id"]
-  const approve =  {approveState : "approved"}
-  const leave = await Leaves.findByIdAndUpdate(id,approve )
-}
+  const id = req.params["id"];
+  const approve = { approveState: "approved" };
+  const leave = await Leaves.findByIdAndUpdate(id, approve);
+};
 
 exports.denyLeave = async (req, res, next) => {
-  const id = req.params["id"]
-  const deny =  {approveState : "denied"}
-  const leave = await Leaves.findByIdAndUpdate(id,deny )
-}
+  const id = req.params["id"];
+  const deny = { approveState: "denied" };
+  const leave = await Leaves.findByIdAndUpdate(id, deny);
+};
+
+exports.changeLeaveDays = async (req, res, next) => {
+  const id = req.params["id"];
+  const day = req.params["days"];
+  days = {leavesYearly : day};
+  const client = await Client.findByIdAndUpdate(id, days);
+};
