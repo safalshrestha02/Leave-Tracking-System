@@ -1,5 +1,6 @@
 require("dotenv").config();
 const Client = require("../models/ClientRegistration");
+const Leaves = require("../models/RequestForLeave");
 const { clientErrHandle } = require("../utils/errorHandler");
 const { createClientToken } = require("../utils/createToken");
 
@@ -74,3 +75,15 @@ exports.logout = async (req, res, next) => {
     return error;
   }
 };
+
+exports.approveLeave = async (req, res, next) => {
+  const id = req.params["id"]
+  const approve =  {approveState : "approved"}
+  const leave = await Leaves.findByIdAndUpdate(id,approve )
+}
+
+exports.denyLeave = async (req, res, next) => {
+  const id = req.params["id"]
+  const deny =  {approveState : "denied"}
+  const leave = await Leaves.findByIdAndUpdate(id,deny )
+}

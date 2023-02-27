@@ -9,6 +9,7 @@ const messageSchema = new mongoose.Schema(
     workerID: {
       type: Number,
       required: [true, "*employee ID is required"],
+      minLength : 5
     },
     startDate: {
       type: Date,
