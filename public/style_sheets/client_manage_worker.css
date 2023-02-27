@@ -516,6 +516,71 @@ a {
   display: block;
 }
 
+<<<<<<< HEAD
 .fa-circle-xmark {
   color: black !important;
 }
+=======
+.active-option {
+  color: #f99417;
+  font-weight: 600;
+}
+
+.details-icon {
+  cursor: pointer;
+  font-size: 1.3rem !important;
+  color: #3c4048;
+}
+
+.more-worker-details {
+  width: 100dvw;
+  background: linear-gradient(rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.4) 50%);
+  min-height: 100dvh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  position: fixed;
+  color: black;
+  z-index: 20;
+}
+
+.absolute-worker-details {
+  width: 30%;
+  padding: 2rem;
+  text-align: center;
+  background-color: #f3f5f7;
+  border-radius: 1rem;
+}
+
+.details-container {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(182, 174, 174, 0.096);
+  padding: 1.2rem 0;
+  align-items: center;
+}
+
+.details-active {
+  display: flex;
+}
+
+.close-icon-container {
+  text-align: right;
+  margin-bottom: 1rem;
+}
+
+.details-close-icon {
+  font-size: 1.3rem;
+}
+
+.capitalize-field {
+  text-transform: capitalize;
+}
+
+.detail-title {
+  font-weight: 600;
+}/*# sourceMappingURL=client_manage_worker.css.map */
+>>>>>>> 11a7ee5 (feat: completed worker details)
