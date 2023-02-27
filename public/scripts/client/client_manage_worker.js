@@ -34,15 +34,9 @@ const fetchWorkers = async () => {
                       <i class="fa-regular fa-user user-icon"></i>
                       <span class="worker-name">${fullName}</span>
                   </span>
-<<<<<<< HEAD
-                  <a href="#" class="worker-profile">
-                      <i class="fa-solid fa-ellipsis"></i>
-                  </a>
-=======
                   <div class="worker-profile">
                     <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}")'></i>
                   </div>
->>>>>>> 11a7ee5 (feat: completed worker details)
 
               </div>
 
@@ -89,15 +83,9 @@ const fetchWorkers = async () => {
                     <span class="worker-name">${fullName}</span>
                 </span>
 
-<<<<<<< HEAD
-                <a href="#" class="worker-profile">
-                    <i class="fa-solid fa-ellipsis"></i>
-                </a>
-=======
                 <div class="worker-profile">
                     <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}","${city}", "${country}")'></i>
                 </div>
->>>>>>> 11a7ee5 (feat: completed worker details)
 
             </div>
 
@@ -109,11 +97,7 @@ const fetchWorkers = async () => {
             <div class="worker-gender-delete">
                 <p class="gender">${gender}</p>
 
-<<<<<<< HEAD
-                <button class="worker-delete-button" onClick='confirmDelete(${workerID})'>
-=======
                 <button class="worker-delete-button" onClick='confirmDelete("${workerID}","${_id}")'>
->>>>>>> 11a7ee5 (feat: completed worker details)
                     <i class="fa-solid fa-trash"></i>
                 </button>
             </div>
@@ -160,15 +144,9 @@ const fetchWorkers = async () => {
                     <span class="worker-name">${fullName}</span>
                 </span>
 
-<<<<<<< HEAD
-                <a href="#" class="worker-profile">
-                    <i class="fa-solid fa-ellipsis"></i>
-                </a>
-=======
                 <div class="worker-profile">
                     <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}")'></i>
                 </div>
->>>>>>> 11a7ee5 (feat: completed worker details)
 
             </div>
 
@@ -228,15 +206,9 @@ const fetchWorkers = async () => {
                     <span class="worker-name">${fullName}</span>
                 </span>
 
-<<<<<<< HEAD
-                <a href="#" class="worker-profile">
-                    <i class="fa-solid fa-ellipsis"></i>
-                </a>
-=======
                 <div class="worker-profile">
                     <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}")'></i>
                 </div>
->>>>>>> 11a7ee5 (feat: completed worker details)
 
             </div>
 
@@ -289,15 +261,9 @@ const fetchWorkers = async () => {
                     <span class="worker-name">${fullName}</span>
                 </span>
 
-<<<<<<< HEAD
-                <a href="#" class="worker-profile">
-                    <i class="fa-solid fa-ellipsis"></i>
-                </a>
-=======
                 <div class="worker-profile">
                     <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}")'></i>
                 </div>
->>>>>>> 11a7ee5 (feat: completed worker details)
 
             </div>
 
@@ -351,15 +317,9 @@ const fetchWorkers = async () => {
                     <span class="worker-name">${fullName}</span>
                 </span>
 
-<<<<<<< HEAD
-                <a href="#" class="worker-profile">
-                    <i class="fa-solid fa-ellipsis"></i>
-                </a>
-=======
                 <div class="worker-profile">
                     <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}")'></i>
                 </div>
->>>>>>> 11a7ee5 (feat: completed worker details)
 
             </div>
 
@@ -386,14 +346,9 @@ const fetchWorkers = async () => {
 
 fetchWorkers();
 
-<<<<<<< HEAD
-const confirmDelete = (deleteWorkerID) => {
-=======
 // ---------------------- CONFIRM DELETE ----------------------//
 
 const confirmDelete = (deleteWorkerID, monID) => {
-  const cancelButton = document.querySelector(".cancel-button");
->>>>>>> 11a7ee5 (feat: completed worker details)
   const confirmBox = document.querySelector(".confirm-container");
   const cancelButton = document.querySelector(".cancel-button");
   const confirmButton = document.querySelector(".confirm-button");
@@ -412,13 +367,9 @@ const confirmDelete = (deleteWorkerID, monID) => {
     deleteWorkerID = null;
     confirmBox.style.display = "none";
     mainBody.classList.remove("main-body-overflow");
-<<<<<<< HEAD
-  });
-=======
     if (deleteWorkerID !== null){
     console.log(`The deleted ID was ${deleteWorkerID} ${monID}`)}
   }, {once: true})
->>>>>>> 11a7ee5 (feat: completed worker details)
 };
 
 // ---------- filter ------- //
@@ -434,9 +385,6 @@ filterButton.addEventListener("click", () => {
   filterContainer.classList.toggle("filter-container-active");
   icon.classList.toggle("fa-circle-xmark");
 });
-<<<<<<< HEAD
-=======
-
 
 // ---------------------- HANDLE DETAILS ------------------------//
 
@@ -495,7 +443,4 @@ const handleDetails = (id,full,gender,email,city,country) => {
 
 }
 
-// Close Worker Details 
 
-
->>>>>>> 11a7ee5 (feat: completed worker details)
