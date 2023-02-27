@@ -45,12 +45,12 @@ exports.workerDelete = async (req, res, next) => {
 };
 
 exports.leaveRequestDelete = async (req, res, next) => {
-  const { id } = req.params;
+  const id  = req.params['id'];
   const deleting = await Messages.findOneAndDelete(id);
 };
 
 exports.clientsWorkers = async (req, res, next) => {
-  const { id } = req.params;
+  const id  = req.params['id'];
   const client = await Clients.findOne({ id }).then((result) => {
     const worker = Worker.find({ "companyDetail._id": id }).then((workers) => {
       res.json({ client: result, workers: workers });
@@ -59,8 +59,8 @@ exports.clientsWorkers = async (req, res, next) => {
 };
 
 exports.workersLeaves = async (req, res, next) => {
-  const { id } = req.params;
-  const worker = await Worker.findOne({ id }).then((result) => {
+  const id  = req.params['id'];
+  const worker = await Worker.findOne( {id} ).then((result) => {
     const leave = Messages.find({ "workerDetails._id": id }).then((leaves) => {
       res.json({ worker: result, leaveHistory: leaves });
     });
@@ -68,20 +68,14 @@ exports.workersLeaves = async (req, res, next) => {
 };
 
 exports.clientsWorkersLeaves = async (req, res, next) => {
-  const { id } = req.params;
-  const client = await Clients.findOne({ id }).then((specificClient) => {
-    const worker = Worker.find({
-      "companyDetails._id": id,
-      companyName: specificClient.companyName,
-    }).then((workersClient) => {
-      const leave = Messages.find({
-        "workerDetails.CompanyDetail._id": id,
-        "workerDetails.companyName": specificClient.companyName,
-      }).then((allLeaves) => {
-        res.json({
-          Client: specificClient,
-          Workers: workersClient,
-          Leaves: allLeaves,
+  const id  = req.params['id'];
+  console.log(id)
+  const client = await Clients.findById(id).then((specificClient) => {
+    const worker = Worker.find({"companyDetails._id": id,companyName: specificClient.companyName,})
+    .then((workersClient) => {
+      const leave = Messages.find({"workerDetails.CompanyDetail._id": id,"workerDetails.companyName": specificClient.companyName,})
+      .then((allLeaves) => {
+        res.json({Client: specificClient,Workers: workersClient,Leaves: allLeaves,
         });
       });
     });
