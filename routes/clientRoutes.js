@@ -30,6 +30,7 @@ router.post("/api/clientLogin", clientAuth.login);
 
 router.patch("/api/approveLeave/:id", clientAuth.approveLeave);
 router.patch("/api/denyLeave/:id", clientAuth.denyLeave);
+router.patch("/api/changeLeaveDays/:id/:days", clientAuth.changeLeaveDays);
 
 
 
