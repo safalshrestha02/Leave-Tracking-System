@@ -389,21 +389,19 @@ const confirmDelete =  (deleteWorkerID, monID) => {
     confirmBox.style.display = "none";
     mainBody.classList.remove("main-body-overflow");
     if (deleteWorkerID !== null){
-
-      console.log(`The deleted ID was ${deleteWorkerID} ${monID}`)}
       const deleteURL = `http://localhost:3000/api/workers/${monID}`
-      console.log(deleteURL)
       const deleteWorker = await fetch(deleteURL, {method: "DELETE"})
-     
+      
       if (deleteWorker.status === 201){
 
-        const successAlert = document.querySelector(".success-alert");
+        const successAlert = document.querySelector("#alert");
         successAlert.style.display = "block";
-        setTimeout(() => {
+        setTimeout(()=>{
+          location.reload(); 
           successAlert.style.display = "none";
-        }, 2500);
-      }
+      },2500)
 
+      }} 
   }, {once: true})
 };
 
