@@ -10,10 +10,19 @@ const fetchActiveWorkerApi = async () => {
   })
   const result = await response.json()
   const { data } = result
-  const { firstName, lastName, country, city, companyName, workerID, gender, email } = data
+  const { firstName, lastName, country, city, companyName, workerID, gender, email, _id } = data
   const fullName = `${firstName} ${lastName}`
   navTopWorkerName.innerHTML = fullName;
   navTopWorkerID.innerHTML = workerID;
-  return { fullName, country, city, companyName, workerID, gender, email }
+  return { fullName, country, city, companyName, workerID, gender, email, _id }
 }
 fetchActiveWorkerApi()
+
+
+const fetchLeavesUnderWorker = async () => {
+  const activeWorker = await fetchActiveWorkerApi();
+  const { _id } = activeWorker;
+  const response = await fetch (`http://localhost:3000/api/workers_leaves/${_id}`);
+  const leavesResult = await response.json();
+  return leavesResult
+}
