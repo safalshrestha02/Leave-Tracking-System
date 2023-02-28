@@ -47,13 +47,13 @@ exports.workerDelete = async (req, res, next) => {
 
 exports.leaveRequestDelete = async (req, res, next) => {
   const id = req.params["id"];
-  const deleting = await Messages.findByIdAndDelete(id);
+  const deleting = await Messages.findByIdAndDelete-(id);
   res.status(201).json({"successfully Deleted" : id})
 };
 
 exports.clientsWorkers = async (req, res, next) => {
   const id = req.params["id"];
-  const client = await Clients.findOne({ id }).then((result) => {
+  const client = await Clients.findById( id ).then((result) => {
     const worker = Worker.find({ "companyDetail._id": id }).then((workers) => {
       res.status(201).json({ client: result, workers: workers });
     });
@@ -62,7 +62,7 @@ exports.clientsWorkers = async (req, res, next) => {
 
 exports.workersLeaves = async (req, res, next) => {
   const id = req.params["id"];
-  const worker = await Worker.findOne({ id }).then((result) => {
+  const worker = await Worker.findById(id).then((result) => {
     const leave = Messages.find({ "workerDetails._id": id }).then((leaves) => {
       res.status(201).json({ worker: result, leaveHistory: leaves });
     });
