@@ -95,3 +95,15 @@
   color: $red-bg;
   margin-right: 0.5rem;
 }
+
+.loader {
+  color: $blue-bg;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.empty-workers {
+  opacity: 0.6;
+  font-size: 1.1rem;
+  position: absolute;
+}

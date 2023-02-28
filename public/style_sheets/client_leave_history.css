@@ -231,7 +231,7 @@ li {
   text-transform: capitalize;
 }
 
-input[type=radio] {
+input[type="radio"] {
   margin-right: 3rem;
 }
 
@@ -406,4 +406,16 @@ input[type=radio] {
 .rejected-leave {
   color: #ff0032;
   margin-right: 0.5rem;
+}
+
+.loader {
+  color: #3c79f5;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.empty-workers {
+  opacity: 0.6;
+  font-size: 1.1rem;
+  position: absolute;
 }
