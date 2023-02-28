@@ -55,7 +55,7 @@ exports.leaveRequestDelete = async (req, res, next) => {
 };
 
 exports.clientsWorkers = async (req, res, next) => {
-  const { page = 1, limit = 3 } = req.query;
+  const { page = 1, limit = 20 } = req.query;
 
   const id = req.params["id"];
   const client = await Clients.findById(id).then((result) => {
@@ -69,7 +69,7 @@ exports.clientsWorkers = async (req, res, next) => {
 };
 
 exports.workersLeaves = async (req, res, next) => {
-  const { page = 1, limit = 3 } = req.query;
+  const { page = 1, limit = 20 } = req.query;
   const id = req.params["id"];
   const worker = await Worker.findById(id).then((result) => {
     const leave = Messages.find({ "workerDetails._id": id })
@@ -82,17 +82,15 @@ exports.workersLeaves = async (req, res, next) => {
 };
 
 exports.clientsWorkersLeaves = async (req, res, next) => {
-  const { page = 1, limit = 3 } = req.query;
+  const { page = 1, limit = 20 } = req.query;
   const id = req.params["id"];
   console.log(id);
   const client = await Clients.findById(id).then((specificClient) => {
     const worker = Worker.find({
       "companyDetails._id": id,
-      companyName: specificClient.companyName,
     }).then((workersClient) => {
       const leave = Messages.find({
         "workerDetails.CompanyDetail._id": id,
-        "workerDetails.companyName": specificClient.companyName,
       })
         .limit(limit * 1)
         .skip((page - 1) * limit)
