@@ -1,5 +1,14 @@
 const express = require("express");
 const router = express.Router();
+const rateLimit = require('express-rate-limit')
+const createAccountLimiter = rateLimit({
+  windowMS: 1 * 60 * 1000, //1 min
+  max: 5,
+  standardHeaers: true,
+  legacyHeaders: true,
+  message: "too many accounts created from this IP",
+});
+
 
 //paths
 const loadPages = require("../controller/clientPageController");
@@ -23,9 +32,9 @@ router.get("/client_profile", requireClientAuth, loadPages.clientProfile);
 router.get("/logoutClient", clientAuth.logout);
 
 //APIs
-router.post("/api/addWorker", requireClientAuth, addworker.registerWorker);
+router.post("/api/addWorker",createAccountLimiter, requireClientAuth, addworker.registerWorker);
 router.post("/api/activeClient", requireClientAuth, clientAuth.activeClient);
-router.post("/api/clientRegister", clientAuth.registerClient);
+router.post("/api/clientRegister",createAccountLimiter, clientAuth.registerClient);
 router.post("/api/clientLogin", clientAuth.login);
 
 //PatchReqs
