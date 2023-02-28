@@ -1,14 +1,13 @@
 const chooseWorker = document.querySelector('.select-worker')
 const leaveHistoryContainer = document.querySelector('.client-leave-history-container')
-const options = document.querySelector('.client-leave-history--options')
-
+const filterButton = document.querySelector('.filter-button')
+const filterContainer = document.querySelector('.filter-container')
 
 const checkWorkers = async () => {
     const totalWorkersResult = await workersUnderClient()
     const { workers: totalCompanyWorkers } = totalWorkersResult
 
     if (totalCompanyWorkers.length === 0) {
-        options.innerHTML = ''
         leaveHistoryContainer.innerHTML = '<p class="empty-workers">You have no any workers. Add some to see their past leaves...</p>';
     }
 }
@@ -50,7 +49,15 @@ const leaveHistory = async () => {
             const { workerID } = leave
             return userChoiceWorker == workerID
         })
-        fetchPastLeaves(specificPastLeaves)
+        if (specificPastLeaves.length == 0) {
+            const blankArr = []
+            leaveHistoryContainer.innerHTML = '<p class = "no-past-leaves">The requested user has no any past leaves records.</p>'
+            return blankArr
+        }
+        else {
+            fetchPastLeaves(specificPastLeaves)
+            return specificPastLeaves
+        }
     }
     chooseWorker.addEventListener('change', getPastLeaves)
     window.addEventListener('load', getPastLeaves)
@@ -87,6 +94,118 @@ const leaveHistory = async () => {
         })
     }
 
+
+    const filterButtons = document.querySelectorAll('.filter-buttons')
+    const allPastLeaves = document.querySelector('.all-past-leaves')
+    const approvedLeaves = document.querySelector('.approved-past-leaves')
+    const rejectedLeaves = document.querySelector('.rejected-past-leaves')
+    const icon = document.querySelector('.filter-icon')
+
+    filterButton.addEventListener('click', () => {
+        filterContainer.classList.toggle('filter-container-active')
+        icon.classList.toggle('fa-circle-xmark')
+    })
+
+
+    allPastLeaves.addEventListener('click', async () => {
+
+        try {
+            filterContainer.classList.remove('filter-container-active')
+            icon.classList.remove('fa-circle-xmark')
+
+            filterButtons.forEach((btn) => {
+                btn.classList.remove("active-option")
+            })
+            allPastLeaves.classList.add("active-option")
+
+            const allLeaves = await getPastLeaves()
+            leaveHistoryContainer.innerHTML = ''
+            setTimeout(() => {
+                if (allLeaves.length > 0) {
+                    fetchPastLeaves(allLeaves)
+                }
+                else if (allLeaves.length == 0) {
+                    leaveHistoryContainer.innerHTML = '<p class = "no-past-leaves">The requested user has no any past leaves records.</p>'
+                }
+            })
+        }
+
+        catch (err) {
+
+        }
+
+    })
+
+
+    approvedLeaves.addEventListener('click', async () => {
+
+        try {
+            filterContainer.classList.remove('filter-container-active')
+            icon.classList.remove('fa-circle-xmark')
+
+            filterButtons.forEach((btn) => {
+                btn.classList.remove("active-option")
+            })
+            approvedLeaves.classList.add("active-option")
+
+            const allLeaves = await getPastLeaves()
+            const approvedLeavesOnly = allLeaves.filter((leave) => {
+                const { approveState } = leave
+                return approveState === 'approved'
+            })
+            leaveHistoryContainer.innerHTML = ''
+            setTimeout(() => {
+                if (allLeaves.length > 0) {
+                    fetchPastLeaves(approvedLeavesOnly)
+                }
+                else if (allLeaves.length == 0) {
+                    leaveHistoryContainer.innerHTML = '<p class = "no-past-leaves">The requested user has no any past leaves records.</p>'
+                }
+
+            })
+        }
+
+        catch (err) {
+            leaveHistoryContainer.innerHTML = '<p class = "no-past-leaves">The requested user has no any past leaves records.</p>'
+        }
+
+
+    })
+
+    rejectedLeaves.addEventListener('click', async () => {
+
+        try {
+            filterContainer.classList.remove('filter-container-active')
+            icon.classList.remove('fa-circle-xmark')
+
+            filterButtons.forEach((btn) => {
+                btn.classList.remove("active-option")
+            })
+            rejectedLeaves.classList.add("active-option")
+
+            const allLeaves = await getPastLeaves()
+            const rejectedLeavesOnly = allLeaves.filter((leave) => {
+                const { approveState } = leave
+                return approveState === 'rejected'
+            })
+            leaveHistoryContainer.innerHTML = ''
+            setTimeout(() => {
+                if (allLeaves.length > 0) {
+                    fetchPastLeaves(rejectedLeavesOnly)
+                }
+                else if (allLeaves.length == 0) {
+                    leaveHistoryContainer.innerHTML = '<p class = "no-past-leaves">The requested user has no any past leaves records.</p>'
+                }
+
+            })
+        }
+
+        catch (err) {
+            leaveHistoryContainer.innerHTML = '<p class = "no-past-leaves">The requested user has no any past leaves records.</p>'
+        }
+
+
+    })
 
 }
 leaveHistory()

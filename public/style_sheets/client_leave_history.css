@@ -231,7 +231,7 @@ li {
   text-transform: capitalize;
 }
 
-input[type="radio"] {
+input[type=radio] {
   margin-right: 3rem;
 }
 
@@ -330,6 +330,7 @@ input[type="radio"] {
   margin: 2rem 0 1rem 0;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .select-worker {
@@ -345,6 +346,9 @@ input[type="radio"] {
 }
 
 .filter-workers-leave-history {
+  position: relative;
+}
+.filter-workers-leave-history .filter-button {
   background-color: #f3f5f7;
   padding: 0.8rem 1.2rem;
   border: none;
@@ -354,13 +358,14 @@ input[type="radio"] {
   align-items: center;
   gap: 0.6rem;
 }
-.filter-workers-leave-history:hover {
+.filter-workers-leave-history .filter-button:hover {
   cursor: pointer;
   background-color: rgb(230, 230, 230);
 }
 
 .filter-icon {
   margin-left: 1rem;
+  font-size: 1rem;
 }
 
 /* ------------------------------------------ leave history container ----------------------------------- */
@@ -414,8 +419,47 @@ input[type="radio"] {
   font-size: 1.1rem;
 }
 
-.empty-workers {
+.empty-workers,
+.no-past-leaves {
   opacity: 0.6;
   font-size: 1.1rem;
   position: absolute;
+}
+
+.filter-container {
+  background-color: #edeef0;
+  position: absolute;
+  width: 15em;
+  padding: 1rem 0.5rem;
+  text-align: center;
+  left: -7.5rem;
+  margin-top: 1rem;
+  display: none;
+  z-index: 10;
+}
+
+.filter-container-active {
+  display: block;
+}
+
+.filter-buttons {
+  width: 100%;
+  cursor: pointer;
+  margin: 1rem 0;
+  border: none;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.icon {
+  margin-left: 5px;
+}
+
+.active-option {
+  color: #f99417;
+  font-weight: 600;
+}
+
+.close-filter {
+  color: black !important;
 }

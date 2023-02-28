@@ -74,9 +74,32 @@
             <select name="worker" class="select-worker"></select>
 
             <div class="filter-workers-leave-history">
-              <p class="filter-worker-title">Filter</p>
-              <i class="fa-solid fa-filter filter-icon"></i>
+
+              <button class="filter-button">
+                <p class="filter-worker-title">Filter</p>
+                <i class="fa-solid fa-filter filter-icon close-filter"></i>
+              </button>
+
+              <div class="filter-container">
+
+                <button class="filter-buttons all-past-leaves">
+                  All Leaves
+                </button>
+
+                <button class="filter-buttons approved-past-leaves">
+                  Approved Leaves
+                  <i class="fa-solid fa-circle icon approved-leave"></i>
+                </button>
+
+                <button class="filter-buttons rejected-past-leaves">
+                  Rejected Leaves
+                  <i class="fa-solid fa-circle icon rejected-leave"></i>
+                </button>
+
+              </div>
+
             </div>
+
           </div>
 
           <div class="client-leave-history-container"></div>

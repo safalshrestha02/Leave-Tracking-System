@@ -14,6 +14,7 @@
   margin: 2rem 0 1rem 0;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .select-worker {
@@ -30,23 +31,28 @@
 }
 
 .filter-workers-leave-history {
-  background-color: #f3f5f7;
-  padding: 0.8rem 1.2rem;
-  border: none;
-  border-radius: 0.3rem;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
+  position: relative;
 
-  &:hover {
-    cursor: pointer;
-    background-color: rgb(230, 230, 230);
+  .filter-button {
+    background-color: #f3f5f7;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgb(230, 230, 230);
+    }
   }
 }
 
 .filter-icon {
   margin-left: 1rem;
+  font-size: 1rem;
 }
 
 /* ------------------------------------------ leave history container ----------------------------------- */
@@ -102,8 +108,49 @@
   font-size: 1.1rem;
 }
 
-.empty-workers {
+.empty-workers,
+.no-past-leaves {
   opacity: 0.6;
   font-size: 1.1rem;
   position: absolute;
+}
+
+// Filter
+
+.filter-container {
+  background-color: $grey-bg;
+  position: absolute;
+  width: 15em;
+  padding: 1rem 0.5rem;
+  text-align: center;
+  left: -7.5rem;
+  margin-top: 1rem;
+  display: none;
+  z-index: 10;
+}
+
+.filter-container-active {
+  display: block;
+}
+
+.filter-buttons {
+  width: 100%;
+  cursor: pointer;
+  margin: 1rem 0;
+  border: none;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.icon {
+  margin-left: 5px;
+}
+
+.active-option {
+  color: $orange-bg;
+  font-weight: 600;
+}
+
+.close-filter {
+  color: black !important;
 }
