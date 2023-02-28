@@ -63,6 +63,7 @@ reset.addEventListener("click", () => {
   workerPassword_error.textContent = " ";
   country_error.textContent = " ";
 
+  idDetails.innerHTML = ""
   inputFields.forEach((inputs) => {
     inputs.setAttribute("style", "border: initial");
   });

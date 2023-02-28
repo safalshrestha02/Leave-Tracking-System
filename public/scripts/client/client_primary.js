@@ -9,7 +9,21 @@ const fetchActiveClientApi = async () => {
         const result = await response.json()
         const { data } = result
         const { companyName, companyAddress, name: clientName, email: clientEmail, _id, companyID, leavesYearly } = data
-        return { companyName, companyAddress, clientName, clientEmail, _id, companyID, leavesYearly }
+
+        if (companyID != null) {
+            workerIDinput.addEventListener("input", ()=> {
+                idDetails.innerHTML = ""
+
+                let idetailsHTML = `(Your worker ID will be <p id="mesh-id"> ${companyID}-${workerIDinput.value}</p>)`
+                idDetails.innerHTML += idetailsHTML
+
+                if (workerIDinput.value == ""){
+                    idDetails.innerHTML = ""
+                }
+            })
+        }
+
+        return { companyName, companyAddress, clientName, clientEmail, _id, companyID, leavesYearly } 
     }
 
     catch (err) {
@@ -74,3 +88,6 @@ const rejectedLeaveRequestsUnderClient = async () => {
     })
     return rejectedLeaves
 }
+
+const workerIDinput = document.querySelector("#workerID")
+const idDetails = document.querySelector(".id-details")
