@@ -13,7 +13,9 @@ const pendingAndApproved = document.querySelector(".pending-and-approved");
 // Leave days panel 
 const fetchTotalLeaves = async () => {
     const totalLeaves = await fetchLeavesUnderWorker();
-    console.log(totalLeaves)
+    const totalLeaveDaysNo = totalLeaves.worker.companyDetail.leavesYearly 
+    totalLeaveDays.textContent = totalLeaveDaysNo
+    console.log(totalLeaveDaysNo)
     leavesTaken.textContent = totalLeaves.leaveHistory.length
     leavesRemaining.textContent = parseInt(totalLeaveDays.textContent) - parseInt(leavesTaken.textContent);}
 fetchTotalLeaves()
@@ -117,7 +119,7 @@ const pendingApprovedLeavesDisplay = async () => {
 
 
     // ------------ mapping pending.approved leaves
-    if (totalPendingApprovedLeaves !== 0) {
+    if (totalPendingApprovedLeaves.length !== 0) {
         totalPendingApprovedLeaves.forEach((leave) => {
             let ihtml = `
             <div class="worker-leaves">
