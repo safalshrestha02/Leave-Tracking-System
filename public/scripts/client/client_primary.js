@@ -8,8 +8,8 @@ const fetchActiveClientApi = async () => {
         })
         const result = await response.json()
         const { data } = result
-        const { companyName, companyAddress, name: clientName, email: clientEmail, _id, companyID } = data
-        return { companyName, companyAddress, clientName, clientEmail, _id, companyID }
+        const { companyName, companyAddress, name: clientName, email: clientEmail, _id, companyID, leavesYearly } = data
+        return { companyName, companyAddress, clientName, clientEmail, _id, companyID, leavesYearly }
     }
 
     catch (err) {

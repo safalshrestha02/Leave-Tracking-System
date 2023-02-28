@@ -68,19 +68,22 @@
       <div class="dashboard-content">
         <div class="leave-setting-options">
           <h2 class="dashboard-heading">Leave Settings</h2>
-          <a href="#"><i class="fa-solid fa-gear leave-option-gear"></i></a>
+          <a class="settings-icon" href="#"><i class="fa-solid fa-gear leave-option-gear"></i></a>
+          <button class="done-button">
+            <i class="fa-solid fa-check"></i> DONE
+          </button>
         </div>
 
 
         <form class="form-container">
-          <div class="form-field">
-            <label for="no-of-days" class="form-labels"> Total days of leave in a year:</label>
-            <input id="no-of-days" type="number" placeholder="30" />
+          <div class="form-field leaves-yearly">
+            <label for="no-of-days" class="form-labels"> Total days of leave in a year: <button></button></label>
+            <input id="no-of-days" type="number" placeholder="30" disabled />
           </div>
 
-          <div class="form-field">
+          <div class="form-field leave-types">
             <label for="types-of-leaves" class="form-labels"> Types of leaves:</label>
-            <select name="type-of-leave" id="">
+            <select name="type-of-leaves" id="types-of-leaves">
               <option value="sick">Sick Leave</option>
               <option value="vacation">Vacation Leave</option>
               <option value="unpaid">Unpaid Leave</option>
@@ -90,6 +93,14 @@
 
         </form>
 
+      </div>
+
+      <div class="leave-success">
+        <i class="fa-solid fa-check alert-icon"></i>
+        <span class="alert-description">
+          <h4>Success:</h4>
+          Total number of leaves for a year has been updated!
+        </span>
       </div>
 
       <!-- add-worker / register worker -->
@@ -259,6 +270,7 @@
       <script src="/scripts/client/client_primary.js"></script>
       <script src="/scripts/client/client_dashboard.js"></script>
       <script src="/scripts/client/add_worker.js"></script>
+      <script src="/scripts/client/client_leave_settings.js"></script>
 </body>
 
 </html>
