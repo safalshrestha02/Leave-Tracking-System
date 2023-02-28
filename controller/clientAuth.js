@@ -56,7 +56,7 @@ exports.login = async (req, res, next) => {
 exports.activeClient = async (req, res, next) => {
   try {
     const client = await Client.findById(req.client.id)
-      .select("companyName companyID companyAddress name email createdAt")
+      .select("companyName companyID companyAddress name email createdAt leavesYearly")
       .exec();
     res.status(200).json({ data: client });
   } catch (error) {

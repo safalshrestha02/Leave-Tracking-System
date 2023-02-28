@@ -47,8 +47,11 @@ exports.workerDelete = async (req, res, next) => {
 
 exports.leaveRequestDelete = async (req, res, next) => {
   const id = req.params["id"];
-  const deleting = await Messages.findOneAndDelete({_id : id , "approveState": "pending" });
-  res.status(201).json({"successfully Deleted" : id})
+  const deleting = await Messages.findOneAndDelete({
+    _id: id,
+    approveState: "pending",
+  });
+  res.status(201).json({ "successfully Deleted": id });
 };
 
 exports.clientsWorkers = async (req, res, next) => {
@@ -66,15 +69,20 @@ exports.clientsWorkers = async (req, res, next) => {
 };
 
 exports.workersLeaves = async (req, res, next) => {
+  const { page = 1, limit = 3 } = req.query;
   const id = req.params["id"];
   const worker = await Worker.findById(id).then((result) => {
-    const leave = Messages.find({ "workerDetails._id": id }).then((leaves) => {
-      res.status(201).json({ worker: result, leaveHistory: leaves });
-    });
+    const leave = Messages.find({ "workerDetails._id": id })
+      .limit(limit * 1)
+      .skip((page - 1) * limit)
+      .then((leaves) => {
+        res.status(201).json({ worker: result, leaveHistory: leaves });
+      });
   });
 };
 
 exports.clientsWorkersLeaves = async (req, res, next) => {
+  const { page = 1, limit = 3 } = req.query;
   const id = req.params["id"];
   console.log(id);
   const client = await Clients.findById(id).then((specificClient) => {
@@ -85,13 +93,14 @@ exports.clientsWorkersLeaves = async (req, res, next) => {
       const leave = Messages.find({
         "workerDetails.CompanyDetail._id": id,
         "workerDetails.companyName": specificClient.companyName,
-      }).then((allLeaves) => {
-        res.status(201).json({
-          Client: specificClient,
-          Workers: workersClient,
-          Leaves: allLeaves,
+      })
+        .limit(limit * 1)
+        .skip((page - 1) * limit)
+        .then((allLeaves) => {
+          res.status(201).json({
+            Leaves: allLeaves,
+          });
         });
-      });
     });
   });
 };

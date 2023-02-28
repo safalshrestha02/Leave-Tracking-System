@@ -9,7 +9,7 @@ const messageSchema = new mongoose.Schema(
     workerID: {
       type: Number,
       required: [true, "*employee ID is required"],
-      minLength : 5
+      minLength: 5,
     },
     startDate: {
       type: Date,
@@ -39,7 +39,7 @@ const messageSchema = new mongoose.Schema(
     },
     workerDetails: {
       _id: { type: mongoose.Schema.Types.ObjectID, ref: "worker" },
-      workerId: Number,
+      workerID: Number,
       companyName: String,
       companyDetail: Object,
     },
