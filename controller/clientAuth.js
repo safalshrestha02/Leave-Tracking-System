@@ -1,4 +1,3 @@
-require("dotenv").config();
 const Client = require("../models/ClientRegistration");
 const Leaves = require("../models/RequestForLeave");
 const { clientErrHandle } = require("../utils/errorHandler");
@@ -42,11 +41,12 @@ exports.login = async (req, res, next) => {
   try {
     const client = await Client.login(email, password);
     const token = createClientToken(client._id);
+
     res.cookie("jwt", token, {
       httpOnly: true,
       maxAge: maxAge * 1000,
     });
-    res.status(201).json({ token });
+    res.status(201).json({ msg: "Logged in" });
   } catch (err) {
     const errors = clientErrHandle(err);
     res.status(400).json({ errors });
@@ -91,6 +91,6 @@ exports.denyLeave = async (req, res, next) => {
 exports.changeLeaveDays = async (req, res, next) => {
   const id = req.params["id"];
   const day = req.params["days"];
-  const days = {leavesYearly : day};
+  const days = { leavesYearly: day };
   const client = await Client.findByIdAndUpdate(id, days);
 };

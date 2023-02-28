@@ -33,8 +33,7 @@ exports.registerWorker = async (req, res) => {
       password,
       companyDetail,
     });
-    console.log({companyDetail})
-    res.status(201).json({ message: "registered" });
+    res.status(201).json({ worker: worker._id });
   } catch (err) {
     const errors = workerErrHandle(err);
     res.status(401).json({ errors });
@@ -43,14 +42,16 @@ exports.registerWorker = async (req, res) => {
 
 exports.login = async (req, res, next) => {
   const { workerID, password } = req.body;
+
   try {
     const worker = await Worker.login(workerID, password);
     const token = createWorkerToken(worker._id);
+
     res.cookie("jwt", token, {
       httpOnly: true,
       maxAge: maxAge * 1000,
     });
-    res.status(200).json({ message: `${workerID} is logged in` });
+    res.status(200).json({ msg: "Logged in" });
   } catch (err) {
     const errors = workerErrHandle(err);
     res.status(400).json({ errors });
@@ -90,9 +91,11 @@ exports.applyLeave = async (req, res, next) => {
 
 exports.activeWorker = async (req, res, next) => {
   try {
-    const worker = await Worker.findById(req.worker.id).select(
-      "companyDetail firstName lastName country city companyName workerID gender email createdAt"
-    );
+    const worker = await Worker.findById(req.worker.id)
+      .select(
+        "companyDetail firstName lastName country city companyName workerID gender email createdAt"
+      )
+      .exec();
     res.status(200).json({ data: worker });
   } catch (error) {
     next(error);
