@@ -42,7 +42,7 @@ exports.workerDelete = async (req, res, next) => {
     "workerDetails._id": id,
   });
   const workerDelete = await Worker.findByIdAndDelete(id);
-  res.status(201).json({"successfully Deleted" : id})
+  res.status(201).json({ "successfully Deleted": id });
 };
 
 exports.leaveRequestDelete = async (req, res, next) => {
@@ -52,11 +52,16 @@ exports.leaveRequestDelete = async (req, res, next) => {
 };
 
 exports.clientsWorkers = async (req, res, next) => {
+  const { page = 1, limit = 3 } = req.query;
+
   const id = req.params["id"];
-  const client = await Clients.findById( id ).then((result) => {
-    const worker = Worker.find({ "companyDetail._id": id }).then((workers) => {
-      res.status(201).json({ client: result, workers: workers });
-    });
+  const client = await Clients.findById(id).then((result) => {
+    const worker = Worker.find({ "companyDetail._id": id })
+      .limit(limit * 1)
+      .skip((page - 1) * limit)
+      .then((workers) => {
+        res.status(201).json({ client: result, workers: workers });
+      });
   });
 };
 

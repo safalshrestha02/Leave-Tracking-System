@@ -39,19 +39,24 @@ const workerErrHandle = (err) => {
     password: "",
     workerID: "",
   };
+
   if (err.message === "Invalid Credentials") {
     errors.workerID = "*Invalid Credentials";
     errors.password = "*Invalid Credentials";
   }
+
   if (err.code === 11000) {
     if (err.message.includes("workerID")) {
       errors.workerID = "*this workerID already registered";
     }
+
     if (err.message.includes("email")) {
       errors.email = "*that email is already registered";
     }
+
     return errors;
   }
+
   if (err.message.includes("worker validation failed")) {
     Object.values(err.errors).forEach(({ properties }) => {
       errors[properties.path] = properties.message;

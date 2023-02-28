@@ -52,20 +52,19 @@ const registerWorker = new mongoose.Schema(
       companyName: String,
       companyID: Number,
       companyAddress: String,
-      leavesYearly : Number
+      leavesYearly: Number,
     },
   },
   { timestamps: true }
 );
 
 registerWorker.pre("save", async function (next) {
-  console.log("Please wait we are registering you...");
   const salt = await bcrypt.genSalt();
   this.password = await bcrypt.hash(this.password, salt);
   next();
 });
 
-registerWorker.static.registerWorker = async function (
+registerWorker.statics.registerWorker = async function (
   workerName,
   country,
   city,
@@ -88,9 +87,6 @@ registerWorker.static.registerWorker = async function (
     throw Error("*email is already registered");
   }
 
-  const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(password, salt);
-
   const worker = await this.create({
     workerName,
     country,
@@ -99,7 +95,7 @@ registerWorker.static.registerWorker = async function (
     workerID,
     gender,
     email,
-    password: hashedPassword,
+    password,
     companyDetail,
   });
   return worker;
@@ -110,7 +106,6 @@ registerWorker.statics.login = async function (workerID, password) {
   if (worker) {
     const passcheck = await bcrypt.compare(password, worker.password);
     if (passcheck) {
-      console.log("loggedin");
       return worker;
     }
     throw Error("Invalid Credentials");
