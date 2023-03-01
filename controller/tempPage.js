@@ -80,7 +80,7 @@ exports.leaveRequestDelete = async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const deleting = await Messages.findOneAndDelete({
+    const deleting = await Messages.findByIdAndDelete({
       _id: id,
       approveState: "pending",
     });
@@ -143,16 +143,15 @@ exports.clientsWorkersLeaves = async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    Clients.findById(req.params["id"]).then((specificClient) => {
+    Clients.findById(id).then((specificClient) => {
       const company = specificClient.companyName;
       Worker.find({
-        "companyDetail._id": req.params["id"],
+        "companyDetail._id": id,
         "companyDetail.companyName": company,
       }).then((result) => {
-        console.log(result)
+        console.log(result);
         Messages.find({
-          "workerDetails.CompanyDetail._id": id,
-          "workerDetails.CompanyDetail.companyName": company,
+          "workerDetails.companyDetail.companyName": company,
         })
           .limit(limit * 1)
           .skip((page - 1) * limit)
