@@ -64,7 +64,7 @@ const fetchAllWorkersLeave = async () => {
         let ihtml = `
             <div class="active-leave-details">
             <i class="fa-regular fa-user user-icon"></i
-            ><span class="active-leave-name">${worker.workerName}</span>
+            ><span class="active-leave-name capitalize-input">${worker.workerName}</span>
   
             <div class="active-leave-date">
               <span>${worker.startDate
