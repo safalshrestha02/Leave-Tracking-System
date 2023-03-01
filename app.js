@@ -1,16 +1,16 @@
 require("dotenv").config();
-// var xss = require("xss-clean");
+var xss = require("xss-clean");
+var clean = require("xss-clean/lib/xss").clean;
+var cleaned = clean("<script></script>");
 const bodyParser = require("body-parser");
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const path = require("path");
 const cookieParser = require("cookie-parser");
-// const helmet = require("helmet");
-// const mongoSanitize = require("express-mongo-sanitize");
-// var clean = require("xss-clean/lib/xss").clean;
-// var cleaned = clean("<script></script>");
-// const rateLimit = require("express-rate-limit");
+const helmet = require("helmet");
+const mongoSanitize = require("express-mongo-sanitize");
+const rateLimit = require("express-rate-limit");
 // const hpp = require("hpp")
 const PORT = process.env.PORT;
 
