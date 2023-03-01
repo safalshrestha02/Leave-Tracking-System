@@ -3,6 +3,8 @@ const leaveHistoryContainer = document.querySelector('.client-leave-history-cont
 const filterButton = document.querySelector('.filter-button')
 const filterContainer = document.querySelector('.filter-container')
 
+
+// Checking if client have any workers or not
 const checkWorkers = async () => {
     const totalWorkersResult = await workersUnderClient()
     const { workers: totalCompanyWorkers } = totalWorkersResult
@@ -14,8 +16,10 @@ const checkWorkers = async () => {
 checkWorkers()
 
 
+// Our main function
 const leaveHistory = async () => {
 
+    // Fetching workers on dropdown
     const fetchWorkersDropdown = async () => {
         const workersResult = await workersUnderClient()
         const { workers: companyWorkers } = workersResult
@@ -32,39 +36,53 @@ const leaveHistory = async () => {
     fetchWorkersDropdown()
 
 
-    const getPastLeaves = async () => {
-        leaveHistoryContainer.innerHTML = '<p class = "loader">Loading Past Leaves. Please Wait...</p>'
+    // getting approved, rejected leaves of the worker selected by the client
+    const getLeaveHistory = async () => {
+        leaveHistoryContainer.innerHTML = '<p class = "loader">Loading Leave History. Please Wait...</p>'
         const approvedLeaves = await approvedLeaveRequestsUnderClient()
         const rejectedLeaves = await rejectedLeaveRequestsUnderClient()
-        const pastLeaves = [...approvedLeaves, ...rejectedLeaves]
+        const approvedAndRejectedLeaves = [...approvedLeaves, ...rejectedLeaves]
 
-        const sortedPastLeaveRequests = pastLeaves.sort((leaves1, leaves2) => {
+        const sortedLeaveHistory = approvedAndRejectedLeaves.sort((leaves1, leaves2) => {
             const { startDate: startDate1 } = leaves1
             const { startDate: startDate2 } = leaves2
             return startDate1.slice(0, 10) > startDate2.slice(0, 10) ? 1 : startDate1.slice(0, 10) < startDate2.slice(0, 10) ? -1 : 0
         })
 
         const userChoiceWorker = chooseWorker.value
-        const specificPastLeaves = sortedPastLeaveRequests.filter((leave) => {
+        const userChoiceLeaveHistory = sortedLeaveHistory.filter((leave) => {
             const { workerID } = leave
             return userChoiceWorker == workerID
         })
-        if (specificPastLeaves.length == 0) {
+
+        const userChoiceApprovedLeaves = userChoiceLeaveHistory.filter((leave) => {
+            const { approveState } = leave
+            return approveState == 'approved'
+        })
+
+        const userChoiceRejectedLeaves = userChoiceLeaveHistory.filter((leave) => {
+            const { approveState } = leave
+            return approveState == 'rejected'
+        })
+
+        if (userChoiceLeaveHistory.length == 0) {
             const blankArr = []
-            leaveHistoryContainer.innerHTML = '<p class = "no-past-leaves">The requested user has no any past leaves records.</p>'
+            leaveHistoryContainer.innerHTML = '<p class = "no-past-leaves">The requested user has no any leaves records.</p>'
             return blankArr
         }
+
         else {
-            fetchPastLeaves(specificPastLeaves)
-            return specificPastLeaves
+            fetchLeaveHistory(userChoiceApprovedLeaves)
+            return { userChoiceLeaveHistory, userChoiceApprovedLeaves, userChoiceRejectedLeaves }
         }
     }
-    chooseWorker.addEventListener('change', getPastLeaves)
-    window.addEventListener('load', getPastLeaves)
+    chooseWorker.addEventListener('change', getLeaveHistory)
+    window.addEventListener('load', getLeaveHistory)
 
 
-    const fetchPastLeaves = async (specificPastLeaves) => {
-        specificPastLeaves.forEach((leave) => {
+    // fetching leave history by mapping the data
+    const fetchLeaveHistory = async (data) => {
+        data.forEach((leave) => {
             const { typeOfLeave, startDate, endDate, leaveDays, approveState } = leave
             const dayOrDays = leaveDays > 1 ? 'Days' : 'Day'
 
@@ -95,8 +113,8 @@ const leaveHistory = async () => {
     }
 
 
+    // filter function
     const filterButtons = document.querySelectorAll('.filter-buttons')
-    const allPastLeaves = document.querySelector('.all-past-leaves')
     const approvedLeaves = document.querySelector('.approved-past-leaves')
     const rejectedLeaves = document.querySelector('.rejected-past-leaves')
     const icon = document.querySelector('.filter-icon')
@@ -106,39 +124,8 @@ const leaveHistory = async () => {
         icon.classList.toggle('fa-circle-xmark')
     })
 
-
-    allPastLeaves.addEventListener('click', async () => {
-
-        try {
-            filterContainer.classList.remove('filter-container-active')
-            icon.classList.remove('fa-circle-xmark')
-
-            filterButtons.forEach((btn) => {
-                btn.classList.remove("active-option")
-            })
-            allPastLeaves.classList.add("active-option")
-
-            const allLeaves = await getPastLeaves()
-            leaveHistoryContainer.innerHTML = ''
-            setTimeout(() => {
-                if (allLeaves.length > 0) {
-                    fetchPastLeaves(allLeaves)
-                }
-                else if (allLeaves.length == 0) {
-                    leaveHistoryContainer.innerHTML = '<p class = "no-past-leaves">The requested user has no any past leaves records.</p>'
-                }
-            })
-        }
-
-        catch (err) {
-
-        }
-
-    })
-
-
+    // getting approved leaves (filter)
     approvedLeaves.addEventListener('click', async () => {
-
         try {
             filterContainer.classList.remove('filter-container-active')
             icon.classList.remove('fa-circle-xmark')
@@ -148,32 +135,37 @@ const leaveHistory = async () => {
             })
             approvedLeaves.classList.add("active-option")
 
-            const allLeaves = await getPastLeaves()
-            const approvedLeavesOnly = allLeaves.filter((leave) => {
-                const { approveState } = leave
-                return approveState === 'approved'
-            })
-            leaveHistoryContainer.innerHTML = ''
-            setTimeout(() => {
-                if (allLeaves.length > 0) {
-                    fetchPastLeaves(approvedLeavesOnly)
-                }
-                else if (allLeaves.length == 0) {
-                    leaveHistoryContainer.innerHTML = '<p class = "no-past-leaves">The requested user has no any past leaves records.</p>'
-                }
+            const allLeaves = await getLeaveHistory()
 
-            })
+            if (allLeaves.length == 0) {
+                leaveHistoryContainer.innerHTML = '<p class = "no-past-leaves">The requested user has no any leaves records.</p>'
+            }
+
+            else {
+                const { userChoiceApprovedLeaves } = allLeaves
+                leaveHistoryContainer.innerHTML = ''
+                setTimeout(() => {
+                    if (userChoiceApprovedLeaves.length > 0) {
+                        fetchLeaveHistory(userChoiceApprovedLeaves)
+                    }
+
+                    else if (userChoiceApprovedLeaves.length == 0) {
+                        leaveHistoryContainer.innerHTML = '<p class = "no-past-leaves">The requested user has no any approved leaves records.</p>'
+                    }
+                })
+            }
+
         }
 
         catch (err) {
-            leaveHistoryContainer.innerHTML = '<p class = "no-past-leaves">The requested user has no any past leaves records.</p>'
+            leaveHistoryContainer.innerHTML = '<p class = "no-past-leaves">The requested user has no any leaves records.</p>'
         }
-
 
     })
 
-    rejectedLeaves.addEventListener('click', async () => {
 
+    // getting rejected leaves (filter)
+    rejectedLeaves.addEventListener('click', async () => {
         try {
             filterContainer.classList.remove('filter-container-active')
             icon.classList.remove('fa-circle-xmark')
@@ -183,27 +175,31 @@ const leaveHistory = async () => {
             })
             rejectedLeaves.classList.add("active-option")
 
-            const allLeaves = await getPastLeaves()
-            const rejectedLeavesOnly = allLeaves.filter((leave) => {
-                const { approveState } = leave
-                return approveState === 'rejected'
-            })
-            leaveHistoryContainer.innerHTML = ''
-            setTimeout(() => {
-                if (allLeaves.length > 0) {
-                    fetchPastLeaves(rejectedLeavesOnly)
-                }
-                else if (allLeaves.length == 0) {
-                    leaveHistoryContainer.innerHTML = '<p class = "no-past-leaves">The requested user has no any past leaves records.</p>'
-                }
+            const allLeaves = await getLeaveHistory()
 
-            })
+            if (allLeaves.length == 0) {
+                leaveHistoryContainer.innerHTML = '<p class = "no-past-leaves">The requested user has no any leaves records.</p>'
+            }
+
+            else {
+                const { userChoiceRejectedLeaves } = allLeaves
+                leaveHistoryContainer.innerHTML = ''
+                setTimeout(() => {
+                    if (userChoiceRejectedLeaves.length > 0) {
+                        fetchLeaveHistory(userChoiceRejectedLeaves)
+                    }
+
+                    else if (userChoiceRejectedLeaves.length == 0) {
+                        leaveHistoryContainer.innerHTML = '<p class = "no-past-leaves">The requested user has no any rejected leaves records.</p>'
+                    }
+                })
+            }
+
         }
 
         catch (err) {
-            leaveHistoryContainer.innerHTML = '<p class = "no-past-leaves">The requested user has no any past leaves records.</p>'
+            leaveHistoryContainer.innerHTML = '<p class = "no-past-leaves">The requested user has no any leaves records.</p>'
         }
-
 
     })
 

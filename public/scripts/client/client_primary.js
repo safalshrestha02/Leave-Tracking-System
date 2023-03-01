@@ -11,19 +11,19 @@ const fetchActiveClientApi = async () => {
         const { companyName, companyAddress, name: clientName, email: clientEmail, _id, companyID, leavesYearly } = data
 
         if (companyID != null) {
-            workerIDinput.addEventListener("input", ()=> {
+            workerIDinput.addEventListener("input", () => {
                 idDetails.innerHTML = ""
 
                 let idetailsHTML = `(Your worker ID will be <p id="mesh-id"> ${companyID}-${workerIDinput.value}</p>)`
                 idDetails.innerHTML += idetailsHTML
 
-                if (workerIDinput.value == ""){
+                if (workerIDinput.value == "") {
                     idDetails.innerHTML = ""
                 }
             })
         }
 
-        return { companyName, companyAddress, clientName, clientEmail, _id, companyID, leavesYearly } 
+        return { companyName, companyAddress, clientName, clientEmail, _id, companyID, leavesYearly }
     }
 
     catch (err) {
@@ -44,7 +44,7 @@ const workersUnderClient = async () => {
 const leaveRequestsUnderClient = async () => {
     const activeClient = await fetchActiveClientApi();
     const { _id } = activeClient
-    const leavesResponse = await fetch(`http://localhost:3000/api/clients_workers_leaves/${_id}`)
+    const leavesResponse = await fetch(`http://localhost:3000/api/clients_workers_leaves/${_id}?limit=1000`)
     const leavesResult = await leavesResponse.json()
     const { Leaves } = leavesResult
 
