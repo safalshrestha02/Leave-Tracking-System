@@ -54,7 +54,7 @@ addWorkerForm.addEventListener("submit", async (e) => {
   const country = form.country.value.toLowerCase();
   const city = form.city.value.toLowerCase();
   const email = form.workerEmail.value.toLowerCase();
-  const workerID = form.workerID.value;
+  const workerIDs = form.workerID.value;
   const gender = document
     .querySelector("input[name='gender']:checked")
     .value.toLowerCase();
@@ -63,12 +63,13 @@ addWorkerForm.addEventListener("submit", async (e) => {
   const fixedCompanyName = companyName;
   const clientID = form.clientID.value
   const fixedClientID = clientID
+  const allworkerID = `${clientID}-${workerIDs}`
 
   const formData = {
     firstName,
     lastName,
     gender,
-    workerID,
+    workerID:allworkerID,
     email,
     password,
     country,
@@ -138,6 +139,7 @@ addWorkerForm.addEventListener("submit", async (e) => {
       });
 
       addWorkerForm.reset();
+      idDetails.innerHTML = ""
       formcompanyName.value = fixedCompanyName;
       formcompanyID.value = fixedClientID
 

@@ -156,31 +156,36 @@
                             <p class="companyName_error register-errors"></p>
                           </div>
       
-                          <div class="client-id-container">
-                            <label for="clientID">Client ID</label>
-                            <input
-                              type="text"
-                              class="register-input-field clear-input client-ID-value"
-                              id="clientID"
-                              maxlength="6"
-                              disabled
-                            />
-                            <p class="companyID_error register-errors"></p>
+                          <div class="worker-id-container">
+                            <div class="worker-id-labels">
+                            <label for="workerID" class="worker-id-label"> Worker ID </label>
+                            <div class="id-details"></div>
+                            </div>
+                            <div class="double-id-container">
+                              <div class="client-id-container">
+                                <input
+                                  type="text"
+                                  class="register-input-field clear-input client-ID-value"
+                                  id="clientID"
+                                  maxlength="6"
+                                  disabled
+                                />
+                                <p class="companyID_error register-errors"></p>
+                              </div>
+                              <div class="worker-id-container">
+                                <input
+                                  type="text"
+                                  placeholder="Unique Worker ID (5 Digits)"
+                                  class="register-input-field clear-input"
+                                  id="workerID"
+                                  maxlength="5"
+                                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                />
+                                <p class="workerID_error register-errors"></p>
+                              </div> 
+                            </div>
                           </div>
                           
-                          <div class="worker-id-container">
-                            <label for="workerID">Worker ID</label>
-                            <input
-                              type="text"
-                              placeholder="Unique Worker ID (5 Digits)"
-                              class="register-input-field clear-input"
-                              id="workerID"
-                              maxlength="5"
-                              oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                            />
-                            <p class="workerID_error register-errors"></p>
-                          </div>
-      
                           <div class="form-gender-container">
                             <p class="choose-gender">Choose gender</p>
                             <label for="genderRadioMale">Male</label>

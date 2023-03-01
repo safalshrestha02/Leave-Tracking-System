@@ -289,6 +289,48 @@ input[type=radio] {
   cursor: not-allowed;
 }
 
+.double-id-container {
+  display: flex;
+}
+
+.client-id-container {
+  flex-basis: 18%;
+}
+
+.worker-id-container {
+  flex-basis: 80%;
+}
+
+#workerID, .workerID_error {
+  margin-left: 0.8rem;
+}
+
+.form-gender-container {
+  grid-column: span 2;
+}
+
+.id-details {
+  margin-left: 1rem;
+  color: #7d90a5;
+  display: inline-flex;
+  flex-basis: 80%;
+}
+
+#mesh-id {
+  color: #3c79f5;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-left: 0.3rem;
+}
+
+.worker-id-labels {
+  display: flex;
+}
+
+.worker-id-label {
+  flex-basis: 18%;
+}
+
 .success-alert {
   display: none;
   position: absolute;
@@ -443,4 +485,4 @@ input[type=radio] {
   font-size: 1.2rem;
   color: #ff0032;
   font-weight: 600;
-}
+}/*# sourceMappingURL=client_manage_leave.css.map */

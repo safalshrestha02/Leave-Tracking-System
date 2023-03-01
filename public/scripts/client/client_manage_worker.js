@@ -374,10 +374,13 @@ const confirmDelete =  (deleteWorkerID, monID) => {
   const confirmBox = document.querySelector(".confirm-container");
   const cancelButton = document.querySelector(".cancel-button");
   const confirmButton = document.querySelector(".confirm-button");
+  const confirmID = document.querySelector(".confirm-worker-name")
 
   confirmBox.style.display = "flex";
   mainBody.classList.add("main-body-overflow");
-
+  confirmID.innerHTML = ``
+  let ihtml = `"${deleteWorkerID}"`
+  confirmID.innerHTML += ihtml 
   cancelButton.addEventListener("click", () => {
     confirmBox.style.display = "none";
     mainBody.classList.remove("main-body-overflow");
