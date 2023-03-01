@@ -92,15 +92,20 @@ exports.denyLeave = async (req, res, next) => {
 };
 
 exports.changeLeaveDays = async (req, res, next) => {
-  const id = req.params["id"];
-  const day = req.params["days"];
-  await Client.findByIdAndUpdate(id, { leavesYearly: day });
-  await Worker.updateMany(
-    { "companyDetails._id": id },
-    { leavesYearly: day }
-  );
-  await Leaves.updateMany(
-    { "companyDetails.workerDetails._id": id },
-    { leavesYearly: day }
-  );
+  try {
+    const id = req.params["id"];
+    const day = req.params["days"];
+    const workerFilter = { "companyDetail._id": id };
+    const leaveFilter = { "workerDetails.companyDetail._id": id };
+    const update = { leavesYearly: day };
+
+    await Client.findByIdAndUpdate(id, update);
+    await Worker.updateMany(workerFilter, update).then(() => {
+      Leaves.updateMany(leaveFilter, update).then(() => {
+        res.json({ success: true });
+      });
+    });
+  } catch (err) {
+    res.json(err);
+  }
 };
