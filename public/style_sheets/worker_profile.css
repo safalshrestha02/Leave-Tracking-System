@@ -27,6 +27,10 @@ a {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+.capitalize-input {
+  text-transform: capitalize;
+}
+
 #main-logo {
   font-size: 2rem;
   font-weight: 500;
@@ -220,4 +224,4 @@ li {
 
 .emp-email-value {
   text-transform: none;
-}/*# sourceMappingURL=worker_profile.css.map */
+}

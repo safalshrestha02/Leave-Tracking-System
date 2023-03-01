@@ -27,6 +27,10 @@ a {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+.capitalize-input {
+  text-transform: capitalize;
+}
+
 #main-logo {
   font-size: 2rem;
   font-weight: 500;
@@ -266,4 +270,4 @@ li {
 .rejected-leave {
   color: #ff0032;
   margin-right: 0.5rem;
-}/*# sourceMappingURL=worker_leaveHistory.css.map */
+}

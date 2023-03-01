@@ -27,6 +27,10 @@ a {
   box-shadow: $primary-box-shadow;
 }
 
+.capitalize-input {
+  text-transform: capitalize;
+}
+
 #main-logo {
   font-size: 2rem;
   font-weight: 500;

@@ -108,6 +108,22 @@
   }
 }
 
+.leave-type-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .fa-circle-xmark{
+    font-size: 1.2rem;
+    opacity: 0.6;
+    &:hover{
+      cursor: pointer;
+      color: $red-bg;
+    }
+  }
+}
+
 .green {
   color: $green-bg;
 }
