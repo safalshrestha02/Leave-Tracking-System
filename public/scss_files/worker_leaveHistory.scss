@@ -35,59 +35,14 @@
 
 /* ------------------------------------------ past leaves ----------------------------------- */
 
-.past-leaves {
-  border-top: $line;
-  padding-top: 1.4rem;
-  margin: 2.2rem 0;
+.past-leaves-h1{
+  border-bottom: 3px solid $separator;
+  display: block;
+  margin-bottom: 2rem;
 }
 
-.past-leaves--heading {
-  font-weight: 500;
-}
-
-.past-leaves-container {
-  margin-top: 1.2rem;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.5rem;
-}
-
-.past-leave-details {
-  background-color: $light-bg;
-  padding: 1rem;
-  border-radius: 0.5rem;
-}
-
-.past-leave-type {
+.no-past-record {
+  opacity: 0.5;
   font-weight: 600;
-}
-
-.past-leave-date,
-.past-leave-status {
-  display: flex;
-  justify-content: space-between;
-  margin: 0.8rem 0 0 0;
-}
-
-.past-leave-date span,
-.pending-active-leave-date span {
-  opacity: 0.6;
-}
-
-/* ------------------------------------------ leave status ----------------------------------- */
-
-.pending-leave {
-  color: $orange-bg;
-  margin-right: 0.5rem;
-}
-
-.active-leave,
-.approved-leave {
-  color: $green-bg;
-  margin-right: 0.5rem;
-}
-
-.rejected-leave {
-  color: $red-bg;
-  margin-right: 0.5rem;
+  text-align: center;
 }
