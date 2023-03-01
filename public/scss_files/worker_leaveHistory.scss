@@ -35,59 +35,145 @@
 
 /* ------------------------------------------ past leaves ----------------------------------- */
 
-.past-leaves {
-  border-top: $line;
-  padding-top: 1.4rem;
-  margin: 2.2rem 0;
+.workers-leave-history {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  border-bottom: 3px solid $separator;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  align-items: center;
 }
 
-.past-leaves--heading {
-  font-weight: 500;
+.no-past-record {
+  opacity: 0.5;
+  font-weight: 600;
+  text-align: center;
 }
 
-.past-leaves-container {
+.upcoming-leaves-container {
   margin-top: 1.2rem;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
 }
 
-.past-leave-details {
+.worker-leave-history-details {
   background-color: $light-bg;
   padding: 1rem;
   border-radius: 0.5rem;
 }
 
-.past-leave-type {
+.worker-leave-history-leave-type {
   font-weight: 600;
 }
 
-.past-leave-date,
-.past-leave-status {
+.worker-leave-history-leave-date,
+.worker-leave-history-leave-status {
   display: flex;
   justify-content: space-between;
   margin: 0.8rem 0 0 0;
 }
 
-.past-leave-date span,
-.pending-active-leave-date span {
+.worker-leave-history-leave-date span {
   opacity: 0.6;
 }
 
-/* ------------------------------------------ leave status ----------------------------------- */
-
-.pending-leave {
-  color: $orange-bg;
+.rejected-leave{
+  color: $red-bg;
   margin-right: 0.5rem;
 }
 
-.active-leave,
 .approved-leave {
   color: $green-bg;
   margin-right: 0.5rem;
 }
 
-.rejected-leave {
-  color: $red-bg;
-  margin-right: 0.5rem;
+.capitalize-input{
+  text-transform: capitalize;
+}
+
+// filter
+
+
+
+.filter-button {
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border-radius: 0.3rem;
+  border: none;
+  width: fit-content;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgb(230, 230, 230);
+  }
+}
+
+.filter-options-container {
+  background-color: $grey-bg;
+  width: fit-content;
+  text-align: center;
+  margin-top: 1rem;
+  position: absolute;
+  right:-2rem;
+  z-index: 10;
+  padding: 1rem;
+  border-radius: 0.3rem;
+  display: none;
+
+}
+
+.filter-option {
+  width: fit-content;
+  cursor: pointer;
+  margin: 0.5rem 0;
+  border: none;
+  font-size: 1rem;
+  text-align: center;
+  display: block;
+}
+
+.filter-container-active{
+  display: block;
+} 
+
+.close-filter {
+  color: black !important;
+}
+
+.details-icon {
+  cursor: pointer;
+  font-size: 1.3rem !important;
+  color: $dark-bg;
+}
+
+.active-option{
+  color: $orange-bg;
+  font-weight: 600;
+}
+
+.approved-option{
+  margin-bottom: 2rem;
+}
+
+.filter-name{
+    padding: 0.5rem 0.3rem;
+    margin: 0 1rem;
+    display: inline-block;
+    font-weight: bolder;
+    margin-bottom: 1rem;
+    color: $blue-bg;
+    border-bottom: 3px solid $blue-bg;
+}
+
+.title-active {
+  display: block;
+}
+
+.history-title {
+  display: none;
 }

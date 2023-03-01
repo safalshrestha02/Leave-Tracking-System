@@ -26,3 +26,21 @@ const fetchLeavesUnderWorker = async () => {
   const leavesResult = await response.json();
   return leavesResult
 }
+
+const fetchApprovedWorkerRequest = async () => {
+  const leaves = await fetchLeavesUnderWorker()
+  const approvedLeaves = leaves.filter((leave) => {
+      const { approveState } = leave
+      return approveState === "approved"
+  })
+  return approvedLeaves
+}
+
+const fetchRejectedWorkerRequest = async () => {
+  const leaves = await fetchLeavesUnderWorker()
+  const rejectedLeaves = leaves.filter((leave) => {
+      const { approveState } = leave
+      return approveState === "rejected"
+  })
+  return rejectedLeaves
+}
