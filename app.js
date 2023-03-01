@@ -20,7 +20,14 @@ const PORT = process.env.PORT;
 // app.use(bodyParser.urlencoded())
 // app.use(hpp())
 // app.use(xss());
-
+// const createRequestLimiter = rateLimit({
+//     windowMS: 5 *60 * 60 * 1000, //5 hours
+//     max: 15,
+//     standardHeaers: true,
+//     legacyHeaders: true,
+//     message: "too many leave requests sent from this IP",
+//   });
+//createRequestLimiter()
 const worker = require("./routes/workerRoutes");
 const client = require("./routes/clientRoutes");
 const tempRoutes = require("./routes/tempRoutes");

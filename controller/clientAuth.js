@@ -1,5 +1,6 @@
 const Client = require("../models/ClientRegistration");
 const Leaves = require("../models/RequestForLeave");
+const Worker = require("../models/AddWorker");
 const { clientErrHandle } = require("../utils/errorHandler");
 const { createClientToken } = require("../utils/createToken");
 
@@ -56,7 +57,9 @@ exports.login = async (req, res, next) => {
 exports.activeClient = async (req, res, next) => {
   try {
     const client = await Client.findById(req.client.id)
-      .select("companyName companyID companyAddress name email createdAt leavesYearly")
+      .select(
+        "companyName companyID companyAddress name email createdAt leavesYearly"
+      )
       .exec();
     res.status(200).json({ data: client });
   } catch (error) {
@@ -91,6 +94,13 @@ exports.denyLeave = async (req, res, next) => {
 exports.changeLeaveDays = async (req, res, next) => {
   const id = req.params["id"];
   const day = req.params["days"];
-  const days = { leavesYearly: day };
-  const client = await Client.findByIdAndUpdate(id, days);
+  await Client.findByIdAndUpdate(id, { leavesYearly: day });
+  await Worker.updateMany(
+    { "companyDetails._id": id },
+    { leavesYearly: day }
+  );
+  await Leaves.updateMany(
+    { "companyDetails.workerDetails._id": id },
+    { leavesYearly: day }
+  );
 };
