@@ -118,3 +118,33 @@ exports.logout = async (req, res, next) => {
     next(error);
   }
 };
+
+exports.changePassword = async (req, res, next) => {
+  const worker = await Worker.findById(req.worker.id).select("password");
+  const currentPassword = req.body.currentPassword;
+  const newPassword = req.body.newPassword;
+  const confirmPassword = req.body.confirmPassword;
+
+  if (currentPassword === newPassword || currentPassword === confirmPassword) {
+    return res.json({
+      message: "Enter a new password other than your current password",
+    });
+  }
+
+  if (newPassword != confirmPassword) {
+    return res.json({ message: "Passwords don't match" });
+  }
+
+  const checkCurrentPwd = await worker.checkPassword(currentPassword);
+  try {
+    if (!checkCurrentPwd) {
+      return res.json({ message: "Incorrect Password" });
+    } else res.json({ message: "password changed" });
+
+    worker.password = newPassword;
+    worker.updatedAt = Date.now();
+    await worker.save();
+  } catch (error) {
+    next(error);
+  }
+};
