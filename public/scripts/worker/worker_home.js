@@ -15,8 +15,17 @@ const fetchTotalLeaves = async () => {
     const totalLeaves = await fetchLeavesUnderWorker();
     const totalLeaveDaysNo = totalLeaves.worker.companyDetail.leavesYearly 
     totalLeaveDays.textContent = totalLeaveDaysNo
-    console.log(totalLeaveDaysNo)
-    leavesTaken.textContent = totalLeaves.leaveHistory.length
+
+    let leavesTakenNo = 0
+
+    // leaves taken 
+    console.log(totalLeaves.leaveHistory)
+    totalLeaves.leaveHistory.forEach((leave) => {
+        leavesTakenNo += leave.leaveDays
+    })
+
+    leavesTaken.textContent = leavesTakenNo
+
     leavesRemaining.textContent = parseInt(totalLeaveDays.textContent) - parseInt(leavesTaken.textContent);}
 fetchTotalLeaves()
 
