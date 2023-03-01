@@ -43,6 +43,7 @@ const messageSchema = new mongoose.Schema(
       companyName: String,
       companyDetail: Object,
     },
+    leavesYearly: { type : Number, default : 30 },
   },
   { timestamps: true }
 );

@@ -2,13 +2,12 @@ const express = require("express");
 const router = express.Router();
 // const rateLimit = require('express-rate-limit')
 // const createAccountLimiter = rateLimit({
-//   windowMS: 1 * 60 * 1000, //1 min
+//     windowMS: 5 *60 * 60 * 1000, //5 hours
 //   max: 5,
 //   standardHeaers: true,
 //   legacyHeaders: true,
 //   message: "too many accounts created from this IP",
 // });
-
 
 //paths
 const loadPages = require("../controller/clientPageController");
