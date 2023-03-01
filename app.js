@@ -11,6 +11,7 @@ const cookieParser = require("cookie-parser");
 const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
 const rateLimit = require("express-rate-limit");
+// const cots = require ('cors')
 // const hpp = require("hpp")
 const PORT = process.env.PORT;
 
@@ -20,6 +21,7 @@ const PORT = process.env.PORT;
 // app.use(bodyParser.urlencoded())
 // app.use(hpp())
 // app.use(xss());
+// app.use(cors())
 // const createRequestLimiter = rateLimit({
 //     windowMS: 5 *60 * 60 * 1000, //5 hours
 //     max: 15,

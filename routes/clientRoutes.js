@@ -39,8 +39,7 @@ router.post(
 router.post("/api/clientLogin", clientAuth.login);
 
 //PatchReqs
-router.patch("/api/approveLeave/:id", clientAuth.approveLeave);
-router.patch("/api/denyLeave/:id", clientAuth.denyLeave);
+router.patch("/api/approveLeave/:id", clientAuth.changeLeaveState);
 router.patch("/api/changeLeaveDays/:id/:days", clientAuth.changeLeaveDays);
 
 module.exports = router;
