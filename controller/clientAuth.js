@@ -80,18 +80,18 @@ exports.logout = async (req, res, next) => {
 };
 
 exports.changeLeaveState = async (req, res, next) => {
-  const id = req.params["id"];
-  const todo = req.body.todo;
-  if (todo === "approve") {
-    const approve = { approveState: "approved" };
-    const leave = await Leaves.findByIdAndUpdate(id, approve);
-    res.status(201).json({ state: "approved" });
-  } else if (todo === "denied") {
-    const approve = { approveState: "denied" };
-    const leave = await Leaves.findByIdAndUpdate(id, approve);
-    res.status(201).json({ state: "rejected" });
+  const approveState = req.body.approveState;
+  try {
+    const change = await Leaves.findByIdAndUpdate(id, {
+      $set: {
+        approveState,
+      },
+    });
+    res.status(201);
+  } catch (err) {
+    res.status(400).json({ error: err });
   }
-};
+}
 
 exports.changeLeaveDays = async (req, res, next) => {
   try {
