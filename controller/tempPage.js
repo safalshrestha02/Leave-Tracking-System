@@ -1,6 +1,6 @@
-const Clients = require("../models/ClientRegistration");
-const Worker = require("../models/AddWorker");
-const Messages = require("./../models/RequestForLeave");
+const Clients = require("../models/client");
+const Worker = require("../models/worker");
+const Messages = require("../models/leave");
 
 exports.apiClient = (req, res, next) => {
   try {
@@ -31,7 +31,7 @@ exports.apiWorkers = async (req, res, next) => {
   }
 };
 
-exports.ClientbyId = async (req, res) => {
+exports.clientbyId = async (req, res) => {
   try {
     Clients.findById(req.params["id"]).then((result) => {
       res.json(result);
@@ -41,7 +41,7 @@ exports.ClientbyId = async (req, res) => {
   }
 };
 
-exports.WorkerbyId = async (req, res) => {
+exports.workerbyId = async (req, res) => {
   try {
     Worker.findById(req.params["id"]).then((result) => {
       res.json(result);
@@ -51,7 +51,7 @@ exports.WorkerbyId = async (req, res) => {
   }
 };
 
-exports.LeavebyId = async (req, res) => {
+exports.leavebyId = async (req, res) => {
   try {
     Messages.findById(req.params["id"]).then((result) => {
       res.json(result);
@@ -80,7 +80,7 @@ exports.leaveRequestDelete = async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const deleting = await Messages.findOneAndDelete({
+    const deleting = await Messages.findByIdAndDelete({
       _id: id,
       approveState: "pending",
     });
@@ -143,25 +143,28 @@ exports.clientsWorkersLeaves = async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const client = await Clients.findById(id).then((specificClient) => {
-      const worker = Worker.find({ "companyDetail._id": id }).then(
-        (workersClient) => {
-          const leave = Messages.find({
-            "workerDetails.CompanyDetail._id": id,
-          })
-            .limit(limit * 1)
-            .skip((page - 1) * limit)
-            .then((allLeaves) => {
-              res.status(201).json({
-                Leaves: allLeaves,
-                totalPages: Math.ceil(count / limit),
-                currentPage: page,
-              });
+    Clients.findById(id).then((specificClient) => {
+      const company = specificClient.companyName;
+      Worker.find({
+        "companyDetail._id": id,
+        "companyDetail.companyName": company,
+      }).then((result) => {
+        console.log(result);
+        Messages.find({
+          "workerDetails.companyDetail.companyName": company,
+        })
+          .limit(limit * 1)
+          .skip((page - 1) * limit)
+          .then((allLeaves) => {
+            res.status(201).json({
+              Leaves: allLeaves,
+              totalPages: Math.ceil(count / limit),
+              currentPage: page,
             });
-        }
-      );
+          });
+      });
     });
   } catch (error) {
-    res.json({ error });
+    res.json({ error: error });
   }
 };

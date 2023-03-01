@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-const Worker = require("../models/AddWorker");
+const Worker = require("../models/worker");
 
 const requireWorkerAuth = async (req, res, next) => {
   try {
