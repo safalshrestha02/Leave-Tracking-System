@@ -80,6 +80,7 @@ exports.logout = async (req, res, next) => {
 };
 
 exports.changeLeaveState = async (req, res, next) => {
+  const id = req.params["id"];
   const approveState = req.body.approveState;
   try {
     const change = await Leaves.findByIdAndUpdate(id, {
@@ -91,22 +92,27 @@ exports.changeLeaveState = async (req, res, next) => {
   } catch (err) {
     res.status(400).json({ error: err });
   }
-}
+};
 
 exports.changeLeaveDays = async (req, res, next) => {
-  try {
-    const id = req.params["id"];
-    const day = req.params["days"];
-    const workerFilter = { "companyDetail._id": id };
-    const leaveFilter = { "workerDetails.companyDetail._id": id };
-    const update = { leavesYearly: day };
+  const id = req.params["id"];
+  const leavesYearly = req.body.leavesYearly;
+  const workerFilter = { "companyDetail._id": id };
+  const leaveFilter = { "workerDetails.companyDetail._id": id };
 
-    await Client.findByIdAndUpdate(id, update);
-    await Worker.updateMany(workerFilter, update).then(() => {
-      Leaves.updateMany(leaveFilter, update).then(() => {
-        res.json({ success: true });
-      });
+  try {
+    await Client.findByIdAndUpdate(id, {
+      $set: {
+        leavesYearly,
+      },
     });
+    await Worker.updateMany(workerFilter, { $set: { leavesYearly } }).then(
+      () => {
+        Leaves.updateMany(leaveFilter, { $set: { leavesYearly } }).then(() => {
+          res.status(201).json({ success: true });
+        });
+      }
+    );
   } catch (err) {
     res.json(err);
   }
