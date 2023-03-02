@@ -232,7 +232,7 @@ li {
   text-align: center;
 }
 
-.upcoming-leaves-container {
+.upcoming-leaves-container, .past-leaves-container {
   margin-top: 1.2rem;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -254,23 +254,6 @@ li {
   display: flex;
   justify-content: space-between;
   margin: 0.8rem 0 0 0;
-}
-
-.past-leave-date span,
-.pending-active-leave-date span {
-  opacity: 0.6;
-}
-
-/* ------------------------------------------ leave status ----------------------------------- */
-.pending-leave {
-  color: #f99417;
-  margin-right: 0.5rem;
-}
-
-.active-leave,
-.approved-leave {
-  color: #03c988;
-  margin-right: 0.5rem;
 }
 
 .worker-leave-history-leave-date span {
@@ -368,4 +351,5 @@ li {
 
 .history-title {
   display: none;
+  margin-top: 2rem;
 }/*# sourceMappingURL=worker_leaveHistory.css.map */
