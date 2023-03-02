@@ -18,9 +18,11 @@ exports.registerWorker = async (req, res) => {
     email,
     password,
     companyDetail,
+    leavesYearly
   } = req.body;
   try {
     const companyDetail = await Client.findOne({ companyName });
+    const leavesYearly = companyDetail.leavesYearly
     const worker = await Worker.create({
       firstName,
       lastName,
@@ -32,6 +34,7 @@ exports.registerWorker = async (req, res) => {
       email,
       password,
       companyDetail,
+      leavesYearly 
     });
     res.status(201).json({ worker: worker._id });
   } catch (err) {
