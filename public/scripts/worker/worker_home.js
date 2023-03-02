@@ -19,7 +19,6 @@ const fetchTotalLeaves = async () => {
     let leavesTakenNo = 0
 
     // leaves taken 
-    console.log(totalLeaves.leaveHistory)
     totalLeaves.leaveHistory.forEach((leave) => {
         leavesTakenNo += leave.leaveDays
     })
@@ -31,10 +30,11 @@ fetchTotalLeaves()
 
 
 
-// setting ative leaves
+// setting active leaves
 const activeLeavesDisplay = async () => {
-    const fetchTotalLeaves = await fetchLeavesUnderWorker();
-    const totalLeaves = fetchTotalLeaves.leaveHistory;
+    const fetchTotalLeaves = await fetchApprovedWorkerRequest();
+    const totalLeaves = fetchTotalLeaves
+
 
     // ------getting current date
     const currentDate = new Date();
@@ -159,6 +159,12 @@ const handleLeaveDelete = async (id) => {
         }, 2500);
         pendingApprovedLeaves.innerHTML = ""
         pendingApprovedLeavesDisplay();
+
+        totalLeaveDays.textContent ='...'
+        leavesTaken.textContent = '...'
+        leavesRemaining.textContent = '...'
+        fetchTotalLeaves();
+
     }
 }
 
