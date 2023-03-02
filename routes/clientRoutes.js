@@ -42,4 +42,10 @@ router.post("/api/clientLogin", clientAuth.login);
 router.patch("/api/approveLeave/:id", clientAuth.changeLeaveState);
 router.patch("/api/changeLeaveDays/:id/", clientAuth.changeLeaveDays);
 
+router.put(
+  "/api/changeClientPwd",
+  requireClientAuth,
+  clientAuth.changePassword
+);
+
 module.exports = router;

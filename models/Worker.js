@@ -46,6 +46,12 @@ const registerWorker = new mongoose.Schema(
       required: [true, "*please enter a password"],
       minlength: [8, "*minimum password length is 8 characters"],
     },
+    updatedAt: {
+      type: Date,
+      required: false,
+      default: null,
+    },
+    leavesYearly: { type: Number, default: 30 },
     companyDetail: {
       _id: { type: mongoose.Schema.Types.ObjectId, ref: "client" },
       clientID: Number,
@@ -113,6 +119,10 @@ registerWorker.statics.login = async function (workerID, password) {
     throw Error("Invalid Credentials");
   }
   throw Error("Invalid Credentials");
+};
+
+registerWorker.methods.checkPassword = async function (enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password);
 };
 
 module.exports = mongoose.model("worker", registerWorker);

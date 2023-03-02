@@ -24,5 +24,10 @@ router.post(
   workerAuth.applyLeave
 );
 router.post("/api/activeWorker", requireWorkerAuth, workerAuth.activeWorker);
+router.put(
+  "/api/changeWorkerPwd",
+  requireWorkerAuth,
+  workerAuth.changePassword
+);
 
 module.exports = router;

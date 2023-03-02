@@ -44,6 +44,11 @@ const clientSchema = new mongoose.Schema(
       type: Number,
       default: 60,
     },
+    updatedAt: {
+      type: Date,
+      required: false,
+      default: null,
+    },
   },
   { timestamps: true }
 );
@@ -99,6 +104,10 @@ clientSchema.statics.login = async function (email, password) {
     throw Error("Invalid Credentials");
   }
   throw Error("Invalid Credentials");
+};
+
+clientSchema.methods.checkPassword = async function (enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password);
 };
 
 module.exports = mongoose.model("client", clientSchema);

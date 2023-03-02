@@ -5,6 +5,7 @@ const Worker = require("../models/Worker");
 const requireWorkerAuth = async (req, res, next) => {
   try {
     let token;
+
     if (
       req.headers.authorization &&
       req.headers.authorization.startsWith("Bearer")
@@ -13,6 +14,7 @@ const requireWorkerAuth = async (req, res, next) => {
     } else if (req.cookies.jwt) {
       token = req.cookies.jwt;
     }
+
     if (!token) {
       return res.redirect("/worker_login");
     }
@@ -21,6 +23,7 @@ const requireWorkerAuth = async (req, res, next) => {
       const decoded = jwt.verify(token, process.env.WORKER_TOKEN_SECRET);
 
       req.worker = await Worker.findById(decoded.id);
+
       next();
     } catch (error) {
       return res.redirect("/worker_login");
