@@ -1,6 +1,6 @@
-const Client = require("../models/client");
-const Leave = require("../models/leave");
-const Worker = require("../models/worker");
+const Client = require("../models/Client");
+const Leave = require("../models/Leave");
+const Worker = require("../models/Worker");
 const { workerErrHandle } = require("../utils/errorHandler");
 const { createWorkerToken } = require("../utils/createToken");
 
@@ -68,23 +68,24 @@ exports.applyLeave = async (req, res, next) => {
     startDate,
     endDate,
     typeOfLeave,
-    leaveDays,
     reason,
     approveState,
     workerDetails,
+    leavesYearly
   } = req.body;
   try {
-    const workerDetail = await Worker.findOne({ workerID: workerID });
+    const workerDetails = await Worker.findOne({ workerID });
+    console.log(workerDetails.leavesYearly)
     leaveRequest = await Leave.create({
       workerName,
       workerID,
       startDate,
       endDate,
       typeOfLeave,
-      leaveDays,
       reason,
       approveState,
-      workerDetails: workerDetail,
+      workerDetails,
+      leavesYearly : workerDetails.leavesYearly
     });
     res.status(201).json({ success: true });
   } catch (err) {
