@@ -39,6 +39,17 @@ const checkworkersRequest = async () => {
 
     primaryLeaveContainer.innerHTML += content;
   }
+  approvedArray=[]
+  rejectedArray = []
+  workersLeaveHistory.map((data) => {
+    if (data.approveState == "approved"){
+      approvedArray.push(data)
+    }
+    if (data.approveState == "rejected"){
+      rejectedArray.push(data)
+    }
+  })
+
   
   
   // ----------------------------------- DashBoard Mapping -----------------------// 
@@ -49,13 +60,10 @@ const checkworkersRequest = async () => {
     primaryLeaveContainer.innerHTML = "";
     pastContainer.innerHTML = "";
     approvedOption.classList.add("active-option");
-    
-    workersLeaveHistory.map((data)=> {
-      if (data.approveState != "approved"){
-        primaryLeaveContainer.innerHTML = `<p class="no-past-record">No approved Leaves</p>`;
-
-      }
-    }) 
+  
+    if (approvedArray.length == 0){
+      primaryLeaveContainer.innerHTML = `<p class="no-past-record">No approved Leave History</p>`;
+    }
     
     workersLeaveHistory.map((data) => {
       const { typeOfLeave, startDate, endDate, leaveDays, approveState } = data;
@@ -144,6 +152,10 @@ const checkworkersRequest = async () => {
 
         primaryLeaveContainer.innerHTML =""
         pastContainer.innerHTML =""
+
+        if (rejectedArray.length == 0){
+          primaryLeaveContainer.innerHTML = `<p class="no-past-record">No rejected leave History</p>`;
+        }
         workersLeaveHistory.map((data) => {
             const { typeOfLeave, startDate, endDate, leaveDays, approveState } = data;
         if (data.approveState == "rejected") {
@@ -170,10 +182,6 @@ const checkworkersRequest = async () => {
                     `;
           primaryLeaveContainer.innerHTML += content;
         }
-        else {
-          rejectedTitle.setAttribute("style", "display:null;");
-          primaryLeaveContainer.innerHTML = `<p class="no-past-record">No rejected leaves</p>`
-        }
       })
   })
 
@@ -192,13 +200,10 @@ const checkworkersRequest = async () => {
 
     primaryLeaveContainer.innerHTML =""
     pastContainer.innerHTML =""
-    
-    workersLeaveHistory.map((data)=> {
-      if (data.approveState != "approved"){
-        primaryLeaveContainer.innerHTML = `<p class="no-past-record">No approved Leaves</p>`;
 
-      }
-    }) 
+    if (approvedArray.length == 0){
+      primaryLeaveContainer.innerHTML = `<p class="no-past-record">No approved Leave History</p>`;
+    }
     
     workersLeaveHistory.map((data) => {
         const { typeOfLeave, startDate, endDate, leaveDays, approveState } = data;
@@ -207,8 +212,7 @@ const checkworkersRequest = async () => {
         console.log(parsedStartDate)
         
         
-        
-        
+
         if (data.approveState == "approved" && parsedStartDate > parsedCurrentDate) {
           upcomingTitle.setAttribute("style", "display:block;");
           let content = `
