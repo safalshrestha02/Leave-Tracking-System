@@ -46,7 +46,6 @@ const registerWorker = new mongoose.Schema(
       required: [true, "*please enter a password"],
       minlength: [8, "*minimum password length is 8 characters"],
     },
-    leavesYearly: { type : Number, default : 30 },
     companyDetail: {
       _id: { type: mongoose.Schema.Types.ObjectId, ref: "client" },
       clientID: Number,
@@ -54,6 +53,7 @@ const registerWorker = new mongoose.Schema(
       companyID: Number,
       companyAddress: String,
     },
+    leavesYearly: Number,
   },
   { timestamps: true }
 );
@@ -73,8 +73,8 @@ registerWorker.statics.registerWorker = async function (
   gender,
   email,
   password,
-  leavesYearly,
-  companyDetail
+  companyDetail,
+  leavesYearly
 ) {
   const dupWorkerId = await this.findOne({ workerID });
 
@@ -97,8 +97,8 @@ registerWorker.statics.registerWorker = async function (
     gender,
     email,
     password,
-    leavesYearly,
     companyDetail,
+    leavesYearly,
   });
   return worker;
 };
