@@ -399,10 +399,13 @@ const confirmDelete =  (deleteWorkerID, monID) => {
 
         const successAlert = document.querySelector("#alert");
         successAlert.style.display = "block";
+
+        manageWorkersSection.innerHTML = ""
+        fetchWorkers()
+        
         setTimeout(()=>{
-          location.reload(); 
           successAlert.style.display = "none";
-      },2500)
+        },2500)
 
       }} 
   }, {once: true})
