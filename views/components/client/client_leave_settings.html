@@ -78,7 +78,7 @@
         <form class="form-container">
           <div class="form-field leaves-yearly">
             <label for="no-of-days" class="form-labels"> Total days of leave in a year: <button></button></label>
-            <input id="no-of-days" type="number" placeholder="..." disabled />
+            <input id="no-of-days" type="string" maxlength="2" placeholder="..." oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" disabled />
           </div>
 
           <div class="form-field leave-types">
