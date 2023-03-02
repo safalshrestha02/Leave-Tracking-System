@@ -19,7 +19,11 @@ const fetchTotalLeaves = async () => {
     let leavesTakenNo = 0
 
     // leaves taken 
-    totalLeaves.leaveHistory.forEach((leave) => {
+    const leavesWithoutReject = totalLeaves.leaveHistory.filter((leave) => {
+        return leave.approveState !== "rejected"
+    })
+
+    leavesWithoutReject.forEach((leave) => {
         leavesTakenNo += leave.leaveDays
     })
 
