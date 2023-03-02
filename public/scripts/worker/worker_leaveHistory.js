@@ -50,17 +50,19 @@ const checkworkersRequest = async () => {
     pastContainer.innerHTML = "";
     approvedOption.classList.add("active-option");
     
-    
+    workersLeaveHistory.map((data)=> {
+      if (data.approveState != "approved"){
+        primaryLeaveContainer.innerHTML = `<p class="no-past-record">No approved Leaves</p>`;
+
+      }
+    }) 
     
     workersLeaveHistory.map((data) => {
       const { typeOfLeave, startDate, endDate, leaveDays, approveState } = data;
       parsedendDate = Date.parse(data.endDate)
       parsedStartDate = Date.parse(data.startDate)
       console.log(parsedStartDate)
-      
-      
-      
-      
+       
       if (data.approveState == "approved" && parsedStartDate > parsedCurrentDate) {
         upcomingTitle.setAttribute("style", "display:block;");
         let content = `
@@ -168,6 +170,10 @@ const checkworkersRequest = async () => {
                     `;
           primaryLeaveContainer.innerHTML += content;
         }
+        else {
+          rejectedTitle.setAttribute("style", "display:null;");
+          primaryLeaveContainer.innerHTML = `<p class="no-past-record">No rejected leaves</p>`
+        }
       })
   })
 
@@ -175,6 +181,7 @@ const checkworkersRequest = async () => {
     // ----------------------------------- APPROVE ONCLICK ---------------------------- //
 
   approvedOption.addEventListener("click", () => {
+    
     filterOption.forEach((button) => {
       button.classList.remove("active-option");
     });
@@ -185,6 +192,13 @@ const checkworkersRequest = async () => {
 
     primaryLeaveContainer.innerHTML =""
     pastContainer.innerHTML =""
+    
+    workersLeaveHistory.map((data)=> {
+      if (data.approveState != "approved"){
+        primaryLeaveContainer.innerHTML = `<p class="no-past-record">No approved Leaves</p>`;
+
+      }
+    }) 
     
     workersLeaveHistory.map((data) => {
         const { typeOfLeave, startDate, endDate, leaveDays, approveState } = data;
