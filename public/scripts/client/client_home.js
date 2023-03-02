@@ -9,7 +9,7 @@ const workersOnLeave = document.querySelector(".active-leave-container");
 // -------fetching total workers and display----------------
 const fetchAllWorkers = async () => {
   const {workers: workers} = await workersUnderClient();
-  console.log(workers)
+  // console.log(workers)
   totalNumWorkers.textContent = workers.length;
   activeWorkers.textContent =
     parseInt(totalNumWorkers.textContent) - parseInt(leaveWorkers.textContent);
@@ -18,7 +18,18 @@ const fetchAllWorkers = async () => {
 // -------fetching active workers on leave and adding in dashboard--------
 const fetchAllWorkersLeave = async () => {
   try {
-    const companyWorkersLeave = await leaveRequestsUnderClient();
+    const companyWorkersLeave = await approvedLeaveRequestsUnderClient();
+    const {workers: workers} = await workersUnderClient();
+
+    let filteredApprovesLeaves =[]
+
+    workers.forEach((worker) => {
+      companyWorkersLeave.forEach((leavesReq) => {
+        if (leavesReq.workerDetails._id === worker._id){
+          filteredApprovesLeaves.push(leavesReq)
+        }
+      })
+    })
 
     // ------getting current date
     const currentDate = new Date();
@@ -32,7 +43,7 @@ const fetchAllWorkersLeave = async () => {
     const fullDate = `${currentYear}${currentMonth}${currentDay}`;
   
     // --filtering workers based on today
-    const activeLeaveWorkers = companyWorkersLeave.filter((worker) => {
+    const activeLeaveWorkers = filteredApprovesLeaves.filter((worker) => {
       const startDateLeave = `${worker.startDate.slice(
         0,
         4
