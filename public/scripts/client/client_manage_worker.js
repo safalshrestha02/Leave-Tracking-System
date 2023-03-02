@@ -261,9 +261,16 @@ const fetchWorkers = async () => {
       idAsc.classList.add("active-option")
       
       let idAscending = companyWorkers.sort((a, b) => {
-        return a.workerID - b.workerID;
+        if (a.firstName.toLowerCase() < b.firstName.toLowerCase()) {
+          return -1;
+        }
+        if (a.firstName.toLowerCase() > b.firstName.toLowerCase()) {
+          return 1;
+        }
+        return 0;
       });
       manageWorkersSection.innerHTML = "";
+      
       idAscending.map((data) => {
         const { firstName, lastName, workerID, gender, email } = data;
         const fullName = `${firstName} ${lastName}`;
@@ -323,9 +330,17 @@ const fetchWorkers = async () => {
       idDes.classList.add("active-option")
       
       let idDescending = companyWorkers.sort((a, b) => {
-        return b.workerID - a.workerID;
+        if (a.firstName.toLowerCase() < b.firstName.toLowerCase()) {
+          return 1;
+        }
+        if (a.firstName.toLowerCase() > b.firstName.toLowerCase()) {
+          return -1;
+        }
+        return 0;
       });
+      
       manageWorkersSection.innerHTML = "";
+      
       idDescending.map((data) => {
         const { firstName, lastName, workerID, gender, email } = data;
         const fullName = `${firstName} ${lastName}`;
