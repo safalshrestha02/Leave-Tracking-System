@@ -108,7 +108,10 @@ const manageLeavesFunc = async () => {
                         const approveLeaveApiUrl = `http://localhost:3000/api/approveLeave/${leaveID}`
                         const response = await fetch(approveLeaveApiUrl, {
                             method: 'PATCH',
-                            headers: { 'Content-Type': 'application/json' }
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                approveState: "approved"
+                            })
                         })
                     }
                     approveButtons.forEach((btn) => {
@@ -127,10 +130,13 @@ const manageLeavesFunc = async () => {
                         const leaveID = btn.value
                         console.log(leaveID, 'is rejected')
 
-                        const rejectLeaveApiUrl = `http://localhost:3000/api/denyLeave/${leaveID}`
+                        const rejectLeaveApiUrl = `http://localhost:3000/api/approveLeave/${leaveID}`
                         const response = await fetch(rejectLeaveApiUrl, {
                             method: 'PATCH',
-                            headers: { 'Content-Type': 'application/json' }
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                approveState: 'rejected'
+                            })
                         })
                     }
                     rejectButtons.forEach((btn) => {
