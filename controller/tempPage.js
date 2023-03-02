@@ -149,7 +149,6 @@ exports.clientsWorkersLeaves = async (req, res, next) => {
         "companyDetail._id": id,
         "companyDetail.companyName": company,
       }).then((result) => {
-        console.log(result);
         Messages.find({
           "workerDetails.companyDetail.companyName": company,
         })
