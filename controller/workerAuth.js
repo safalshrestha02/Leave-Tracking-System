@@ -75,7 +75,6 @@ exports.applyLeave = async (req, res, next) => {
   } = req.body;
   try {
     const workerDetails = await Worker.findOne({ workerID });
-    console.log(workerDetails.leavesYearly)
     leaveRequest = await Leave.create({
       workerName,
       workerID,
