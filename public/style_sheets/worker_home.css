@@ -203,10 +203,11 @@ li {
 }
 
 .overview {
-  width: 25%;
-  padding: 2rem;
+  width: 30%;
+  padding: 1.7rem;
   border-radius: 0.5rem;
   text-align: center;
+  margin-right: 2rem;
 }
 .overview .leaves-data {
   font-size: 2rem;
@@ -324,4 +325,4 @@ li {
 
 .no-pending-approved {
   margin: 3rem 0;
-}
+}/*# sourceMappingURL=worker_home.css.map */

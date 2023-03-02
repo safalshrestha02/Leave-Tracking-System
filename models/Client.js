@@ -42,7 +42,7 @@ const clientSchema = new mongoose.Schema(
     },
     leavesYearly: {
       type: Number,
-      default: 30,
+      default: 60,
     },
   },
   { timestamps: true }
