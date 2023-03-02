@@ -51,7 +51,7 @@
   text-align: center;
 }
 
-.upcoming-leaves-container {
+.upcoming-leaves-container,.past-leaves-container {
   margin-top: 1.2rem;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -176,4 +176,6 @@
 
 .history-title {
   display: none;
+  margin-top: 2rem;
 }
+
