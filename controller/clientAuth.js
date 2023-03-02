@@ -1,6 +1,6 @@
-const Client = require("../models/client");
-const Leaves = require("../models/leave");
-const Worker = require("../models/worker");
+const Client = require("../models/Client");
+const Leaves = require("../models/Leave");
+const Worker = require("../models/Worker");
 const { clientErrHandle } = require("../utils/errorHandler");
 const { createClientToken } = require("../utils/createToken");
 

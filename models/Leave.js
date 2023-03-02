@@ -22,10 +22,6 @@ const messageSchema = new mongoose.Schema(
       type: String,
       required: [true, "*specifying type of leave is required"],
     },
-    leaveDays: {
-      type: Number,
-      required: [true, "*total leave days is required"],
-    },
     reason: {
       type: String,
       maxLength: [150, "*message must be maximum of 150 character"],
@@ -42,7 +38,7 @@ const messageSchema = new mongoose.Schema(
       companyName: String,
       companyDetail: Object,
     },
-    leavesYearly: { type : Number, default : 30 },
+    leavesYearly: { type : Number },
   },
   { timestamps: true }
 );

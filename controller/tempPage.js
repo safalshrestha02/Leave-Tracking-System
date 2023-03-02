@@ -1,6 +1,6 @@
-const Clients = require("../models/client");
-const Worker = require("../models/worker");
-const Messages = require("../models/leave");
+const Clients = require("../models/Client");
+const Worker = require("../models/Worker");
+const Messages = require("../models/Leave");
 
 exports.apiClient = (req, res, next) => {
   try {
