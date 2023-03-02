@@ -24,8 +24,12 @@ const fetchTotalLeaves = async () => {
     })
 
     leavesWithoutReject.forEach((leave) => {
-        leavesTakenNo += leave.leaveDays
+        if (leave.leaveDays) {
+            leavesTakenNo += leave.leaveDays
+        }    
     })
+
+    console.log(leavesTakenNo)
 
     leavesTaken.textContent = leavesTakenNo
 
