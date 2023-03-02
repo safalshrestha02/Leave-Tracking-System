@@ -38,10 +38,14 @@ const editLeaveSettings = async () => {
               leaveSuccessAlert.style.display = "none";
             }, 2500);
 
-            const updateLeaveYearlyUrl = `http://localhost:3000/api/changeLeaveDays/${activeClient._id}/${updatedLeaveYearly}`
+            const updateLeaveYearlyUrl = `http://localhost:3000/api/changeLeaveDays/${activeClient._id}`
             const response = await fetch(updateLeaveYearlyUrl, {
                 method: 'PATCH',
-                headers: { 'Content-Type': 'application/json' }
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    "leavesYearly": updatedLeaveYearly
+            })
+        
             });
 
         };
