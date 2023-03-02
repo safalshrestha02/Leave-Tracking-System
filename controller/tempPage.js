@@ -80,7 +80,7 @@ exports.leaveRequestDelete = async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const deleting = await Messages.findByIdAndDelete({
+    const deleting = await Messages.findOneAndDelete({
       _id: id,
       approveState: "pending",
     });
