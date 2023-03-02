@@ -114,14 +114,33 @@
   justify-content: space-between;
   align-items: center;
 
-  .fa-circle-xmark{
-    font-size: 1.2rem;
+  .fa-regular, .fa-trash{
+    font-size: 1.3rem;
     opacity: 0.6;
+  }
+
+  .fa-trash{
+    &:hover{
+      cursor: pointer;
+      color: rgb(231, 0, 0);
+    }
+  }
+
+  .fa-circle-xmark{
+    margin-right: 2rem;
     &:hover{
       cursor: pointer;
       color: $red-bg;
     }
   }
+
+  .fa-circle-check {
+    &:hover {
+      cursor: pointer;
+      color: rgb(0, 139, 0);
+    }
+  }
+
 }
 
 .green {

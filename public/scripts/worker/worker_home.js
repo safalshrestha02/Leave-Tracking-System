@@ -124,7 +124,9 @@ const pendingApprovedLeavesDisplay = async () => {
             <div class="worker-leaves">
                 <div class="leave-type-container">
                     <p class="leave-type">${leave.typeOfLeave}</p>
-                    <i class="fa-regular fa-circle-xmark" onClick='handleLeaveDelete("${leave._id}")'></i>
+                    <div class="delete-leave" id='${leave._id}'>
+                        <i class="fa-solid fa-trash" onClick='handleDeleteIcon("${leave._id}")'></i>
+                    </div>
                 </div>
                 <div class="leave-date">
                     <span>${leave.startDate
@@ -146,6 +148,24 @@ const pendingApprovedLeavesDisplay = async () => {
     };
 
 };
+
+const handleDeleteIcon = (id) => {
+    const deleteLeave = document.getElementById(`${id}`);
+    deleteLeave.innerHTML = ""
+    deleteLeave.innerHTML = `
+    <i class="fa-regular fa-circle-xmark" onClick='handleLeaveCancel("${id}")'></i>
+    <i class="fa-regular fa-circle-check" onClick='handleLeaveDelete("${id}")'></i>
+    `
+
+}
+
+const handleLeaveCancel = (id) => {
+    const deleteLeave = document.getElementById(`${id}`);
+    deleteLeave.innerHTML = ""
+    deleteLeave.innerHTML = `
+    <i class="fa-solid fa-trash" onClick='handleDeleteIcon("${id}")'></i>
+    `
+}
 
 const handleLeaveDelete = async (id) => {
     const deleteLeaveUrl = `http://localhost:3000/api/leaveRequests/${id}`

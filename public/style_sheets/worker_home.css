@@ -284,13 +284,24 @@ li {
   justify-content: space-between;
   align-items: center;
 }
-.leave-type-container .fa-circle-xmark {
-  font-size: 1.2rem;
+.leave-type-container .fa-regular, .leave-type-container .fa-trash {
+  font-size: 1.3rem;
   opacity: 0.6;
+}
+.leave-type-container .fa-trash:hover {
+  cursor: pointer;
+  color: rgb(231, 0, 0);
+}
+.leave-type-container .fa-circle-xmark {
+  margin-right: 2rem;
 }
 .leave-type-container .fa-circle-xmark:hover {
   cursor: pointer;
   color: #ff0032;
+}
+.leave-type-container .fa-circle-check:hover {
+  cursor: pointer;
+  color: rgb(0, 139, 0);
 }
 
 .green {
@@ -313,4 +324,4 @@ li {
 
 .no-pending-approved {
   margin: 3rem 0;
-}/*# sourceMappingURL=worker_home.css.map */
+}
