@@ -10,6 +10,7 @@ const messageSchema = new mongoose.Schema(
       type: String,
       required: [true, "*employee ID is required"],
     },
+    leaveDays:Number,
     startDate: {
       type: Date,
       required: [true, "*start date is required"],

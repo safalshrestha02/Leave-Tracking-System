@@ -18,11 +18,11 @@ exports.registerWorker = async (req, res) => {
     email,
     password,
     companyDetail,
-    leavesYearly
+    leavesYearly,
   } = req.body;
   try {
     const companyDetail = await Client.findOne({ companyName });
-    const leavesYearly = companyDetail.leavesYearly
+    const leavesYearly = companyDetail.leavesYearly;
     const worker = await Worker.create({
       firstName,
       lastName,
@@ -34,7 +34,7 @@ exports.registerWorker = async (req, res) => {
       email,
       password,
       companyDetail,
-      leavesYearly 
+      leavesYearly,
     });
     res.status(201).json({ worker: worker._id });
   } catch (err) {
@@ -64,6 +64,7 @@ exports.login = async (req, res, next) => {
 exports.applyLeave = async (req, res, next) => {
   const {
     workerName,
+    leaveDays,
     workerID,
     startDate,
     endDate,
@@ -71,12 +72,13 @@ exports.applyLeave = async (req, res, next) => {
     reason,
     approveState,
     workerDetails,
-    leavesYearly
+    leavesYearly,
   } = req.body;
   try {
     const workerDetails = await Worker.findOne({ workerID });
     leaveRequest = await Leave.create({
       workerName,
+      leaveDays,
       workerID,
       startDate,
       endDate,
@@ -84,7 +86,7 @@ exports.applyLeave = async (req, res, next) => {
       reason,
       approveState,
       workerDetails,
-      leavesYearly : workerDetails.leavesYearly
+      leavesYearly: workerDetails.leavesYearly,
     });
     res.status(201).json({ success: true });
   } catch (err) {
