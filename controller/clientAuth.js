@@ -1,8 +1,10 @@
 const Client = require("../models/Client");
 const Leaves = require("../models/Leave");
 const Worker = require("../models/Worker");
+const crypto = require("crypto");
 const { clientErrHandle } = require("../utils/errorHandler");
 const { createClientToken } = require("../utils/createToken");
+const sendEmail = require("../utils/sendMail");
 
 const maxAge = 2 * 24 * 60 * 60;
 
@@ -138,12 +140,106 @@ exports.changePassword = async (req, res, next) => {
   try {
     if (!checkCurrentPwd) {
       return res.json({ message: "Incorrect Password" });
-    } else res.json({ message: "password changed" });
+    }
 
     client.password = newPassword;
     client.updatedAt = Date.now();
-    await client.save();
+    await client.save().then(() => {
+      res.status(201).json({ message: "Password Changed" });
+    });
   } catch (error) {
-    next(error);
+    const errors = clientErrHandle(error);
+    res.status(401).json({ errors });
+  }
+};
+
+exports.forgotPassword = async (req, res, next) => {
+  try {
+    const client = await Client.findOne({ email: req.body.email });
+
+    if (!client) {
+      return res
+        .statusCode(404)
+        .json({ message: "Sorry! There is no user with that email" });
+    }
+    // console.log(client, "clientclientclientclient");
+
+    const resetToken = client.getResetPasswordToken();
+    // console.log(client, "clientclientclientclientclientclientclientclient");
+
+    await client.save({ validateBeforeSave: false });
+    // console.log(
+    //   client,
+    //   "clientclientclientclientclientclientclientclientclientclientclientclient"
+    // );
+
+    //create resetURL
+
+    const resetUrl = `${req.protocol}://${req.get(
+      "host"
+    )}/api/resetPassword/${resetToken}`;
+
+    console.log(resetUrl);
+
+    const message = `You are reveiving this email because you (or someone else) has requested to resest the passord. Please make a PUT request to: \n\n ${resetUrl} \n\n This link will expire in 10 minutes`;
+
+    try {
+      await sendEmail({
+        from: process.env.FROM_EMAIL,
+        email: client.email,
+        subject: "Password reset token",
+        message,
+      });
+
+      res.status(200).json({ success: true, data: "Email sent" });
+    } catch (error) {
+      console.log(error);
+      client.resetPasswordToken = undefined;
+      client.resetPasswordExpire = undefined;
+
+      await client.save({ validateBeforeSave: false });
+
+      return res
+        .statusCode(404)
+        .json({ message: "Sorry! There is no user with that email" });
+    }
+    res.status(200).json({ success: true, data: client });
+  } catch (err) {
+    return err;
+  }
+};
+
+exports.resetPassword = async (req, res, next) => {
+  try {
+    //get hashed token
+    const resetPasswordToken = crypto
+      .createHash("sha256")
+      .update(req.params.resetToken)
+      .digest("hex");
+
+    const client = await Client.findOne({
+      resetPasswordToken,
+      resetPasswordExpire: { $gt: Date.now() },
+    });
+    if (!client) {
+      return res.statusCode(400).json({ message: "Invalid Token" });
+    }
+    const newPassword = req.body.newPassword;
+    const confirmPassword = req.body.confirmPassword;
+
+    if (newPassword != confirmPassword) {
+      return res.json({ message: "Passwords don't match" });
+    }
+    client.password = req.body.confirmPassword;
+    client.resetPasswordToken = undefined;
+    client.resetPasswordExpire = undefined;
+
+    await client.save().then(() => {
+      res.status(201).json({ message: "Password Changed" });
+    });
+  } catch (error) {
+    //console.log(error.message);
+    const errors = clientErrHandle(error);
+    res.status(401).json({ errors });
   }
 };

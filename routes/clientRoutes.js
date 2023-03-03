@@ -37,6 +37,7 @@ router.post(
   clientAuth.registerClient
 );
 router.post("/api/clientLogin", clientAuth.login);
+router.post("/api/forgotPassword", clientAuth.forgotPassword);
 
 //PatchReqs
 router.patch("/api/approveLeave/:id", clientAuth.changeLeaveState);
@@ -47,5 +48,6 @@ router.put(
   requireClientAuth,
   clientAuth.changePassword
 );
+router.put("/api/resetPassword/:resetToken", clientAuth.resetPassword);
 
 module.exports = router;
