@@ -1,3 +1,4 @@
+
 const filterDropDown = document.querySelector('.filter-leaveRequests')
 const pendingLeaveContainer = document.querySelector('.pending-leave-container')
 
@@ -13,6 +14,7 @@ window.addEventListener('load', () => {
 })
 
 const manageLeavesFunc = async () => {
+    pendingLeaveContainer.innerHTML = '<img src = "/images/load.gif" alt = "Loading fresh data for you" class = "load-gif"/>'
     try {
         const companyPendingLeaveRequests = await pendingLeaveRequestsUnderClient()
 

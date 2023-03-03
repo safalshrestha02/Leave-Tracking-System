@@ -610,3 +610,11 @@ input[type=radio] {
   margin-right: 0.2rem;
   aspect-ratio: 1/1;
 }
+
+.load-gif {
+  width: 6vw;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  margin: 10rem auto;
+  grid-column: 1/4;
+}

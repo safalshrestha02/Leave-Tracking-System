@@ -52,7 +52,7 @@ const leaveHistory = async () => {
         pastLeaves.classList.remove('show-div')
         rejectedLeavesMain.classList.remove('show-div')
 
-        leaveHistoryContainer.innerHTML = '<p class = "loader">Loading Leave History. Please Wait...</p>'
+        leaveHistoryContainer.innerHTML = '<img src = "/images/load.gif" alt = "Loading fresh data for you" class = "load-gif"/>'
         const approvedLeaves = await approvedLeaveRequestsUnderClient()
         const rejectedLeaves = await rejectedLeaveRequestsUnderClient()
         const approvedAndRejectedLeaves = [...approvedLeaves, ...rejectedLeaves]
@@ -227,8 +227,7 @@ const leaveHistory = async () => {
 
     // getting rejected leaves (filter)
     rejectedLeavesFilter.addEventListener('click', async () => {
-
-        leaveHistoryContainer.innerHTML = '<p class = "loader">Loading Leave History. Please Wait...</p>'
+        leaveHistoryContainer.innerHTML = '<img src = "/images/load.gif" alt = "Loading fresh data for you" class = "load-gif"/>'
 
 
         filterContainer.classList.remove('filter-container-active')
