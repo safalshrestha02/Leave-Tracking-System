@@ -108,6 +108,9 @@ const leaveHistory = async () => {
             pastLeaves.classList.remove('show-div')
             rejectedLeavesMain.classList.remove('show-div')
 
+            if (userChoiceApprovedLeaves.length == 0 && userChoiceRejectedLeaves.length > 0) {
+                leaveHistoryContainer.innerHTML = '<p class = "no-past-leaves">The requested user has no any approved leaves records but has rejected leaves records.</p>'
+            }
 
             if (upcomingApprovedLeaves.length > 0) {
                 upcomingLeaves.classList.add('show-div')
@@ -184,8 +187,6 @@ const leaveHistory = async () => {
 
         else {
             fetchLeaveHistory()
-            return { userChoiceLeaveHistory, userChoiceApprovedLeaves, upcomingApprovedLeaves, pastApprovedLeaves, userChoiceRejectedLeaves }
-
         }
     }
     chooseWorker.addEventListener('change', getLeaveHistory)
@@ -218,7 +219,7 @@ const leaveHistory = async () => {
         }
 
         catch (err) {
-            // leaveHistoryContainer.innerHTML = '<p class = "no-past-leaves">The requested user has no any leaves records.</p>'
+            leaveHistoryContainer.innerHTML = '<p class = "no-past-leaves">The requested user has no any approved leaves records.</p>'
         }
 
     })
@@ -238,8 +239,8 @@ const leaveHistory = async () => {
         upcomingLeaves.classList.remove('show-div')
         pastLeaves.classList.remove('show-div')
 
-
         const rejectedLeaves = await rejectedLeaveRequestsUnderClient()
+
         const sortedRejectedLeaves = rejectedLeaves.sort((leaves1, leaves2) => {
             const { startDate: startDate1 } = leaves1
             const { startDate: startDate2 } = leaves2
@@ -251,6 +252,10 @@ const leaveHistory = async () => {
             const { workerID } = leave
             return userChoiceWorker == workerID
         })
+
+        if (userChoiceRejectedLeaves.length == 0) {
+            leaveHistoryContainer.innerHTML = '<p class = "no-past-leaves">The requested user has no any rejected leaves records.</p>'
+        }
 
         if (userChoiceRejectedLeaves.length > 0) {
             rejectedLeavesMain.classList.add('show-div')
