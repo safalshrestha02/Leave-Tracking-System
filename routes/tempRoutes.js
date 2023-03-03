@@ -17,6 +17,8 @@ router.get("/api/clients_workers/:id", temp.clientsWorkers);
 router.get("/api/workers_leaves/:id", temp.workersLeaves);
 router.get("/api/clients_workers_leaves/:id", temp.clientsWorkersLeaves);
 
+router.patch('/api/suggestedIds/:id', temp.suggestedIds)
+
 router.delete("/api/workers/:id", temp.workerDelete);
 router.delete("/api/leaveRequests/:id", temp.leaveRequestDelete);
 
