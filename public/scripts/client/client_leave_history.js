@@ -228,6 +228,9 @@ const leaveHistory = async () => {
     // getting rejected leaves (filter)
     rejectedLeavesFilter.addEventListener('click', async () => {
 
+        leaveHistoryContainer.innerHTML = '<p class = "loader">Loading Leave History. Please Wait...</p>'
+
+
         filterContainer.classList.remove('filter-container-active')
         icon.classList.remove('fa-circle-xmark')
 

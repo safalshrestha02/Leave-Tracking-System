@@ -46,6 +46,7 @@ const manageLeavesFunc = async () => {
 
 
             const fetchLeavesHtml = (leaveType) => {
+                pendingLeaveContainer.innerHTML = ''
                 if (leaveType.length === 0) {
                     pendingLeaveContainer.innerHTML = ` <p class="no-leaves">No any ${filterDropDown.value} Requests...</p>`
                 }
@@ -201,7 +202,6 @@ const manageLeavesFunc = async () => {
     }
 
     catch (err) {
-        pendingLeaveContainer.innerHTML = ''
         pendingLeaveContainer.innerHTML = `<p class = "fail">Some error occured at the moment. Please try again in a while...</p>`
     }
 
