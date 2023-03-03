@@ -541,6 +541,7 @@ input[type=radio] {
 .confirm-container .confirm-wrapper .button-container {
   text-align: right;
   margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 .confirm-container .confirm-wrapper .cancel-button-confirm {
   margin-right: 1rem;
