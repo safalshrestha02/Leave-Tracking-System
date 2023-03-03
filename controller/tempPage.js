@@ -167,3 +167,53 @@ exports.clientsWorkersLeaves = async (req, res, next) => {
     res.json({ error: error });
   }
 };
+
+exports.suggestedIds = async (req, res, next) => {
+  let workerIds = [];
+  let dataLength = 0;
+  let randomIds = [];
+
+  try {
+    const clientId = await Clients.findOne({
+      companyID: req.params.id,
+    }).then((result) => {
+      return result.companyID;
+    });
+
+    const workerId = await Worker.find({
+      "companyDetail.companyID": clientId,
+    }).then((result) => {
+      result.forEach((data) => {
+        workerIds[dataLength] = data.workerID;
+        dataLength += 1;
+      });
+    });
+
+    const generateRandomIds = () => {
+      for (let i = 0; i < 3; i++) {
+        let number = Math.floor(Math.random() * 99999);
+        const padNumber = number.toString().padStart(5, "0");
+        randomIds[i] = `${clientId}-${padNumber}`;
+      }
+      return randomIds;
+    };
+
+    generateRandomIds();
+
+    const checkIds = async (workerIds, randomIds) => {
+      let a = 0;
+      workerIds.forEach(function () {
+        if (randomIds.includes(workerIds[a])) {
+          generateRandomIds();
+        }
+        a += 1;
+      });
+      res.status(201).json(randomIds);
+    };
+
+    checkIds(workerIds, randomIds);
+  } catch (err) {
+    res.status(400).json(err.message);
+    console.log(err);
+  }
+};
