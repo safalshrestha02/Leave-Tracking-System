@@ -29,9 +29,15 @@ currentDate = `${yyyy}-${mm}-${dd}`
 parsedCurrentDate = Date.parse(currentDate)
 
 
+// ----------------------- FETCHING REQUESTS ----------------------------- //
+
 const checkworkersRequest = async () => {
   const allreq = await fetchLeavesUnderWorker();
   const workersLeaveHistory = allreq.leaveHistory;
+  workersLeaveHistory.forEach(gg=> {
+    console.log(gg.approveState)
+  })
+  
   if (workersLeaveHistory.length === 0) {
     primaryLeaveContainer.innerHTML = "";
 
@@ -39,126 +45,170 @@ const checkworkersRequest = async () => {
 
     primaryLeaveContainer.innerHTML += content;
   }
-  approvedArray=[]
-  rejectedArray = []
-  workersLeaveHistory.map((data) => {
-    if (data.approveState == "approved"){
-      approvedArray.push(data)
+
+
+  
+  // ---------------------- DashBoard Mapping -----------------------// 
+  
+ 
+  if (workersLeaveHistory.length > 0) {
+
+    pastArray=[]
+    rejectedArray = []
+    upcomingArray = []
+    workersLeaveHistory.map((data) => {
+    
+      parsedendDate = Date.parse(data.endDate.slice(0, 10))
+    parsedStartDate = Date.parse(data.startDate.slice(0, 10))
+
+    if (data.approveState == "approved" && parsedCurrentDate > parsedendDate){
+      pastArray.push(data)
     }
     if (data.approveState == "rejected"){
       rejectedArray.push(data)
     }
+    if (data.approveState == "approved" && parsedStartDate > parsedCurrentDate)
+    upcomingArray.push(data)
   })
 
-  
-  
-  // ----------------------------------- DashBoard Mapping -----------------------// 
-  
- 
-  if (workersLeaveHistory.length > 0) {
+  let sortedUpcoming = () => {
+    let sortedUpcomingArray = upcomingArray.sort((a,b)=> {
+      return Date.parse(a.startDate.slice(0, 10)) - Date.parse(b.startDate.slice(0, 10))
+    })
+    return sortedUpcomingArray
+  } 
+
+  let sortedPast = () => {
+    let sortedPastArray = pastArray.sort((a,b)=> {
+      return Date.parse(a.endDate.slice(0, 10)) - Date.parse(b.endDate.slice(0, 10))
+    })
+    return sortedPastArray
+  }
+
+  let sortedRejected = () => {
+    let sortedRejectedArray = rejectedArray.sort((a,b)=> {
+      return Date.parse(a.startDate.slice(0, 10)) - Date.parse(b.startDate.slice(0, 10))
+    })
+    return sortedRejectedArray
+  }
+
     
-    primaryLeaveContainer.innerHTML = "";
-    pastContainer.innerHTML = "";
-    approvedOption.classList.add("active-option");
-  
-    if (approvedArray.length == 0){
-      primaryLeaveContainer.innerHTML = `<p class="no-past-record">No approved Leave History</p>`;
+  // --------------------- MAPPING APPROVED LEAVES ----------------------------------// 
+
+    const getAllApprovedLeaves = () => {    
+      primaryLeaveContainer.innerHTML = "";
+      pastContainer.innerHTML = "";
+      approvedOption.classList.add("active-option");
+
+        if (pastArray.length == 0 && upcomingArray.length == 0){
+          primaryLeaveContainer.innerHTML = `
+          <p class="no-past-record">No approved Leave History</p>
+          `;
+        }
+      
+        // ----------------------- UPCOMING APPROVED LEAVES ------------------ //
+        
+        if (upcomingArray.length > 0){
+          sortedUpcoming().map(data => {
+            const { typeOfLeave, startDate, endDate, leaveDays, approveState } = data;
+              upcomingTitle.setAttribute("style", "display:block;");
+              let content = `
+
+                          <div class="worker-leave-history-details">
+          
+                              <p class="worker-leave-history-leave-type">${typeOfLeave}</p>
+                          
+                              <div class="worker-leave-history-leave-date">
+                                  <span>${startDate
+                                    .slice(0, 10)
+                                    .replaceAll("-", "/")} - ${endDate
+                .slice(0, 10)
+                .replaceAll("-", "/")}</span>
+                                  <span> ${leaveDays}</span>
+                              </div>
+                          
+                              <div class="worker-leave-history-leave-status">
+                                  <p class="capitalize-input">
+                                      <i class="fa-solid fa-circle approved-leave"></i>
+                                      ${approveState}
+                                  </p>
+                              </div>
+          
+                          </div>
+                              `;
+              primaryLeaveContainer.innerHTML += content;
+
+          })
+        }
+        
+        // --------------------------- PAST APPROVED LEAVES ------------------// 
+
+        if (pastArray.length > 0){
+          sortedPast().map(data => {
+            const { typeOfLeave, startDate, endDate, leaveDays, approveState } = data;
+              pastTitle.setAttribute("style", "display:block;");
+              let content = `
+
+                          <div class="worker-leave-history-details">
+          
+                              <p class="worker-leave-history-leave-type">${typeOfLeave}</p>
+                          
+                              <div class="worker-leave-history-leave-date">
+                                  <span>${startDate
+                                    .slice(0, 10)
+                                    .replaceAll("-", "/")} - ${endDate
+                .slice(0, 10)
+                .replaceAll("-", "/")}</span>
+                                  <span> ${leaveDays}</span>
+                              </div>
+                          
+                              <div class="worker-leave-history-leave-status">
+                                  <p class="capitalize-input">
+                                      <i class="fa-solid fa-circle approved-leave"></i>
+                                      ${approveState}
+                                  </p>
+                              </div>
+          
+                          </div>
+                              `;
+                  pastContainer.innerHTML += content;
+
+          })
+        }
     }
     
-    workersLeaveHistory.map((data) => {
-      const { typeOfLeave, startDate, endDate, leaveDays, approveState } = data;
-      parsedendDate = Date.parse(data.endDate)
-      parsedStartDate = Date.parse(data.startDate)
-      console.log(parsedStartDate)
-       
-      if (data.approveState == "approved" && parsedStartDate > parsedCurrentDate) {
-        upcomingTitle.setAttribute("style", "display:block;");
-        let content = `
-
-                    <div class="worker-leave-history-details">
+    getAllApprovedLeaves()
+  
+     // --------------------------------REJECTED ONLICK -----------------------------// 
     
-                        <p class="worker-leave-history-leave-type">${typeOfLeave}</p>
-                    
-                        <div class="worker-leave-history-leave-date">
-                            <span>${startDate
-                              .slice(0, 10)
-                              .replaceAll("-", "/")} - ${endDate
-          .slice(0, 10)
-          .replaceAll("-", "/")}</span>
-                            <span> ${leaveDays}</span>
-                        </div>
-                    
-                        <div class="worker-leave-history-leave-status">
-                            <p class="capitalize-input">
-                                <i class="fa-solid fa-circle approved-leave"></i>
-                                ${approveState}
-                            </p>
-                        </div>
-    
-                    </div>
-                        `;
-        primaryLeaveContainer.innerHTML += content;
-      }
+     rejectedOption.addEventListener("click", () => {
+      primaryLeaveContainer.innerHTML =""
+      pastContainer.innerHTML =""
       
-      
-      if (data.approveState == "approved" && parsedCurrentDate > parsedendDate){
-        pastTitle.setAttribute("style", "display:block;");
-        let content = `
-
-                    <div class="worker-leave-history-details">
-    
-                        <p class="worker-leave-history-leave-type">${typeOfLeave}</p>
-                    
-                        <div class="worker-leave-history-leave-date">
-                            <span>${startDate
-                              .slice(0, 10)
-                              .replaceAll("-", "/")} - ${endDate
-          .slice(0, 10)
-          .replaceAll("-", "/")}</span>
-                            <span> ${leaveDays}</span>
-                        </div>
-                    
-                        <div class="worker-leave-history-leave-status">
-                            <p class="capitalize-input">
-                                <i class="fa-solid fa-circle approved-leave"></i>
-                                ${approveState}
-                            </p>
-                        </div>
-    
-                    </div>
-                        `;
-        pastContainer.innerHTML += content;
-
-      }
-    });
-    
-    
-    
-    // --------------------------------REJECTED ONLICK -----------------------------// 
-    
-    
-    
-    rejectedOption.addEventListener("click", () => {
-        filterOption.forEach((button) => {
+      filterOption.forEach((button) => {
           button.classList.remove("active-option");
         });
         rejectedOption.classList.add("active-option");
         filterOptionsContainer.classList.remove("filter-container-active");
         filterIcon.classList.remove("fa-circle-xmark");
-        rejectedTitle.setAttribute("style", "display:block;");
         upcomingTitle.setAttribute("style", "display:none;");
         pastTitle.setAttribute("style", "display:none;");
 
 
-        primaryLeaveContainer.innerHTML =""
-        pastContainer.innerHTML =""
-
         if (rejectedArray.length == 0){
           primaryLeaveContainer.innerHTML = `<p class="no-past-record">No rejected leave History</p>`;
+          rejectedTitle.setAttribute("style", "display:none;");
+
         }
-        workersLeaveHistory.map((data) => {
+        
+        // -------------------------- REJECTED LEAVE MAPPING -------------------- //
+
+        if (rejectedArray.length > 0) {
+          rejectedTitle.setAttribute("style", "display:block;");
+          sortedRejected().map(data => {
             const { typeOfLeave, startDate, endDate, leaveDays, approveState } = data;
-        if (data.approveState == "rejected") {
+            
+
           let content = `
                 <div class="worker-leave-history-details">
 
@@ -181,108 +231,29 @@ const checkworkersRequest = async () => {
                 </div>
                     `;
           primaryLeaveContainer.innerHTML += content;
-        }
+        })
+        }})
+      
+      // ----------------------------------- APPROVE ONCLICK ----------------------------//
+
+      approvedOption.addEventListener("click",()=> {
+        
+        filterOption.forEach((button) => {
+          button.classList.remove("active-option");
+        });
+        approvedOption.classList.add("active-option");
+        filterOptionsContainer.classList.remove("filter-container-active");
+        filterIcon.classList.remove("fa-circle-xmark");
+        rejectedTitle.setAttribute("style", "display:none;");
+        
+        getAllApprovedLeaves()
+
       })
-  })
-
-
-    // ----------------------------------- APPROVE ONCLICK ---------------------------- //
-
-  approvedOption.addEventListener("click", () => {
+  }
+}
     
-    filterOption.forEach((button) => {
-      button.classList.remove("active-option");
-    });
-    approvedOption.classList.add("active-option");
-    filterOptionsContainer.classList.remove("filter-container-active");
-    filterIcon.classList.remove("fa-circle-xmark");
-    rejectedTitle.setAttribute("style", "display:none;");
-
-    primaryLeaveContainer.innerHTML =""
-    pastContainer.innerHTML =""
-
-    if (approvedArray.length == 0){
-      primaryLeaveContainer.innerHTML = `<p class="no-past-record">No approved Leave History</p>`;
-    }
-    
-    workersLeaveHistory.map((data) => {
-        const { typeOfLeave, startDate, endDate, leaveDays, approveState } = data;
-        parsedendDate = Date.parse(data.endDate)
-        parsedStartDate = Date.parse(data.startDate)
-        console.log(parsedStartDate)
-        
-        
-
-        if (data.approveState == "approved" && parsedStartDate > parsedCurrentDate) {
-          upcomingTitle.setAttribute("style", "display:block;");
-          let content = `
-  
-                      <div class="worker-leave-history-details">
-      
-                          <p class="worker-leave-history-leave-type">${typeOfLeave}</p>
-                      
-                          <div class="worker-leave-history-leave-date">
-                              <span>${startDate
-                                .slice(0, 10)
-                                .replaceAll("-", "/")} - ${endDate
-            .slice(0, 10)
-            .replaceAll("-", "/")}</span>
-                              <span> ${leaveDays}</span>
-                          </div>
-                      
-                          <div class="worker-leave-history-leave-status">
-                              <p class="capitalize-input">
-                                  <i class="fa-solid fa-circle approved-leave"></i>
-                                  ${approveState}
-                              </p>
-                          </div>
-      
-                      </div>
-                          `;
-          primaryLeaveContainer.innerHTML += content;
-        }
-        
-        
-        if (data.approveState == "approved" && parsedCurrentDate > parsedendDate){
-          pastTitle.setAttribute("style", "display:block;");
-          let content = `
-  
-                      <div class="worker-leave-history-details">
-      
-                          <p class="worker-leave-history-leave-type">${typeOfLeave}</p>
-                      
-                          <div class="worker-leave-history-leave-date">
-                              <span>${startDate
-                                .slice(0, 10)
-                                .replaceAll("-", "/")} - ${endDate
-            .slice(0, 10)
-            .replaceAll("-", "/")}</span>
-                              <span> ${leaveDays}</span>
-                          </div>
-                      
-                          <div class="worker-leave-history-leave-status">
-                              <p class="capitalize-input">
-                                  <i class="fa-solid fa-circle approved-leave"></i>
-                                  ${approveState}
-                              </p>
-                          </div>
-      
-                      </div>
-                          `;
-          pastContainer.innerHTML += content;
-  
-        }
-      });
-
-})
-
-}}
 
 checkworkersRequest();
-
-
-
-
 
 //--------------------------- filter active ----------------------------//
 
