@@ -532,3 +532,11 @@ input[type=radio] {
 .close-filter {
   color: black !important;
 }
+
+.load-gif {
+  width: 6vw;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  margin: 10rem auto;
+  grid-column: 1/4;
+}
