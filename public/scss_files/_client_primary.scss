@@ -195,6 +195,17 @@ li {
   padding-bottom: 1rem;
   margin-bottom: 3rem;
   border-bottom: 2px solid rgb(207, 205, 205);
+
+  .fa-circle-xmark {
+    font-size: 1.9rem;
+    cursor: pointer;
+    border-radius: 4rem;
+    color: #7d90a5;
+  }
+
+  .fa-circle-xmark:hover {
+    color: #ff0033;
+  }
 }
 
 .register-heading p {
@@ -257,17 +268,6 @@ input[type="radio"] {
   top: 38%;
 }
 
-.fa-circle-xmark {
-  font-size: 1.9rem;
-  cursor: pointer;
-  border-radius: 4rem;
-  color: #7d90a5;
-}
-
-.fa-circle-xmark:hover {
-  color: #ff0033;
-}
-
 .form-buttons {
   text-align: right;
   grid-column: span 2;
@@ -300,15 +300,16 @@ input[type="radio"] {
   display: flex;
 }
 
-.client-id-container{
+.client-id-container {
   flex-basis: 18%;
 }
 
-.worker-id-container{
+.worker-id-container {
   flex-basis: 80%;
 }
 
-#workerID, .workerID_error {
+#workerID,
+.workerID_error {
   margin-left: 0.8rem;
 }
 
@@ -318,9 +319,9 @@ input[type="radio"] {
 
 .id-details {
   margin-left: 1rem;
-  color:#7d90a5;
+  color: #7d90a5;
   display: inline-flex;
-  flex-basis: 80% ;
+  flex-basis: 80%;
 }
 
 #mesh-id {
@@ -337,7 +338,6 @@ input[type="radio"] {
 .worker-id-label {
   flex-basis: 18%;
 }
-
 
 // ----------------alert message-------------------------
 .success-alert {

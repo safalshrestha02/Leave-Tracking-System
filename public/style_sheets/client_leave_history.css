@@ -191,6 +191,15 @@ li {
   margin-bottom: 3rem;
   border-bottom: 2px solid rgb(207, 205, 205);
 }
+.register-heading .fa-circle-xmark {
+  font-size: 1.9rem;
+  cursor: pointer;
+  border-radius: 4rem;
+  color: #7d90a5;
+}
+.register-heading .fa-circle-xmark:hover {
+  color: #ff0033;
+}
 
 .register-heading p {
   font-size: 2rem;
@@ -250,17 +259,6 @@ input[type=radio] {
   top: 38%;
 }
 
-.fa-circle-xmark {
-  font-size: 1.9rem;
-  cursor: pointer;
-  border-radius: 4rem;
-  color: #7d90a5;
-}
-
-.fa-circle-xmark:hover {
-  color: #ff0033;
-}
-
 .form-buttons {
   text-align: right;
   grid-column: span 2;
@@ -301,7 +299,8 @@ input[type=radio] {
   flex-basis: 80%;
 }
 
-#workerID, .workerID_error {
+#workerID,
+.workerID_error {
   margin-left: 0.8rem;
 }
 
@@ -532,4 +531,4 @@ input[type=radio] {
 
 .close-filter {
   color: black !important;
-}/*# sourceMappingURL=client_leave_history.css.map */
+}

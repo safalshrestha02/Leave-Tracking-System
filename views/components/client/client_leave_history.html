@@ -109,7 +109,7 @@
           </div>
 
           <div class="upcoming-leave-history">
-            <h2 class="upcoming-leave-history--heading">Upcoming Leaves</h2>
+            <h2 class="upcoming-leave-history--heading">Upcoming / Ongoing Leaves</h2>
 
             <div class="upcoming-leave-history-container"></div>
           </div>
@@ -171,31 +171,21 @@
 
           <div class="worker-id-container">
             <div class="worker-id-labels">
-            <label for="workerID" class="worker-id-label"> Worker ID </label>
-            <div class="id-details"></div>
+              <label for="workerID" class="worker-id-label"> Worker ID </label>
+              <div class="id-details"></div>
             </div>
             <div class="double-id-container">
               <div class="client-id-container">
-                <input
-                  type="text"
-                  class="register-input-field clear-input client-ID-value"
-                  id="clientID"
-                  maxlength="6"
-                  disabled
-                />
+                <input type="text" class="register-input-field clear-input client-ID-value" id="clientID" maxlength="6"
+                  disabled />
                 <p class="companyID_error register-errors"></p>
               </div>
               <div class="worker-id-container">
-                <input
-                  type="text"
-                  placeholder="Unique Worker ID (5 Digits)"
-                  class="register-input-field clear-input"
-                  id="workerID"
-                  maxlength="5"
-                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                />
+                <input type="text" placeholder="Unique Worker ID (5 Digits)" class="register-input-field clear-input"
+                  id="workerID" maxlength="5"
+                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
                 <p class="workerID_error register-errors"></p>
-              </div> 
+              </div>
             </div>
           </div>
 

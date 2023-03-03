@@ -1,12 +1,18 @@
 const filterDropDown = document.querySelector('.filter-leaveRequests')
 const pendingLeaveContainer = document.querySelector('.pending-leave-container')
 
+const confirmModal = document.querySelector('.confirm-container')
+const confirmButton = document.querySelector('.modal-confirm');
+const cancelButton = document.querySelector('.modal-cancel');
+const confirmStatus = document.querySelector('.status')
+const workerNameField = document.querySelector('.worker-name')
+const leaveTypeField = document.querySelector('.leave-type')
+
 window.addEventListener('load', () => {
     filterDropDown.value = 'all'
 })
 
 const manageLeavesFunc = async () => {
-
     try {
         const companyPendingLeaveRequests = await pendingLeaveRequestsUnderClient()
 
@@ -78,11 +84,11 @@ const manageLeavesFunc = async () => {
                                         <p>${typeOfLeave}</p>
                     
                                         <div class="buttons-container">
-                                            <button value = ${_id} class="pending-leave-buttons approve-button">
+                                            <button value = "${_id}" data-name = "${workerName}" data-leavetype = "${typeOfLeave}" class="pending-leave-buttons approve-button">
                                                 Approve
                                             </button>
                     
-                                            <button value = ${_id} class="pending-leave-buttons reject-button">
+                                            <button value = "${_id}" data-name = "${workerName}" data-leavetype = "${typeOfLeave}" class="pending-leave-buttons reject-button">
                                                 Reject
                                             </button>
                                         </div>
@@ -96,23 +102,44 @@ const manageLeavesFunc = async () => {
 
                     // Approve Leaves
                     const approveButtons = document.querySelectorAll('.approve-button')
-
                     const approveLeaves = async (btn) => {
-                        filterDropDown.value = 'all'
-                        pendingLeaveContainer.innerHTML = ''
-                        manageLeavesFunc()
 
                         const leaveID = btn.value
-                        console.log(leaveID, 'is approved')
+                        const workerName = btn.dataset.name
+                        const leaveType = btn.dataset.leavetype
 
-                        const approveLeaveApiUrl = `http://localhost:3000/api/approveLeave/${leaveID}`
-                        const response = await fetch(approveLeaveApiUrl, {
-                            method: 'PATCH',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                approveState: "approved"
+                        confirmModal.style.display = 'flex'
+                        confirmStatus.innerHTML = 'approve'
+                        confirmButton.innerHTML = 'Approve'
+
+                        confirmButton.classList.remove('reject-button-confirm')
+                        confirmButton.classList.add('approve-button-confirm')
+                        cancelButton.classList.remove('cancel-button-reject')
+                        cancelButton.classList.add('cancel-button-confirm')
+
+                        workerNameField.innerHTML = `${workerName}`
+                        leaveTypeField.innerHTML = `${leaveType}`
+
+                        confirmButton.addEventListener('click', async () => {
+                            filterDropDown.value = 'all'
+                            pendingLeaveContainer.innerHTML = ''
+                            manageLeavesFunc()
+                            confirmModal.style.display = 'none'
+
+                            const approveLeaveApiUrl = `http://localhost:3000/api/approveLeave/${leaveID}`
+                            const response = await fetch(approveLeaveApiUrl, {
+                                method: 'PATCH',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                    approveState: 'approved'
+                                })
                             })
+                        }, { once: true })
+
+                        cancelButton.addEventListener('click', () => {
+                            confirmModal.style.display = 'none'
                         })
+
                     }
                     approveButtons.forEach((btn) => {
                         btn.addEventListener('click', () => { approveLeaves(btn) })
@@ -121,22 +148,39 @@ const manageLeavesFunc = async () => {
 
                     // Reject leaves
                     const rejectButtons = document.querySelectorAll('.reject-button')
-
                     const rejectLeaves = async (btn) => {
-                        filterDropDown.value = 'all'
-                        pendingLeaveContainer.innerHTML = ''
-                        manageLeavesFunc()
-
                         const leaveID = btn.value
-                        console.log(leaveID, 'is rejected')
+                        const workerName = btn.dataset.name
+                        const leaveType = btn.dataset.leavetype
 
-                        const rejectLeaveApiUrl = `http://localhost:3000/api/approveLeave/${leaveID}`
-                        const response = await fetch(rejectLeaveApiUrl, {
-                            method: 'PATCH',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                approveState: 'rejected'
+                        confirmModal.style.display = 'flex'
+                        confirmStatus.innerHTML = 'reject'
+                        confirmButton.innerHTML = 'Reject'
+                        confirmButton.classList.remove('approve-button-confirm')
+                        confirmButton.classList.add('reject-button-confirm')
+                        cancelButton.classList.remove('cancel-button-confirm')
+                        cancelButton.classList.add('cancel-button-reject')
+                        workerNameField.innerHTML = `${workerName}`
+                        leaveTypeField.innerHTML = `${leaveType}`
+
+                        confirmButton.addEventListener('click', async () => {
+                            filterDropDown.value = 'all'
+                            pendingLeaveContainer.innerHTML = ''
+                            manageLeavesFunc()
+                            confirmModal.style.display = 'none'
+
+                            const rejectLeaveApiUrl = `http://localhost:3000/api/approveLeave/${leaveID}`
+                            const response = await fetch(rejectLeaveApiUrl, {
+                                method: 'PATCH',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                    approveState: 'rejected'
+                                })
                             })
+                        }, { once: true })
+
+                        cancelButton.addEventListener('click', () => {
+                            confirmModal.style.display = 'none'
                         })
                     }
                     rejectButtons.forEach((btn) => {

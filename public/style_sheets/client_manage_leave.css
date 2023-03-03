@@ -191,6 +191,15 @@ li {
   margin-bottom: 3rem;
   border-bottom: 2px solid rgb(207, 205, 205);
 }
+.register-heading .fa-circle-xmark {
+  font-size: 1.9rem;
+  cursor: pointer;
+  border-radius: 4rem;
+  color: #7d90a5;
+}
+.register-heading .fa-circle-xmark:hover {
+  color: #ff0033;
+}
 
 .register-heading p {
   font-size: 2rem;
@@ -250,17 +259,6 @@ input[type=radio] {
   top: 38%;
 }
 
-.fa-circle-xmark {
-  font-size: 1.9rem;
-  cursor: pointer;
-  border-radius: 4rem;
-  color: #7d90a5;
-}
-
-.fa-circle-xmark:hover {
-  color: #ff0033;
-}
-
 .form-buttons {
   text-align: right;
   grid-column: span 2;
@@ -301,7 +299,8 @@ input[type=radio] {
   flex-basis: 80%;
 }
 
-#workerID, .workerID_error {
+#workerID,
+.workerID_error {
   margin-left: 0.8rem;
 }
 
@@ -356,6 +355,11 @@ input[type=radio] {
   padding: 0.5rem;
   color: white;
   border-radius: 50%;
+}
+
+:root {
+  --hover-green: #03b67a;
+  --hover-red: #df032f;
 }
 
 /* ------------------------------------------ leave requests overview on homepage ----------------------------------- */
@@ -465,14 +469,14 @@ input[type=radio] {
 }
 .pending-leave-container .pending-leave-details .approve-button:hover {
   cursor: pointer;
-  background-color: #03b67a;
+  background-color: var(--hover-green);
 }
 .pending-leave-container .pending-leave-details .reject-button {
   background-color: #ff0032;
 }
 .pending-leave-container .pending-leave-details .reject-button:hover:hover {
   cursor: pointer;
-  background-color: #df032f;
+  background-color: var(--hover-red);
 }
 
 .no-leaves {
@@ -485,4 +489,123 @@ input[type=radio] {
   font-size: 1.2rem;
   color: #ff0032;
   font-weight: 600;
-}/*# sourceMappingURL=client_manage_leave.css.map */
+}
+
+.confirm-container {
+  width: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.4) 50%);
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  position: fixed;
+  backdrop-filter: blur(0.5px);
+}
+.confirm-container .confirm-wrapper {
+  min-width: 30%;
+  width: fit-content;
+  padding: 2rem 5rem;
+  text-align: center;
+  background-color: white;
+  border-radius: 1rem;
+}
+.confirm-container .confirm-wrapper .confirm-icon {
+  font-size: 3rem;
+  color: #ff0032;
+}
+.confirm-container .confirm-wrapper .warning-title {
+  font-size: 1rem;
+  font-weight: 500;
+  opacity: 0.8;
+  margin-top: 1.5rem;
+  display: block;
+}
+.confirm-container .confirm-wrapper .warning-about {
+  opacity: 0.4;
+  margin: 0.5rem 0;
+}
+.confirm-container .confirm-wrapper .confirm {
+  padding: 0.7rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.3rem;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  opacity: 0.9;
+  width: 30%;
+}
+.confirm-container .confirm-wrapper .button-container {
+  text-align: right;
+  margin-top: 2rem;
+}
+.confirm-container .confirm-wrapper .cancel-button-confirm {
+  margin-right: 1rem;
+  background-color: white;
+  color: #03c988;
+  outline: 1px solid #03c988;
+  font-size: 0.9rem;
+}
+.confirm-container .confirm-wrapper .cancel-button-confirm:hover {
+  background-color: #f9f9f9;
+  outline: 1px solid var(--hover-green);
+  opacity: 1;
+}
+.confirm-container .confirm-wrapper .cancel-button-reject {
+  margin-right: 1rem;
+  background-color: white;
+  color: #ff0032;
+  outline: 1px solid #ff0032;
+  font-size: 0.9rem;
+}
+.confirm-container .confirm-wrapper .cancel-button-reject:hover {
+  background-color: #f9f9f9;
+  outline: 1px solid var(--hover-red);
+  opacity: 1;
+}
+.confirm-container .confirm-wrapper .approve-button-confirm {
+  background-color: #03c988;
+  font-size: 0.9rem;
+}
+.confirm-container .confirm-wrapper .approve-button-confirm:hover {
+  background-color: var(--hover-green);
+  opacity: 1;
+}
+.confirm-container .confirm-wrapper .reject-button-confirm {
+  background-color: #ff0032;
+  color: white;
+  font-size: 0.9rem;
+}
+.confirm-container .confirm-wrapper .reject-button-confirm:hover {
+  background-color: var(--hover-red);
+}
+.confirm-container .confirm-wrapper .leave-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  background-color: #f3f5f7;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}
+.confirm-container .confirm-wrapper .worker-detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+}
+.confirm-container .confirm-wrapper .worker-detail .worker-name {
+  text-transform: capitalize;
+}
+.confirm-container .confirm-wrapper .user-icon {
+  background-color: #3c79f5;
+  color: white;
+  font-size: 0.8rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  margin-right: 0.2rem;
+  aspect-ratio: 1/1;
+}
