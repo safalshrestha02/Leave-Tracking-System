@@ -351,4 +351,34 @@ li {
 .history-title {
   display: none;
   margin-top: 2rem;
+}
+
+.worker-leave-top-details {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.worker-leave-top-details .fa-regular, .worker-leave-top-details .fa-trash {
+  font-size: 1.3rem;
+  opacity: 0.6;
+}
+.worker-leave-top-details .fa-trash:hover {
+  cursor: pointer;
+  color: rgb(231, 0, 0);
+}
+.worker-leave-top-details .fa-circle-xmark {
+  margin-right: 2rem;
+}
+.worker-leave-top-details .fa-circle-xmark:hover {
+  cursor: pointer;
+  color: #ff0032;
+}
+.worker-leave-top-details .fa-circle-check:hover {
+  cursor: pointer;
+  color: rgb(0, 139, 0);
+}
+
+.confirm-leave-delete-container {
+  display: none;
 }/*# sourceMappingURL=worker_leaveHistory.css.map */

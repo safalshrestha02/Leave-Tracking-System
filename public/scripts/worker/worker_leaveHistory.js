@@ -34,9 +34,7 @@ parsedCurrentDate = Date.parse(currentDate)
 const checkworkersRequest = async () => {
   const allreq = await fetchLeavesUnderWorker();
   const workersLeaveHistory = allreq.leaveHistory;
-  workersLeaveHistory.forEach(gg=> {
-    console.log(gg.approveState)
-  })
+
   
   if (workersLeaveHistory.length === 0) {
     primaryLeaveContainer.innerHTML = "";
@@ -109,14 +107,23 @@ const checkworkersRequest = async () => {
         // ----------------------- UPCOMING APPROVED LEAVES ------------------ //
         
         if (upcomingArray.length > 0){
-          sortedUpcoming().map(data => {
-            const { typeOfLeave, startDate, endDate, leaveDays, approveState } = data;
+          sortedUpcoming().map((data,index) => {
+            const { typeOfLeave, startDate, endDate, leaveDays, approveState, _id } = data;
               upcomingTitle.setAttribute("style", "display:block;");
+              const dayorDays = (leaveDays > 1) ? "days" : "day";
               let content = `
 
                           <div class="worker-leave-history-details">
-          
+                            <div class="worker-leave-top-details">
                               <p class="worker-leave-history-leave-type">${typeOfLeave}</p>
+                              <div class="confirm-leave-delete-container">
+                                <i class="fa-regular fa-circle-xmark"></i>
+                                <i class="fa-regular fa-circle-check"></i>
+                              </div>
+
+                              <i class="fa-solid fa-trash" onclick='confirmDelete("${_id}","${index}")'></i>
+                            </div>
+                              
                           
                               <div class="worker-leave-history-leave-date">
                                   <span>${startDate
@@ -124,7 +131,7 @@ const checkworkersRequest = async () => {
                                     .replaceAll("-", "/")} - ${endDate
                 .slice(0, 10)
                 .replaceAll("-", "/")}</span>
-                                  <span> ${leaveDays}</span>
+                                  <span> ${leaveDays} ${dayorDays}</span>
                               </div>
                           
                               <div class="worker-leave-history-leave-status">
@@ -139,7 +146,7 @@ const checkworkersRequest = async () => {
               primaryLeaveContainer.innerHTML += content;
 
           })
-        }
+        } 
         
         // --------------------------- PAST APPROVED LEAVES ------------------// 
 
@@ -147,6 +154,7 @@ const checkworkersRequest = async () => {
           sortedPast().map(data => {
             const { typeOfLeave, startDate, endDate, leaveDays, approveState } = data;
               pastTitle.setAttribute("style", "display:block;");
+              const dayorDays = (leaveDays > 1) ? "days" : "day";
               let content = `
 
                           <div class="worker-leave-history-details">
@@ -159,7 +167,7 @@ const checkworkersRequest = async () => {
                                     .replaceAll("-", "/")} - ${endDate
                 .slice(0, 10)
                 .replaceAll("-", "/")}</span>
-                                  <span> ${leaveDays}</span>
+                                  <span> ${leaveDays} ${dayorDays}</span>
                               </div>
                           
                               <div class="worker-leave-history-leave-status">
@@ -174,6 +182,8 @@ const checkworkersRequest = async () => {
                   pastContainer.innerHTML += content;
 
           })
+        } else {
+          pastTitle.setAttribute("style", "display:block;");
         }
     }
     
@@ -207,7 +217,7 @@ const checkworkersRequest = async () => {
           rejectedTitle.setAttribute("style", "display:block;");
           sortedRejected().map(data => {
             const { typeOfLeave, startDate, endDate, leaveDays, approveState } = data;
-            
+            const dayorDays = (leaveDays > 1) ? "days" : "day";
 
           let content = `
                 <div class="worker-leave-history-details">
@@ -218,7 +228,7 @@ const checkworkersRequest = async () => {
                         <span>${startDate
                           .slice(0, 10)
                           .replaceAll("-", "/")} - ${endDate.slice(0, 10).replaceAll("-", "/")}</span>
-                        <span> ${leaveDays}</span>
+                        <span> ${leaveDays} ${dayorDays}</span>
                     </div>
                 
                     <div class="worker-leave-history-leave-status">
@@ -266,6 +276,40 @@ filterbutton.addEventListener("click", () => {
 
 
 
+const confirmDelete = (monId,index) => {
+  
+  const deleteIcon = document.querySelectorAll(".fa-trash")
+  const confirmContainer = document.querySelectorAll(".confirm-leave-delete-container")
+  const deleteCheck = document.querySelectorAll(".fa-circle-check")
+  const cancelDelete = document.querySelectorAll(".fa-circle-xmark")
+  
+  deleteIcon[index].setAttribute("style", "display:none;");
+  confirmContainer[index].setAttribute("style","display:block;")
+
+  cancelDelete[index].addEventListener("click",()=> {
+    deleteIcon[index].setAttribute("style", "display:block;");
+    confirmContainer[index].setAttribute("style","display:none;")
+  })
+
+  deleteCheck[index].addEventListener("click", async() => {
+    if (monId !== null){
+      const deleteURL = `http://localhost:3000/api/leaveRequests/${monId}`
+      console.log(deleteURL)
+      const res = await fetch(deleteURL,{method: "DELETE"})
+
+      if (res.status === 201) {
+
+        primaryLeaveContainer.innerHTML = "";
+        pastContainer.innerHTML = "";
+        upcomingTitle.setAttribute("style", "display:none;");
+        pastTitle.setAttribute("style", "display:none;");
+        
+
+        checkworkersRequest()
+    }}
+  })
+
+}
 
 
 
