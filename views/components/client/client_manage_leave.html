@@ -2,267 +2,241 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="/style_sheets/client_manage_leave.css" />
+  <link rel="stylesheet" href="/style_sheets/client_manage_leave.css" />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
 
-    <title>ecoBees</title>
+  <title>ecoBees</title>
 </head>
 
 <body>
-    <div class="main-container">
-        <div class="left-container">
-            <nav>
-                <h1 id="main-logo"><span>e</span>coB<span>ee</span>s</h1>
-                <ul id="nav-ul ">
-                    <li>
-                        <a href="/client_home" class="nav-links"><i class="fa-solid fa-house nav-icon"></i>Home</a>
-                    </li>
-                    <li>
-                        <a href="/client_profile" class="nav-links"><i class="fa-solid fa-user nav-icon"></i>Profile</a>
-                    </li>
-                    <li class="active">
-                        <a href="/client_manage_leave" class="nav-links  nav-active"><i
-                                class="fa-solid fa-right-from-bracket nav-icon"></i>Manage
-                            Leaves</a>
-                    </li>
-                    <li>
-                        <a href="/client_leave_history" class="nav-links"><i
-                                class="fa-solid fa-clock-rotate-left nav-icon"></i>Leave
-                            History</a>
-                    </li>
-                    <li>
-                        <a href="/client_manage_worker" class="nav-links"><i
-                                class="fa-solid fa-user-gear nav-icon"></i>Manage Workers</a>
-                    </li>
-                    <li>
-                        <a href="/client_leave_settings" class="nav-links"><i
-                                class="fa-solid fa-gear nav-icon"></i>Leave Settings</a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="logout-button-container">
-                <a href="/logoutClient" class="logout-button"><i class="fa-solid fa-arrow-right-from-bracket nav-icon"
-                        style="rotate: 180deg"></i>Logout</a>
-            </div>
+  <div class="main-container">
+    <div class="left-container">
+      <nav>
+        <h1 id="main-logo"><span>e</span>coB<span>ee</span>s</h1>
+        <ul id="nav-ul ">
+          <li>
+            <a href="/client_home" class="nav-links"><i class="fa-solid fa-house nav-icon"></i>Home</a>
+          </li>
+          <li>
+            <a href="/client_profile" class="nav-links"><i class="fa-solid fa-user nav-icon"></i>Profile</a>
+          </li>
+          <li class="active">
+            <a href="/client_manage_leave" class="nav-links  nav-active"><i
+                class="fa-solid fa-right-from-bracket nav-icon"></i>Manage
+              Leaves</a>
+          </li>
+          <li>
+            <a href="/client_leave_history" class="nav-links"><i
+                class="fa-solid fa-clock-rotate-left nav-icon"></i>Leave
+              History</a>
+          </li>
+          <li>
+            <a href="/client_manage_worker" class="nav-links"><i class="fa-solid fa-user-gear nav-icon"></i>Manage
+              Workers</a>
+          </li>
+          <li>
+            <a href="/client_leave_settings" class="nav-links"><i class="fa-solid fa-gear nav-icon"></i>Leave
+              Settings</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="logout-button-container">
+        <a href="/logoutClient" class="logout-button"><i class="fa-solid fa-arrow-right-from-bracket nav-icon"
+            style="rotate: 180deg"></i>Logout</a>
+      </div>
+    </div>
+
+    <div class="right-container">
+      <div class="navbar-name">
+        <div class="navbar-left">
+          <p>Leave Tracking System</p>
+        </div>
+        <div class="navbar-right">
+          <button id="button-add-worker">
+            <i class="fa-solid fa-user-plus"></i>Add Worker
+          </button>
+        </div>
+      </div>
+
+      <div class="dashboard-content">
+
+        <div class="manage-leaves-header">
+          <h2>Leave Requests</h2>
+
+          <select class="filter-leaveRequests">
+            <option value="all" selected>All Leaves</option>
+            <option value="Urgent Leave">Urgent Leaves</option>
+            <option value="Sick Leave">Sick Leaves</option>
+            <option value="Vacation Leave">Vacation Leaves</option>
+            <option value="Unpaid Leave">Unpaid Leaves</option>
+          </select>
         </div>
 
-        <div class="right-container">
-            <div class="navbar-name">
-                <div class="navbar-left">
-                    <p>Leave Tracking System</p>
-                </div>
-                <div class="navbar-right">
-                    <button id="button-add-worker">
-                        <i class="fa-solid fa-user-plus"></i>Add Worker
-                    </button>
-                </div>
-            </div>
 
-            <div class="dashboard-content">
+        <div>
+          <div class="pending-leave-container"></div>
+        </div>
 
-              <div class="manage-leaves-header">
-                <h2>Leave Requests</h2>
 
-                <select class="filter-leaveRequests">
-                  <option value="all" selected>All Leaves</option>
-                  <option value="Urgent Leave">Urgent Leaves</option>
-                  <option value="Sick Leave">Sick Leaves</option>
-                  <option value="Vacation Leave">Vacation Leaves</option>
-                  <option value="Unpaid Leave">Unpaid Leaves</option>
-                </select>
+        <!-- Approve/Reject Modal -->
+        <div class="confirm-container">
+
+          <div class="confirm-wrapper">
+
+            <p class="warning-title">
+              Are you sure, you want to <span class="status"></span> this leave request?
+            </p>
+
+            <div class="leave-detail">
+              <div class="worker-detail">
+                <i class="fa-regular fa-user user-icon"></i>
+                <span class="worker-name"></span>
               </div>
 
+              <div class="leave-type"></div>
 
-                <div>
-                    <div class="pending-leave-container">
-
-                    </div>
-                </div>
             </div>
+
+            <p class="warning-about">(You will not be able to undo this process)</p>
+
+            <div class="button-container">
+              <button class="cancel-button-confirm confirm modal-cancel">Cancel</button>
+              <button class="confirm modal-confirm"></button>
+            </div>
+
+          </div>
+
         </div>
-        <div>
 
-            <!-- add-worker / register worker -->
-            <div class="register-container">
-                <div class="register-right-container">
-                    <div class="register-container-wrapper">
-                        <div class="register-heading">
-                            <p>Register Worker</p>
-                            <i class="fa-solid fa-circle-xmark" id="close-form"></i>
-                        </div>
+      </div>
+    </div>
+    <div>
 
-                        <form class="register-form" id="worker-register-form">
-                          <div class="first-name-container">
-                            <label for="firstName">First Name</label>
-                            <input
-                              type="text"
-                              placeholder="First Name"
-                              class="register-input-field worker-name-register first-name capitalize-input"
-                              id="firstName"
-                            />
-                            <p class="firstName_error register-errors"></p>
-                          </div>
-      
-                          <div class="last-name-container">
-                            <label for="lastName">Last Name</label>
-                            <input
-                              type="text"
-                              placeholder="Last Name"
-                              class="register-input-field worker-name-register capitalize-input"
-                              id="lastName"
-                            />
-                            <p class="lastName_error register-errors"></p>
-                          </div>
-      
-                          <div class="country-container">
-                            <label for="country">Country</label>
-                            <input
-                              type="text"
-                              placeholder="Country"
-                              class="register-input-field capitalize-input"
-                              id="country"
-                            />
-                            <p class="country_error register-errors"></p>
-                          </div>
-      
-                          <div class="city-container">
-                            <label for="city">City</label>
-                            <input
-                              type="text"
-                              placeholder="City"
-                              class="register-input-field capitalize-input"
-                              id="city"
-                            />
-                            <p class="city_error register-errors"></p>
-                          </div>
-      
-                          <div class="company-name-container">
-                            <label for="companyName">Company Name</label>
-                            <input
-                              type="text"
-                              class="register-input-field company-name-value capitalize-input"
-                              id="companyName"
-                              disabled
-                            />
-                            <p class="companyName_error register-errors"></p>
-                          </div>
-      
-                          <div class="worker-id-container">
-                            <div class="worker-id-labels">
-                            <label for="workerID" class="worker-id-label"> Worker ID </label>
-                            <div class="id-details"></div>
-                            </div>
-                            <div class="double-id-container">
-                              <div class="client-id-container">
-                                <input
-                                  type="text"
-                                  class="register-input-field clear-input client-ID-value"
-                                  id="clientID"
-                                  maxlength="6"
-                                  disabled
-                                />
-                                <p class="companyID_error register-errors"></p>
-                              </div>
-                              <div class="worker-id-container">
-                                <input
-                                  type="text"
-                                  placeholder="Unique Worker ID (5 Digits)"
-                                  class="register-input-field clear-input"
-                                  id="workerID"
-                                  maxlength="5"
-                                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                />
-                                <p class="workerID_error register-errors"></p>
-                              </div> 
-                            </div>
-                          </div>
-                          
-                          <div class="form-gender-container">
-                            <p class="choose-gender">Choose gender</p>
-                            <label for="genderRadioMale">Male</label>
-                            <input
-                              id="genderRadioMale"
-                              type="radio"
-                              name="gender"
-                              value="Male"
-                              checked="checked"
-                            />
-      
-                            <label for="genderRadioFemale">Female</label>
-                            <input
-                              id="genderRadioFemale"
-                              type="radio"
-                              name="gender"
-                              value="Female"
-                            />
-      
-                            <label for="genderRadioOthers">Other</label>
-                            <input
-                              id="genderRadioOthers"
-                              type="radio"
-                              name="gender"
-                              value="Others"
-                            />
-                            <p class="gender_error register-errors"></p>
-                          </div>
-      
-                          <div class="worker-email-container">
-                            <label for="workerEmail">Worker Email</label>
-                            <input
-                              type="text"
-                              id="workerEmail"
-                              placeholder="Worker Email Address"
-                              class="register-input-field clear-input"
-                            />
-                            <p class="workerEmail_error register-errors"></p>
-                          </div>
-      
-                          <div class="password-container">
-                            <label for="workerPassword">Password</label>
-                            <input
-                              type="password"
-                              placeholder="Choose Password"
-                              id="workerPassword"
-                              class="register-input-field clear-input"
-                            />
-                            <p class="workerPassword_error register-errors"></p>
-                            <i class="fa-regular fa-eye-slash"></i>
-                          </div>
-      
-                          <div class="form-buttons">
-                            <button type="reset" class="form-button-reset">
-                              Reset
-                            </button>
-                            <button type="submit" class="form-button-apply">
-                              Add
-                            </button>
-                          </div>
-      
-                          <div class="success-alert alert-boxes">
-                            <i class="fa-solid fa-check alert-icon"></i>
-                            <span class="alert-description">
-                              <h4>Success:</h4>
-                              Wroker account has been registered!
-                            </span>
-                          </div>
-                        </form>
-                    </div>
-                </div>
+      <!-- add-worker / register worker -->
+      <div class="register-container">
+        <div class="register-right-container">
+          <div class="register-container-wrapper">
+            <div class="register-heading">
+              <p>Register Worker</p>
+              <i class="fa-solid fa-circle-xmark" id="close-form"></i>
             </div>
 
-            <script src="/scripts/client/client_primary.js"></script>
-            <script src="/scripts/client/client_dashboard.js"></script>
-            <script src="/scripts/client/client_manage_leave.js"></script>
-            <script src="/scripts/client/add_worker.js"></script>
+            <form class="register-form" id="worker-register-form">
+              <div class="first-name-container">
+                <label for="firstName">First Name</label>
+                <input type="text" placeholder="First Name"
+                  class="register-input-field worker-name-register first-name capitalize-input" id="firstName" />
+                <p class="firstName_error register-errors"></p>
+              </div>
+
+              <div class="last-name-container">
+                <label for="lastName">Last Name</label>
+                <input type="text" placeholder="Last Name"
+                  class="register-input-field worker-name-register capitalize-input" id="lastName" />
+                <p class="lastName_error register-errors"></p>
+              </div>
+
+              <div class="country-container">
+                <label for="country">Country</label>
+                <input type="text" placeholder="Country" class="register-input-field capitalize-input" id="country" />
+                <p class="country_error register-errors"></p>
+              </div>
+
+              <div class="city-container">
+                <label for="city">City</label>
+                <input type="text" placeholder="City" class="register-input-field capitalize-input" id="city" />
+                <p class="city_error register-errors"></p>
+              </div>
+
+              <div class="company-name-container">
+                <label for="companyName">Company Name</label>
+                <input type="text" class="register-input-field company-name-value capitalize-input" id="companyName"
+                  disabled />
+                <p class="companyName_error register-errors"></p>
+              </div>
+
+              <div class="worker-id-container">
+                <div class="worker-id-labels">
+                  <label for="workerID" class="worker-id-label"> Worker ID </label>
+                  <div class="id-details"></div>
+                </div>
+                <div class="double-id-container">
+                  <div class="client-id-container">
+                    <input type="text" class="register-input-field clear-input client-ID-value" id="clientID"
+                      maxlength="6" disabled />
+                    <p class="companyID_error register-errors"></p>
+                  </div>
+                  <div class="worker-id-container">
+                    <input type="text" placeholder="Unique Worker ID (5 Digits)"
+                      class="register-input-field clear-input" id="workerID" maxlength="5"
+                      oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+                    <p class="workerID_error register-errors"></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-gender-container">
+                <p class="choose-gender">Choose gender</p>
+                <label for="genderRadioMale">Male</label>
+                <input id="genderRadioMale" type="radio" name="gender" value="Male" checked="checked" />
+
+                <label for="genderRadioFemale">Female</label>
+                <input id="genderRadioFemale" type="radio" name="gender" value="Female" />
+
+                <label for="genderRadioOthers">Other</label>
+                <input id="genderRadioOthers" type="radio" name="gender" value="Others" />
+                <p class="gender_error register-errors"></p>
+              </div>
+
+              <div class="worker-email-container">
+                <label for="workerEmail">Worker Email</label>
+                <input type="text" id="workerEmail" placeholder="Worker Email Address"
+                  class="register-input-field clear-input" />
+                <p class="workerEmail_error register-errors"></p>
+              </div>
+
+              <div class="password-container">
+                <label for="workerPassword">Password</label>
+                <input type="password" placeholder="Choose Password" id="workerPassword"
+                  class="register-input-field clear-input" />
+                <p class="workerPassword_error register-errors"></p>
+                <i class="fa-regular fa-eye-slash"></i>
+              </div>
+
+              <div class="form-buttons">
+                <button type="reset" class="form-button-reset">
+                  Reset
+                </button>
+                <button type="submit" class="form-button-apply">
+                  Add
+                </button>
+              </div>
+
+              <div class="success-alert alert-boxes">
+                <i class="fa-solid fa-check alert-icon"></i>
+                <span class="alert-description">
+                  <h4>Success:</h4>
+                  Wroker account has been registered!
+                </span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <script src="/scripts/client/client_primary.js"></script>
+      <script src="/scripts/client/client_dashboard.js"></script>
+      <script src="/scripts/client/client_manage_leave.js"></script>
+      <script src="/scripts/client/add_worker.js"></script>
 </body>
 
 </html>
