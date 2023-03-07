@@ -150,7 +150,7 @@ li {
   background-color: white;
   margin: 0 auto;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  margin-top: 2.5rem;
+  margin: 2.5rem auto;
   min-height: 82vh;
   padding: 2rem 4rem;
 }
@@ -231,8 +231,7 @@ li {
   font-weight: 600;
 }
 
-.upcoming-leaves-container,
-.past-leaves-container {
+.upcoming-leaves-container, .past-leaves-container {
   margin-top: 1.2rem;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -360,8 +359,7 @@ li {
   justify-content: space-between;
   align-items: center;
 }
-.worker-leave-top-details .fa-regular,
-.worker-leave-top-details .fa-trash {
+.worker-leave-top-details .fa-regular, .worker-leave-top-details .fa-trash {
   font-size: 1.3rem;
   opacity: 0.6;
 }
@@ -383,4 +381,4 @@ li {
 
 .confirm-leave-delete-container {
   display: none;
-} /*# sourceMappingURL=worker_leaveHistory.css.map */
+}

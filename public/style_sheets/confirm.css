@@ -54,7 +54,9 @@
 
 .cancel-button {
   margin-right: 1rem;
-  background-color: rgb(124, 124, 124);
+  background-color: white;
+  border: 1px solid #e73357;
+  color: #e73357;
   font-size: 0.9rem;
 }
 
@@ -69,6 +71,6 @@
 }
 
 .cancel-button:hover {
-  background-color: rgb(145, 139, 139);
+  background-color: rgb(241, 241, 241);
   opacity: 1;
 }

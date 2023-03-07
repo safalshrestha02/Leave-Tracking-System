@@ -87,12 +87,23 @@ select {
   font-size: 1rem;
 }
 
-.form-button-reset,
 .form-button-apply {
   background-color: $primary-yellow;
+  outline: 1px solid $primary-yellow;
 
   &:hover {
     background-color: $orange-bg;
+    cursor: pointer;
+  }
+}
+
+.form-button-reset{
+  outline: 2px solid $primary-yellow;
+  background-color: white;
+  color: rgb(59, 59, 59);
+  font-weight: 500;
+  &:hover {
+    background-color: rgb(241, 241, 241);
     cursor: pointer;
   }
 }

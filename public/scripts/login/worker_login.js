@@ -7,6 +7,14 @@ const loginForm = document.querySelector(".login-form");
 const login_error = document.querySelector(".login_error");
 
 // -----------sending data-----------
+const loginInputs = document.querySelectorAll(".login-input-field");
+
+loginInputs.forEach((inputField) => {
+  inputField.addEventListener("input", () => {
+    inputField.setAttribute("style", "border: 2px solid initial");
+    login_error.textContent = " ";
+  })
+});
 
 loginForm.addEventListener("submit", async (event) => {
   event.preventDefault();

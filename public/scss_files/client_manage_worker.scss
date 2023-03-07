@@ -17,7 +17,6 @@ a {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  border-bottom: $line;
   padding-bottom: 1.2rem;
 
   i {
@@ -281,6 +280,7 @@ a {
 .details-close-icon {
   color: #7d90a5 !important;
   font-size: 1.3rem;
+  cursor: pointer;
   &:hover{
     color: #ff0033 !important;
   }
