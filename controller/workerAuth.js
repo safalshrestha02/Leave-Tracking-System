@@ -22,21 +22,26 @@ exports.registerWorker = async (req, res) => {
   } = req.body;
   try {
     const companyDetail = await Client.findOne({ companyName });
-    const leavesYearly = companyDetail.leavesYearly;
-    const worker = await Worker.create({
-      firstName,
-      lastName,
-      country,
-      city,
-      companyName,
-      workerID,
-      gender,
-      email,
-      password,
-      companyDetail,
-      leavesYearly,
-    });
-    res.status(201).json({ worker: worker._id });
+    if (companyDetail) {
+      const leavesYearly = companyDetail.leavesYearly;
+      const worker = await Worker.create({
+        firstName,
+        lastName,
+        country,
+        city,
+        companyName,
+        workerID,
+        gender,
+        email,
+        password,
+        companyDetail,
+        leavesYearly,
+      });
+      res.status(201).json({ worker: worker._id });
+    }
+    else{
+      res.status(401).json({error : "couldnt find the company"})
+    }
   } catch (err) {
     const errors = workerErrHandle(err);
     res.status(401).json({ errors });
@@ -76,19 +81,23 @@ exports.applyLeave = async (req, res, next) => {
   } = req.body;
   try {
     const workerDetails = await Worker.findOne({ workerID });
-    leaveRequest = await Leave.create({
-      workerName,
-      leaveDays,
-      workerID,
-      startDate,
-      endDate,
-      typeOfLeave,
-      reason,
-      approveState,
-      workerDetails,
-      leavesYearly: workerDetails.leavesYearly,
-    });
-    res.status(201).json({ success: true });
+    if (workerDetails) {
+      leaveRequest = await Leave.create({
+        workerName,
+        leaveDays,
+        workerID,
+        startDate,
+        endDate,
+        typeOfLeave,
+        reason,
+        approveState,
+        workerDetails,
+        leavesYearly: workerDetails.leavesYearly,
+      });
+      res.status(201).json({ success: true });
+    } else {
+      res.status(400).json({ error: "could not find worker" });
+    }
   } catch (err) {
     console.log(err.message);
   }

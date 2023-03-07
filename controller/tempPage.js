@@ -80,10 +80,7 @@ exports.leaveRequestDelete = async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const deleting = await Messages.findOneAndDelete({
-      _id: id,
-      approveState: "pending, approved",
-    });
+    const deleting = await Messages.findByIdAndDelete(id);
     res.status(201).json({ "successfully Deleted": id });
   } catch (error) {
     res.json({ error });
@@ -97,16 +94,24 @@ exports.clientsWorkers = async (req, res, next) => {
 
   try {
     const client = await Clients.findById(id).then((result) => {
-      const worker = Worker.find({ "companyDetail._id": id })
-        .limit(limit * 1)
-        .skip((page - 1) * limit)
-        .then((workers) => {
-          res.status(201).json({
-            workers: workers,
-            totalPages: Math.ceil(count / limit),
-            currentPage: page,
+      if (client) {
+        const worker = Worker.find({ "companyDetail._id": id })
+          .limit(limit * 1)
+          .skip((page - 1) * limit)
+          .then((workers) => {
+            if (workers) {
+              res.status(201).json({
+                workers: workers,
+                totalPages: Math.ceil(count / limit),
+                currentPage: page,
+              });
+            } else {
+              res.status(400).json({ error: "No worker under that Client" });
+            }
           });
-        });
+      } else {
+        res.status(400).json({ error: "No client under that ID" });
+      }
     });
   } catch (error) {
     res.json({ error });
@@ -114,23 +119,33 @@ exports.clientsWorkers = async (req, res, next) => {
 };
 
 exports.workersLeaves = async (req, res, next) => {
-  const { page = 1, limit = 10 } = req.query;
+  const { page = 1, limit = 1000 } = req.query;
   const count = await Messages.count();
   const { id } = req.params;
 
   try {
     const worker = await Worker.findById(id).then((result) => {
-      const leave = Messages.find({ "workerDetails._id": id })
-        .limit(limit * 1)
-        .skip((page - 1) * limit)
-        .then((leaves) => {
-          res.status(201).json({
-            worker: result,
-            leaveHistory: leaves,
-            totalPages: Math.ceil(count / limit),
-            currentPage: page,
+      if (result) {
+        const leave = Messages.find({ "workerDetails._id": id })
+          .limit(limit * 1)
+          .skip((page - 1) * limit)
+          .then((leaves) => {
+            if (leaves) {
+              res.status(201).json({
+                worker: result,
+                leaveHistory: leaves,
+                totalPages: Math.ceil(count / limit),
+                currentPage: page,
+              });
+            } else {
+              res
+                .status(400)
+                .json({ error: "No leave requests from that Worker" });
+            }
           });
-        });
+      } else {
+        res.status(400).json({ error: "No worker under that ID" });
+      }
     });
   } catch (error) {
     res.json({ error });
@@ -144,23 +159,31 @@ exports.clientsWorkersLeaves = async (req, res, next) => {
 
   try {
     Clients.findById(id).then((specificClient) => {
-      const company = specificClient.companyName;
+      if (specificClient) {
+        const company = specificClient.companyName;
+      } else {
+        res.status(400).json({ Error: "No client found with that ID" });
+      }
       Worker.find({
         "companyDetail._id": id,
         "companyDetail.companyName": company,
       }).then((result) => {
-        Messages.find({
-          "workerDetails.companyDetail.companyName": company,
-        })
-          .limit(limit * 1)
-          .skip((page - 1) * limit)
-          .then((allLeaves) => {
-            res.status(201).json({
-              Leaves: allLeaves,
-              totalPages: Math.ceil(count / limit),
-              currentPage: page,
+        if (result) {
+          Messages.find({
+            "workerDetails.companyDetail.companyName": company,
+          })
+            .limit(limit * 1)
+            .skip((page - 1) * limit)
+            .then((allLeaves) => {
+              res.status(201).json({
+                Leaves: allLeaves,
+                totalPages: Math.ceil(count / limit),
+                currentPage: page,
+              });
             });
-          });
+        } else {
+          res.status(201).json({ error: "No Workers for the Client" });
+        }
       });
     });
   } catch (error) {
@@ -177,7 +200,12 @@ exports.suggestedIds = async (req, res, next) => {
     const clientId = await Clients.findOne({
       companyID: req.params.id,
     }).then((result) => {
-      return result.companyID;
+      if (result) {
+        return result.companyID;
+        res.status(201);
+      } else {
+        res.status(400).json({ error: "No company found with that ID" });
+      }
     });
 
     const workerId = await Worker.find({
@@ -193,14 +221,13 @@ exports.suggestedIds = async (req, res, next) => {
       for (let i = 0; i < 3; i++) {
         let number = Math.floor(Math.random() * 99999);
         const padNumber = number.toString().padStart(5, "0");
-        randomIds[i] = padNumber
+        randomIds[i] = padNumber;
       }
       return randomIds;
     };
 
-    generateRandomIds();
-
     const checkIds = async (workerIds, randomIds) => {
+      generateRandomIds();
       let a = 0;
       workerIds.forEach(function () {
         if (randomIds.includes(workerIds[a])) {
@@ -212,8 +239,8 @@ exports.suggestedIds = async (req, res, next) => {
     };
 
     checkIds(workerIds, randomIds);
-  } catch (err) {
-    res.status(400).json(err.message);
-    console.log(err);
+  } catch (error) {
+    res.status(400).json(error.message);
+    console.error(error);
   }
 };
