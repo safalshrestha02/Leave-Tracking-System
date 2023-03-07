@@ -1,8 +1,10 @@
+const crypto = require("crypto");
 const Client = require("../models/Client");
 const Leave = require("../models/Leave");
 const Worker = require("../models/Worker");
 const { workerErrHandle } = require("../utils/errorHandler");
 const { createWorkerToken } = require("../utils/createToken");
+const sendEmail = require("../utils/sendMail");
 
 const maxAge = 2 * 24 * 60 * 60;
 
@@ -38,12 +40,11 @@ exports.registerWorker = async (req, res) => {
         leavesYearly,
       });
       res.status(201).json({ worker: worker._id });
+    } else {
+      res.status(401).json({ error: "couldnt find the company" });
     }
-    else{
-      res.status(401).json({error : "couldnt find the company"})
-    }
-  } catch (err) {
-    const errors = workerErrHandle(err);
+  } catch (error) {
+    const errors = workerErrHandle(error);
     res.status(401).json({ errors });
   }
 };
@@ -60,8 +61,8 @@ exports.login = async (req, res, next) => {
       maxAge: maxAge * 1000,
     });
     res.status(200).json({ msg: "Logged in" });
-  } catch (err) {
-    const errors = workerErrHandle(err);
+  } catch (error) {
+    const errors = workerErrHandle(error);
     res.status(400).json({ errors });
   }
 };
@@ -98,8 +99,8 @@ exports.applyLeave = async (req, res, next) => {
     } else {
       res.status(400).json({ error: "could not find worker" });
     }
-  } catch (err) {
-    console.log(err.message);
+  } catch (error) {
+    next(error);
   }
 };
 
@@ -148,12 +149,96 @@ exports.changePassword = async (req, res, next) => {
   try {
     if (!checkCurrentPwd) {
       return res.json({ message: "Incorrect Password" });
-    } else res.json({ message: "password changed" });
+    }
 
     worker.password = newPassword;
     worker.updatedAt = Date.now();
-    await worker.save();
+    await worker.save().then(() => {
+      res.status(201).json({ message: "Password Changed" });
+    });
+  } catch (error) {
+    const errors = workerErrHandle(error);
+    res.status(400).json({ errors });
+  }
+};
+
+exports.forgotPassword = async (req, res, next) => {
+  try {
+    const worker = await Worker.findOne({ email: req.body.email });
+
+    if (!worker) {
+      return res
+        .status(404)
+        .json({ message: "Sorry! There is no user with that email" });
+    }
+
+    const resetToken = worker.getResetPasswordToken();
+
+    await worker.save({ validateBeforeSave: false });
+
+    const resetUrl = `${req.protocol}://${req.get(
+      "host"
+    )}/api/resetPassword/${resetToken}`;
+
+    console.log(resetUrl);
+
+    const message = `You are reveiving this email because you (or someone else) has requested to resest the passord. Please make a PUT request to: \n\n ${resetUrl} \n\n This link will expire in 10 minutes`;
+
+    try {
+      await sendEmail({
+        from: process.env.FROM_EMAIL,
+        email: worker.email,
+        subject: "Password reset token",
+        message,
+      });
+
+      res.status(200).json({ success: true, data: "Email sent" });
+    } catch (error) {
+      console.log(error);
+      worker.resetPasswordToken = undefined;
+      worker.resetPasswordExpire = undefined;
+
+      await worker.save({ validateBeforeSave: false });
+
+      return res
+        .status(404)
+        .json({ message: "Sorry! There is no user with that email" });
+    }
   } catch (error) {
     next(error);
+  }
+};
+
+exports.resetPassword = async (req, res, next) => {
+  try {
+    //get hashed token
+    const resetPasswordToken = crypto
+      .createHash("sha256")
+      .update(req.params.resetToken)
+      .digest("hex");
+
+    const worker = await Worker.findOne({
+      resetPasswordToken,
+      resetPasswordExpire: { $gt: Date.now() },
+    });
+    if (!worker) {
+      return res.status(400).json({ message: "Invalid Token" });
+    }
+    const newPassword = req.body.newPassword;
+    const confirmPassword = req.body.confirmPassword;
+
+    if (newPassword != confirmPassword) {
+      return res.json({ message: "Passwords don't match" });
+    }
+    worker.password = req.body.confirmPassword;
+    worker.resetPasswordToken = undefined;
+    worker.resetPasswordExpire = undefined;
+
+    await worker.save().then(() => {
+      res.status(201).json({ message: "Password Changed" });
+    });
+  } catch (error) {
+    const errors = workerErrHandle(error);
+    res.status(400).json({ errors });
   }
 };
