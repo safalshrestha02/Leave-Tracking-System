@@ -9,6 +9,15 @@ const login_error = document.querySelector(".login_error");
 
 // ----------fetch and send data for validation------------
 
+const loginInputs = document.querySelectorAll(".login-input-field");
+
+loginInputs.forEach((inputField) => {
+  inputField.addEventListener("input", () => {
+    inputField.setAttribute("style", "border: 2px solid initial");
+    login_error.textContent = " ";
+  })
+});
+
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 

@@ -150,7 +150,7 @@ li {
   background-color: white;
   margin: 0 auto;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  margin-top: 2.5rem;
+  margin: 2.5rem auto;
   min-height: 82vh;
   padding: 2rem 4rem;
 }
@@ -269,13 +269,23 @@ select {
   font-size: 1rem;
 }
 
-.form-button-reset,
 .form-button-apply {
   background-color: #fdb514;
+  outline: 1px solid #fdb514;
 }
-.form-button-reset:hover,
 .form-button-apply:hover {
   background-color: #f99417;
+  cursor: pointer;
+}
+
+.form-button-reset {
+  outline: 2px solid #fdb514;
+  background-color: white;
+  color: rgb(59, 59, 59);
+  font-weight: 500;
+}
+.form-button-reset:hover {
+  background-color: rgb(241, 241, 241);
   cursor: pointer;
 }
 

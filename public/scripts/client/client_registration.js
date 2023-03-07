@@ -26,6 +26,20 @@ noPassword.addEventListener("click", () => {
 
 // ===========form validation====================================
 
+const registerInputs = document.querySelectorAll(".register-input");
+
+registerInputs.forEach((inputField) => {
+  inputField.addEventListener("input" , () => {
+    inputField.setAttribute("style", "border: 2px solid initial")
+    companyName_error.textContent = " ";
+    email_error.textContent = " ";
+    clientName_error.textContent = " ";
+    companyID_error.textContent = " ";
+    companyAddress_error.textContent = " ";
+    password_error.textContent = " ";
+  })
+});
+
 //-------------------- form event listener
 
 form.addEventListener("submit", async (e) => {
@@ -65,10 +79,13 @@ form.addEventListener("submit", async (e) => {
     // ---------------handling errors---------
     if (data.errors) {
       console.log(data.errors);
-      const registerInputs = document.querySelectorAll(".register-input");
 
       registerInputs.forEach((inputField) => {
         inputField.setAttribute("style", "border: 2px solid #03c988");
+
+        inputField.addEventListener("input" , () => {
+          inputField.setAttribute("style", "border: 2px solid #03c988")
+        })
       });
 
       companyName_error.textContent = data.errors.companyName;

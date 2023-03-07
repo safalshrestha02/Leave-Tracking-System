@@ -152,7 +152,7 @@ li {
   background-color: white;
   margin: 0 auto;
   box-shadow: $primary-box-shadow;
-  margin-top: 2.5rem;
+  margin: 2.5rem auto;
   min-height: 82vh;
   padding: 2rem 4rem;
 }
@@ -287,8 +287,16 @@ input[type="radio"] {
   }
 }
 
-.form-button-reset {
+.form-buttons .form-button-reset{
+  outline: 2px solid $primary-yellow;
   margin-right: 1rem;
+  background-color: white;
+  color: rgb(59, 59, 59);
+  font-weight: 500;
+  &:hover {
+    background-color: rgb(241, 241, 241);
+    cursor: pointer;
+  }
 }
 
 .company-name-value,
