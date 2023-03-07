@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-//paths
+//path
 const temp = require("../controller/tempPage");
 
 //html pages

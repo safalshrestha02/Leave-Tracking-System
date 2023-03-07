@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const crypto = require("crypto");
 const { isEmail } = require("validator");
 const bcrypt = require("bcrypt");
 
@@ -59,6 +60,8 @@ const registerWorker = new mongoose.Schema(
       companyAddress: String,
     },
     leavesYearly: Number,
+    resetPasswordToken: String,
+    resetPasswordExpire: Date,
   },
   { timestamps: true }
 );
@@ -122,6 +125,19 @@ registerWorker.statics.login = async function (workerID, password) {
 
 registerWorker.methods.checkPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
+};
+
+registerWorker.methods.getResetPasswordToken = function () {
+  const resetToken = crypto.randomBytes(64).toString("hex");
+
+  this.resetPasswordToken = crypto
+    .createHash("sha256")
+    .update(resetToken)
+    .digest("hex");
+
+  this.resetPasswordExpire = Date.now() + 10 * 60 * 1000;
+
+  return resetToken;
 };
 
 module.exports = mongoose.model("worker", registerWorker);

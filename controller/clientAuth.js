@@ -32,8 +32,8 @@ exports.registerClient = async (req, res) => {
     });
 
     res.status(201).json({ client: client._id });
-  } catch (err) {
-    const errors = clientErrHandle(err);
+  } catch (error) {
+    const errors = clientErrHandle(error);
     res.status(401).json({ errors });
   }
 };
@@ -50,8 +50,8 @@ exports.login = async (req, res, next) => {
       maxAge: maxAge * 1000,
     });
     res.status(201).json({ msg: "Logged in" });
-  } catch (err) {
-    const errors = clientErrHandle(err);
+  } catch (error) {
+    const errors = clientErrHandle(error);
     res.status(400).json({ errors });
   }
 };
@@ -77,7 +77,7 @@ exports.logout = async (req, res, next) => {
     });
     res.status(200).redirect("/");
   } catch (error) {
-    return error;
+    next(error);
   }
 };
 
@@ -91,8 +91,8 @@ exports.changeLeaveState = async (req, res, next) => {
       },
     });
     res.status(201);
-  } catch (err) {
-    res.status(400).json({ error: err });
+  } catch (error) {
+    res.status(400).json({ error: error });
   }
 };
 
@@ -115,8 +115,8 @@ exports.changeLeaveDays = async (req, res, next) => {
         });
       }
     );
-  } catch (err) {
-    res.json(err);
+  } catch (error) {
+    next(error);
   }
 };
 
@@ -159,21 +159,13 @@ exports.forgotPassword = async (req, res, next) => {
 
     if (!client) {
       return res
-        .statusCode(404)
+        .status(404)
         .json({ message: "Sorry! There is no user with that email" });
     }
-    // console.log(client, "clientclientclientclient");
 
     const resetToken = client.getResetPasswordToken();
-    // console.log(client, "clientclientclientclientclientclientclientclient");
 
     await client.save({ validateBeforeSave: false });
-    // console.log(
-    //   client,
-    //   "clientclientclientclientclientclientclientclientclientclientclientclient"
-    // );
-
-    //create resetURL
 
     const resetUrl = `${req.protocol}://${req.get(
       "host"
@@ -200,12 +192,11 @@ exports.forgotPassword = async (req, res, next) => {
       await client.save({ validateBeforeSave: false });
 
       return res
-        .statusCode(404)
+        .status(404)
         .json({ message: "Sorry! There is no user with that email" });
     }
-    res.status(200).json({ success: true, data: client });
-  } catch (err) {
-    return err;
+  } catch (error) {
+    next(error);
   }
 };
 
@@ -222,7 +213,7 @@ exports.resetPassword = async (req, res, next) => {
       resetPasswordExpire: { $gt: Date.now() },
     });
     if (!client) {
-      return res.statusCode(400).json({ message: "Invalid Token" });
+      return res.status(400).json({ message: "Invalid Token" });
     }
     const newPassword = req.body.newPassword;
     const confirmPassword = req.body.confirmPassword;
@@ -238,7 +229,6 @@ exports.resetPassword = async (req, res, next) => {
       res.status(201).json({ message: "Password Changed" });
     });
   } catch (error) {
-    //console.log(error.message);
     const errors = clientErrHandle(error);
     res.status(401).json({ errors });
   }

@@ -24,10 +24,13 @@ router.post(
   workerAuth.applyLeave
 );
 router.post("/api/activeWorker", requireWorkerAuth, workerAuth.activeWorker);
+router.post("/api/workerForgotPassword", workerAuth.forgotPassword);
+
 router.put(
   "/api/changeWorkerPwd",
   requireWorkerAuth,
   workerAuth.changePassword
 );
+router.put("/api/workerResetPassword/:resetToken", workerAuth.resetPassword);
 
 module.exports = router;

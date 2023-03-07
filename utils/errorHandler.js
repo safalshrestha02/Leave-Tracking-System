@@ -58,6 +58,10 @@ const workerErrHandle = (err) => {
       errors.email = "*that email is already registered";
     }
 
+    if (err.message.includes("password")) {
+      errors.email = "*password must be 8 characters or more";
+    }
+
     return errors;
   }
 
