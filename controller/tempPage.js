@@ -94,7 +94,7 @@ exports.clientsWorkers = async (req, res, next) => {
 
   try {
     const client = await Clients.findById(id).then((result) => {
-      if (client) {
+      if (result) {
         const worker = Worker.find({ "companyDetail._id": id })
           .limit(limit * 1)
           .skip((page - 1) * limit)
@@ -106,11 +106,11 @@ exports.clientsWorkers = async (req, res, next) => {
                 currentPage: page,
               });
             } else {
-              res.status(400).json({ error: "No worker under that Client" });
+              res.status(400).json({ "error": "No worker under that Client" });
             }
           });
       } else {
-        res.status(400).json({ error: "No client under that ID" });
+        res.status(400).json({ "error": "No client under that ID" });
       }
     });
   } catch (error) {
@@ -161,30 +161,30 @@ exports.clientsWorkersLeaves = async (req, res, next) => {
     Clients.findById(id).then((specificClient) => {
       if (specificClient) {
         const company = specificClient.companyName;
+        Worker.find({
+          "companyDetail._id": id,
+          "companyDetail.companyName": company,
+        }).then((result) => {
+          if (result) {
+            Messages.find({
+              "workerDetails.companyDetail.companyName": company,
+            })
+              .limit(limit * 1)
+              .skip((page - 1) * limit)
+              .then((allLeaves) => {
+                res.status(201).json({
+                  Leaves: allLeaves,
+                  totalPages: Math.ceil(count / limit),
+                  currentPage: page,
+                });
+              });
+          } else {
+            res.status(201).json({ error: "No Workers for the Client" });
+          }
+        });
       } else {
         res.status(400).json({ Error: "No client found with that ID" });
       }
-      Worker.find({
-        "companyDetail._id": id,
-        "companyDetail.companyName": company,
-      }).then((result) => {
-        if (result) {
-          Messages.find({
-            "workerDetails.companyDetail.companyName": company,
-          })
-            .limit(limit * 1)
-            .skip((page - 1) * limit)
-            .then((allLeaves) => {
-              res.status(201).json({
-                Leaves: allLeaves,
-                totalPages: Math.ceil(count / limit),
-                currentPage: page,
-              });
-            });
-        } else {
-          res.status(201).json({ error: "No Workers for the Client" });
-        }
-      });
     });
   } catch (error) {
     res.json({ error: error });
