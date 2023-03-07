@@ -82,7 +82,7 @@ exports.leaveRequestDelete = async (req, res, next) => {
   try {
     const deleting = await Messages.findOneAndDelete({
       _id: id,
-      approveState: "pending",
+      approveState: "pending, approved",
     });
     res.status(201).json({ "successfully Deleted": id });
   } catch (error) {
@@ -193,7 +193,7 @@ exports.suggestedIds = async (req, res, next) => {
       for (let i = 0; i < 3; i++) {
         let number = Math.floor(Math.random() * 99999);
         const padNumber = number.toString().padStart(5, "0");
-        randomIds[i] = `${clientId}-${padNumber}`;
+        randomIds[i] = padNumber
       }
       return randomIds;
     };
