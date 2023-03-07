@@ -242,7 +242,7 @@ li {
   text-transform: capitalize;
 }
 
-input[type=radio] {
+input[type="radio"] {
   margin-right: 3rem;
 }
 
