@@ -107,6 +107,12 @@ activeLeavesDisplay();
 
 // setting pending/future leaves
 const pendingApprovedLeavesDisplay = async () => {
+
+    pendingApprovedLeaves.innerHTML = `
+    <div class="loading-class">
+        <img src = "/images/load.gif" alt = "Loading fresh data for you" class = "load-gif"/>
+    </div> 
+    `
     const fetchTotalLeaves = await fetchLeavesUnderWorker();
     const totalLeaves = fetchTotalLeaves.leaveHistory;
     // console.log(totalLeaves)
@@ -127,6 +133,7 @@ const pendingApprovedLeavesDisplay = async () => {
 
     // ------------ mapping pending.approved leaves
     if (totalPendingLeaves.length !== 0) {
+        pendingApprovedLeaves.innerHTML= ""
         totalPendingLeaves.forEach((leave) => {
             let ihtml = `
             <div class="worker-leaves">
@@ -176,9 +183,10 @@ const handleLeaveCancel = (id) => {
 }
 
 const handleLeaveDelete = async (id) => {
+
     const deleteLeaveUrl = `http://localhost:3000/api/leaveRequests/${id}`
     const res = await fetch(deleteLeaveUrl,{method: "DELETE"});
-    
+    console.log(res)
     if (res.status === 201) {
         const successAlert = document.querySelector(".success-alert");
         successAlert.style.display = "block";
@@ -193,6 +201,8 @@ const handleLeaveDelete = async (id) => {
         leavesRemaining.textContent = '...'
         fetchTotalLeaves();
 
+    } else {
+        console.log("failed to delete")
     }
 }
 
