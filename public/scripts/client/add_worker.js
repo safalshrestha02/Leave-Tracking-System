@@ -8,7 +8,6 @@ const formcompanyID = document.querySelector(".client-ID-value")
 
 noPassword.addEventListener("click", () => {
   noPassword.classList.toggle("fa-eye");
-  console.log(noPassword.classList[1]);
 
   const cPasswordShow = document.querySelector("#workerPassword");
 
@@ -154,3 +153,62 @@ addWorkerForm.addEventListener("submit", async (e) => {
     console.error(error);
   }
 });
+
+
+// ----------------------------------------- WORKER ID SUGGESTIONS ---------------------------------//
+
+const suggestIDContainer = document.querySelector(".suggested-Ids-span-container")
+const refreshContainer = document.querySelector(".refresh-icon-container")
+const suggestionTitle = document.querySelector(".suggestion-title")
+
+
+workerIDinput.addEventListener("focus", () => {
+
+  const clientID = form.clientID.value
+  
+  const getSuggestions = async () => {
+  try {
+    const suggestionURL = `http://localhost:3000/api/suggestedIds/${clientID}`
+    console.log(suggestionURL)
+    
+    const res = await fetch(suggestionURL, {method: "GET"})
+    const data = await res.json()
+
+    suggestIDContainer.innerHTML = ""
+    data.map((suggest) => {
+      let content = `<span class="suggested-id" onclick='handleSuggestionValue("${suggest}")'>${suggest}</span>`
+      suggestIDContainer.innerHTML += content
+      console.log(suggestIDContainer)
+    })
+    
+    refreshContainer.innerHTML = `<i class="fa-solid fa-arrows-rotate"></i>`
+    suggestionTitle.innerHTML = "Suggestion IDs"
+  
+  }
+  
+  catch(err) {
+    console.log(err)
+  
+  }
+  }
+
+  getSuggestions()
+}, {once: true})
+
+
+// -------------------------------- FORM CLOSE -------------------------- // 
+
+formClose.addEventListener("click", () => {
+  formContainer.classList.remove("form-active");
+  document.body.style.overflow = 'auto'
+  manageWorkersSection.innerHTML = ""
+  fetchWorkers()
+});
+
+
+
+const handleSuggestionValue = (suggestId) => {
+  console.log(suggestId)
+  
+  form.workerID.value = suggestId
+}

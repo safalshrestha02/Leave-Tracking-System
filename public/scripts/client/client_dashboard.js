@@ -11,13 +11,6 @@ addWorker.addEventListener("click", () => {
   document.body.style.overflow = 'hidden'
 });
 
-formClose.addEventListener("click", () => {
-  formContainer.classList.remove("form-active");
-  document.body.style.overflow = 'auto'
-  manageWorkersSection.innerHTML = ""
-  fetchWorkers()
-});
-
 window.addEventListener("click", (event) => {
   if (event.target === formContainer) {
     formContainer.classList.remove("form-active");
