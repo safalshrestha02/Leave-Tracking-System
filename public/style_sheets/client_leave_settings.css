@@ -158,7 +158,7 @@ li {
   display: none;
   background-color: black;
   background: linear-gradient(rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 50%);
-  height: 100dvh;
+  min-height: 100dvh;
   left: 0;
   right: 0;
   bottom: 0;
@@ -168,6 +168,7 @@ li {
   display: flex;
   align-items: center;
   position: absolute;
+  position: fixed;
   z-index: 10;
 }
 
@@ -299,21 +300,9 @@ input[type=radio] {
   display: flex;
 }
 
-.client-id-container {
-  flex-basis: 18%;
-}
-
-.worker-id-container {
-  flex-basis: 80%;
-}
-
 #workerID,
 .workerID_error {
   margin-left: 0.8rem;
-}
-
-.form-gender-container {
-  grid-column: span 2;
 }
 
 .id-details {
@@ -336,6 +325,42 @@ input[type=radio] {
 
 .worker-id-label {
   flex-basis: 18%;
+}
+
+.client-id-container {
+  flex-basis: 18%;
+}
+
+.worker-ids-container {
+  flex-basis: 80%;
+}
+
+.suggestsed-ID-container p {
+  color: black;
+  opacity: 0.6;
+  font-weight: 500;
+}
+.suggestsed-ID-container .suggested-id {
+  display: inline-block;
+  margin: 1.5rem 2rem 0 0;
+  color: #3c79f5;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.suggested-Id-and-refresh {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.refresh-icon {
+  margin: 1.5rem 2rem 0 0;
+  cursor: pointer;
+  color: #7d90a5;
+}
+.refresh-icon:hover {
+  color: #3c79f5;
 }
 
 .success-alert {
@@ -482,4 +507,4 @@ select {
   padding: 0.5rem;
   color: white;
   border-radius: 50%;
-}
+}/*# sourceMappingURL=client_leave_settings.css.map */
