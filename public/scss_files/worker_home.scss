@@ -152,7 +152,7 @@
   color: $primary-yellow;
 }
 
-.display-none {
+.display-none{
   color: rgba(128, 128, 128, 0.596);
   font-weight: 700;
   margin-top: 1rem;
@@ -165,4 +165,15 @@
 
 .no-pending-approved {
   margin: 3rem 0;
+}
+
+.loading-class {
+  width: 100%;
+  grid-column: span 3;
+  text-align: center;
+}
+
+.load-gif{
+  width: 4rem;
+  margin: 4rem 0;
 }
