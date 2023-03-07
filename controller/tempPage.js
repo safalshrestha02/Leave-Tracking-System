@@ -5,7 +5,9 @@ const Messages = require("../models/Leave");
 exports.apiClient = (req, res, next) => {
   try {
     Clients.find().then((result) => {
-      res.send(result);
+      if (result) {
+        res.send(result);
+      }
     });
   } catch (error) {
     res.json({ error });
@@ -15,7 +17,9 @@ exports.apiClient = (req, res, next) => {
 exports.apiMessages = (req, res, next) => {
   try {
     Messages.find().then((result) => {
-      res.send(result);
+      if (result) {
+        res.send(result);
+      }
     });
   } catch (error) {
     res.json({ error });
@@ -24,8 +28,11 @@ exports.apiMessages = (req, res, next) => {
 
 exports.apiWorkers = async (req, res, next) => {
   try {
-    const Cworker = await Worker.find({});
-    res.json(Cworker);
+    await Worker.find({}).then((result) => {
+      if (result) {
+        res.send(result);
+      }
+    });
   } catch (error) {
     res.json({ error });
   }
@@ -34,7 +41,9 @@ exports.apiWorkers = async (req, res, next) => {
 exports.clientbyId = async (req, res) => {
   try {
     Clients.findById(req.params["id"]).then((result) => {
-      res.json(result);
+      if (result) {
+        res.json(result);
+      }
     });
   } catch (error) {
     res.json({ error });
@@ -44,7 +53,9 @@ exports.clientbyId = async (req, res) => {
 exports.workerbyId = async (req, res) => {
   try {
     Worker.findById(req.params["id"]).then((result) => {
-      res.json(result);
+      if (result) {
+        res.json(result);
+      }
     });
   } catch (error) {
     res.json({ error });
@@ -54,7 +65,9 @@ exports.workerbyId = async (req, res) => {
 exports.leavebyId = async (req, res) => {
   try {
     Messages.findById(req.params["id"]).then((result) => {
-      res.json(result);
+      if (result) {
+        res.json(result);
+      }
     });
   } catch (error) {
     res.json({ error });
@@ -106,11 +119,11 @@ exports.clientsWorkers = async (req, res, next) => {
                 currentPage: page,
               });
             } else {
-              res.status(400).json({ "error": "No worker under that Client" });
+              res.status(400).json({ error: "No worker under that Client" });
             }
           });
       } else {
-        res.status(400).json({ "error": "No client under that ID" });
+        res.status(400).json({ error: "No client under that ID" });
       }
     });
   } catch (error) {
@@ -153,7 +166,7 @@ exports.workersLeaves = async (req, res, next) => {
 };
 
 exports.clientsWorkersLeaves = async (req, res, next) => {
-  const { page = 1, limit = 10 } = req.query;
+  const { page = 1, limit = 1000 } = req.query;
   const count = await Messages.count();
   const { id } = req.params;
 
@@ -201,14 +214,14 @@ exports.suggestedIds = async (req, res, next) => {
       companyID: req.params.id,
     }).then((result) => {
       if (result) {
-        return result.companyID;
         res.status(201);
+        return result.companyID;
       } else {
         res.status(400).json({ error: "No company found with that ID" });
       }
     });
 
-    const workerId = await Worker.find({
+    await Worker.find({
       "companyDetail.companyID": clientId,
     }).then((result) => {
       result.forEach((data) => {
