@@ -30,7 +30,6 @@ exports.registerClient = async (req, res) => {
       password,
       leavesYearly,
     });
-
     res.status(201).json({ client: client._id });
   } catch (error) {
     const errors = clientErrHandle(error);
@@ -145,7 +144,7 @@ exports.changePassword = async (req, res, next) => {
     client.password = newPassword;
     client.updatedAt = Date.now();
     await client.save().then(() => {
-      res.status(201).json({ message: "Password Changed" });
+      res.status(201).clearCookie("jwt").json({ message: "Password Changed " })
     });
   } catch (error) {
     const errors = clientErrHandle(error);
@@ -226,7 +225,7 @@ exports.resetPassword = async (req, res, next) => {
     client.resetPasswordExpire = undefined;
 
     await client.save().then(() => {
-      res.status(201).json({ message: "Password Changed" });
+      res.status(201).json({ message: `Password Changed` });
     });
   } catch (error) {
     const errors = clientErrHandle(error);
