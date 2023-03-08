@@ -154,7 +154,7 @@ exports.changePassword = async (req, res, next) => {
     worker.password = newPassword;
     worker.updatedAt = Date.now();
     await worker.save().then(() => {
-      res.status(201).json({ message: "Password Changed" });
+      res.status(201).clearCookie("jwt").json({ message: "Password Changed" });
     });
   } catch (error) {
     const errors = workerErrHandle(error);
