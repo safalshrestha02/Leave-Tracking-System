@@ -75,6 +75,7 @@
             </div>
           </div>
           <div class="password-right-container">
+            <form class="change-password-form">
             <div class="current-password-container">
               <label for="currentPassword" class="password-label">Current Password</label>
               <input
@@ -101,11 +102,16 @@
                 class="password-inputs"
               />
             </div>
-  
+            
+            <div class="error-container">
+              <p class="error-message"></p>
+            </div>
+            
             <div class="password-change-button-container">
               <button class="password-button cancel-button">Cancel</button>
-              <button class="password-button save-button">SAVE</button>
+              <button class="password-button save-button" type="submit">SAVE</button>
             </div>
+          </form>
           </div>
         </div>
       </div>
@@ -282,7 +288,7 @@
               <i class="fa-solid fa-check alert-icon"></i>
               <span class="alert-description">
                 <h4>Success:</h4>
-                Wroker account has been registered!
+                Your password has been changed sucessfully
               </span>
             </div>
           </form>
