@@ -172,7 +172,7 @@ exports.forgotPassword = async (req, res, next) => {
 
     console.log(resetUrl);
 
-    const message = `You are reveiving this email because you (or someone else) has requested to resest the passord. Please make a PUT request to: \n\n ${resetUrl} \n\n This link will expire in 10 minutes`;
+    const message = `You are reveiving this email because you (or someone else) has requested to resest the passord. Please make a PUT request to: \n ${resetUrl} \n\nThis link will expire in 10 minutes`;
 
     try {
       await sendEmail({

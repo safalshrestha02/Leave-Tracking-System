@@ -6,6 +6,7 @@ const router = express.Router();
 const loadPages = require("../controller/clientPageController");
 const clientAuth = require("../controller/clientAuth");
 const addworker = require("../controller/workerAuth");
+const clientAPI = require("../controller/clientAPI");
 const { requireClientAuth } = require("../middleware/clientAuthMiddleware");
 
 //html pages
@@ -24,6 +25,10 @@ router.get("/client_profile", requireClientAuth, loadPages.clientProfile);
 router.get("/logoutClient", clientAuth.logout);
 
 //APIs
+router.get("/api/clients_workers/:id", clientAPI.clientsWorkers);
+router.get("/api/clients_workers_leaves/:id", clientAPI.clientsWorkersLeaves);
+router.get("/api/suggestedIds/:id", clientAPI.suggestedIds);
+
 router.post(
   "/api/addWorker",
   // createAccountLimiter,
@@ -49,5 +54,7 @@ router.put(
   clientAuth.changePassword
 );
 router.put("/api/resetPassword/:resetToken", clientAuth.resetPassword);
+
+router.delete("/api/workers/:id", clientAPI.workerDelete);
 
 module.exports = router;
