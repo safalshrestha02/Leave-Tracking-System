@@ -2,7 +2,7 @@ const addWorkerForm = document.querySelector("#worker-register-form");
 const noPassword = document.querySelector(".fa-eye-slash");
 const formcompanyName = document.querySelector(".company-name-value");
 const resetButton = document.querySelector(".form-button-reset");
-const formcompanyID = document.querySelector(".client-ID-value")
+const formcompanyID = document.querySelector(".client-ID-value");
 
 // ----------showing and hiding password------------------
 
@@ -29,7 +29,7 @@ const workerID_error = document.querySelector(".workerID_error");
 const gender_error = document.querySelector(".gender_error");
 const workerEmail_error = document.querySelector(".workerEmail_error");
 const workerPassword_error = document.querySelector(".workerPassword_error");
-const companyID_error = document.querySelector(".companyID_error")
+const companyID_error = document.querySelector(".companyID_error");
 
 // SUBMIT ACTION
 
@@ -60,21 +60,21 @@ addWorkerForm.addEventListener("submit", async (e) => {
   const password = form.workerPassword.value;
   const companyName = form.companyName.value.toLowerCase();
   const fixedCompanyName = companyName;
-  const clientID = form.clientID.value
-  const fixedClientID = clientID
-  const allworkerID = `${clientID}-${workerIDs}`
+  const clientID = form.clientID.value;
+  const fixedClientID = clientID;
+  const allworkerID = `${clientID}-${workerIDs}`;
 
   const formData = {
     firstName,
     lastName,
     gender,
-    workerID:allworkerID,
+    workerID: allworkerID,
     email,
     password,
     country,
     city,
     companyName,
-    clientID
+    clientID,
   };
 
   try {
@@ -138,10 +138,9 @@ addWorkerForm.addEventListener("submit", async (e) => {
       });
 
       addWorkerForm.reset();
-      idDetails.innerHTML = ""
+      idDetails.innerHTML = "";
       formcompanyName.value = fixedCompanyName;
-      formcompanyID.value = fixedClientID
-
+      formcompanyID.value = fixedClientID;
 
       const successAlert = document.querySelector(".success-alert");
       successAlert.style.display = "block";
@@ -154,61 +153,140 @@ addWorkerForm.addEventListener("submit", async (e) => {
   }
 });
 
-
 // ----------------------------------------- WORKER ID SUGGESTIONS ---------------------------------//
 
-const suggestIDContainer = document.querySelector(".suggested-Ids-span-container")
-const refreshContainer = document.querySelector(".refresh-icon-container")
-const suggestionTitle = document.querySelector(".suggestion-title")
+const suggestIDContainer = document.querySelector(
+  ".suggested-Ids-span-container"
+);
+const refreshContainer = document.querySelector(".refresh-icon-container");
+const suggestionTitle = document.querySelector(".suggestion-title");
 
+workerIDinput.addEventListener(
+  "focus",
+  () => {
+    const clientID = form.clientID.value;
 
-workerIDinput.addEventListener("focus", () => {
+    const getSuggestions = async () => {
+      try {
+        const suggestionURL = `http://localhost:3000/api/suggestedIds/${clientID}`;
 
-  const clientID = form.clientID.value
-  
-  const getSuggestions = async () => {
-  try {
-    const suggestionURL = `http://localhost:3000/api/suggestedIds/${clientID}`
-    console.log(suggestionURL)
-    
-    const res = await fetch(suggestionURL, {method: "GET"})
-    const data = await res.json()
+        const res = await fetch(suggestionURL, { method: "GET" });
+        const data = await res.json();
 
-    suggestIDContainer.innerHTML = ""
-    data.map((suggest) => {
-      let content = `<span class="suggested-id" onclick='handleSuggestionValue("${suggest}")'>${suggest}</span>`
-      suggestIDContainer.innerHTML += content
-      console.log(suggestIDContainer)
-    })
-    
-    refreshContainer.innerHTML = `<i class="fa-solid fa-arrows-rotate"></i>`
-    suggestionTitle.innerHTML = "Suggestion IDs"
-  
-  }
-  
-  catch(err) {
-    console.log(err)
-  
-  }
-  }
+        suggestIDContainer.innerHTML = "";
+        data.map((suggest) => {
+          let content = `<span class="suggested-id" onclick='handleSuggestionValue("${suggest}")'>${suggest}</span>`;
+          suggestIDContainer.innerHTML += content;
+        });
 
-  getSuggestions()
-}, {once: true})
+        refreshContainer.innerHTML = `<i class="fa-solid fa-arrows-rotate refresh-icon" onclick='handleRefresh()'></i>`;
+        suggestionTitle.innerHTML = "Suggessted IDs";
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
+    getSuggestions();
+  },
+  { once: true }
+);
 
-// -------------------------------- FORM CLOSE -------------------------- // 
+// -------------------------------- FORM CLOSE -------------------------- //
 
 formClose.addEventListener("click", () => {
   formContainer.classList.remove("form-active");
-  document.body.style.overflow = 'auto'
-  manageWorkersSection.innerHTML = ""
-  fetchWorkers()
+  document.body.style.overflow = "auto";
+  manageWorkersSection.innerHTML = "";
+  fetchWorkers();
 });
 
-
-
 const handleSuggestionValue = (suggestId) => {
-  console.log(suggestId)
-  
-  form.workerID.value = suggestId
-}
+
+  const workerIDfield = form.workerID;
+  const companyID = form.clientID.value;
+  form.workerID.value = suggestId;
+  workerID_error.textContent = " ";
+  idDetails.innerHTML = "";
+  workerIDfield.setAttribute("style", "border: initial");
+
+  let idetailsHTML = `(Your worker ID will be <p id="mesh-id"> ${companyID}-${suggestId}</p>)`;
+  idDetails.innerHTML += idetailsHTML;
+
+  if (workerIDinput.value == "") {
+    idDetails.innerHTML = "";
+  }
+};
+
+const handleRefresh = async () => {
+  const clientID = form.clientID.value;
+
+  try {
+    const suggestionURL = `http://localhost:3000/api/suggestedIds/${clientID}`;
+
+    const res = await fetch(suggestionURL, { method: "GET" });
+    const data = await res.json();
+
+    suggestIDContainer.innerHTML = "";
+    data.map((suggest) => {
+      let content = `<span class="suggested-id" onclick='handleSuggestionValue("${suggest}")'>${suggest}</span>`;
+      suggestIDContainer.innerHTML += content;
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// ----------------------------------------- REMOVE ERRORS ON INPUT --------------------//
+
+const removeError = (removeError) => {
+  removeError.textContent = "";
+};
+
+const firstName = form.firstName;
+const lastName = form.lastName;
+const country = form.country;
+const city = form.city;
+const emailfield = form.workerEmail;
+const workerIDfield = form.workerID;
+const passwordfield = form.workerPassword;
+
+
+emailfield.addEventListener("input", () => {
+  removeError(workerEmail_error)
+  emailfield.setAttribute("style", "border: initial");
+})
+
+workerIDfield.addEventListener("input", () => {
+  removeError(workerID_error)
+  workerIDfield.setAttribute("style", "border: initial");
+})
+
+passwordfield.addEventListener("input", () => {
+  removeError(workerPassword_error)
+  passwordfield.setAttribute("style", "border: initial");
+})
+
+
+firstName.addEventListener("input", () => {
+  removeError(firstName_error)
+  firstName.setAttribute("style", "border: initial");
+})
+
+lastName.addEventListener("input", () => {
+  removeError(lastName_error)
+  lastName.setAttribute("style", "border: initial");
+})
+
+country.addEventListener("input", () => {
+  removeError(country_error)
+  country.setAttribute("style", "border: initial");
+})
+
+city.addEventListener("input", () => {
+  removeError(city_error)
+  city.setAttribute("style", "border: initial");
+})
+
+
+
+
