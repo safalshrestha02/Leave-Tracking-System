@@ -58,7 +58,7 @@ form.addEventListener("submit", async (e) => {
       successAlert.style.display = "block";
 
       setTimeout(() => {
-        console.log("redirection");
+        successAlert.style.display = "none";
         location.assign("/client_home");
       }, 1000);
     }
