@@ -58,7 +58,7 @@ loginForm.addEventListener("submit", async (event) => {
       successAlert.style.display = "block";
 
       setTimeout(() => {
-        console.log("redirection");
+        successAlert.style.display = "none";
         location.assign("/worker_home");
       }, 1000);
     }

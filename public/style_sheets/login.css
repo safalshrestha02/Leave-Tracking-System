@@ -104,7 +104,7 @@ a {
 }
 
 .login-type {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .login-input-field {
@@ -160,6 +160,15 @@ a {
     font-size: 1.7rem;
   }
 }
+.forgot-password {
+  color: white;
+  color: #fdb514;
+  font-weight: 500;
+}
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
 .success-alert {
   display: none;
   position: absolute;

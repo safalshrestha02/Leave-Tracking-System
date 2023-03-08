@@ -107,7 +107,7 @@ a {
 }
 
 .login-type {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .login-input-field {
@@ -172,6 +172,15 @@ a {
 
   .right-container-heading {
     font-size: 1.7rem;
+  }
+}
+
+.forgot-password {
+  color: white;
+  color: $primary-yellow;
+  font-weight: 500;
+  &:hover{
+    text-decoration: underline;
   }
 }
 

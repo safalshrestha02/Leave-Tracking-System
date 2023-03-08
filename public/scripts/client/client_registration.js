@@ -132,6 +132,7 @@ form.addEventListener("submit", async (e) => {
       successAlert.style.display = "block";
 
       setTimeout(() => {
+        successAlert.style.display = "none";
         location.assign("http://localhost:3000/client_login");
       }, 1000);
     }
