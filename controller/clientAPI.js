@@ -6,11 +6,11 @@ exports.workerDelete = async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const deleteallworkerleaves = await Messages.deleteMany({
+    await Messages.deleteMany({
       approveState: "pending",
       "workerDetails._id": id,
     });
-    const workerDelete = await Worker.findByIdAndDelete(id);
+    await Worker.findByIdAndDelete(id);
     res.status(201).json({ "successfully Deleted": id });
   } catch (error) {
     res.json({ error });
@@ -23,9 +23,9 @@ exports.clientsWorkers = async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const client = await Clients.findById(id).then((result) => {
+    await Clients.findById(id).then((result) => {
       if (result) {
-        const worker = Worker.find({ "companyDetail._id": id })
+        Worker.find({ "companyDetail._id": id })
           .limit(limit * 1)
           .skip((page - 1) * limit)
           .then((workers) => {
@@ -93,24 +93,22 @@ exports.suggestedIds = async (req, res, next) => {
   let randomIds = [];
 
   try {
-    const clientId = await Clients.findOne({
+    await Clients.findOne({
       companyID: req.params.id,
-    }).then((result) => {
+    }).then(async (result) => {
       if (result) {
+        await Worker.find({
+          "companyDetail.companyID": result.companyID,
+        }).then((res) => {
+          res.forEach((data) => {
+            workerIds[dataLength] = data.workerID;
+            dataLength += 1;
+          });
+        });
         res.status(201);
-        return result.companyID;
       } else {
         res.status(400).json({ error: "No company found with that ID" });
       }
-    });
-
-    await Worker.find({
-      "companyDetail.companyID": clientId,
-    }).then((result) => {
-      result.forEach((data) => {
-        workerIds[dataLength] = data.workerID;
-        dataLength += 1;
-      });
     });
 
     const generateRandomIds = () => {
