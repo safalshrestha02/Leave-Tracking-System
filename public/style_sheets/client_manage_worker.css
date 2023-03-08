@@ -396,6 +396,11 @@ a {
   text-decoration: none;
 }
 
+.dashboard-content {
+  position: relative;
+  padding-bottom: 4rem;
+}
+
 /* ------------------------------------------ leave requests overview on homepage ----------------------------------- */
 .dashboard-heading {
   font-weight: 500;
@@ -658,4 +663,44 @@ a {
 
 .detail-title {
   font-weight: 600;
-}/*# sourceMappingURL=client_manage_worker.css.map */
+}
+
+.pagination-container {
+  position: absolute;
+  width: 90%;
+  bottom: 0%;
+  right: 5%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-top: 1px solid rgb(196, 196, 196);
+}
+.pagination-container ul {
+  text-align: center;
+  display: flex;
+  min-width: 10%;
+}
+.pagination-container li {
+  padding: 0.3rem;
+  color: #336de0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.pagination-container li:hover {
+  color: black;
+  cursor: pointer;
+}
+.pagination-container i {
+  margin: 0 1.2rem;
+  color: #6d7680;
+  font-weight: 800;
+}
+.pagination-container i:hover {
+  cursor: pointer;
+  color: rgb(87, 87, 202);
+}
+
+.pagination-wrapper .active-page {
+  color: black;
+  background-color: #fdb514;
+}
