@@ -30,7 +30,7 @@ const fetchLeavesUnderWorker = async () => {
 
 const fetchApprovedWorkerRequest = async () => {
   const leaves = await fetchLeavesUnderWorker()
-  const approvedLeaves = leaves.leaveHistory.filter((leave) => {
+  const approvedLeaves = leaves.filter((leave) => {
     const { approveState } = leave
     return approveState === "approved"
   })
@@ -39,7 +39,7 @@ const fetchApprovedWorkerRequest = async () => {
 
 const fetchRejectedWorkerRequest = async () => {
   const leaves = await fetchLeavesUnderWorker()
-  const rejectedLeaves = leaves.leaveHistory.filter((leave) => {
+  const rejectedLeaves = leaves.filter((leave) => {
     const { approveState } = leave
     return approveState === "rejected"
   })
