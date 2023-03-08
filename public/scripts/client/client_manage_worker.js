@@ -3,11 +3,114 @@ const dashboardSearch = document.querySelector(".dashboard-search");
 const mainBody = document.querySelector(".main-body");
 const filterButton = document.querySelector(".filter-button");
 const filterContainer = document.querySelector(".filter-container");
+const paginationContainer = document.querySelector(".pagination-container");
+const paginationNumbers = document.querySelector(".pagination-wrapper");
+const leftArrow = document.querySelector(".fa-less-than")
+const rightArrow = document.querySelector(".fa-greater-than")
 
 const fetchWorkers = async () => {
   // Getting the actual workers from the company
   const workersUnderActiveClient = await workersUnderClient()
   const { workers: companyWorkers } = workersUnderActiveClient
+
+
+  // =================Pagination=============================
+  let workersPerPage = []
+  const totalWorkersNum = companyWorkers.length
+
+  let dataLimit = 9
+  let startPage = 1
+  workersPerPage = await fetchLimitedWorkers(startPage,dataLimit)
+
+  let quotient = Math.floor(totalWorkersNum/dataLimit)
+  let remainder = totalWorkersNum % dataLimit
+
+  if (remainder !== 0) {
+    quotient += 1
+  }
+
+  for (startPage; startPage <= quotient; startPage+=1) {
+   
+    if (startPage===1) {  
+    } else {
+      paginationContainer.style.display = ""
+      let ihtml = `
+    <li class="pagination-numbers">${startPage}</li>
+    `
+    paginationNumbers.innerHTML += ihtml
+    }
+  }
+
+  const allPaginationNumbers = document.querySelectorAll(".pagination-numbers")
+  console.log(allPaginationNumbers)
+
+  if (allPaginationNumbers) {
+    allPaginationNumbers.forEach((eachPage) => {
+      eachPage.addEventListener("click", async () => {
+
+        const allPaginationNumbers = document.querySelectorAll(".pagination-numbers");
+        allPaginationNumbers.forEach((perNum) => {
+          perNum.classList.remove("active-page")
+        })
+        eachPage.classList.add("active-page")
+
+        workersPerPage = await fetchLimitedWorkers(parseInt(eachPage.textContent),dataLimit)
+
+        manageWorkersSection.innerHTML = ""
+        addWorkersToDashboard()
+
+      })
+    })
+  } else {
+    workersPerPage = await fetchLimitedWorkers(startPage,dataLimit)
+  }
+
+  leftArrow.addEventListener("click", () => {
+    const activePage = document.querySelector(".active-page")
+    let num = parseInt(activePage.textContent) - 1
+    
+    if (num !== 0) {
+      leftArrow.style.display = ""
+      const allPaginationNumbers = document.querySelectorAll(".pagination-numbers");
+      allPaginationNumbers.forEach(async(perNum) => {
+        perNum.classList.remove("active-page")
+        if (parseInt(perNum.textContent) === num) {
+          perNum.classList.add("active-page")
+          workersPerPage = await fetchLimitedWorkers(parseInt(perNum.textContent),dataLimit)
+  
+          manageWorkersSection.innerHTML = ""
+          addWorkersToDashboard()
+        }
+      })
+    } else {
+    }
+
+  })
+
+  rightArrow.addEventListener("click", () => {
+    const activePage = document.querySelector(".active-page")
+    let num = parseInt(activePage.textContent) + 1
+    
+    if (num <= quotient ) {
+      const allPaginationNumbers = document.querySelectorAll(".pagination-numbers");
+      allPaginationNumbers.forEach(async(perNum) => {
+        perNum.classList.remove("active-page")
+        if (parseInt(perNum.textContent) === num) {
+          perNum.classList.add("active-page")
+          workersPerPage = await fetchLimitedWorkers(parseInt(perNum.textContent),dataLimit)
+  
+          manageWorkersSection.innerHTML = ""
+          addWorkersToDashboard()
+        }
+      })
+    } else {
+
+    }
+
+  })
+
+
+
 
 
   // ----------------------- search Function ------------------------------------//
@@ -64,48 +167,53 @@ const fetchWorkers = async () => {
   // ------------------------ ADDING WORKERS ON DASHBOARD -----------------------//
 
   dashboardSearch.addEventListener("input", searchFunc);
-  manageWorkersSection.innerHTML = "";
 
-  if (companyWorkers.length == 0) {
-    manageWorkersSection.innerHTML =
-      '<p class="empty-workers">You have no any workers. Add some to manage...</p>';
+  const addWorkersToDashboard = async () => {
+    manageWorkersSection.innerHTML = "";
+
+    if (workersPerPage.length == 0) {
+      manageWorkersSection.innerHTML =
+        '<p class="empty-workers">You have no any workers. Add some to manage...</p>';
+    }
+    workersPerPage.map((data, index) => {
+      const { firstName, lastName, workerID, gender, email, city, country,_id } = data;
+      const fullName = `${firstName} ${lastName}`;
+      let ihtml = `
+          <div class="worker-details">
+  
+              <div class="topsection">
+              
+                  <span>
+                      <i class="fa-regular fa-user user-icon"></i>
+                      <span class="worker-name">${fullName}</span>
+                  </span>
+  
+                  <div class="worker-profile">
+                      <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}","${city}", "${country}")'></i>
+                  </div>
+  
+              </div>
+  
+  
+              <div class="worker-id">
+                  <span>Worker ID: ${workerID}</span>
+              </div>
+  
+              <div class="worker-gender-delete">
+                  <p class="gender">${gender}</p>
+  
+                  <button class="worker-delete-button" onClick='confirmDelete("${workerID}","${_id}")'>
+                      <i class="fa-solid fa-trash"></i>
+                  </button>
+              </div>
+  
+          </div>
+          `;
+      manageWorkersSection.innerHTML += ihtml;
+    });
   }
-  companyWorkers.map((data, index) => {
-    const { firstName, lastName, workerID, gender, email, city, country,_id } = data;
-    const fullName = `${firstName} ${lastName}`;
-    let ihtml = `
-        <div class="worker-details">
 
-            <div class="topsection">
-            
-                <span>
-                    <i class="fa-regular fa-user user-icon"></i>
-                    <span class="worker-name">${fullName}</span>
-                </span>
-
-                <div class="worker-profile">
-                    <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}","${city}", "${country}")'></i>
-                </div>
-
-            </div>
-
-
-            <div class="worker-id">
-                <span>Worker ID: ${workerID}</span>
-            </div>
-
-            <div class="worker-gender-delete">
-                <p class="gender">${gender}</p>
-
-                <button class="worker-delete-button" onClick='confirmDelete("${workerID}","${_id}")'>
-                    <i class="fa-solid fa-trash"></i>
-                </button>
-            </div>
-
-        </div>
-        `;
-    manageWorkersSection.innerHTML += ihtml;
-  });
+  addWorkersToDashboard();
 
   // ----------------------------- SORTING ----------------------------------------//
 
