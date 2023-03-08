@@ -49,11 +49,16 @@ exports.clientsWorkers = async (req, res, next) => {
 };
 
 exports.clientsWorkersLeaves = async (req, res, next) => {
-  const { page = 1, limit = 1000 } = req.query;
-  const count = await Messages.count();
-  const { id } = req.params;
+  // const page = parseInt(req.query.page) -1
 
   try {
+    // let approveState = req.query.approveState || "All";
+    const { id } = req.params;
+
+    // state === "All"
+    //   ? (state = [...requestState])
+    //   : (state = req.query.state.split(","));
+
     Clients.findById(id).then((specificClient) => {
       if (specificClient) {
         const company = specificClient.companyName;
@@ -65,13 +70,15 @@ exports.clientsWorkersLeaves = async (req, res, next) => {
             Messages.find({
               "workerDetails.companyDetail.companyName": company,
             })
-              .limit(limit * 1)
-              .skip((page - 1) * limit)
+              // .where("filter")
+              // .in([...state])
+              // .limit(limit * 1)
+              // .skip((page - 1) * limit)
               .then((allLeaves) => {
                 res.status(201).json({
                   Leaves: allLeaves,
-                  totalPages: Math.ceil(count / limit),
-                  currentPage: page,
+                  //totalPages: Math.ceil(count / limit),
+                  //currentPage: page,
                 });
               });
           } else {
@@ -83,7 +90,7 @@ exports.clientsWorkersLeaves = async (req, res, next) => {
       }
     });
   } catch (error) {
-    res.json({ error: error });
+    res.json({ error });
   }
 };
 
