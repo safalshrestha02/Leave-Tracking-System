@@ -97,7 +97,7 @@ select {
   }
 }
 
-.form-button-reset{
+.form-button-reset {
   outline: 2px solid $primary-yellow;
   background-color: white;
   color: rgb(59, 59, 59);
@@ -113,4 +113,19 @@ select {
   text-align: center;
   height: 2vh;
   margin-block: 0.5rem 1rem;
+}
+
+.start-date-error-div {
+  height: 0.5vh;
+  width: 100%;
+  color: red;
+  font-size: 0.8rem;
+  font-weight: 600;
+  grid-column: 1/4;
+  text-align: center;
+  // margin: 0 auto;
+}
+
+.eligible-leave {
+  color: $green-bg;
 }

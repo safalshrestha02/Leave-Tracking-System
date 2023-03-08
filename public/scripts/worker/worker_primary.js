@@ -22,16 +22,17 @@ fetchActiveWorkerApi()
 const fetchLeavesUnderWorker = async () => {
   const activeWorker = await fetchActiveWorkerApi();
   const { _id } = activeWorker;
-  const response = await fetch (`http://localhost:3000/api/workers_leaves/${_id}`);
+  const response = await fetch(`http://localhost:3000/api/workers_leaves/${_id}`);
   const leavesResult = await response.json();
-  return leavesResult
+  const { leaveHistory } = leavesResult
+  return leaveHistory
 }
 
 const fetchApprovedWorkerRequest = async () => {
   const leaves = await fetchLeavesUnderWorker()
   const approvedLeaves = leaves.leaveHistory.filter((leave) => {
-      const { approveState } = leave
-      return approveState === "approved"
+    const { approveState } = leave
+    return approveState === "approved"
   })
   return approvedLeaves
 }
@@ -39,8 +40,17 @@ const fetchApprovedWorkerRequest = async () => {
 const fetchRejectedWorkerRequest = async () => {
   const leaves = await fetchLeavesUnderWorker()
   const rejectedLeaves = leaves.leaveHistory.filter((leave) => {
-      const { approveState } = leave
-      return approveState === "rejected"
+    const { approveState } = leave
+    return approveState === "rejected"
   })
   return rejectedLeaves
+}
+
+const fetchLeavesYearly = async () => {
+  const activeWorker = await fetchActiveWorkerApi()
+  const { _id } = activeWorker
+  const response = await fetch(`http://localhost:3000/api/workers/${_id}`);
+  const woorkerResult = await response.json();
+  const { leavesYearly } = woorkerResult
+  return leavesYearly
 }

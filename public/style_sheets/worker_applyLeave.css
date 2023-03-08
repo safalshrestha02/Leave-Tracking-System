@@ -211,7 +211,7 @@ label {
   flex-basis: 50%;
 }
 
-.form-field:nth-child(2n+1) {
+.form-field:nth-child(2n + 1) {
   flex-basis: 50%;
 }
 
@@ -294,4 +294,18 @@ select {
   text-align: center;
   height: 2vh;
   margin-block: 0.5rem 1rem;
+}
+
+.start-date-error-div {
+  height: 0.5vh;
+  width: 100%;
+  color: red;
+  font-size: 0.8rem;
+  font-weight: 600;
+  grid-column: 1/4;
+  text-align: center;
+}
+
+.eligible-leave {
+  color: #03c988;
 }
