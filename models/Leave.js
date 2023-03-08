@@ -10,7 +10,7 @@ const messageSchema = new mongoose.Schema(
       type: String,
       required: [true, "*employee ID is required"],
     },
-    leaveDays:Number,
+    leaveDays: Number,
     startDate: {
       type: Date,
       required: [true, "*start date is required"],
@@ -39,7 +39,7 @@ const messageSchema = new mongoose.Schema(
       companyName: String,
       companyDetail: Object,
     },
-    leavesYearly: { type : Number },
+    leavesYearly: { type: Number },
   },
   { timestamps: true }
 );
