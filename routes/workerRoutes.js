@@ -5,6 +5,7 @@ const router = express.Router();
 //paths
 const loadPages = require("../controller/workerPageController");
 const workerAuth = require("../controller/workerAuth");
+const workerAPI = require("../controller/workerAPI");
 const { requireWorkerAuth } = require("../middleware/workerAuthMiddleware");
 
 //html pages
@@ -16,6 +17,8 @@ router.get("/leave_history", requireWorkerAuth, loadPages.leaveHistory);
 router.get("/logoutWorker", workerAuth.logout);
 
 //APIs
+router.get("/api/workers_leaves/:id", workerAPI.workersLeaves);
+
 router.post("/api/workerLogin", workerAuth.login);
 router.post(
   "/api/applyForLeave",
@@ -32,5 +35,11 @@ router.put(
   workerAuth.changePassword
 );
 router.put("/api/workerResetPassword/:resetToken", workerAuth.resetPassword);
+
+router.delete(
+  "/api/leaveRequests/:id",
+  requireWorkerAuth,
+  workerAPI.leaveRequestDelete
+);
 
 module.exports = router;
