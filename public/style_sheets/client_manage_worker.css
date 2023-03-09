@@ -704,3 +704,27 @@ a {
   color: black;
   background-color: #fdb514;
 }
+
+.delete-worker-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  background-color: #f3f5f7;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}
+.delete-worker-detail .delete-worker-name {
+  text-transform: capitalize;
+}
+.delete-worker-detail .user-icon {
+  margin-right: 0.4rem;
+}
+
+.load-gif {
+  width: 6vw;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  margin: 10rem auto;
+  grid-column: 1/4;
+}/*# sourceMappingURL=client_manage_worker.css.map */

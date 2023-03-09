@@ -25,8 +25,8 @@ yyyy = new Date().getFullYear()
 if (dd < 10) dd = '0' + dd;
 if (mm < 10) mm = '0' + mm;
 
-currentDate = `${yyyy}-${mm}-${dd}`
-parsedCurrentDate = Date.parse(currentDate)
+const currentDate = `${yyyy}-${mm}-${dd}`
+const parsedCurrentDate = Date.parse(currentDate)
 
 
 // ----------------------- FETCHING REQUESTS ----------------------------- //
@@ -181,7 +181,7 @@ const checkworkersRequest = async () => {
 
         })
       } else {
-        pastTitle.setAttribute("style", "display:block;");
+        pastTitle.setAttribute("style", "display:none;");
       }
     }
 
