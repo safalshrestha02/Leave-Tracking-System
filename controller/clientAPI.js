@@ -118,3 +118,34 @@ exports.suggestedIds = async (req, res, next) => {
     next(error);
   }
 };
+exports.expireUnapproved = async (req, res) => {
+  try {
+    let i = 0;
+    let companyName;
+
+    let currentDate = new Date();
+
+    const id = req.params["id"];
+    await Clients.findById(id).then((result) => {
+      companyName = result.companyName;
+    });
+    await Leaves.find({
+      "workerDetails.companyDetail.companyName": companyName,
+    }).then((result) => {
+      result.forEach(async () => {
+        if (result[i].endDate < currentDate && result[i].approveState == "pending") {
+          await Leaves.findByIdAndUpdate(result[i]._id, {
+            $set: { approveState: "rejected" },
+          });
+        }
+        i += 1;
+      });
+      res
+        .status(201)
+        .json({ updated: "all dates and leave Requests are updated" });
+    });
+  } catch (error) {
+    res.status(400);
+    throw error.message;
+  }
+};
