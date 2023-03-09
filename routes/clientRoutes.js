@@ -54,6 +54,7 @@ router.post("/api/forgotPassword", clientAuth.forgotPassword);
 //PatchReqs
 router.patch("/api/approveLeave/:id", clientAuth.changeLeaveState);
 router.patch("/api/changeLeaveDays/:id/", clientAuth.changeLeaveDays);
+router.patch("/api/clientExpireUnapproved/:id", clientAPI.expireUnapproved)
 
 router.put(
   "/api/changeClientPwd",
