@@ -144,7 +144,7 @@ exports.changePassword = async (req, res, next) => {
     client.password = newPassword;
     client.updatedAt = Date.now();
     await client.save().then(() => {
-      res.status(201).clearCookie("jwt").json({ message: "Password Changed " })
+      res.status(201).clearCookie("jwt").json({ message: "Password Changed " });
     });
   } catch (error) {
     const errors = clientErrHandle(error);
@@ -166,9 +166,7 @@ exports.forgotPassword = async (req, res, next) => {
 
     await client.save({ validateBeforeSave: false });
 
-    const resetUrl = `${req.protocol}://${req.get(
-      "host"
-    )}/api/resetPassword/${resetToken}`;
+    const resetUrl = `${process.env.DOMAIN}/${resetToken}`;
 
     console.log(resetUrl);
 

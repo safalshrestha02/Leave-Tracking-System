@@ -176,9 +176,7 @@ exports.forgotPassword = async (req, res, next) => {
 
     await worker.save({ validateBeforeSave: false });
 
-    const resetUrl = `${req.protocol}://${req.get(
-      "host"
-    )}/api/resetPassword/${resetToken}`;
+    const resetUrl = `${process.env.DOMAIN}/${resetToken}`;
 
     console.log(resetUrl);
 
