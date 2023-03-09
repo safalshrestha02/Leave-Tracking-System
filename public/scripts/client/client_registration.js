@@ -144,7 +144,7 @@ form.addEventListener("submit", async (e) => {
 // ---submitting form data--------
 
 const submitFormData = async (formData) => {
-  const res = await fetch("api/clientRegister", {
+  const res = await fetch("http://localhost:3000/api/clientRegister", {
     method: "POST",
     body: JSON.stringify(formData),
     headers: { "Content-Type": "application/json" },
