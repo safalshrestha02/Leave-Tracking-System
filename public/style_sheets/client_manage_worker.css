@@ -242,7 +242,7 @@ li {
   text-transform: capitalize;
 }
 
-input[type="radio"] {
+input[type=radio] {
   margin-right: 3rem;
 }
 
@@ -703,4 +703,4 @@ a {
 .pagination-wrapper .active-page {
   color: black;
   background-color: #fdb514;
-}
+}/*# sourceMappingURL=client_manage_worker.css.map */

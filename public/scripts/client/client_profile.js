@@ -41,7 +41,7 @@ cancelButton.addEventListener("click", () => {
 });
 
 
-const changePasswordError = document.querySelector(".error-message")
+const changePasswordError = document.querySelector(".error-container")
 const changePasswordForm = document.querySelector(".change-password-form")
 const changePasswordFields = document.querySelectorAll(".password-inputs")
 
@@ -82,9 +82,9 @@ changePasswordForm.addEventListener("submit", async(e)=> {
     console.log(data.message)
 
     if (data.message) {
-      changePasswordError.innerHTML= `${data.message}`
+      changePasswordError.innerHTML= `<p class="error-message">${data.message}</p>`
     }
-
+    
     if (res.status === 201) {
       changePasswordFields.forEach((inputField) => {
         inputField.setAttribute("style", "border: initial");
@@ -93,16 +93,15 @@ changePasswordForm.addEventListener("submit", async(e)=> {
       changePasswordForm.reset();
       changePasswordError.textContent = " ";
 
-      const successAlert = document.querySelector(".success-alert");
+      const successAlert = document.querySelector(".password-sucessful-alert");
       successAlert.style.display = "block";
       setTimeout(() => {
         successAlert.style.display = "none";
+        window.location.replace("/logoutClient")
       }, 2500);
-      
       passwordContainer.classList.remove("change-password-active");
     }
   }
-  
   catch(error){
     console.log(error)
   }

@@ -265,26 +265,17 @@ li {
   min-width: 30%;
   margin-bottom: 1rem;
 }
-.pending-and-approved
-  .pending-and-approved-container
-  .worker-leaves
-  .leave-type {
+.pending-and-approved .pending-and-approved-container .worker-leaves .leave-type {
   font-weight: 500;
   font-size: 1.1rem;
 }
-.pending-and-approved
-  .pending-and-approved-container
-  .worker-leaves
-  .leave-date {
+.pending-and-approved .pending-and-approved-container .worker-leaves .leave-date {
   display: flex;
   justify-content: space-between;
   opacity: 0.6;
   margin: 0.8rem 0;
 }
-.pending-and-approved
-  .pending-and-approved-container
-  .worker-leaves
-  .fa-circle {
+.pending-and-approved .pending-and-approved-container .worker-leaves .fa-circle {
   margin-right: 0.8rem;
 }
 
@@ -294,8 +285,7 @@ li {
   justify-content: space-between;
   align-items: center;
 }
-.leave-type-container .fa-regular,
-.leave-type-container .fa-trash {
+.leave-type-container .fa-regular, .leave-type-container .fa-trash {
   font-size: 1.3rem;
   opacity: 0.6;
 }
@@ -346,4 +336,4 @@ li {
 .load-gif {
   width: 4rem;
   margin: 4rem 0;
-}
+}/*# sourceMappingURL=worker_home.css.map */
