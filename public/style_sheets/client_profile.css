@@ -437,7 +437,8 @@ input[type=radio] {
 .change-password-container {
   width: fit-content;
   position: absolute;
-  bottom: 2rem;
+  bottom: 3rem;
+  right: 4rem;
 }
 
 .dashboard-content {
@@ -492,6 +493,7 @@ input[type=radio] {
   height: 100%;
   width: fit-content;
   padding: 2.5rem;
+  border-radius: 0 0.4rem 0.4rem 0;
 }
 
 .password-inputs {
@@ -568,7 +570,7 @@ input[type=radio] {
 }
 
 .error-message {
-  min-height: 0.6vh;
-  color: white;
+  min-height: 2vh;
+  color: red !important;
   margin: 0 auto;
 }/*# sourceMappingURL=client_profile.css.map */
