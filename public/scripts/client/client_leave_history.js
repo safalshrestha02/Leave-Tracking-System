@@ -13,6 +13,11 @@ const filterButton = document.querySelector('.filter-button')
 const filterContainer = document.querySelector('.filter-container')
 let fetchLeaveHistory
 
+const filterOptions = document.querySelectorAll('.filter-options')
+const approvedLeavesFilter = document.querySelector('.approved-past-leaves')
+const rejectedLeavesFilter = document.querySelector('.rejected-past-leaves')
+const icon = document.querySelector('.filter-icon')
+
 
 // Checking if client have any workers or not
 const checkWorkers = async () => {
@@ -48,6 +53,11 @@ const leaveHistory = async () => {
 
     // getting approved, rejected leaves of the worker selected by the client
     const getLeaveHistory = async () => {
+        filterOptions.forEach((btn) => {
+            btn.classList.remove("active-option")
+        })
+        approvedLeavesFilter.classList.add("active-option")
+
         upcomingLeaves.classList.remove('show-div')
         pastLeaves.classList.remove('show-div')
         rejectedLeavesMain.classList.remove('show-div')
@@ -194,11 +204,6 @@ const leaveHistory = async () => {
 
 
     // filter function
-    const filterButtons = document.querySelectorAll('.filter-buttons')
-    const approvedLeavesFilter = document.querySelector('.approved-past-leaves')
-    const rejectedLeavesFilter = document.querySelector('.rejected-past-leaves')
-    const icon = document.querySelector('.filter-icon')
-
     filterButton.addEventListener('click', () => {
         filterContainer.classList.toggle('filter-container-active')
         icon.classList.toggle('fa-circle-xmark')
@@ -210,7 +215,7 @@ const leaveHistory = async () => {
             filterContainer.classList.remove('filter-container-active')
             icon.classList.remove('fa-circle-xmark')
 
-            filterButtons.forEach((btn) => {
+            filterOptions.forEach((btn) => {
                 btn.classList.remove("active-option")
             })
             approvedLeavesFilter.classList.add("active-option")
@@ -233,7 +238,7 @@ const leaveHistory = async () => {
         filterContainer.classList.remove('filter-container-active')
         icon.classList.remove('fa-circle-xmark')
 
-        filterButtons.forEach((btn) => {
+        filterOptions.forEach((btn) => {
             btn.classList.remove("active-option")
         })
         rejectedLeavesFilter.classList.add("active-option")
