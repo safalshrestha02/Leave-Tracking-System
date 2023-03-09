@@ -71,6 +71,55 @@
             </div>
           </div>
 
+          <div class="main-password-change-container">
+            <div class="password-change-container">
+              <div class="password-left-container">
+                <h1>CHANGE PASSSWORD</h1>
+                <div class="password-image-container">
+                  <img src="https://www.thebeecause.org/wp-content/uploads/2021/09/beesmart-beesafe-550x550.png" id="password-image">
+                </div>
+              </div>
+              <div class="password-right-container">
+                <form class="change-password-form">
+                <div class="current-password-container">
+                  <label for="currentPassword" class="password-label">Current Password</label>
+                  <input
+                    type="password"
+                    id="currentPassword"
+                    class="password-inputs"
+                  />
+                </div>
+      
+                <div class="new-password-container">
+                  <label for="newPassword" class="password-label">New Password</label>
+                  <input 
+                  type="password" 
+                  id="newPassword" 
+                  class="password-inputs" 
+                  />
+                </div>
+      
+                <div class="current-password-container">
+                  <label for="confirmNewPassword" class="password-label">Confirm Password</label>
+                  <input
+                    type="password"
+                    id="confirmNewPassword"
+                    class="password-inputs"
+                  />
+                </div>
+                
+                <div class="error-container">
+                </div>
+                
+                <div class="password-change-button-container">
+                  <button class="password-button cancel-button">Cancel</button>
+                  <button class="password-button save-button" type="submit">SAVE</button>
+                </div>
+              </form>
+              </div>
+            </div>
+          </div>
+
           <div class="dashboard-content">
             <div class="worker-details">
               <div class="worker-name-and-sub-title">
@@ -113,7 +162,13 @@
                 <p class="details-body emp-city-value"></p>
               </div>
             </div>
+            
+            <div class="change-password-container">
+              <button class="change-password-button"><i class="fa-solid fa-key password-icon"></i>Change Password</button>
+            </div>
+          
           </div>
+          
         </div>
       </div>
     </div>

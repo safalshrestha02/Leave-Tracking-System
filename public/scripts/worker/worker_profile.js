@@ -19,3 +19,86 @@ const fetchWorkerProfile = async () => {
   companyNameField.innerHTML = companyName;
 };
 fetchWorkerProfile();
+
+
+
+const passwordContainer = document.querySelector(".main-password-change-container");
+const changePasswordButton = document.querySelector(".change-password-button");
+const cancelButton = document.querySelector(".cancel-button");
+
+changePasswordButton.addEventListener("click", () => {
+  passwordContainer.classList.add("change-password-active");
+});
+
+cancelButton.addEventListener("click", () => {
+  passwordContainer.classList.remove("change-password-active");
+});
+
+
+const changePasswordError = document.querySelector(".error-message")
+const changePasswordForm = document.querySelector(".change-password-form")
+const changePasswordFields = document.querySelectorAll(".password-inputs")
+
+
+
+// ----------- SUBMIT NEW PASSWORD -------------- // 
+
+changePasswordForm.addEventListener("submit", async(e)=> {
+
+  e.preventDefault();
+
+  changePasswordError.textContent = " ";
+
+  const currentPassword = changePasswordForm.currentPassword.value.toLowerCase();
+  const newPassword = changePasswordForm.newPassword.value.toLowerCase();
+  const confirmPassword = changePasswordForm.confirmNewPassword.value.toLowerCase();
+
+
+  const formData = {
+    currentPassword,
+    newPassword,
+    confirmPassword
+  }
+
+  try {
+    const url = "http://localhost:3000/api/changeWorkerPwd"
+    
+    
+    const res = await fetch(url, {
+      method: "PUT",
+      body: JSON.stringify(formData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json()
+    
+    console.log(data.message)
+
+    if (data.message) {
+      changePasswordError.innerHTML= `${data.message}`
+    }
+
+    if (res.status === 201) {
+      changePasswordFields.forEach((inputField) => {
+        inputField.setAttribute("style", "border: initial");
+      });
+
+      changePasswordForm.reset();
+      changePasswordError.textContent = " ";
+
+      const successAlert = document.querySelector(".success-alert");
+      successAlert.style.display = "block";
+      setTimeout(() => {
+        successAlert.style.display = "none";
+      }, 2500);
+      
+      passwordContainer.classList.remove("change-password-active");
+    }
+  }
+  
+  catch(error){
+    console.log(error)
+  }
+
+})
