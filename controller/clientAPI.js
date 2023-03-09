@@ -1,12 +1,12 @@
 const Clients = require("../models/Client");
 const Worker = require("../models/Worker");
-const Messages = require("../models/Leave");
+const Leaves = require("../models/Leave");
 
 exports.workerDelete = async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    await Messages.deleteMany({
+    await Leaves.deleteMany({
       approveState: "pending",
       "workerDetails._id": id,
     });
@@ -18,79 +18,53 @@ exports.workerDelete = async (req, res, next) => {
 };
 
 exports.clientsWorkers = async (req, res, next) => {
-  const { page = 1, limit = 10 } = req.query;
+  const { page, limit } = req.query;
   const count = await Worker.count();
   const { id } = req.params;
 
   try {
-    await Clients.findById(id).then((result) => {
-      if (result) {
-        Worker.find({ "companyDetail._id": id })
-          .limit(limit * 1)
-          .skip((page - 1) * limit)
-          .then((workers) => {
-            if (workers) {
-              res.status(201).json({
-                workers: workers,
-                totalPages: Math.ceil(count / limit),
-                currentPage: page,
-              });
-            } else {
-              res.status(400).json({ error: "No worker under that Client" });
-            }
+    await Worker.find({ "companyDetail._id": id })
+      .limit(limit * 1)
+      .skip((page - 1) * limit)
+      .then((workers) => {
+        if (workers) {
+          res.status(201).json({
+            workers: workers,
+            totalPages: Math.ceil(count / limit) - 1,
+            currentPage: page,
           });
-      } else {
-        res.status(400).json({ error: "No client under that ID" });
-      }
-    });
+        } else {
+          res.status(400).json({ error: "No worker under that Client" });
+        }
+      });
   } catch (error) {
-    res.json({ error });
+    next(error);
   }
 };
 
 exports.clientsWorkersLeaves = async (req, res, next) => {
-  // const page = parseInt(req.query.page) -1
-
+  const { id } = req.params;
   try {
-    // let approveState = req.query.approveState || "All";
-    const { id } = req.params;
-
-    // state === "All"
-    //   ? (state = [...requestState])
-    //   : (state = req.query.state.split(","));
-
-    Clients.findById(id).then((specificClient) => {
-      if (specificClient) {
-        const company = specificClient.companyName;
-        Worker.find({
-          "companyDetail._id": id,
-          "companyDetail.companyName": company,
-        }).then((result) => {
-          if (result) {
-            Messages.find({
-              "workerDetails.companyDetail.companyName": company,
-            })
-              // .where("filter")
-              // .in([...state])
-              // .limit(limit * 1)
-              // .skip((page - 1) * limit)
-              .then((allLeaves) => {
-                res.status(201).json({
-                  Leaves: allLeaves,
-                  //totalPages: Math.ceil(count / limit),
-                  //currentPage: page,
-                });
-              });
-          } else {
-            res.status(201).json({ error: "No Workers for the Client" });
-          }
-        });
-      } else {
-        res.status(400).json({ Error: "No client found with that ID" });
+    await Clients.findById(id).then((specificClient) => {
+      if (!specificClient) {
+        res.status(400).json({ error: "No client found with that ID" });
       }
+      const company = specificClient.companyName;
+      Worker.find({
+        "companyDetail._id": id,
+        "companyDetail.companyName": company,
+      });
+
+      Leaves.find({
+        "workerDetails.companyDetail.companyName": company,
+      }).then((allLeaves) => {
+        res.status(201).json({
+          Leaves: allLeaves,
+        });
+      });
     });
   } catch (error) {
-    res.json({ error });
+    next(error);
   }
 };
 
@@ -141,7 +115,6 @@ exports.suggestedIds = async (req, res, next) => {
 
     checkIds(workerIds, randomIds);
   } catch (error) {
-    res.status(400).json(error.message);
-    console.error(error);
+    next(error);
   }
 };
