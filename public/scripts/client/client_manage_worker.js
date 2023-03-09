@@ -7,9 +7,12 @@ const paginationContainer = document.querySelector(".pagination-container");
 const paginationNumbers = document.querySelector(".pagination-wrapper");
 const leftArrow = document.querySelector(".fa-less-than")
 const rightArrow = document.querySelector(".fa-greater-than")
+const pendingContainer = document.querySelector(".pending-container")
 
 const fetchWorkers = async () => {
   // Getting the actual workers from the company
+  manageWorkersSection.innerHTML = '<img src = "/images/load.gif" alt = "Loading fresh data for you" class = "load-gif"/>'
+  
   const workersUnderActiveClient = await workersUnderClient()
   const { workers: companyWorkers } = workersUnderActiveClient
 
@@ -202,7 +205,7 @@ const fetchWorkers = async () => {
               <div class="worker-gender-delete">
                   <p class="gender">${gender}</p>
   
-                  <button class="worker-delete-button" onClick='confirmDelete("${workerID}","${_id}")'>
+                  <button class="worker-delete-button" onClick='confirmDelete("${workerID}","${_id}","${fullName}")'>
                       <i class="fa-solid fa-trash"></i>
                   </button>
               </div>
@@ -493,17 +496,26 @@ fetchWorkers();
 
 // ---------------------- CONFIRM DELETE ----------------------//
 
-const confirmDelete =  (deleteWorkerID, monID) => {
+const confirmDelete =  (deleteWorkerID, monID, deleteWorkerName) => {
   const confirmBox = document.querySelector(".confirm-container");
   const cancelButton = document.querySelector(".cancel-button");
   const confirmButton = document.querySelector(".confirm-button");
-  const confirmID = document.querySelector(".confirm-worker-name")
+  const workerDeleteName = document.querySelector(".delete-worker-name")
+  const workerDeleteID = document.querySelector(".delete-worker-ID")
 
   confirmBox.style.display = "flex";
   mainBody.classList.add("main-body-overflow");
-  confirmID.innerHTML = ``
-  let ihtml = `"${deleteWorkerID}"`
-  confirmID.innerHTML += ihtml 
+  
+  workerDeleteName.innerHTML = ""
+  workerDeleteID.innerHTML = ``
+  
+  let deleteworkerIDhtml = `${deleteWorkerID}`
+  let deleteworkerNamehtml = `<i class="fa-regular fa-user user-icon"></i>${deleteWorkerName}`
+  
+  workerDeleteID.innerHTML += deleteworkerIDhtml
+  workerDeleteName.innerHTML += deleteworkerNamehtml
+  
+  
   cancelButton.addEventListener("click", () => {
     confirmBox.style.display = "none";
     mainBody.classList.remove("main-body-overflow");
@@ -514,6 +526,7 @@ const confirmDelete =  (deleteWorkerID, monID) => {
   confirmButton.addEventListener("click", async() => {
     confirmBox.style.display = "none";
     mainBody.classList.remove("main-body-overflow");
+    try {
     if (deleteWorkerID !== null){
       const deleteURL = `http://localhost:3000/api/workers/${monID}`
       const deleteWorker = await fetch(deleteURL, {method: "DELETE"})
@@ -530,7 +543,11 @@ const confirmDelete =  (deleteWorkerID, monID) => {
           successAlert.style.display = "none";
         },2500)
 
-      }} 
+      }} }
+      catch(error){
+        console.log(error)
+      }
+
   }, {once: true})
 };
 

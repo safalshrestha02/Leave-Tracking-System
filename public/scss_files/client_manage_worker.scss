@@ -346,3 +346,33 @@ a {
   color: black;
   background-color: $primary-yellow;
 }
+
+// ------------------------- delete worker confirm ------------------------------ //
+
+.delete-worker-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  background-color: $light-bg;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  
+  .delete-worker-name {
+    text-transform: capitalize;
+  }
+  .user-icon {
+    margin-right: 0.4rem;
+  }
+}
+
+// loadding gif 
+
+.load-gif{
+  
+  width: 6vw;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  margin: 10rem auto;
+  grid-column: 1 / 4;
+}
