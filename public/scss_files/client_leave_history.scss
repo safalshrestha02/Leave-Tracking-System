@@ -162,7 +162,7 @@
   display: block;
 }
 
-.filter-buttons {
+.filter-options {
   width: 100%;
   cursor: pointer;
   margin: 1rem 0;
@@ -190,4 +190,14 @@
   object-fit: contain;
   margin: 10rem auto;
   grid-column: 1 / 4;
+}
+
+.filter-name {
+  padding: 0.5rem 0.3rem;
+  margin: 0 1rem;
+  display: inline-block;
+  font-weight: bolder;
+  margin-bottom: 1rem;
+  color: $blue-bg;
+  border-bottom: 3px solid $blue-bg;
 }
