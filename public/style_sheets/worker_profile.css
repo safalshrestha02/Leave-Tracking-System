@@ -285,6 +285,7 @@ li {
   height: 100%;
   width: fit-content;
   padding: 2.5rem;
+  border-radius: 0 0.4rem 0.4rem 0;
 }
 
 .password-inputs {
@@ -361,7 +362,7 @@ li {
 }
 
 .error-message {
-  min-height: 0.6vh;
-  color: white;
+  min-height: 2vh;
+  color: rgb(255, 122, 122);
   margin: 0 auto;
 }/*# sourceMappingURL=worker_profile.css.map */
