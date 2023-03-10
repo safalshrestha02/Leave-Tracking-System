@@ -15,102 +15,103 @@ const fetchWorkers = async () => {
   
   const workersUnderActiveClient = await workersUnderClient()
   const { workers: companyWorkers } = workersUnderActiveClient
+  const workersPerPage = companyWorkers
 
 
   // =================Pagination=============================
-  let workersPerPage = []
-  const totalWorkersNum = companyWorkers.length
+  // let workersPerPage = []
+  // const totalWorkersNum = companyWorkers.length
 
-  let dataLimit = 9
-  let startPage = 1
-  workersPerPage = await fetchLimitedWorkers(startPage,dataLimit)
+  // let dataLimit = 9
+  // let startPage = 1
+  // workersPerPage = await fetchLimitedWorkers(startPage,dataLimit)
 
-  let quotient = Math.floor(totalWorkersNum/dataLimit)
-  let remainder = totalWorkersNum % dataLimit
+  // let quotient = Math.floor(totalWorkersNum/dataLimit)
+  // let remainder = totalWorkersNum % dataLimit
 
-  if (remainder !== 0) {
-    quotient += 1
-  }
+  // if (remainder !== 0) {
+  //   quotient += 1
+  // }
 
-  for (startPage; startPage <= quotient; startPage+=1) {
+  // for (startPage; startPage <= quotient; startPage+=1) {
    
-    if (startPage===1) {  
-    } else {
-      paginationContainer.style.display = ""
-      let ihtml = `
-    <li class="pagination-numbers">${startPage}</li>
-    `
-    paginationNumbers.innerHTML += ihtml
-    }
-  }
+  //   if (startPage===1) {  
+  //   } else {
+  //     paginationContainer.style.display = ""
+  //     let ihtml = `
+  //   <li class="pagination-numbers">${startPage}</li>
+  //   `
+  //   paginationNumbers.innerHTML += ihtml
+  //   }
+  // }
 
-  const allPaginationNumbers = document.querySelectorAll(".pagination-numbers")
-  console.log(allPaginationNumbers)
+  // const allPaginationNumbers = document.querySelectorAll(".pagination-numbers")
+  // console.log(allPaginationNumbers)
 
-  if (allPaginationNumbers) {
-    allPaginationNumbers.forEach((eachPage) => {
-      eachPage.addEventListener("click", async () => {
+  // if (allPaginationNumbers) {
+  //   allPaginationNumbers.forEach((eachPage) => {
+  //     eachPage.addEventListener("click", async () => {
 
-        const allPaginationNumbers = document.querySelectorAll(".pagination-numbers");
-        allPaginationNumbers.forEach((perNum) => {
-          perNum.classList.remove("active-page")
-        })
-        eachPage.classList.add("active-page")
+  //       const allPaginationNumbers = document.querySelectorAll(".pagination-numbers");
+  //       allPaginationNumbers.forEach((perNum) => {
+  //         perNum.classList.remove("active-page")
+  //       })
+  //       eachPage.classList.add("active-page")
 
-        workersPerPage = await fetchLimitedWorkers(parseInt(eachPage.textContent),dataLimit)
+  //       workersPerPage = await fetchLimitedWorkers(parseInt(eachPage.textContent),dataLimit)
 
-        manageWorkersSection.innerHTML = ""
-        addWorkersToDashboard()
+  //       manageWorkersSection.innerHTML = ""
+  //       addWorkersToDashboard()
 
-      })
-    })
-  } else {
-    workersPerPage = await fetchLimitedWorkers(startPage,dataLimit)
-  }
+  //     })
+  //   })
+  // } else {
+  //   workersPerPage = await fetchLimitedWorkers(startPage,dataLimit)
+  // }
 
-  leftArrow.addEventListener("click", () => {
-    const activePage = document.querySelector(".active-page")
-    let num = parseInt(activePage.textContent) - 1
+  // leftArrow.addEventListener("click", () => {
+  //   const activePage = document.querySelector(".active-page")
+  //   let num = parseInt(activePage.textContent) - 1
     
-    if (num !== 0) {
-      leftArrow.style.display = ""
-      const allPaginationNumbers = document.querySelectorAll(".pagination-numbers");
-      allPaginationNumbers.forEach(async(perNum) => {
-        perNum.classList.remove("active-page")
-        if (parseInt(perNum.textContent) === num) {
-          perNum.classList.add("active-page")
-          workersPerPage = await fetchLimitedWorkers(parseInt(perNum.textContent),dataLimit)
+  //   if (num !== 0) {
+  //     leftArrow.style.display = ""
+  //     const allPaginationNumbers = document.querySelectorAll(".pagination-numbers");
+  //     allPaginationNumbers.forEach(async(perNum) => {
+  //       perNum.classList.remove("active-page")
+  //       if (parseInt(perNum.textContent) === num) {
+  //         perNum.classList.add("active-page")
+  //         workersPerPage = await fetchLimitedWorkers(parseInt(perNum.textContent),dataLimit)
   
-          manageWorkersSection.innerHTML = ""
-          addWorkersToDashboard()
-        }
-      })
-    } else {
-    }
+  //         manageWorkersSection.innerHTML = ""
+  //         addWorkersToDashboard()
+  //       }
+  //     })
+  //   } else {
+  //   }
 
-  })
+  // })
 
-  rightArrow.addEventListener("click", () => {
-    const activePage = document.querySelector(".active-page")
-    let num = parseInt(activePage.textContent) + 1
+  // rightArrow.addEventListener("click", () => {
+  //   const activePage = document.querySelector(".active-page")
+  //   let num = parseInt(activePage.textContent) + 1
     
-    if (num <= quotient ) {
-      const allPaginationNumbers = document.querySelectorAll(".pagination-numbers");
-      allPaginationNumbers.forEach(async(perNum) => {
-        perNum.classList.remove("active-page")
-        if (parseInt(perNum.textContent) === num) {
-          perNum.classList.add("active-page")
-          workersPerPage = await fetchLimitedWorkers(parseInt(perNum.textContent),dataLimit)
+  //   if (num <= quotient ) {
+  //     const allPaginationNumbers = document.querySelectorAll(".pagination-numbers");
+  //     allPaginationNumbers.forEach(async(perNum) => {
+  //       perNum.classList.remove("active-page")
+  //       if (parseInt(perNum.textContent) === num) {
+  //         perNum.classList.add("active-page")
+  //         workersPerPage = await fetchLimitedWorkers(parseInt(perNum.textContent),dataLimit)
   
-          manageWorkersSection.innerHTML = ""
-          addWorkersToDashboard()
-        }
-      })
-    } else {
+  //         manageWorkersSection.innerHTML = ""
+  //         addWorkersToDashboard()
+  //       }
+  //     })
+  //   } else {
 
-    }
+  //   }
 
-  })
+  // })
 
 
 
@@ -174,11 +175,11 @@ const fetchWorkers = async () => {
   const addWorkersToDashboard = async () => {
     manageWorkersSection.innerHTML = "";
 
-    if (workersPerPage.length == 0) {
+    if (companyWorkers.length == 0) {
       manageWorkersSection.innerHTML =
         '<p class="empty-workers">You have no any workers. Add some to manage...</p>';
     }
-    workersPerPage.map((data, index) => {
+    companyWorkers.map((data, index) => {
       const { firstName, lastName, workerID, gender, email, city, country,_id } = data;
       const fullName = `${firstName} ${lastName}`;
       let ihtml = `

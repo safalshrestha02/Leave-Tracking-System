@@ -48,3 +48,7 @@ const submitFormData = async (formData) => {
     });
     return res;
 };
+
+
+const url = window.location.href 
+console.log(url)
