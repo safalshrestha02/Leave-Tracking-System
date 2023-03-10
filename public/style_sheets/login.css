@@ -15,6 +15,10 @@ body {
   font-family: "Open Sans", sans-serif;
   padding: 10rem;
   background-color: #dbe8f4;
+  display: grid;
+  align-items: center;
+  width: 100dvw;
+  height: 100dvh;
 }
 
 .main-container {
@@ -143,11 +147,14 @@ a {
 
 @media only screen and (max-width: 1560px) {
   #ecobees-text-logo {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
+  }
+  .signIn-as-text {
+    font-size: 1.5rem;
   }
   .right-container {
     justify-content: center;
-    flex-basis: 35%;
+    flex-basis: 45%;
     display: flex;
     background-color: #3c4048;
     border-radius: 0 2rem 2rem 0;
@@ -158,6 +165,131 @@ a {
   }
   .right-container-heading {
     font-size: 1.7rem;
+  }
+  .ecobees-trans-logo {
+    width: 9rem;
+  }
+  .client-bee-logo {
+    width: 20rem;
+  }
+  .login-input-field {
+    font-size: 0.9rem;
+    padding: 0.7rem;
+  }
+  .login-button {
+    font-size: 1rem;
+    line-height: 2.8rem;
+  }
+  #worker-login-bee-image, #client-login-bee-image {
+    width: 23rem;
+  }
+  body {
+    padding: 6rem;
+  }
+}
+@media only screen and (max-width: 850px) {
+  .main-container {
+    display: block;
+    box-shadow: none;
+  }
+  .left-container {
+    background-color: #dbe8f4;
+  }
+  .left-container-heading {
+    position: initial;
+  }
+  .right-container {
+    display: block;
+    padding-top: 0.5rem;
+    width: 70%;
+    border-radius: 0.5rem;
+    margin: 0 auto;
+  }
+  .login-input-field {
+    font-size: 0.8rem;
+  }
+  .login-button {
+    font-size: 0.8rem;
+    line-height: 2rem;
+    border-radius: 0.2rem;
+    width: 100%;
+  }
+  .forgot-password {
+    font-size: 0.9rem;
+  }
+  #ecobee-logo {
+    position: absolute;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    top: 1rem;
+  }
+  #worker-login-bee-image, #client-login-bee-image {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 25rem;
+  }
+  body {
+    padding: 1rem;
+    text-align: center;
+    position: relative;
+  }
+  .login-input-field {
+    width: 100%;
+    border-radius: 0.2rem;
+  }
+  .register-errors {
+    font-size: 0.8rem;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .right-container {
+    border-radius: 0.5rem;
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 0.5rem;
+  }
+  #worker-login-bee-image {
+    bottom: 2rem;
+    width: 20rem;
+  }
+  #client-login-bee-image {
+    width: 14rem;
+  }
+}
+@media only screen and (max-width: 475px) {
+  .right-container {
+    width: 90%;
+  }
+  #worker-login-bee-image {
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 15rem;
+  }
+  #client-login-bee-image {
+    width: 16rem;
+  }
+  body {
+    padding: 0;
+  }
+}
+@media only screen and (max-height: 770px) {
+  #worker-login-bee-image, #client-login-bee-image {
+    bottom: 1rem;
+  }
+  #ecobee-logo {
+    width: 6.5rem;
+    top: 0.5rem;
+  }
+  #client-login-bee-image {
+    width: 11.5rem;
   }
 }
 .forgot-password {
@@ -195,4 +327,4 @@ a {
   padding: 0.5rem;
   color: white;
   border-radius: 50%;
-}
+}/*# sourceMappingURL=login.css.map */
