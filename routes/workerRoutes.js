@@ -4,9 +4,8 @@ const router = express.Router();
 
 //paths
 const loadPages = require("../controller/workerPageController");
-const workerAuth = require("../controller/workerAuth");
+const workerAuth = require("../controller/workerAuthController");
 const workerAPI = require("../controller/workerAPI");
-const resetPassword = require("../controller/resetPassword");
 const { requireWorkerAuth } = require("../middleware/workerAuthMiddleware");
 
 //html pages
@@ -15,8 +14,8 @@ router.get("/worker_home", requireWorkerAuth, loadPages.homePage);
 router.get("/worker_applyLeave", requireWorkerAuth, loadPages.leavePage);
 router.get("/worker_profile", requireWorkerAuth, loadPages.workerProfile);
 router.get("/leave_history", requireWorkerAuth, loadPages.leaveHistory);
-router.get("/worker_forgot_password", resetPassword.workerForgotPassword);
-router.get("/worker_reset_password", resetPassword.workerResetPassword);
+router.get("/worker_forgot_password", loadPages.workerForgotPassword);
+router.get("/worker_reset_password", loadPages.workerResetPassword);
 router.get("/logoutWorker", workerAuth.logout);
 
 //APIs

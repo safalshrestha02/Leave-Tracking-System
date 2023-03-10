@@ -103,3 +103,29 @@ exports.clientProfile = (req, res, next) => {
     )
   );
 };
+
+exports.clientForgotPassword = (req, res, next) => {
+  res.sendFile(
+    path.join(
+      __dirname,
+      "../",
+      "./views",
+      "./components",
+      "./utility",
+      "client_forgot_password.html"
+    )
+  );
+};
+
+exports.clientResetPassword = (req, res, next) => {
+  res.sendFile(
+    path.join(
+      __dirname,
+      "../",
+      "./views",
+      "./components",
+      "./utility",
+      "client_reset_password.html"
+    )
+  );
+};

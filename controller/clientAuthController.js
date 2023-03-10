@@ -166,11 +166,11 @@ exports.forgotPassword = async (req, res, next) => {
 
     await client.save({ validateBeforeSave: false });
 
-    const resetUrl = `${process.env.DOMAIN}/${resetToken}`;
+    const resetUrl = `${process.env.CLIENT_DOMAIN}/?token=${resetToken}`;
 
     console.log(resetUrl);
 
-    const message = `You are reveiving this email because you (or someone else) has requested to resest the passord. Please make a PUT request to: \n ${resetUrl} \n\nThis link will expire in 10 minutes`;
+    const message = `You are reveiving this email because you (or someone else) has requested to resest the passord. Please click the link below to reset your password \n ${resetUrl} \n\nThis link will expire in 10 minutes`;
 
     try {
       await sendEmail({
@@ -189,7 +189,7 @@ exports.forgotPassword = async (req, res, next) => {
       await client.save({ validateBeforeSave: false });
 
       return res
-        .status(404)
+        .status(500)
         .json({ message: "Sorry! There is no user with that email" });
     }
   } catch (error) {
