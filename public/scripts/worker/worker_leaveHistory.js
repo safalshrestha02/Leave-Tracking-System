@@ -53,7 +53,6 @@ const checkworkersRequest = async () => {
     rejectedArray = []
     upcomingArray = []
     workersLeaveHistory.map((data) => {
-
       parsedendDate = Date.parse(data.endDate.slice(0, 10))
       parsedStartDate = Date.parse(data.startDate.slice(0, 10))
 

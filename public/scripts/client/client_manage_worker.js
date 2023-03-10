@@ -130,7 +130,7 @@ const fetchWorkers = async () => {
     } else {
       manageWorkersSection.innerHTML = "";
       filtered.map((data, index) => {
-        const { firstName, lastName, workerID, gender, email } = data;
+        const { firstName, lastName, workerID, gender, email, city, country,_id } = data;
         const fullName = `${firstName} ${lastName}`;
         let ihtml = `
           <div class="worker-details">
@@ -142,7 +142,7 @@ const fetchWorkers = async () => {
                       <span class="worker-name">${fullName}</span>
                   </span>
                   <div class="worker-profile">
-                    <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}")'></i>
+                    <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}","${city}", "${country}")'></i>
                   </div>
 
               </div>
@@ -155,7 +155,7 @@ const fetchWorkers = async () => {
               <div class="worker-gender-delete">
                   <p class="gender">${gender}</p>
 
-                  <button class="worker-delete-button" onClick='confirmDelete(${workerID},${index})'>
+                  <button class="worker-delete-button" onClick='confirmDelete("${workerID}","${_id}","${fullName}")'>
                       <i class="fa-solid fa-trash"></i>
                   </button>
 
@@ -250,7 +250,7 @@ const fetchWorkers = async () => {
       });
       manageWorkersSection.innerHTML = "";
       nameAscending.map((data) => {
-        const { firstName, lastName, workerID, gender, email } = data;
+        const { firstName, lastName, workerID, gender, email, city, country,_id } = data;
         const fullName = `${firstName} ${lastName}`;
         let ihtml = `
         <div class="worker-details">
@@ -263,7 +263,7 @@ const fetchWorkers = async () => {
                 </span>
 
                 <div class="worker-profile">
-                    <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}")'></i>
+                    <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}","${city}", "${country}")'></i>
                 </div>
 
             </div>
@@ -276,7 +276,7 @@ const fetchWorkers = async () => {
             <div class="worker-gender-delete">
                 <p class="gender">${gender}</p>
 
-                <button class="worker-delete-button" onClick='confirmDelete(${workerID})'>
+                <button class="worker-delete-button" onClick='confirmDelete("${workerID}","${_id}","${fullName}")'>
                     <i class="fa-solid fa-trash"></i>
                 </button>
             </div>
@@ -317,7 +317,7 @@ const fetchWorkers = async () => {
       });
       manageWorkersSection.innerHTML = "";
       nameDescending.map((data) => {
-        const { firstName, lastName, workerID, gender, email } = data;
+        const { firstName, lastName, workerID, gender, email, city, country,_id } = data;
         const fullName = `${firstName} ${lastName}`;
         let ihtml = `
         <div class="worker-details">
@@ -330,7 +330,7 @@ const fetchWorkers = async () => {
                 </span>
 
                 <div class="worker-profile">
-                    <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}")'></i>
+                    <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}","${city}", "${country}")'></i>
                 </div>
 
             </div>
@@ -343,7 +343,7 @@ const fetchWorkers = async () => {
             <div class="worker-gender-delete">
                 <p class="gender">${gender}</p>
 
-                <button class="worker-delete-button" onClick='confirmDelete(${workerID})'>
+                <button class="worker-delete-button" onClick='confirmDelete("${workerID}","${_id}","${fullName}")'>
                     <i class="fa-solid fa-trash"></i>
                 </button>
             </div>
@@ -384,7 +384,7 @@ const fetchWorkers = async () => {
       manageWorkersSection.innerHTML = "";
       
       idAscending.map((data) => {
-        const { firstName, lastName, workerID, gender, email } = data;
+        const { firstName, lastName, workerID, gender, email, city, country,_id } = data;
         const fullName = `${firstName} ${lastName}`;
         let ihtml = `
         <div class="worker-details">
@@ -397,7 +397,7 @@ const fetchWorkers = async () => {
                 </span>
 
                 <div class="worker-profile">
-                    <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}")'></i>
+                    <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}","${city}", "${country}")'></i>
                 </div>
 
             </div>
@@ -410,7 +410,7 @@ const fetchWorkers = async () => {
             <div class="worker-gender-delete">
                 <p class="gender">${gender}</p>
 
-                <button class="worker-delete-button" onClick='confirmDelete(${workerID})'>
+                <button class="worker-delete-button" onClick='confirmDelete("${workerID}","${_id}","${fullName}")'>
                     <i class="fa-solid fa-trash"></i>
                 </button>
             </div>
@@ -454,7 +454,7 @@ const fetchWorkers = async () => {
       manageWorkersSection.innerHTML = "";
       
       idDescending.map((data) => {
-        const { firstName, lastName, workerID, gender, email } = data;
+        const { firstName, lastName, workerID, gender, email, city, country,_id } = data;
         const fullName = `${firstName} ${lastName}`;
         let ihtml = `
         <div class="worker-details">
@@ -467,7 +467,7 @@ const fetchWorkers = async () => {
                 </span>
 
                 <div class="worker-profile">
-                    <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}")'></i>
+                    <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}","${city}", "${country}")'></i>
                 </div>
 
             </div>
@@ -480,7 +480,7 @@ const fetchWorkers = async () => {
             <div class="worker-gender-delete">
                 <p class="gender">${gender}</p>
 
-                <button class="worker-delete-button" onClick='confirmDelete(${workerID})'>
+                <button class="worker-delete-button" onClick='confirmDelete("${workerID}","${_id}","${fullName}")'>
                     <i class="fa-solid fa-trash"></i>
                 </button>
             </div>
