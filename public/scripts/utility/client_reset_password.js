@@ -9,6 +9,20 @@ const newPasswordError = document.querySelector(".new-password-error");
 const confirmPasswordError = document.querySelector(".confirm-password-error");
 
 
+// -----------handling input fields--------------
+newPassword.addEventListener("input", () => {
+    newPasswordError.textContent = ""
+    confirmPasswordError.textContent = ""
+})
+confirmPassword.addEventListener("input", () => {
+    confirmPasswordError.textContent = ""
+})
+
+// ----------Getting Token---------------
+const url_string = (window.location.href).toLowerCase();
+const url = new URL(url_string);
+const token = url.searchParams.get("token");
+
 // ----------------Handling Form--------------------
 
 form.addEventListener("submit", async (e) => {
@@ -30,7 +44,28 @@ form.addEventListener("submit", async (e) => {
             const password = confirmPassword.value
             console.log(password)
 
-            // const response = await submitFormData()
+            const formData = {
+                newPassword: newPassword.value,
+                confirmPassword: confirmPassword.value,
+            }
+            console.log(formData)
+
+            const response = await submitFormData(formData)
+            const data = await response.json()
+            console.log(response,data)
+
+            if (response.status === 201) {
+                const successAlert = document.querySelector(".success-alert");
+                successAlert.style.display = "block"
+                setTimeout(() => {
+                    successAlert.style.display = "none";
+                    location.assign("http://localhost:3000/client_login");
+                }, 2500);
+            } else {
+                newPasswordError.textContent = ""
+                confirmPasswordError.textContent = ""
+                confirmPasswordError.textContent = "*Something went wrong. Please try again"
+            }
         }
 
     } catch (error) {
@@ -40,7 +75,7 @@ form.addEventListener("submit", async (e) => {
 });
 
 const submitFormData = async (formData) => {
-    const resetPasswordUrl = "http://locahost:3000/"
+    const resetPasswordUrl = `http://localhost:3000/api/clientResetPassword/${token}`
     const res = await fetch(resetPasswordUrl, {
         method: "PUT",
         body: JSON.stringify(formData),
@@ -48,7 +83,3 @@ const submitFormData = async (formData) => {
     });
     return res;
 };
-
-
-const url = window.location.href 
-console.log(url)

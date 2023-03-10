@@ -30,13 +30,8 @@ form.addEventListener("submit", async (e) => {
         } else if (response.status === 404) {
             errorField.textContent = ""
             errorField.textContent = data.message
-        } else {
-            // errorField.innerHTML=`<img src ="/images/load.gif" alt = "Loading fresh data for you" class = "load-gif"/>`
-            // continueButton.style.display = "none"
         }
         
-
-
         if (response.status === 200) {
 
             form.innerHTML = `<p class="reset-link-sent">Reset link has been sent your email</p>`
