@@ -8,7 +8,7 @@ const workersOnLeave = document.querySelector(".active-leave-container");
 
 // -------fetching total workers and display----------------
 const fetchAllWorkers = async () => {
-  const {workers: workers} = await workersUnderClient();
+  const { workers: workers } = await workersUnderClient();
   // console.log(workers)
   totalNumWorkers.textContent = workers.length;
   activeWorkers.textContent =
@@ -19,13 +19,13 @@ const fetchAllWorkers = async () => {
 const fetchAllWorkersLeave = async () => {
   try {
     const companyWorkersLeave = await approvedLeaveRequestsUnderClient();
-    const {workers: workers} = await workersUnderClient();
+    const { workers: workers } = await workersUnderClient();
 
-    let filteredApprovesLeaves =[]
+    let filteredApprovesLeaves = []
 
     workers.forEach((worker) => {
       companyWorkersLeave.forEach((leavesReq) => {
-        if (leavesReq.workerDetails._id === worker._id){
+        if (leavesReq.workerDetails._id === worker._id) {
           filteredApprovesLeaves.push(leavesReq)
         }
       })
@@ -41,7 +41,7 @@ const fetchAllWorkersLeave = async () => {
       : (currentMonth = currentMonth);
     currentDay < 10 ? (currentDay = `0${currentDay}`) : (currentDay = currentDay);
     const fullDate = `${currentYear}${currentMonth}${currentDay}`;
-  
+
     // --filtering workers based on today
     const activeLeaveWorkers = filteredApprovesLeaves.filter((worker) => {
       const startDateLeave = `${worker.startDate.slice(
@@ -52,10 +52,10 @@ const fetchAllWorkersLeave = async () => {
         5,
         7
       )}${worker.endDate.slice(8, 10)}`;
-  
+
       let startDateCheck = parseInt(fullDate) - parseInt(startDateLeave);
       let endDateCheck = parseInt(fullDate) - parseInt(endDateLeave);
-  
+
       if (Math.sign(startDateCheck) === 1 && Math.sign(endDateCheck) === -1) {
         return worker;
       } else if (startDateLeave === fullDate) {
@@ -64,11 +64,11 @@ const fetchAllWorkersLeave = async () => {
         return worker;
       }
     });
-  
+
     // console.log(activeLeaveWorkers)
-  
+
     leaveWorkers.textContent = activeLeaveWorkers.length;
-  
+
     if (activeLeaveWorkers.length !== 0) {
       // ---mapping filtered workers
       activeLeaveWorkers.forEach((worker) => {
@@ -100,6 +100,6 @@ const fetchAllWorkersLeave = async () => {
     console.log(err.message)
   };
 };
- 
+
 
 fetchAllWorkersLeave().then(() => fetchAllWorkers());

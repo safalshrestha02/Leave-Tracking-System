@@ -19,51 +19,70 @@
 
 <body>
   <div class="main-container">
-    <div class="left-container">
-      <nav>
-        <h1 id="main-logo"><span>e</span>coB<span>ee</span>s</h1>
-        <ul id="nav-ul ">
-          <li>
-            <a href="/client_home" class="nav-links "><i class="fa-solid fa-house nav-icon"></i>Home</a>
-          </li>
-          <li class="active">
-            <a href="/client_profile" class="nav-links nav-active"><i class="fa-solid fa-user nav-icon"></i>Profile</a>
-          </li>
-          <li>
-            <a href="/client_manage_leave" class="nav-links"><i
-                class="fa-solid fa-right-from-bracket nav-icon"></i>Manage
-              Leaves</a>
-          </li>
-          <li>
-            <a href="/client_leave_history" class="nav-links"><i
-                class="fa-solid fa-clock-rotate-left nav-icon"></i>Leave
-              History</a>
-          </li>
-          <li>
-            <a href="/client_manage_worker" class="nav-links"><i class="fa-solid fa-user-gear nav-icon"></i>Manage
-              Workers</a>
-          </li>
-          <li>
-            <a href="/client_leave_settings" class="nav-links"><i class="fa-solid fa-gear nav-icon"></i>Leave
-              Settings</a>
-          </li>
-        </ul>
-      </nav>
-      <div class="logout-button-container">
-        <a href="/logoutClient" class="logout-button"><i class="fa-solid fa-arrow-right-from-bracket nav-icon"
-            style="rotate: 180deg"></i>Logout</a>
+
+    <div class="left-container-wrapper">
+      <div class="left-container">
+        <nav>
+          <h1 id="main-logo"><span>e</span>coB<span>ee</span>s</h1>
+          <ul id="nav-ul ">
+            <li>
+              <a href="/client_home" class="nav-links "><i class="fa-solid fa-house nav-icon"></i>Home</a>
+            </li>
+            <li class="active">
+              <a href="/client_profile" class="nav-links nav-active"><i
+                  class="fa-solid fa-user nav-icon"></i>Profile</a>
+            </li>
+            <li>
+              <a href="/client_manage_leave" class="nav-links"><i
+                  class="fa-solid fa-right-from-bracket nav-icon"></i>Manage
+                Leaves</a>
+            </li>
+            <li>
+              <a href="/client_leave_history" class="nav-links"><i
+                  class="fa-solid fa-clock-rotate-left nav-icon"></i>Leave
+                History</a>
+            </li>
+            <li>
+              <a href="/client_manage_worker" class="nav-links"><i class="fa-solid fa-user-gear nav-icon"></i>Manage
+                Workers</a>
+            </li>
+            <li>
+              <a href="/client_leave_settings" class="nav-links"><i class="fa-solid fa-gear nav-icon"></i>Leave
+                Settings</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="logout-button-container">
+          <a href="/logoutClient" class="logout-button"><i class="fa-solid fa-arrow-right-from-bracket nav-icon"
+              style="rotate: 180deg"></i>Logout</a>
+        </div>
       </div>
     </div>
+
     <div class="right-container">
       <div class="navbar-name">
-        <div class="navbar-left">
-          <p>Leave Tracking System</p>
+
+        <div class="hamburger-menu">
+          <i class="fa-solid fa-bars hamburger-bars"></i>
         </div>
+
+        <div class="navbar-left">
+          <p class="right-head">Leave Tracking System</p>
+          <p class="main-logo-responsive"><span>e</span>coB<span>ee</span>s</p>
+        </div>
+
         <div class="navbar-right">
           <button id="button-add-worker">
             <i class="fa-solid fa-user-plus"></i>Add Worker
           </button>
         </div>
+
+        <div class="add-worker-repsonsive">
+          <button class="btn-add-worker-responsive">
+            <i class="fa-solid fa-user-plus"></i>
+          </button>
+        </div>
+
       </div>
 
       <div class="main-password-change-container">
@@ -71,54 +90,40 @@
           <div class="password-left-container">
             <h1>CHANGE PASSSWORD</h1>
             <div class="password-image-container">
-              <img src="https://www.thebeecause.org/wp-content/uploads/2021/09/beesmart-beesafe-550x550.png" id="password-image">
+              <img src="https://www.thebeecause.org/wp-content/uploads/2021/09/beesmart-beesafe-550x550.png"
+                id="password-image">
             </div>
           </div>
           <div class="password-right-container">
             <form class="change-password-form">
-            <div class="current-password-container">
-              <label for="currentPassword" class="password-label">Current Password</label>
-              <input
-                type="password"
-                id="currentPassword"
-                class="password-inputs"
-                required
-              />
-            </div>
-  
-            <div class="new-password-container">
-              <label for="newPassword" class="password-label">New Password</label>
-              <input 
-              type="password" 
-              id="newPassword" 
-              class="password-inputs" 
-              required
-              />
-            </div>
-  
-            <div class="current-password-container">
-              <label for="confirmNewPassword" class="password-label">Confirm Password</label>
-              <input
-                type="password"
-                id="confirmNewPassword"
-                class="password-inputs"
-                required
-              />
-            </div>
-            
-            <div class="error-container">
-  
-            </div>
-            
-            <div class="password-change-button-container">
-              <button class="password-button cancel-button" type="button">Cancel</button>
-              <button class="password-button save-button" type="submit">SAVE</button>
-            </div>
-          </form>
+              <div class="current-password-container">
+                <label for="currentPassword" class="password-label">Current Password</label>
+                <input type="password" id="currentPassword" class="password-inputs" required />
+              </div>
+
+              <div class="new-password-container">
+                <label for="newPassword" class="password-label">New Password</label>
+                <input type="password" id="newPassword" class="password-inputs" required />
+              </div>
+
+              <div class="current-password-container">
+                <label for="confirmNewPassword" class="password-label">Confirm Password</label>
+                <input type="password" id="confirmNewPassword" class="password-inputs" required />
+              </div>
+
+              <div class="error-container">
+
+              </div>
+
+              <div class="password-change-button-container">
+                <button class="password-button cancel-button" type="button">Cancel</button>
+                <button class="password-button save-button" type="submit">SAVE</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-      
+
       <div class=" success-alert alert-boxes password-sucessful-alert">
         <i class="fa-solid fa-check alert-icon password-change-alert-icon"></i>
         <span class="alert-description">
@@ -126,7 +131,7 @@
           Password has been changed!
         </span>
       </div>
-      
+
       <div class="dashboard-content">
 
         <div class="client-details">
@@ -233,31 +238,21 @@
 
             <div class="worker-id-container">
               <div class="worker-id-labels">
-              <label for="workerID" class="worker-id-label"> Worker ID </label>
-              <div class="id-details"></div>
+                <label for="workerID" class="worker-id-label"> Worker ID </label>
+                <div class="id-details"></div>
               </div>
               <div class="double-id-container">
                 <div class="client-id-container">
-                  <input
-                    type="text"
-                    class="register-input-field clear-input client-ID-value"
-                    id="clientID"
-                    maxlength="6"
-                    disabled
-                  />
+                  <input type="text" class="register-input-field clear-input client-ID-value" id="clientID"
+                    maxlength="6" disabled />
                   <p class="companyID_error register-errors"></p>
                 </div>
                 <div class="worker-ids-container">
-                  <input
-                    type="text"
-                    placeholder="Unique Worker ID (5 Digits)"
-                    class="register-input-field clear-input"
-                    id="workerID"
-                    maxlength="5"
-                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                  />
+                  <input type="text" placeholder="Unique Worker ID (5 Digits)" class="register-input-field clear-input"
+                    id="workerID" maxlength="5"
+                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
                   <p class="workerID_error register-errors"></p>
-                </div> 
+                </div>
               </div>
             </div>
 
@@ -267,8 +262,8 @@
                 <div class="suggested-Ids-span-container">
                 </div>
                 <div class="refresh-icon-container">
-                </div> 
-              </div>  
+                </div>
+              </div>
             </div>
 
             <div class="worker-email-container">

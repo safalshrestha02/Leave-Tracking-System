@@ -1,114 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/style_sheets/client_registration.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 
-    <title>ecoBees</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/style_sheets/client_registration.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 
-  <body>
-    <div class="main-container">
-      <div class="left-container">
-        <div class="left-container-heading">
-          <img
-            class="ecobees-trans-logo"
-            src="/images/LOGO_IMG_Trans.png"
-            alt="ecoBees logo"
-          />
-          <h1 id="ecobees-text-logo"><span>e</span>coB<span>ee</span>s</h1>
-        </div>
-      </div>
+  <title>ecoBees</title>
+</head>
 
-      <div class="right-container">
-        <div class="right-container-wrapper">
-          <div class="right-container-heading">
-            <h4>Register your Company</h4>
-            <p>Already registered?<a href="/">Sign In</a></p>
-          </div>
+<body>
+  <div class="main-container">
 
-          <form class="login-form">
-            <input
-              type="text"
-              name="cName"
-              id="cName"
-              placeholder="Company name"
-              class="register-input"
-            />
-            <div class="cname_error register-errors"></div>
-            <input
-              type="text"
-              maxlength="5"
-              name="companyID"
-              id="companyID"
-              placeholder="Company ID"
-              class="register-input"
-              oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-            />
-            <div class="companyID_error register-errors"></div>
-            <input
-              type="text"
-              name="cAddress"
-              id="cAddress"
-              placeholder="Company Address"
-              class="register-input"
-            />
-            <div class="caddress_error register-errors"></div>
-            <input
-              type="text"
-              name="cCName"
-              id="cCName"
-              placeholder="Client's Name"
-              class="register-input"
-            />
-            <div class="cNname_error register-errors"></div>
-            <input
-              type="email"
-              name="cEmail"
-              id="cEmail"
-              placeholder="Email Address"
-              class="register-input email-register-field"
-            />
-            <div class="email_error register-errors"></div>
-            <p class="password-field">
-              <input
-                type="password"
-                name="cPassword"
-                id="cPassword"
-                placeholder="Choose Password"
-                class="register-input password-register-field"
-              />
-              <i class="fa-regular fa-eye-slash"></i>
-            </p>
-            <div class="password_error register-errors"></div>
-            <div class="login-type">
-              <button type="submit" class="login-button">
-                Register Company
-              </button>
-            </div>
-
-            <div class="success-alert alert-boxes">
-              <i class="fa-solid fa-check alert-icon"></i>
-              <span class="alert-description">
-                <h4>Success:</h4>
-                Your account has been registered!
-              </span>
-            </div>
-          </form>
-        </div>
+    <div class="left-container">
+      <div class="left-container-heading">
+        <img class="ecobees-trans-logo" src="/images/LOGO_IMG_Trans.png" alt="ecoBees logo" />
+        <h1 id="ecobees-text-logo"><span>e</span>coB<span>ee</span>s</h1>
       </div>
     </div>
 
-    <script src="/scripts/client/client_registration.js"></script>
-  </body>
+    <div class="right-container">
+      <div class="right-container-wrapper">
+        <div class="right-container-heading">
+          <h4>Register your Company</h4>
+          <p>Already registered?<a href="/">Sign In</a></p>
+        </div>
+
+        <form class="login-form">
+          <input type="text" name="cName" id="cName" placeholder="Company name" class="register-input" />
+          <div class="cname_error register-errors"></div>
+          <input type="text" maxlength="5" name="companyID" id="companyID" placeholder="Company ID"
+            class="register-input"
+            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+          <div class="companyID_error register-errors"></div>
+          <input type="text" name="cAddress" id="cAddress" placeholder="Company Address" class="register-input" />
+          <div class="caddress_error register-errors"></div>
+          <input type="text" name="cCName" id="cCName" placeholder="Client's Name" class="register-input" />
+          <div class="cNname_error register-errors"></div>
+          <input type="email" name="cEmail" id="cEmail" placeholder="Email Address"
+            class="register-input email-register-field" />
+          <div class="email_error register-errors"></div>
+          <p class="password-field">
+            <input type="password" name="cPassword" id="cPassword" placeholder="Choose Password"
+              class="register-input password-register-field" />
+            <i class="fa-regular fa-eye-slash"></i>
+          </p>
+          <div class="password_error register-errors"></div>
+          <div class="login-type">
+            <button type="submit" class="login-button">
+              Register Company
+            </button>
+          </div>
+
+          <div class="success-alert alert-boxes">
+            <i class="fa-solid fa-check alert-icon"></i>
+            <span class="alert-description">
+              <h4>Success:</h4>
+              Your account has been registered!
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="/scripts/client/client_registration.js"></script>
+</body>
+
 </html>
