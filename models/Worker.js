@@ -29,6 +29,7 @@ const registerWorker = new mongoose.Schema(
       type: String,
       require: [true, "*please enter worker ID"],
       minlength: [11, "*please enter 5 digit ID"],
+      unique: [true, "*workerID is already registered"],
     },
     gender: {
       type: String,

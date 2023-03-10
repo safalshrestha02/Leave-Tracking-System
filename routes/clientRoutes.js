@@ -4,10 +4,9 @@ const router = express.Router();
 
 //paths
 const loadPages = require("../controller/clientPageController");
-const clientAuth = require("../controller/clientAuth");
-const addworker = require("../controller/workerAuth");
+const clientAuth = require("../controller/clientAuthController");
+const addworker = require("../controller/workerAuthController");
 const clientAPI = require("../controller/clientAPI");
-const resetPassword = require("../controller/resetPassword");
 const { requireClientAuth } = require("../middleware/clientAuthMiddleware");
 
 //html pages
@@ -23,8 +22,8 @@ router.get(
 router.get("/client_manage_leave", requireClientAuth, loadPages.manageLeave);
 router.get("/client_manage_worker", requireClientAuth, loadPages.manageWorker);
 router.get("/client_profile", requireClientAuth, loadPages.clientProfile);
-router.get("/client_forgot_password", resetPassword.clientForgotPassword);
-router.get("/client_reset_password", resetPassword.clientResetPassword);
+router.get("/client_forgot_password", loadPages.clientForgotPassword);
+router.get("/client_reset_password", loadPages.clientResetPassword);
 router.get("/logoutClient", clientAuth.logout);
 
 //APIs
@@ -60,7 +59,7 @@ router.put(
   requireClientAuth,
   clientAuth.changePassword
 );
-router.put("/api/resetPassword/:resetToken", clientAuth.resetPassword);
+router.put("/api/clientResetPassword/:resetToken", clientAuth.resetPassword);
 
 router.delete("/api/workers/:id", clientAPI.workerDelete);
 

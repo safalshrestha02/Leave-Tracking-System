@@ -64,3 +64,29 @@ exports.leaveHistory = (req, res, next) => {
     )
   );
 };
+
+exports.workerForgotPassword = (req, res, next) => {
+  res.sendFile(
+    path.join(
+      __dirname,
+      "../",
+      "./views",
+      "./components",
+      "./utility",
+      "worker_forgot_password.html"
+    )
+  );
+};
+
+exports.workerResetPassword = (req, res, next) => {
+  res.sendFile(
+    path.join(
+      __dirname,
+      "../",
+      "./views",
+      "./components",
+      "./utility",
+      "worker_reset_password.html"
+    )
+  );
+};
