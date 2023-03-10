@@ -373,10 +373,10 @@ const fetchWorkers = async () => {
       idAsc.classList.add("active-option")
       
       let idAscending = companyWorkers.sort((a, b) => {
-        if (a.firstName.toLowerCase() < b.firstName.toLowerCase()) {
+        if (a.workerID.toLowerCase() < b.workerID.toLowerCase()) {
           return -1;
         }
-        if (a.firstName.toLowerCase() > b.firstName.toLowerCase()) {
+        if (a.workerID.toLowerCase() > b.workerID.toLowerCase()) {
           return 1;
         }
         return 0;
@@ -442,10 +442,10 @@ const fetchWorkers = async () => {
       idDes.classList.add("active-option")
       
       let idDescending = companyWorkers.sort((a, b) => {
-        if (a.firstName.toLowerCase() < b.firstName.toLowerCase()) {
+        if (a.workerID.toLowerCase() < b.workerID.toLowerCase()) {
           return 1;
         }
-        if (a.firstName.toLowerCase() > b.firstName.toLowerCase()) {
+        if (a.workerID.toLowerCase() > b.workerID.toLowerCase()) {
           return -1;
         }
         return 0;
