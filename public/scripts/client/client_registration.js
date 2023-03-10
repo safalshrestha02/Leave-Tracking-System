@@ -72,9 +72,9 @@ form.addEventListener("submit", async (e) => {
   console.log(formData);
 
   try {
-    const res2 = await submitFormData(formData);
-    console.log(res2);
-    const data = await res2.json();
+    const response = await submitFormData(formData);
+    console.log(response);
+    const data = await response.json();
 
     // ---------------handling errors---------
     if (data.errors) {
@@ -121,7 +121,7 @@ form.addEventListener("submit", async (e) => {
       }
     }
 
-    if (res2.status === 201) {
+    if (response.status === 201) {
       const registerInputs = document.querySelectorAll(".register-input");
 
       registerInputs.forEach((inputField) => {
