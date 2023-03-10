@@ -141,7 +141,8 @@ addWorkerForm.addEventListener("submit", async (e) => {
       idDetails.innerHTML = "";
       formcompanyName.value = fixedCompanyName;
       formcompanyID.value = fixedClientID;
-
+      handleRefresh()
+      
       const successAlert = document.querySelector(".success-alert");
       successAlert.style.display = "block";
       setTimeout(() => {
