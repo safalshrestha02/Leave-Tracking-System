@@ -10,6 +10,8 @@ const password_error = document.querySelector(".password_error");
 
 const noPassword = document.querySelector(".fa-eye-slash");
 
+const registerInputs = document.querySelectorAll(".register-input");
+
 // ----------showing and hiding password------------------
 
 noPassword.addEventListener("click", () => {
@@ -26,19 +28,41 @@ noPassword.addEventListener("click", () => {
 
 // ===========form validation====================================
 
-const registerInputs = document.querySelectorAll(".register-input");
+// ----------Handling input fields----------
 
-registerInputs.forEach((inputField) => {
-  inputField.addEventListener("input" , () => {
-    inputField.setAttribute("style", "border: 2px solid initial")
-    companyName_error.textContent = " ";
-    email_error.textContent = " ";
-    clientName_error.textContent = " ";
-    companyID_error.textContent = " ";
-    companyAddress_error.textContent = " ";
-    password_error.textContent = " ";
-  })
-});
+const companyNameField = document.querySelector("#cName")
+const companyIDField = document.querySelector("#companyID")
+const companyAddressField = document.querySelector("#cAddress")
+const clientNameField = document.querySelector("#cCName")
+const clientEmailField = document.querySelector("#cEmail")
+const clientPasswordField = document.querySelector("#cPassword")
+
+console.log(clientPasswordField)
+
+companyNameField.addEventListener("input", () => {
+  companyName_error.textContent = ""
+  companyNameField.setAttribute("style", "border: 2px solid initial")
+})
+companyIDField.addEventListener("input", () => {
+  companyID_error.textContent = ""
+  companyIDField.setAttribute("style", "border: 2px solid initial")
+})
+companyAddressField.addEventListener("input", () => {
+  companyAddress_error.textContent = ""
+  companyAddressField.setAttribute("style", "border: 2px solid initial")
+})
+clientNameField.addEventListener("input", () => {
+  clientName_error.textContent = ""
+  clientNameField.setAttribute("style", "border: 2px solid initial")
+})
+clientEmailField.addEventListener("input", () => {
+  email_error.textContent = ""
+  clientEmailField.setAttribute("style", "border: 2px solid initial")
+})
+clientPasswordField.addEventListener("input", () => {
+  password_error.textContent = ""
+  clientPasswordField.setAttribute("style", "border: 2px solid initial")
+})
 
 //-------------------- form event listener
 
@@ -81,10 +105,10 @@ form.addEventListener("submit", async (e) => {
       console.log(data.errors);
 
       registerInputs.forEach((inputField) => {
-        inputField.setAttribute("style", "border: 2px solid #03c988");
+        inputField.setAttribute("style", "border: 2px solid initial");
 
         inputField.addEventListener("input" , () => {
-          inputField.setAttribute("style", "border: 2px solid #03c988")
+          inputField.setAttribute("style", "border: 2px solid initial")
         })
       });
 
