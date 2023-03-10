@@ -74,10 +74,11 @@ body {
 }
 .login-buttons .login-button {
   background-color: #3c4048;
-  padding: 1.5rem 6rem;
+  width: 25%;
+  padding: 1.3rem;
   border-radius: 0.5rem;
   text-transform: uppercase;
-  transform: translateY(-40%);
+  transform: translateY(-30%);
   display: inline-block;
 }
 .login-buttons .login-button:hover {
@@ -85,5 +86,178 @@ body {
 }
 
 .login-button:nth-child(1) {
-  margin-right: 2.5rem;
+  margin-right: 3rem;
 }
+
+@media only screen and (max-width: 1585px) {
+  .login-button {
+    margin: 3rem 0;
+  }
+  #client-login-button, #worker-login-button {
+    transform: translateY(0);
+  }
+  .description-container h1 {
+    font-size: 2.5rem;
+  }
+  #landing-image {
+    width: 100%;
+  }
+  .landing-image-container {
+    text-align: center;
+  }
+  .logo-and-about {
+    flex-basis: 90%;
+  }
+  .main-container {
+    min-height: fit-content;
+  }
+  #landing-logo {
+    width: 35%;
+  }
+}
+@media only screen and (max-width: 1170px) {
+  .logo-and-about {
+    flex-basis: 100%;
+  }
+  .landing-image-container {
+    display: flex;
+    flex-basis: auto;
+    align-items: end;
+    justify-content: flex-end;
+  }
+  #landing-image {
+    width: 80%;
+  }
+  .logo-and-about p {
+    width: 90%;
+    font-size: 1rem;
+  }
+  .main-container {
+    padding-left: 4rem;
+  }
+  #landing-logo {
+    width: 50%;
+  }
+  .description-container {
+    margin-top: 2rem;
+  }
+}
+@media only screen and (max-width: 1030px) {
+  .main-wrapper {
+    display: block;
+  }
+  #landing-logo {
+    width: 20%;
+  }
+  .landing-image-container {
+    display: block;
+    width: 80%;
+    text-align: center;
+  }
+  #landing-image {
+    width: 60%;
+    transform: translateY(-10%);
+    margin-top: 1rem;
+  }
+  .logo-and-about {
+    width: 100% !important;
+  }
+  .description-container {
+    margin-top: 1.5rem;
+  }
+  .description-container h1 {
+    font-size: 2rem;
+  }
+  .login-buttons {
+    margin-bottom: 2rem;
+  }
+  #client-login-button, #worker-login-button {
+    width: 40%;
+    font-size: 0.8rem;
+    padding: 0.9rem;
+    margin: 0 auto;
+  }
+  #worker-login-button {
+    margin-left: 3rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .description-container h1 {
+    font-size: 1.7rem;
+  }
+  .description-container p {
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+  }
+  #client-login-button, #worker-login-button {
+    width: 40%;
+    padding: 0.6rem;
+    font-size: 0.7rem;
+  }
+  body {
+    padding: 2rem;
+  }
+  .main-container {
+    height: auto;
+  }
+  .login-buttons {
+    margin-bottom: 3rem;
+  }
+  #landing-image {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 570px) {
+  #landing-logo {
+    width: 30%;
+  }
+  .main-container {
+    padding: 0rem 2rem;
+  }
+  #client-login-button, #worker-login-button {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+  }
+  #worker-login-button {
+    margin-top: 1rem;
+  }
+  #landing-image {
+    width: 90%;
+  }
+  .description-container p {
+    font-size: 0.8rem;
+    width: 100%;
+  }
+  .description-container h1 {
+    font-size: 1.4rem;
+  }
+  body {
+    padding: 0;
+  }
+  .main-container {
+    height: 100dvh;
+    border-radius: initial;
+  }
+}
+@media only screen and (max-height: 760px) {
+  .logo-and-about {
+    margin-top: 1rem !important;
+  }
+  body {
+    padding: 0;
+  }
+  .main-container {
+    height: 100dvh;
+    border-radius: initial;
+  }
+  #landing-image {
+    width: 65%;
+  }
+  .login-buttons {
+    margin-bottom: 0;
+  }
+  #landing-logo {
+    width: 25%;
+  }
+}/*# sourceMappingURL=landing_page.css.map */
