@@ -18,19 +18,30 @@ exports.workerDelete = async (req, res, next) => {
 };
 
 exports.clientsWorkers = async (req, res, next) => {
-  const { page, limit } = req.query;
-  const count = await Worker.count();
   const { id } = req.params;
+  const { search, page, limit } = req.query;
 
   try {
-    await Worker.find({ "companyDetail._id": id })
+    let query = { "companyDetail._id": id };
+    const searchRegex = new RegExp(search, "i");
+    if (search) {
+      query.$or = [
+        { firstName: searchRegex },
+        { lastName: searchRegex },
+        { workerID: searchRegex },
+      ];
+    }
+    const count = await Worker.find(query).count();
+
+    await Worker.find(query)
       .limit(limit * 1)
       .skip((page - 1) * limit)
       .then((workers) => {
         if (workers) {
           res.status(201).json({
             workers: workers,
-            totalPages: Math.ceil(count / limit) - 1,
+            found: workers.length,
+            totalPages: Math.ceil(count / limit),
             currentPage: page,
           });
         } else {
@@ -49,14 +60,14 @@ exports.clientsWorkersLeaves = async (req, res, next) => {
       if (!specificClient) {
         res.status(400).json({ error: "No client found with that ID" });
       }
-      const company = specificClient.companyName;
-      Worker.find({
-        "companyDetail._id": id,
-        "companyDetail.companyName": company,
-      });
+      const company = specificClient._id;
+      // Worker.find({
+      //   "companyDetail._id": id,
+      //   "companyDetail.companyName": company,
+      // });
 
       Leaves.find({
-        "workerDetails.companyDetail.companyName": company,
+        "workerDetails.companyDetail._id": company,
       }).then((allLeaves) => {
         res.status(201).json({
           Leaves: allLeaves,
@@ -118,6 +129,7 @@ exports.suggestedIds = async (req, res, next) => {
     next(error);
   }
 };
+
 exports.expireUnapproved = async (req, res) => {
   try {
     let i = 0;
@@ -133,7 +145,10 @@ exports.expireUnapproved = async (req, res) => {
       "workerDetails.companyDetail.companyName": companyName,
     }).then((result) => {
       result.forEach(async () => {
-        if (result[i].endDate < currentDate && result[i].approveState == "pending") {
+        if (
+          result[i].endDate < currentDate &&
+          result[i].approveState == "pending"
+        ) {
           await Leaves.findByIdAndUpdate(result[i]._id, {
             $set: { approveState: "rejected" },
           });
