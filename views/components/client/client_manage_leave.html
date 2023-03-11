@@ -19,52 +19,69 @@
 
 <body>
   <div class="main-container">
-    <div class="left-container">
-      <nav>
-        <h1 id="main-logo"><span>e</span>coB<span>ee</span>s</h1>
-        <ul id="nav-ul ">
-          <li>
-            <a href="/client_home" class="nav-links"><i class="fa-solid fa-house nav-icon"></i>Home</a>
-          </li>
-          <li>
-            <a href="/client_profile" class="nav-links"><i class="fa-solid fa-user nav-icon"></i>Profile</a>
-          </li>
-          <li class="active">
-            <a href="/client_manage_leave" class="nav-links  nav-active"><i
-                class="fa-solid fa-right-from-bracket nav-icon"></i>Manage
-              Leaves</a>
-          </li>
-          <li>
-            <a href="/client_leave_history" class="nav-links"><i
-                class="fa-solid fa-clock-rotate-left nav-icon"></i>Leave
-              History</a>
-          </li>
-          <li>
-            <a href="/client_manage_worker" class="nav-links"><i class="fa-solid fa-user-gear nav-icon"></i>Manage
-              Workers</a>
-          </li>
-          <li>
-            <a href="/client_leave_settings" class="nav-links"><i class="fa-solid fa-gear nav-icon"></i>Leave
-              Settings</a>
-          </li>
-        </ul>
-      </nav>
-      <div class="logout-button-container">
-        <a href="/logoutClient" class="logout-button"><i class="fa-solid fa-arrow-right-from-bracket nav-icon"
-            style="rotate: 180deg"></i>Logout</a>
+
+    <div class="left-container-wrapper">
+      <div class="left-container">
+        <nav>
+          <h1 id="main-logo"><span>e</span>coB<span>ee</span>s</h1>
+          <ul id="nav-ul ">
+            <li>
+              <a href="/client_home" class="nav-links"><i class="fa-solid fa-house nav-icon"></i>Home</a>
+            </li>
+            <li>
+              <a href="/client_profile" class="nav-links"><i class="fa-solid fa-user nav-icon"></i>Profile</a>
+            </li>
+            <li class="active">
+              <a href="/client_manage_leave" class="nav-links  nav-active"><i
+                  class="fa-solid fa-right-from-bracket nav-icon"></i>Manage
+                Leaves</a>
+            </li>
+            <li>
+              <a href="/client_leave_history" class="nav-links"><i
+                  class="fa-solid fa-clock-rotate-left nav-icon"></i>Leave
+                History</a>
+            </li>
+            <li>
+              <a href="/client_manage_worker" class="nav-links"><i class="fa-solid fa-user-gear nav-icon"></i>Manage
+                Workers</a>
+            </li>
+            <li>
+              <a href="/client_leave_settings" class="nav-links"><i class="fa-solid fa-gear nav-icon"></i>Leave
+                Settings</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="logout-button-container">
+          <a href="/logoutClient" class="logout-button"><i class="fa-solid fa-arrow-right-from-bracket nav-icon"
+              style="rotate: 180deg"></i>Logout</a>
+        </div>
       </div>
     </div>
 
     <div class="right-container">
       <div class="navbar-name">
-        <div class="navbar-left">
-          <p>Leave Tracking System</p>
+
+        <div class="hamburger-menu">
+          <i class="fa-solid fa-bars hamburger-bars"></i>
         </div>
+
+        <div class="navbar-left">
+          <p class="right-head">Leave Tracking System</p>
+          <p class="main-logo-responsive"><span>e</span>coB<span>ee</span>s</p>
+        </div>
+
         <div class="navbar-right">
           <button id="button-add-worker">
             <i class="fa-solid fa-user-plus"></i>Add Worker
           </button>
         </div>
+
+        <div class="add-worker-repsonsive">
+          <button class="btn-add-worker-responsive">
+            <i class="fa-solid fa-user-plus"></i>
+          </button>
+        </div>
+
       </div>
 
       <div class="dashboard-content">
@@ -163,7 +180,7 @@
                   disabled />
                 <p class="companyName_error register-errors"></p>
               </div>
-              
+
 
               <div class="form-gender-container">
                 <p class="choose-gender">Choose gender</p>
@@ -204,8 +221,8 @@
                   <div class="suggested-Ids-span-container">
                   </div>
                   <div class="refresh-icon-container">
-                  </div> 
-                </div>  
+                  </div>
+                </div>
               </div>
 
               <div class="worker-email-container">
