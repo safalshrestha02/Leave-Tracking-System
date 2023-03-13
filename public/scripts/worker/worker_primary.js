@@ -54,3 +54,33 @@ const fetchLeavesYearly = async () => {
   const { leavesYearly } = woorkerResult
   return leavesYearly
 }
+
+const leftContainerWrapper = document.querySelector('.left-container-wrapper')
+const hamBurgerMenu = document.querySelector('.hamburger-bars')
+const closeMenu = document.querySelector('.close-menu')
+
+const openHamburgerMenu = () => {
+  leftContainerWrapper.classList.add('active-hamburger')
+  leftContainerWrapper.classList.add('animate')
+  setTimeout(() => {
+    leftContainerWrapper.classList.remove('animate')
+  }, 100)
+}
+
+const closeHamburgerMenu = () => {
+  leftContainerWrapper.classList.remove('animate')
+  setTimeout(() => {
+    leftContainerWrapper.classList.add('animate')
+  }, 100)
+
+  setTimeout(() => {
+    leftContainerWrapper.classList.remove('active-hamburger')
+  }, 300)
+
+  setTimeout(() => {
+    leftContainerWrapper.classList.remove('animate')
+  }, 500)
+}
+
+hamBurgerMenu.addEventListener('click', openHamburgerMenu)
+closeMenu.addEventListener('click', closeHamburgerMenu)

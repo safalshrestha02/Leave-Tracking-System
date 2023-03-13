@@ -100,22 +100,22 @@ li {
 
 .logout-button-container {
   width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 2rem;
 }
 
 .logout-button {
   text-decoration: none;
   width: 100%;
-  padding: 0.8rem;
-  margin-bottom: 3rem;
   color: white;
   border-radius: 0.5rem;
-  display: inline-block;
   transition: 0.2s ease;
   -webkit-transition: 0.2s ease;
 }
 
-.logout-button:hover {
+.logout-button-container:hover {
   background-color: #ff0032;
+  cursor: pointer;
   border-radius: 0.5rem;
 }
 
@@ -808,4 +808,4 @@ select {
   padding: 0.5rem;
   color: white;
   border-radius: 50%;
-}/*# sourceMappingURL=client_leave_settings.css.map */
+}

@@ -13,10 +13,6 @@
   font-weight: 400;
 }
 
-body {
-  background: #dbe8f4;
-}
-
 a {
   text-decoration: none;
 }
@@ -24,7 +20,6 @@ a {
 .main-container {
   background-color: #f3f5f7;
   display: flex;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .capitalize-input {
@@ -49,7 +44,26 @@ a {
   font-family: "Poppins", sans-serif;
 }
 
+.main-logo-responsive {
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: black;
+  font-family: "Poppins", sans-serif;
+  display: none;
+}
+
+.main-logo-responsive span {
+  font-weight: 500;
+  color: #fdb514;
+  font-family: "Poppins", sans-serif;
+}
+
 /* -----------------------left container ---------------- */
+.left-container-wrapper {
+  min-height: 100vh;
+}
+
 .left-container {
   background: #3c4048;
   padding: 0.5rem 1rem 2rem 1rem;
@@ -58,6 +72,7 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  z-index: 11111;
 }
 
 li {
@@ -73,6 +88,9 @@ li {
   padding: 1rem;
   display: inline-block;
   color: white;
+  font-size: 1rem;
+  transition: 0.2s ease;
+  -webkit-transition: 0.2s ease;
 }
 .nav-links:hover {
   color: #fdb514;
@@ -89,22 +107,57 @@ li {
   color: black;
 }
 
-.logout-button {
-  text-decoration: none;
-  padding: 0.8rem;
-  margin-bottom: 3rem;
-  color: white;
+.logout-button-container {
   width: 100%;
-  display: inline-block;
+  padding: 0.8rem;
+  margin-bottom: 2rem;
 }
 
-.logout-button:hover {
+.logout-button {
+  text-decoration: none;
+  width: 100%;
+  color: white;
+  border-radius: 0.5rem;
+  transition: 0.2s ease;
+  -webkit-transition: 0.2s ease;
+}
+
+.logout-button-container:hover {
   background-color: #ff0032;
+  cursor: pointer;
   border-radius: 0.5rem;
 }
 
 .nav-icon {
   margin-right: 1.5rem;
+}
+
+.hamburger-menu {
+  font-size: 2rem;
+  display: none;
+  cursor: pointer;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+.hamburger-menu:hover {
+  color: #fdb514;
+}
+
+.close-menu-container {
+  display: none;
+}
+
+.close-menu {
+  color: white;
+  font-size: 1.5rem;
+  position: fixed;
+  padding: 1.3rem 0 0 1.3rem;
+  cursor: pointer;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+.close-menu:hover {
+  color: #fdb514;
 }
 
 /* -----------------------right container ----------------  */
@@ -182,6 +235,223 @@ li {
   border-radius: 50%;
 }
 
+@media only screen and (max-width: 1805px) {
+  .left-container {
+    width: 15vw;
+  }
+  .nav-links {
+    font-size: 0.9rem;
+  }
+  .logout-button {
+    font-size: 0.9rem;
+  }
+}
+@media only screen and (max-width: 1660px) {
+  .left-container {
+    width: 16vw;
+  }
+}
+@media only screen and (max-width: 1565px) {
+  .left-container {
+    width: 17vw;
+  }
+}
+@media only screen and (max-width: 1490px) {
+  .left-container {
+    width: 18vw;
+  }
+}
+@media only screen and (max-width: 1415px) {
+  .left-container {
+    width: 19vw;
+  }
+}
+@media only screen and (max-width: 1260px) {
+  .left-container {
+    width: 20vw;
+  }
+}
+@media only screen and (max-width: 1205px) {
+  .left-container {
+    width: 21vw;
+  }
+  .dashboard-content {
+    padding: 1rem 2rem;
+  }
+}
+@media only screen and (max-width: 1155px) {
+  .left-container {
+    width: 22vw;
+  }
+}
+@media only screen and (max-width: 1110px) {
+  .left-container {
+    width: 23vw;
+  }
+  #main-logo {
+    font-size: 1.8rem;
+  }
+}
+@media only screen and (max-width: 1023px) {
+  .dashboard-content {
+    background: none;
+    box-shadow: none;
+    width: 100%;
+    margin-top: 0;
+  }
+  .navbar-name {
+    margin-bottom: 0.5rem;
+    justify-content: center;
+    align-items: center;
+  }
+  .right-container {
+    background-color: white;
+  }
+  .left-container {
+    width: 40vw;
+    text-align: left;
+  }
+  .left-container-wrapper {
+    position: fixed;
+    width: 100vw;
+    min-height: 100vh;
+    display: none;
+    transition: 0.7s;
+    z-index: 2;
+    backdrop-filter: blur(0.5px);
+  }
+  .nav-links {
+    font-size: 1rem;
+    transition: 0.2s;
+    -webkit-transition: 0.2s ease;
+  }
+  .logout-button {
+    font-size: 1rem;
+    margin-top: 10rem;
+  }
+  .navbar-id {
+    display: none;
+  }
+  .worker-name {
+    display: none;
+  }
+  .main-logo-responsive {
+    display: block;
+    text-align: center;
+  }
+  .hamburger-menu {
+    display: block;
+    position: absolute;
+    left: 5px;
+    margin-left: 1.5rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .close-menu-container {
+    display: block;
+  }
+}
+.active-hamburger {
+  display: block;
+}
+
+.animate {
+  transform: translateX(-100%);
+}
+
+@media only screen and (max-width: 800px) {
+  #main-logo {
+    font-size: 1.7rem;
+  }
+  .close-menu {
+    font-size: 1.4rem;
+  }
+}
+@media only screen and (max-width: 747px) {
+  #main-logo {
+    font-size: 1.6rem;
+  }
+  .close-menu {
+    font-size: 1.3rem;
+  }
+}
+@media only screen and (max-width: 715px) {
+  #main-logo {
+    font-size: 1.5rem;
+  }
+  .close-menu {
+    font-size: 1.2rem;
+    padding-top: 1.1rem;
+  }
+}
+@media only screen and (max-width: 660px) {
+  .left-container {
+    width: 100vw;
+  }
+  .nav-links {
+    font-size: 1rem;
+  }
+  .logout-button {
+    font-size: 1rem;
+  }
+  #main-logo {
+    font-size: 1.8rem;
+  }
+  .close-menu {
+    font-size: 1.5rem;
+    padding: 1.3rem 0 0 1.3rem;
+  }
+}
+@media only screen and (max-width: 468px) {
+  .main-logo-responsive {
+    font-size: 1.8rem;
+  }
+  .hamburger-bars {
+    font-size: 1.7rem;
+  }
+}
+@media only screen and (max-width: 430px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+}
+@media only screen and (max-width: 425px) {
+  .main-logo-responsive {
+    font-size: 1.7rem;
+  }
+  .hamburger-bars {
+    font-size: 1.6rem;
+  }
+  html,
+  body {
+    overflow-x: hidden;
+  }
+}
+@media only screen and (max-width: 390px) {
+  .main-logo-responsive {
+    font-size: 1.6rem;
+  }
+  .hamburger-menu {
+    display: flex;
+    align-items: center;
+  }
+  .hamburger-bars {
+    font-size: 1.4rem;
+  }
+  html,
+  body {
+    overflow-x: hidden;
+  }
+}
+@media only screen and (max-width: 375px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+}
 .dashboard-content {
   margin-bottom: 3rem;
 }
@@ -264,17 +534,26 @@ li {
   min-width: 30%;
   margin-bottom: 1rem;
 }
-.pending-and-approved .pending-and-approved-container .worker-leaves .leave-type {
+.pending-and-approved
+  .pending-and-approved-container
+  .worker-leaves
+  .leave-type {
   font-weight: 500;
   font-size: 1.1rem;
 }
-.pending-and-approved .pending-and-approved-container .worker-leaves .leave-date {
+.pending-and-approved
+  .pending-and-approved-container
+  .worker-leaves
+  .leave-date {
   display: flex;
   justify-content: space-between;
   opacity: 0.6;
   margin: 0.8rem 0;
 }
-.pending-and-approved .pending-and-approved-container .worker-leaves .fa-circle {
+.pending-and-approved
+  .pending-and-approved-container
+  .worker-leaves
+  .fa-circle {
   margin-right: 0.8rem;
 }
 
@@ -284,7 +563,8 @@ li {
   justify-content: space-between;
   align-items: center;
 }
-.leave-type-container .fa-regular, .leave-type-container .fa-trash {
+.leave-type-container .fa-regular,
+.leave-type-container .fa-trash {
   font-size: 1.3rem;
   opacity: 0.6;
 }
@@ -338,7 +618,8 @@ li {
 }
 
 @media only screen and (max-width: 1550px) {
-  .overview .leaves-data, .overview .leaves-number {
+  .overview .leaves-data,
+  .overview .leaves-number {
     font-size: 1.7rem;
   }
 }

@@ -1,108 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Leave Tracking System</title>
-    <link rel="stylesheet" href="/style_sheets/worker_leaveHistory.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
-  </head>
 
-  <body>
-    <div>
-      <div class="main-container">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leave Tracking System</title>
+  <link rel="stylesheet" href="/style_sheets/worker_leaveHistory.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+</head>
+
+<body>
+  <div>
+    <div class="main-container">
+
+      <div class="left-container-wrapper">
+
         <div class="left-container">
           <nav>
+
+            <div class="close-menu-container">
+              <i class="fa-solid fa-xmark close-menu"></i>
+            </div>
+
             <h1 id="main-logo"><span>e</span>coB<span>ee</span>s</h1>
+
             <ul id="nav-ul ">
+
               <li>
-                <a href="/worker_home" class="nav-links"
-                  ><i class="fa-solid fa-house nav-icon"></i>Home</a
-                >
+                <a href="/worker_home" class="nav-links"><i class="fa-solid fa-house nav-icon"></i>Home</a>
               </li>
 
               <li>
-                <a href="/worker_profile" class="nav-links"
-                  ><i class="fa-solid fa-user nav-icon"></i>Profile</a
-                >
+                <a href="/worker_profile" class="nav-links"><i class="fa-solid fa-user nav-icon"></i>Profile</a>
               </li>
 
               <li>
-                <a href="/worker_applyLeave" class="nav-links"
-                  ><i class="fa-solid fa-right-from-bracket nav-icon"></i>Apply
-                  for Leave</a
-                >
+                <a href="/worker_applyLeave" class="nav-links"><i
+                    class="fa-solid fa-right-from-bracket nav-icon"></i>Apply
+                  for Leave</a>
               </li>
 
               <li class="active">
-                <a href="/leave_history" class="nav-links nav-active"
-                  ><i class="fa-solid fa-clock-rotate-left nav-icon"></i>Leave
-                  History</a
-                >
+                <a href="/leave_history" class="nav-links nav-active"><i
+                    class="fa-solid fa-clock-rotate-left nav-icon"></i>Leave
+                  History</a>
               </li>
+
             </ul>
+
           </nav>
-          <div class="logout-button-container">
-            <a href="/logoutWorker" class="logout-button"
-              ><i
-                class="fa-solid fa-arrow-right-from-bracket nav-icon"
-                style="rotate: 180deg"
-              ></i
-              >Logout</a
-            >
-          </div>
+
+          <a href="/logoutWorker">
+            <div class="logout-button-container">
+              <span class="logout-button"><i class="fa-solid fa-arrow-right-from-bracket nav-icon"
+                  style="rotate: 180deg"></i>
+                Logout
+              </span>
+            </div>
+          </a>
+
         </div>
-        <div class="right-container">
-          <div class="navbar-name">
-            <div>
-              <p class="worker-name"></p>
-            </div>
+      </div>
 
-            <div class="navbar-id">
-              <p class="worker-id">Worker ID:<span id="id-number"></span></p>
-            </div>
+      <div class="right-container">
+        <div class="navbar-name">
+
+          <div class="hamburger-menu">
+            <i class="fa-solid fa-bars hamburger-bars"></i>
           </div>
 
-          <div class="dashboard-content">
-            <div class="workers-leave-history">
-              <h1 class="past-leaves-h1">Leave History</h1>
-              <div class="filter-container">
-                <button class="filter-button">Filter
-                  <i class="fa-solid fa-filter filter-icon close-filter"></i>
+          <div>
+            <p class="worker-name"></p>
+            <p class="main-logo-responsive"><span>e</span>coB<span>ee</span>s</p>
+          </div>
+
+          <div class="navbar-id">
+            <p class="worker-id">Worker ID:<span id="id-number"></span></p>
+          </div>
+
+        </div>
+
+        <div class="dashboard-content">
+
+          <div class="workers-leave-history">
+
+            <h1 class="past-leaves-h1">Leave History</h1>
+
+            <div class="filter-container">
+
+              <button class="filter-button">Filter
+                <i class="fa-solid fa-filter filter-icon close-filter"></i>
+              </button>
+
+              <div class="filter-options-container">
+
+                <p class="filter-name">State</p>
+
+                <button class="filter-option approved-option">
+                  <i class="fa-solid fa-circle icon approved-leave"></i>
+                  Approved Leaves
                 </button>
-                <div class="filter-options-container">
-                  <p class="filter-name">State</p>
-                  <button class="filter-option approved-option">
-                    <i class="fa-solid fa-circle icon approved-leave"></i>
-                    Approved Leaves
-                  </button>
-                  <button class="filter-option rejected-option">
-                    <i class="fa-solid fa-circle icon rejected-leave"></i>
-                    Rejected Leaves
-                  </button>
-                </div>
+
+                <button class="filter-option rejected-option">
+                  <i class="fa-solid fa-circle icon rejected-leave"></i>
+                  Rejected Leaves
+                </button>
+
               </div>
+
             </div>
-            <h2 class="upcoming-title history-title">Upcoming Leaves</h2>
-            <h2 class="rejected-title history-title">Rejected Leaves</h2>
-            <div class="upcoming-leaves-container">
-            </div>
-            <h2 class="past-title history-title">Past Leaves</h2>
-            <div class="past-leaves-container">
-            </div>
+
           </div>
+
+          <h2 class="upcoming-title history-title">Upcoming Leaves</h2>
+
+          <h2 class="rejected-title history-title">Rejected Leaves</h2>
+
+          <div class="upcoming-leaves-container"></div>
+
+          <h2 class="past-title history-title">Past Leaves</h2>
+
+          <div class="past-leaves-container"></div>
+
         </div>
       </div>
     </div>
-    <script src="/scripts/worker/worker_primary.js"></script>
-    <script src="/scripts/worker/worker_leaveHistory.js"></script>
-  </body>
+  </div>
+  <script src="/scripts/worker/worker_primary.js"></script>
+  <script src="/scripts/worker/worker_leaveHistory.js"></script>
+</body>
+
 </html>
