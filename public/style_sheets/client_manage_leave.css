@@ -963,4 +963,112 @@ input[type=radio] {
   .pending-leave-details {
     font-size: 0.9rem;
   }
+  .no-leaves {
+    font-size: 1rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .pending-leave-container {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  #leave-approve-button, #leave-reject-button {
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+  .pending-leave-details {
+    font-size: 1rem;
+  }
+  .description h1 {
+    font-size: 1rem;
+  }
+}
+@media only screen and (max-width: 630px) {
+  .manage-leaves-header h2 {
+    font-size: 1.3rem;
+  }
+  .filter-leaveRequests option {
+    font-size: 0.8rem !important;
+    min-height: 1rem;
+  }
+  .filter-leaveRequests {
+    font-size: 0.8rem !important;
+    padding: 0.5rem 0.8rem !important;
+    overflow: hidden !important;
+  }
+}
+@media only screen and (max-width: 460px) {
+  .pending-leave-details {
+    font-size: 0.9rem;
+  }
+  .description h1 {
+    font-size: 0.9rem !important;
+  }
+  #leave-approve-button, #leave-reject-button {
+    padding: 0.3rem;
+    font-size: 0.8rem;
+  }
+  .manage-leaves-header h2 {
+    font-size: 1.2rem;
+  }
+  .no-leaves {
+    font-size: 0.8rem;
+  }
+  .dashboard-content {
+    padding: 1rem 1.2rem;
+  }
+}
+@media only screen and (max-width: 380px) {
+  .manage-leaves-header h2 {
+    font-size: 1.1rem;
+  }
+  .pending-leave-details {
+    font-size: 0.8rem;
+  }
+  .description h1 {
+    font-size: 0.8rem !important;
+  }
+}
+@media only screen and (max-width: 350px) {
+  .manage-leaves-header {
+    display: block;
+  }
+  .filter-leaveRequests {
+    margin-top: 0.5rem !important;
+    display: inline-block;
+    padding: 0.3rem 0.5rem !important;
+  }
+  .description .description-details {
+    width: 80%;
+    font-size: 0.7rem;
+  }
+  #leave-approve-button, #leave-reject-button {
+    width: fit-content;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .confirm-wrapper {
+    padding: 1rem 2rem !important;
+  }
+}
+@media only screen and (max-width: 545px) {
+  .confirm-wrapper {
+    font-size: 0.8rem !important;
+  }
+  .warning-title {
+    font-size: 0.8rem !important;
+  }
+  .cancel-button-confirm, .approve-button-confirm {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+  #leave-cancel-button, #leave-status-button {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+@media only screen and (max-width: 420px) {
+  .confirm-wrapper {
+    padding: 0.2rem 0.8rem !important;
+    width: 90% !important;
+  }
 }/*# sourceMappingURL=client_manage_leave.css.map */
