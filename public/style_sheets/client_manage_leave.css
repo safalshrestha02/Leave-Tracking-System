@@ -100,22 +100,22 @@ li {
 
 .logout-button-container {
   width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 2rem;
 }
 
 .logout-button {
   text-decoration: none;
   width: 100%;
-  padding: 0.8rem;
-  margin-bottom: 3rem;
   color: white;
   border-radius: 0.5rem;
-  display: inline-block;
   transition: 0.2s ease;
   -webkit-transition: 0.2s ease;
 }
 
-.logout-button:hover {
+.logout-button-container:hover {
   background-color: #ff0032;
+  cursor: pointer;
   border-radius: 0.5rem;
 }
 
@@ -298,7 +298,7 @@ li {
   text-transform: capitalize;
 }
 
-input[type=radio] {
+input[type="radio"] {
   margin-right: 3rem;
 }
 
@@ -771,7 +771,10 @@ input[type=radio] {
   font-size: 1rem;
   font-weight: 600;
 }
-.pending-leave-container .pending-leave-details .description .description-details {
+.pending-leave-container
+  .pending-leave-details
+  .description
+  .description-details {
   display: inline-block;
   opacity: 0.6;
   width: 90%;
@@ -954,7 +957,8 @@ input[type=radio] {
 }
 
 @media only screen and (max-width: 1500px) {
-  #leave-approve-button, #leave-reject-button {
+  #leave-approve-button,
+  #leave-reject-button {
     padding: 0.4rem;
     font-size: 0.9rem;
   }
@@ -971,7 +975,8 @@ input[type=radio] {
   .pending-leave-container {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
-  #leave-approve-button, #leave-reject-button {
+  #leave-approve-button,
+  #leave-reject-button {
     padding: 0.5rem;
     font-size: 1rem;
   }
@@ -1003,7 +1008,8 @@ input[type=radio] {
   .description h1 {
     font-size: 0.9rem !important;
   }
-  #leave-approve-button, #leave-reject-button {
+  #leave-approve-button,
+  #leave-reject-button {
     padding: 0.3rem;
     font-size: 0.8rem;
   }
@@ -1041,7 +1047,8 @@ input[type=radio] {
     width: 80%;
     font-size: 0.7rem;
   }
-  #leave-approve-button, #leave-reject-button {
+  #leave-approve-button,
+  #leave-reject-button {
     width: fit-content;
   }
 }
@@ -1057,11 +1064,13 @@ input[type=radio] {
   .warning-title {
     font-size: 0.8rem !important;
   }
-  .cancel-button-confirm, .approve-button-confirm {
+  .cancel-button-confirm,
+  .approve-button-confirm {
     padding: 0.5rem;
     font-size: 0.8rem;
   }
-  #leave-cancel-button, #leave-status-button {
+  #leave-cancel-button,
+  #leave-status-button {
     padding: 0.5rem;
     font-size: 0.8rem;
   }
@@ -1071,4 +1080,4 @@ input[type=radio] {
     padding: 0.2rem 0.8rem !important;
     width: 90% !important;
   }
-}/*# sourceMappingURL=client_manage_leave.css.map */
+} /*# sourceMappingURL=client_manage_leave.css.map */

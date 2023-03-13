@@ -1,187 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Leave Tracking System</title>
-    <link rel="stylesheet" href="/style_sheets/worker_profile.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
-  </head>
 
-  <body>
-    <div>
-      <div class="main-container">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leave Tracking System</title>
+  <link rel="stylesheet" href="/style_sheets/worker_profile.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+</head>
+
+<body>
+  <div>
+    <div class="main-container">
+
+      <div class="left-container-wrapper">
         <div class="left-container">
           <nav>
+
+            <div class="close-menu-container">
+              <i class="fa-solid fa-xmark close-menu"></i>
+            </div>
+
             <h1 id="main-logo"><span>e</span>coB<span>ee</span>s</h1>
+
             <ul id="nav-ul ">
+
               <li>
-                <a href="/worker_home" class="nav-links"
-                  ><i class="fa-solid fa-house nav-icon"></i>Home</a
-                >
+                <a href="/worker_home" class="nav-links"><i class="fa-solid fa-house nav-icon"></i>Home</a>
               </li>
 
               <li class="active">
-                <a href="/worker_profile" class="nav-links nav-active"
-                  ><i class="fa-solid fa-user nav-icon"></i>Profile</a
-                >
+                <a href="/worker_profile" class="nav-links nav-active"><i
+                    class="fa-solid fa-user nav-icon"></i>Profile</a>
               </li>
 
               <li>
-                <a href="/worker_applyLeave" class="nav-links"
-                  ><i class="fa-solid fa-right-from-bracket nav-icon"></i>Apply
-                  for Leave</a
-                >
+                <a href="/worker_applyLeave" class="nav-links"><i
+                    class="fa-solid fa-right-from-bracket nav-icon"></i>Apply
+                  for Leave</a>
               </li>
 
               <li>
-                <a href="/leave_history" class="nav-links"
-                  ><i class="fa-solid fa-clock-rotate-left nav-icon"></i>Leave
-                  History</a
-                >
+                <a href="/leave_history" class="nav-links"><i class="fa-solid fa-clock-rotate-left nav-icon"></i>Leave
+                  History</a>
               </li>
+
             </ul>
           </nav>
-          <div class="logout-button-container">
-            <a href="/logoutWorker" class="logout-button"
-              ><i
-                class="fa-solid fa-arrow-right-from-bracket nav-icon"
-                style="rotate: 180deg"
-              ></i
-              >Logout</a
-            >
+
+          <a href="/logoutWorker">
+            <div class="logout-button-container">
+              <span class="logout-button"><i class="fa-solid fa-arrow-right-from-bracket nav-icon"
+                  style="rotate: 180deg"></i>
+                Logout
+              </span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+      <div class="right-container">
+        <div class="navbar-name">
+
+          <div class="hamburger-menu">
+            <i class="fa-solid fa-bars hamburger-bars"></i>
+          </div>
+
+          <div>
+            <p class="worker-name"></p>
+            <p class="main-logo-responsive"><span>e</span>coB<span>ee</span>s</p>
+          </div>
+
+          <div class="navbar-id">
+            <p class="worker-id">Worker ID:<span id="id-number"></span></p>
           </div>
         </div>
-        <div class="right-container">
-          <div class="navbar-name">
-            <div>
-              <p class="worker-name"></p>
-            </div>
 
-            <div class="navbar-id">
-              <p class="worker-id">Worker ID:<span id="id-number"></span></p>
-            </div>
-          </div>
-
-          <div class="main-password-change-container">
-            <div class="password-change-container">
-              <div class="password-left-container">
-                <h1>CHANGE PASSSWORD</h1>
-                <div class="password-image-container">
-                  <img src="https://www.thebeecause.org/wp-content/uploads/2021/09/beesmart-beesafe-550x550.png" id="password-image">
-                </div>
+        <div class="main-password-change-container">
+          <div class="password-change-container">
+            <div class="password-left-container">
+              <h1>CHANGE PASSSWORD</h1>
+              <div class="password-image-container">
+                <img src="https://www.thebeecause.org/wp-content/uploads/2021/09/beesmart-beesafe-550x550.png"
+                  id="password-image">
               </div>
-              <div class="password-right-container">
-                <form class="change-password-form">
+            </div>
+            <div class="password-right-container">
+              <form class="change-password-form">
                 <div class="current-password-container">
                   <label for="currentPassword" class="password-label">Current Password</label>
-                  <input
-                    type="password"
-                    id="currentPassword"
-                    class="password-inputs"
-                  />
+                  <input type="password" id="currentPassword" class="password-inputs" />
                 </div>
-      
+
                 <div class="new-password-container">
                   <label for="newPassword" class="password-label">New Password</label>
-                  <input 
-                  type="password" 
-                  id="newPassword" 
-                  class="password-inputs" 
-                  />
+                  <input type="password" id="newPassword" class="password-inputs" />
                 </div>
-      
+
                 <div class="current-password-container">
                   <label for="confirmNewPassword" class="password-label">Confirm Password</label>
-                  <input
-                    type="password"
-                    id="confirmNewPassword"
-                    class="password-inputs"
-                  />
+                  <input type="password" id="confirmNewPassword" class="password-inputs" />
                 </div>
-                
+
                 <div class="error-container">
                 </div>
-                
+
                 <div class="password-change-button-container">
                   <button class="password-button cancel-button">Cancel</button>
                   <button class="password-button save-button" type="submit">SAVE</button>
                 </div>
               </form>
-              </div>
             </div>
           </div>
-          
-          <div class=" success-alert alert-boxes password-sucessful-alert">
-            <i class="fa-solid fa-check alert-icon password-change-alert-icon"></i>
-            <span class="alert-description">
-              <h4>Success:</h4>
-              Password has been changed!
-            </span>
-          </div>
-
-          <div class="dashboard-content">
-            <div class="worker-details">
-              <div class="worker-name-and-sub-title">
-                <p class="worker-name-profile"></p>
-                <p class="worker-sub-title">
-                  <span id="company-name" class="worker-sub-title"></span>
-                  Worker
-                </p>
-              </div>
-            </div>
-
-            <div class="details-table">
-              <div class="profile-companyName profile-details">
-                <p class="details-head emp-companyName">Company</p>
-                <p class="details-body emp-companyName-value"></p>
-              </div>
-
-              <div class="profile-worker-id profile-details">
-                <p class="details-head emp-id">Worker ID</p>
-                <p class="details-body emp-id-value"></p>
-              </div>
-
-              <div class="profile-worker-email profile-details">
-                <p class="details-head emp-email">Email Address</p>
-                <p class="details-body emp-email-value"></p>
-              </div>
-
-              <div class="profile-worker-gender profile-details">
-                <p class="details-head emp-gender">Gender</p>
-                <p class="details-body emp-gender-value"></p>
-              </div>
-
-              <div class="profile-worker-country profile-details">
-                <p class="details-head emp-country">Country</p>
-                <p class="details-body emp-country-value"></p>
-              </div>
-
-              <div class="profile-worker-email profile-details">
-                <p class="details-head emp-city">City</p>
-                <p class="details-body emp-city-value"></p>
-              </div>
-            </div>
-            
-            <div class="change-password-container">
-              <button class="change-password-button"><i class="fa-solid fa-key password-icon"></i><span class="change-text">Change</span> Password</button>
-            </div>
-          
-          </div>
-          
         </div>
+
+        <div class=" success-alert alert-boxes password-sucessful-alert">
+          <i class="fa-solid fa-check alert-icon password-change-alert-icon"></i>
+          <span class="alert-description">
+            <h4>Success:</h4>
+            Password has been changed!
+          </span>
+        </div>
+
+        <div class="dashboard-content">
+          <div class="worker-details">
+            <div class="worker-name-and-sub-title">
+              <p class="worker-name-profile"></p>
+              <p class="worker-sub-title">
+                <span id="company-name" class="worker-sub-title"></span>
+                Worker
+              </p>
+            </div>
+          </div>
+
+          <div class="details-table">
+            <div class="profile-companyName profile-details">
+              <p class="details-head emp-companyName">Company</p>
+              <p class="details-body emp-companyName-value"></p>
+            </div>
+
+            <div class="profile-worker-id profile-details">
+              <p class="details-head emp-id">Worker ID</p>
+              <p class="details-body emp-id-value"></p>
+            </div>
+
+            <div class="profile-worker-email profile-details">
+              <p class="details-head emp-email">Email Address</p>
+              <p class="details-body emp-email-value"></p>
+            </div>
+
+            <div class="profile-worker-gender profile-details">
+              <p class="details-head emp-gender">Gender</p>
+              <p class="details-body emp-gender-value"></p>
+            </div>
+
+            <div class="profile-worker-country profile-details">
+              <p class="details-head emp-country">Country</p>
+              <p class="details-body emp-country-value"></p>
+            </div>
+
+            <div class="profile-worker-email profile-details">
+              <p class="details-head emp-city">City</p>
+              <p class="details-body emp-city-value"></p>
+            </div>
+          </div>
+
+          <div class="change-password-container">
+            <button class="change-password-button"><i class="fa-solid fa-key password-icon"></i><span
+                class="change-text">Change</span> Password</button>
+          </div>
+
+        </div>
+
       </div>
     </div>
+  </div>
 
-    <script src="/scripts/worker/worker_primary.js"></script>
-    <script src="/scripts/worker/worker_profile.js"></script>
-  </body>
+  <script src="/scripts/worker/worker_primary.js"></script>
+  <script src="/scripts/worker/worker_profile.js"></script>
+</body>
+
 </html>
