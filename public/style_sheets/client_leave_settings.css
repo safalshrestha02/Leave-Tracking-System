@@ -218,7 +218,7 @@ li {
   min-height: 100dvh;
   left: 0;
   right: 0;
-  bottom: 0;
+  top: 0;
 }
 
 .form-active {
@@ -808,4 +808,4 @@ select {
   padding: 0.5rem;
   color: white;
   border-radius: 50%;
-}
+}/*# sourceMappingURL=client_leave_settings.css.map */
