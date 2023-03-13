@@ -12,7 +12,6 @@
   padding: 1.7rem;
   border-radius: 0.5rem;
   text-align: center;
-  margin-right: 2rem;
 }
 
 .worker-overview-icon {
@@ -103,4 +102,64 @@
   left: 50%;
   transform: translate(-50%, -50%);
   margin-top: 8rem;
+}
+
+
+// ===========responsive====================
+
+@media only screen and (max-width: 1550px) {
+  .active-leave-name, .active-leave-date  {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 1350px) {
+
+  .dashboard-content {
+    padding: 1rem 2rem;
+  }
+
+  .worker-overview-icon {
+    font-size: 2rem;
+  }
+
+  .worker-overview-number, .worker-overview-status {
+    font-size: 1.2rem;
+  }
+
+  .active-leave-name, .active-leave-date  {
+    font-size: .9rem;
+  }
+  
+}
+
+@media only screen and (max-width: 1260px) {
+  .active-leave-name, .active-leave-date  {
+    font-size: .8rem;
+  }
+}
+
+
+
+@media only screen and (max-width: 1130px) {
+
+  .worker-overview-icon {
+    font-size: 2rem;
+  }
+
+  .worker-overview-number, .worker-overview-status {
+    font-size: 1rem;
+  }
+
+  .active-leave-container {
+    position: relative;
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .active-leave-name, .active-leave-date  {
+    font-size: 1rem;
+  }
 }
