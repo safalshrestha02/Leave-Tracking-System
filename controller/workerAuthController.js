@@ -24,24 +24,28 @@ exports.registerWorker = async (req, res) => {
   } = req.body;
   try {
     const companyDetail = await Client.findOne({ companyName });
+    const dupEmail = await Worker.findOne({ email, companyName });
     if (companyDetail) {
-      const leavesYearly = companyDetail.leavesYearly;
-      const worker = await Worker.create({
-        firstName,
-        lastName,
-        country,
-        city,
-        companyName,
-        workerID,
-        gender,
-        email,
-        password,
-        companyDetail,
-        leavesYearly,
-      });
-      res.status(201).json({ worker: worker._id });
-    } else {
-      res.status(401).json({ error: "couldnt find the company" });
+      if (!dupEmail || dupEmail === []) {
+        const leavesYearly = companyDetail.leavesYearly;
+        const worker = await Worker.create({
+          firstName,
+          lastName,
+          country,
+          city,
+          companyName,
+          workerID,
+          gender,
+          email,
+          password,
+          companyDetail,
+          leavesYearly,
+        });
+        res.status(201).json({ worker: worker._id });
+      }
+      else{
+        res.status(400).json({email : "that email is already registered"})
+      }
     }
   } catch (error) {
     const errors = workerErrHandle(error);

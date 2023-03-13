@@ -40,7 +40,6 @@ const registerWorker = new mongoose.Schema(
       type: String,
       required: [true, "*please enter your email"],
       validate: [isEmail, "*please enter a valid email"],
-      unique: [true, "*please enter unique email"],
     },
     password: {
       type: String,
@@ -90,13 +89,7 @@ registerWorker.statics.registerWorker = async function (
   if (dupWorkerId) {
     throw Error("*worker is already registered");
   }
-
-  const dupEmail = await this.findOne({ email });
-
-  if (dupEmail) {
-    throw Error("*email is already registered");
-  }
-
+  console.log(dupEmail);
   const worker = await this.create({
     workerName,
     country,
