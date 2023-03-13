@@ -703,7 +703,6 @@ input[type=radio] {
   padding: 1.7rem;
   border-radius: 0.5rem;
   text-align: center;
-  margin-right: 2rem;
 }
 
 .worker-overview-icon {
@@ -793,4 +792,100 @@ input[type=radio] {
   left: 50%;
   transform: translate(-50%, -50%);
   margin-top: 8rem;
-}/*# sourceMappingURL=client_home.css.map */
+}
+
+@media only screen and (max-width: 1550px) {
+  .active-leave-name, .active-leave-date {
+    font-size: 1rem;
+  }
+}
+@media only screen and (max-width: 1350px) {
+  .dashboard-content {
+    padding: 1rem 2rem;
+  }
+  .worker-overview-icon {
+    font-size: 2rem;
+  }
+  .worker-overview-number, .worker-overview-status {
+    font-size: 1.2rem;
+  }
+  .active-leave-name, .active-leave-date {
+    font-size: 0.9rem;
+  }
+}
+@media only screen and (max-width: 1130px) {
+  .worker-overview-icon {
+    font-size: 2rem;
+  }
+  .worker-overview-number, .worker-overview-status {
+    font-size: 1rem;
+  }
+  .active-leave-container {
+    position: relative;
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+  .active-leave-name, .active-leave-date {
+    font-size: 1rem;
+  }
+}
+@media only screen and (max-width: 1260px) {
+  .active-leave-name, .active-leave-date {
+    font-size: 0.8rem;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .worker-overview-icon {
+    font-size: 1.5rem;
+  }
+  .worker-overview-number, .worker-overview-status {
+    font-size: 0.9rem;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .worker-overview-icon {
+    font-size: 1.5rem;
+  }
+  .worker-overview-number, .worker-overview-status {
+    font-size: 0.8rem;
+  }
+  .workers-overview {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+@media only screen and (max-width: 550px) {
+  .overview-container {
+    width: 48%;
+  }
+  .workers-overview {
+    padding: 0;
+  }
+  .active-leave-container {
+    position: relative;
+    margin-top: 0;
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+  .active-leave-name, .active-leave-date {
+    font-size: 0.9rem;
+  }
+  .workers-total {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .workers-total p {
+    font-size: 1rem;
+  }
+  .homepage-workers-leave h2 {
+    margin-bottom: 1rem;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .dashboard-content {
+    padding: 1rem;
+  }
+}

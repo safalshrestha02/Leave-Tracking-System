@@ -207,7 +207,6 @@ li {
   padding: 1.7rem;
   border-radius: 0.5rem;
   text-align: center;
-  margin-right: 2rem;
 }
 .overview .leaves-data {
   font-size: 2rem;
@@ -336,4 +335,10 @@ li {
 .load-gif {
   width: 4rem;
   margin: 4rem 0;
-}/*# sourceMappingURL=worker_home.css.map */
+}
+
+@media only screen and (max-width: 1550px) {
+  .overview .leaves-data, .overview .leaves-number {
+    font-size: 1.7rem;
+  }
+}
