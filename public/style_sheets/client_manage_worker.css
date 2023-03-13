@@ -712,6 +712,7 @@ a {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding-bottom: 1.2rem;
 }
 .dashboard-head-container i {
@@ -743,7 +744,6 @@ a {
 }
 .dashboard-head-container .dashboard-filtersection {
   position: relative;
-  margin-right: 3rem;
 }
 .dashboard-head-container .dashboard-filtersection .filter-button {
   padding: 0 1.2rem;
@@ -818,12 +818,11 @@ a {
   text-transform: capitalize;
 }
 .worker-gender-delete .worker-delete-button {
-  width: 10%;
   font-size: 1.1rem;
   border-radius: 5px;
   color: white;
   border: none;
-  padding: 0.5rem;
+  padding: 0.5rem 0.8rem;
   background-color: #ff0032;
 }
 .worker-gender-delete .worker-delete-button:hover {
@@ -858,7 +857,7 @@ a {
   width: 15em;
   padding: 1rem 0.5rem;
   text-align: center;
-  left: -4rem;
+  left: -7.5rem;
   margin-top: 1rem;
   display: none;
   z-index: 10;
@@ -925,7 +924,7 @@ a {
 }
 
 .absolute-worker-details {
-  width: 30%;
+  width: 35vw;
   padding: 2rem;
   text-align: center;
   background-color: #f3f5f7;
@@ -1006,6 +1005,28 @@ a {
   background-color: #fdb514;
 }
 
+.confirm-container {
+  width: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.4) 50%);
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  position: fixed;
+  backdrop-filter: blur(0.5px);
+}
+.confirm-container .confirm-wrapper {
+  min-width: 30%;
+  width: fit-content;
+  padding: 2rem 5rem;
+  text-align: center;
+  background-color: white;
+  border-radius: 1rem;
+}
+
 .delete-worker-detail {
   display: flex;
   justify-content: space-between;
@@ -1028,4 +1049,121 @@ a {
   object-fit: contain;
   margin: 10rem auto;
   grid-column: 1/4;
-}/*# sourceMappingURL=client_manage_worker.css.map */
+}
+
+@media only screen and (max-width: 1400px) {
+  .manage-workers-leave {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media only screen and (max-width: 1205px) {
+  .absolute-worker-details {
+    width: 45vw;
+  }
+}
+@media only screen and (max-width: 870px) {
+  .absolute-worker-details {
+    width: 55vw;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .absolute-worker-details {
+    width: 60vw;
+  }
+}
+@media only screen and (max-width: 630px) {
+  .dashboard-heading {
+    font-size: 1.3rem;
+  }
+  .user-icon,
+  .worker-name,
+  .worker-id,
+  .details-container {
+    font-size: 0.9rem;
+  }
+  .worker-gender-delete .gender {
+    font-size: 1.1rem;
+  }
+  .worker-gender-delete .worker-delete-button {
+    font-size: 0.9rem;
+  }
+  .worker-profile > .details-icon {
+    font-size: 1.1rem !important;
+  }
+  .dashboard-head-container .dashboard-searchsection .dashboard-search {
+    font-size: 0.9rem;
+  }
+  .dashboard-head-container .dashboard-filtersection .filter-button {
+    font-size: 0.9rem;
+    padding: 0 1rem;
+  }
+  .dashboard-head-container .dashboard-filtersection .filter-icon,
+  .dashboard-head-container .dashboard-filtersection .close-filter {
+    font-size: 1rem;
+  }
+  .search-button {
+    display: none;
+  }
+  .filter-buttons,
+  .filter-title {
+    font-size: 0.9rem;
+  }
+  .filter-container {
+    left: -8.3rem;
+  }
+}
+@media only screen and (max-width: 570px) {
+  .manage-workers-leave {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  .absolute-worker-details {
+    width: 80vw;
+  }
+}
+@media only screen and (max-width: 510px) {
+  .confirm-wrapper {
+    padding: 2rem 4rem !important;
+  }
+}
+@media only screen and (max-width: 468px) {
+  .confirm-wrapper {
+    padding: 2rem 3rem !important;
+  }
+}
+@media only screen and (max-width: 430px) {
+  .confirm-wrapper {
+    padding: 2rem 2rem !important;
+    font-size: 0.8rem !important;
+  }
+}
+@media only screen and (max-width: 406px) {
+  .dashboard-head-container .filter-icon {
+    margin-left: 0.5rem;
+  }
+  .filter-button {
+    padding: 0 0.7rem !important;
+  }
+  .dashboard-content {
+    padding: 1rem;
+  }
+  .filter-container {
+    left: -9.3rem;
+  }
+}
+@media only screen and (max-width: 380px) {
+  .dashboard-head-container {
+    display: block;
+  }
+  .dashboard-search {
+    width: 83vw;
+  }
+  .filter-button {
+    margin-top: 1rem;
+  }
+  .filter-container {
+    left: 0.1rem;
+  }
+  .absolute-worker-details {
+    width: 90vw;
+  }
+}
