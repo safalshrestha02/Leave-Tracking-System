@@ -366,3 +366,135 @@ li {
   color: rgb(255, 122, 122);
   margin: 0 auto;
 }
+
+@media only screen and (max-height: 900px) {
+  .change-password-container {
+    bottom: 1rem;
+  }
+  .worker-name-profile {
+    margin-left: 1rem;
+  }
+  .worker-sub-title {
+    margin-left: 0.6rem;
+  }
+  .details-head, .details-body {
+    font-size: 0.9rem;
+  }
+  .change-password-button {
+    padding: 0.5rem;
+    font-size: 0.8rem !important;
+  }
+}
+@media only screen and (max-width: 1023px) {
+  .dashboard-content {
+    width: 90%;
+    padding: 0;
+  }
+  .change-password-container {
+    right: 0;
+  }
+  .change-password-button {
+    padding: 0.5;
+    font-size: 0.9rem;
+  }
+  .worker-name-profile {
+    font-size: 2rem;
+  }
+}
+@media only screen and (max-width: 620px) {
+  .worker-name-profile {
+    font-size: 1.6rem;
+    margin-left: 1rem;
+  }
+  .worker-sub-title {
+    font-size: 0.8rem;
+    margin-left: 0.6rem;
+  }
+  .profile-details {
+    display: block;
+  }
+  .details-body {
+    margin-top: 0.8rem;
+  }
+  .dashboard-content {
+    margin: 0 auto;
+  }
+  .worker-sub-title {
+    margin-left: 0.6rem;
+  }
+  .details-head, .details-body {
+    font-size: 0.9rem;
+  }
+  .change-password-button {
+    padding: 0.4rem;
+    font-size: 0.7rem !important;
+  }
+}
+@media only screen and (orientation: portrait) {
+  .change-password-container {
+    top: 0.2rem;
+  }
+}
+@media only screen and (max-width: 575px) {
+  .change-text {
+    display: none;
+  }
+  .password-icon {
+    margin-right: 0.2rem;
+  }
+  .worker-name-profile {
+    font-size: 1.3rem;
+    margin-left: 1rem;
+  }
+  .worker-sub-title {
+    font-size: 0.7rem;
+    margin-left: 0.6rem;
+  }
+}
+@media only screen and (max-width: 1240px) {
+  .password-left-container h1 {
+    font-size: 1.8rem;
+  }
+  .password-change-container {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+@media only screen and (max-width: 1023px) {
+  .password-change-container {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+@media only screen and (max-width: 950px) {
+  .password-change-container {
+    display: block;
+    width: 100%;
+  }
+  .password-left-container {
+    display: none;
+  }
+  .password-right-container {
+    border-radius: 0.4rem;
+    width: 100%;
+  }
+  .password-label {
+    font-size: 0.9rem;
+  }
+  .password-inputs {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+  .error-message {
+    font-size: 0.9rem;
+  }
+  .password-button {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+}
+@media only screen and (orientation: portrait) {
+  .password-change-container {
+    width: 90%;
+  }
+}/*# sourceMappingURL=worker_profile.css.map */
