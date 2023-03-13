@@ -218,7 +218,7 @@ li {
   min-height: 100dvh;
   left: 0;
   right: 0;
-  bottom: 0;
+  top: 0;
 }
 
 .form-active {
@@ -298,7 +298,7 @@ li {
   text-transform: capitalize;
 }
 
-input[type="radio"] {
+input[type=radio] {
   margin-right: 3rem;
 }
 
@@ -795,8 +795,7 @@ input[type="radio"] {
 }
 
 @media only screen and (max-width: 1550px) {
-  .active-leave-name,
-  .active-leave-date {
+  .active-leave-name, .active-leave-date {
     font-size: 1rem;
   }
 }
@@ -807,12 +806,10 @@ input[type="radio"] {
   .worker-overview-icon {
     font-size: 2rem;
   }
-  .worker-overview-number,
-  .worker-overview-status {
+  .worker-overview-number, .worker-overview-status {
     font-size: 1.2rem;
   }
-  .active-leave-name,
-  .active-leave-date {
+  .active-leave-name, .active-leave-date {
     font-size: 0.9rem;
   }
 }
@@ -820,8 +817,7 @@ input[type="radio"] {
   .worker-overview-icon {
     font-size: 2rem;
   }
-  .worker-overview-number,
-  .worker-overview-status {
+  .worker-overview-number, .worker-overview-status {
     font-size: 1rem;
   }
   .active-leave-container {
@@ -831,14 +827,12 @@ input[type="radio"] {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.5rem;
   }
-  .active-leave-name,
-  .active-leave-date {
+  .active-leave-name, .active-leave-date {
     font-size: 1rem;
   }
 }
 @media only screen and (max-width: 1260px) {
-  .active-leave-name,
-  .active-leave-date {
+  .active-leave-name, .active-leave-date {
     font-size: 0.8rem;
   }
 }
@@ -846,8 +840,7 @@ input[type="radio"] {
   .worker-overview-icon {
     font-size: 1.5rem;
   }
-  .worker-overview-number,
-  .worker-overview-status {
+  .worker-overview-number, .worker-overview-status {
     font-size: 0.9rem;
   }
 }
@@ -855,8 +848,7 @@ input[type="radio"] {
   .worker-overview-icon {
     font-size: 1.5rem;
   }
-  .worker-overview-number,
-  .worker-overview-status {
+  .worker-overview-number, .worker-overview-status {
     font-size: 0.8rem;
   }
   .workers-overview {
@@ -878,8 +870,7 @@ input[type="radio"] {
     grid-template-columns: repeat(1, minmax(0, 1fr));
     gap: 1.5rem;
   }
-  .active-leave-name,
-  .active-leave-date {
+  .active-leave-name, .active-leave-date {
     font-size: 0.9rem;
   }
   .workers-total {
@@ -897,4 +888,4 @@ input[type="radio"] {
   .dashboard-content {
     padding: 1rem;
   }
-}
+}/*# sourceMappingURL=client_home.css.map */

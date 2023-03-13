@@ -141,7 +141,7 @@ const leaveHistory = async () => {
                             <div class="client-leave-history-leave-status">
                                 <p>
                                     <i class="fa-solid fa-circle ${approveState}-leave"></i>
-                                    ${capitalize(approveState)}
+                                    <span class="history-leave-status">${capitalize(approveState)} </span>
                                 </p>
                             </div>
         
@@ -174,7 +174,7 @@ const leaveHistory = async () => {
                                 <div class="client-leave-history-leave-status">
                                     <p>
                                         <i class="fa-solid fa-circle ${approveState}-leave"></i>
-                                        ${capitalize(approveState)}
+                                        <span class="history-leave-status">${capitalize(approveState)} </span>
                                     </p>
                                 </div>
     
@@ -283,7 +283,7 @@ const leaveHistory = async () => {
                             <div class="client-leave-history-leave-status">
                                 <p>
                                     <i class="fa-solid fa-circle ${approveState}-leave"></i>
-                                    ${capitalize(approveState)}
+                                    <span class="history-leave-status">${capitalize(approveState)} </span>
                                 </p>
                             </div>
     

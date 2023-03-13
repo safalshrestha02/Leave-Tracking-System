@@ -218,7 +218,7 @@ li {
   min-height: 100dvh;
   left: 0;
   right: 0;
-  bottom: 0;
+  top: 0;
 }
 
 .form-active {
@@ -884,3 +884,73 @@ input[type=radio] {
   color: #3c79f5;
   border-bottom: 3px solid #3c79f5;
 }
+
+@media only screen and (max-width: 1550px) {
+  .client-leave-history-leave-type, .client-leave-history-leave-date, .history-leave-status {
+    font-size: 1rem;
+  }
+}
+@media only screen and (max-width: 1350px) {
+  .dashboard-content {
+    padding: 1rem 2rem;
+  }
+  .client-leave-history-leave-type, .client-leave-history-leave-date, .history-leave-status {
+    font-size: 0.9rem;
+  }
+}
+@media only screen and (max-width: 1130px) {
+  .upcoming-leave-history-container, .past-leave-history-container, .rejected-leave-history-container {
+    position: relative;
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+  .active-leave-name, .active-leave-date, .history-leave-status {
+    font-size: 1rem;
+  }
+}
+@media only screen and (max-width: 1260px) {
+  .client-leave-history-leave-type, .client-leave-history-leave-date, .history-leave-status {
+    font-size: 0.8rem;
+  }
+}
+@media only screen and (max-width: 550px) {
+  .upcoming-leave-history-container, .past-leave-history-container, .rejected-leave-history-container {
+    margin-top: 0;
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+  .client-leave-history-leave-type, .client-leave-history-leave-date, .history-leave-status {
+    font-size: 0.9rem;
+  }
+  .upcoming-leave-history--heading, .past-leave-history--heading, .rejected-leave-history--heading {
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+  }
+  .select-worker {
+    font-size: 0.9rem !important;
+    padding: 0.5rem 0.8rem !important;
+  }
+  .filter-button {
+    font-size: 0.9rem !important;
+    padding: 0.5rem 0.8rem !important;
+  }
+  .no-past-leaves {
+    font-size: 0.8rem;
+  }
+  .filter-container {
+    width: 13em;
+    font-size: 0.9rem;
+    left: -5.5rem;
+  }
+  .filter-options {
+    font-size: 0.9rem;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .dashboard-content {
+    padding: 1rem;
+  }
+}/*# sourceMappingURL=client_leave_history.css.map */
