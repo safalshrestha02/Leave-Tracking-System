@@ -517,6 +517,11 @@ input[type=radio] {
   .dashboard-content {
     background: none;
     box-shadow: none;
+    width: 100%;
+    margin-top: 0;
+  }
+  .navbar-name {
+    margin-bottom: 0.5rem;
   }
   .right-container {
     background-color: white;
@@ -946,4 +951,16 @@ input[type=radio] {
   object-fit: contain;
   margin: 10rem auto;
   grid-column: 1/4;
+}
+
+@media only screen and (max-width: 1500px) {
+  #leave-approve-button, #leave-reject-button {
+    padding: 0.4rem;
+    font-size: 0.9rem;
+  }
+}
+@media only screen and (max-width: 1260px) {
+  .pending-leave-details {
+    font-size: 0.9rem;
+  }
 }/*# sourceMappingURL=client_manage_leave.css.map */
