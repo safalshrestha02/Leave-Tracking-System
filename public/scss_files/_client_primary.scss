@@ -57,9 +57,6 @@ a {
 
 /* -----------------------left container ---------------- */
 
-.left-container-wrapper {
-}
-
 .left-container {
   background: $dark-bg;
   padding: 0.5rem 1rem 2rem 1rem;
@@ -210,7 +207,6 @@ li {
 }
 
 .dashboard-content {
-  padding: 2rem;
   width: 90%;
   background-color: white;
   margin: 0 auto;
@@ -518,6 +514,10 @@ input[type="radio"] {
 @media only screen and (max-width: 1205px) {
   .left-container {
     width: 21vw;
+  }
+
+  .dashboard-content {
+    padding: 1rem 2rem;
   }
 }
 

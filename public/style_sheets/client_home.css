@@ -201,7 +201,6 @@ li {
 }
 
 .dashboard-content {
-  padding: 2rem;
   width: 90%;
   background-color: white;
   margin: 0 auto;
@@ -490,6 +489,9 @@ input[type=radio] {
 @media only screen and (max-width: 1205px) {
   .left-container {
     width: 21vw;
+  }
+  .dashboard-content {
+    padding: 1rem 2rem;
   }
 }
 @media only screen and (max-width: 1155px) {
@@ -786,4 +788,4 @@ input[type=radio] {
   left: 50%;
   transform: translate(-50%, -50%);
   margin-top: 8rem;
-}/*# sourceMappingURL=client_home.css.map */
+}
