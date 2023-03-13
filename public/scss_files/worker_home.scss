@@ -28,7 +28,6 @@
   padding: 1.7rem;
   border-radius: 0.5rem;
   text-align: center;
-  margin-right: 2rem;
 
   .leaves-data {
     font-size: 2rem;
@@ -176,4 +175,17 @@
 .load-gif{
   width: 4rem;
   margin: 4rem 0;
+}
+
+
+// ===========responsive====================
+
+@media only screen and (max-width: 1550px) {
+
+  .overview{
+    .leaves-data, .leaves-number{
+      font-size: 1.7rem;
+    }
+  }
+
 }
