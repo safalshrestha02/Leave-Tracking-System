@@ -44,6 +44,10 @@ const workerErrHandle = (err) => {
     workerID: "",
   };
 
+  if(err.message === "email is taken"){
+    errors.email = "*that email is already registered"
+  }
+
   if (err.message === "Invalid Credentials") {
     errors.workerID = "*Invalid Credentials";
     errors.password = "*Invalid Credentials";

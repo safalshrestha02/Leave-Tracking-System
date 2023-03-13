@@ -8,7 +8,7 @@ const sendEmail = require("../utils/sendMail");
 
 const maxAge = 2 * 24 * 60 * 60;
 
-exports.registerWorker = async (req, res) => {
+exports.registerWorker = async (req, res, next) => {
   const {
     firstName,
     lastName,
@@ -42,9 +42,8 @@ exports.registerWorker = async (req, res) => {
           leavesYearly,
         });
         res.status(201).json({ worker: worker._id });
-      }
-      else{
-        res.status(400).json({email : "that email is already registered"})
+      } else if (dupEmail) {
+        throw new Error ("email is taken")
       }
     }
   } catch (error) {
