@@ -293,3 +293,19 @@
   margin: 10rem auto;
   grid-column: 1 / 4;
 }
+
+
+// ------------------- RESPONSIVENESS ------------------------ //
+
+@media only screen and (max-width: 1500px) {
+  #leave-approve-button, #leave-reject-button{
+    padding: 0.4rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media only screen and (max-width: 1260px) {
+  .pending-leave-details {
+    font-size: 0.9rem;
+  }
+}

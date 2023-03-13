@@ -87,11 +87,11 @@ const manageLeavesFunc = async () => {
                                         <p>${typeOfLeave}</p>
                     
                                         <div class="buttons-container">
-                                            <button value = "${_id}" data-name = "${workerName}" data-leavetype = "${typeOfLeave}" class="pending-leave-buttons approve-button">
+                                            <button value = "${_id}" data-name = "${workerName}" data-leavetype = "${typeOfLeave}" class="pending-leave-buttons approve-button" id="leave-approve-button">
                                                 Approve
                                             </button>
                     
-                                            <button value = "${_id}" data-name = "${workerName}" data-leavetype = "${typeOfLeave}" class="pending-leave-buttons reject-button">
+                                            <button value = "${_id}" data-name = "${workerName}" data-leavetype = "${typeOfLeave}" class="pending-leave-buttons reject-button" id="leave-approve-button">
                                                 Reject
                                             </button>
                                         </div>
