@@ -66,6 +66,7 @@ exports.clientsWorkers = async (req, res, next) => {
 
 exports.clientsWorkersLeaves = async (req, res, next) => {
   const { id } = req.params;
+  const { search, page, limit } = req.query;
   try {
     const specificClient = await Clients.findById(id);
 
@@ -74,9 +75,17 @@ exports.clientsWorkersLeaves = async (req, res, next) => {
     }
     const company = specificClient._id;
 
-    const allLeaves = await Leaves.find({
-      "workerDetails.companyDetail._id": company,
-    });
+    let query = { "workerDetails.companyDetail._id": company };
+    const searchRegex = new RegExp(search, "i");
+    if (search) {
+      query.$or = [
+        { workerName: searchRegex },
+        //{ lastName: searchRegex },
+        { workerID: searchRegex },
+      ];
+    }
+
+    const allLeaves = await Leaves.find(query);
     if (allLeaves) {
       res.status(201).json({
         Leaves: allLeaves,
