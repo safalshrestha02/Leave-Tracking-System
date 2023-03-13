@@ -202,7 +202,6 @@ li {
 }
 
 .dashboard-content {
-  padding: 2rem;
   width: 90%;
   background-color: white;
   margin: 0 auto;
@@ -491,6 +490,9 @@ input[type=radio] {
 @media only screen and (max-width: 1205px) {
   .left-container {
     width: 21vw;
+  }
+  .dashboard-content {
+    padding: 1rem 2rem;
   }
 }
 @media only screen and (max-width: 1155px) {
@@ -1021,4 +1023,4 @@ a {
   object-fit: contain;
   margin: 10rem auto;
   grid-column: 1/4;
-}/*# sourceMappingURL=client_manage_worker.css.map */
+}
