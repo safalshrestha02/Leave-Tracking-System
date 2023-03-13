@@ -1,5 +1,5 @@
 const Leaves = require("../models/Leave");
-const Worker = require('../models/Worker')
+const Worker = require("../models/Worker");
 
 exports.leaveRequestDelete = async (req, res, next) => {
   const { id } = req.params;
@@ -37,35 +37,37 @@ exports.workersLeaves = async (req, res, next) => {
   }
 };
 
-exports.expireUnapproved = async (req,res)=>{
+exports.expireUnapproved = async (req, res) => {
   try {
-    let i = 0;
+    let i = -1;
     let workerID;
-
+    const change = { approveState: "rejected" };
     let currentDate = new Date();
 
     const id = req.params["id"];
     await Worker.findById(id).then((result) => {
       workerID = result.workerID;
     });
-    await Leaves.find({
-      "workerDetails.workerID": workerID,
-    }).then((result) => {
-      console.log(result)
-      result.forEach(async () => {
-        if (result[i].endDate < currentDate && result[i].approveState == "pending") {
-          await Leaves.findByIdAndUpdate(result[i]._id, {
-            $set: { approveState: "rejected" },
-          });
-        }
-        i += 1;
-      });
-      res
-        .status(201)
-        .json({ updated: "all dates and leave Requests are updated" });
+    const allLeaves = await Leaves.find({ "workerDetails.workerID": workerID });
+    allLeaves.forEach(async () => {
+      i += 1;
+      if (
+        allLeaves[i].endDate < currentDate &&
+        allLeaves[i].approveState === "pending"
+      ) {
+        console.log(allLeaves[i].approveState)
+        await Leaves.findByIdAndUpdate(
+          allLeaves[i]._id,
+          { $set: change },
+          { new: true }
+        );
+      }
     });
+    res
+      .status(201)
+      .json({ updated: "all dates and leave Requests are updated" });
   } catch (error) {
     res.status(400);
     throw error;
   }
-}
+};

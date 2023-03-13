@@ -132,33 +132,34 @@ exports.suggestedIds = async (req, res, next) => {
 
 exports.expireUnapproved = async (req, res) => {
   try {
-    let i = 0;
+    let i = -1;
     let companyName;
-
+    const change = { approveState: "rejected" };
     let currentDate = new Date();
 
     const id = req.params["id"];
     await Clients.findById(id).then((result) => {
       companyName = result.companyName;
     });
-    await Leaves.find({
+    const allLeaves = await Leaves.find({
       "workerDetails.companyDetail.companyName": companyName,
-    }).then((result) => {
-      result.forEach(async () => {
-        if (
-          result[i].endDate < currentDate &&
-          result[i].approveState == "pending"
-        ) {
-          await Leaves.findByIdAndUpdate(result[i]._id, {
-            $set: { approveState: "rejected" },
-          });
-        }
-        i += 1;
-      });
-      res
-        .status(201)
-        .json({ updated: "all dates and leave Requests are updated" });
     });
+    allLeaves.forEach(async () => {
+      i += 1;
+      if (
+        allLeaves[i].endDate < currentDate &&
+        allLeaves[i].approveState === "pending"
+      ) {
+        await Leaves.findByIdAndUpdate(
+          allLeaves[i]._id,
+          { $set: change },
+          { new: true }
+        );
+      }
+    });
+    res
+      .status(201)
+      .json({ updated: "all dates and leave Requests are updated" });
   } catch (error) {
     res.status(400);
     throw error.message;
