@@ -20,6 +20,7 @@ exports.workerDelete = async (req, res, next) => {
 exports.clientsWorkers = async (req, res, next) => {
   const { id } = req.params;
   const { search, page, limit } = req.query;
+  let sort = req.query.sort || "firstName";
 
   try {
     let query = { "companyDetail._id": id };
@@ -31,11 +32,21 @@ exports.clientsWorkers = async (req, res, next) => {
         { workerID: searchRegex },
       ];
     }
+
+    req.query.sort ? (sort = req.query.sort.split(",")) : (sort = [sort]);
+    let sortBy = {};
+    if (sort[1]) {
+      sortBy[sort[0]] = sort[1];
+    } else {
+      sortBy[sort[0]] = "asc";
+    }
+
     const count = await Worker.find(query).count();
 
     await Worker.find(query)
       .limit(limit * 1)
       .skip((page - 1) * limit)
+      .sort(sortBy)
       .then((workers) => {
         if (workers) {
           res.status(201).json({
@@ -56,24 +67,21 @@ exports.clientsWorkers = async (req, res, next) => {
 exports.clientsWorkersLeaves = async (req, res, next) => {
   const { id } = req.params;
   try {
-    await Clients.findById(id).then((specificClient) => {
-      if (!specificClient) {
-        res.status(400).json({ error: "No client found with that ID" });
-      }
-      const company = specificClient._id;
-      // Worker.find({
-      //   "companyDetail._id": id,
-      //   "companyDetail.companyName": company,
-      // });
+    const specificClient = await Clients.findById(id);
 
-      Leaves.find({
-        "workerDetails.companyDetail._id": company,
-      }).then((allLeaves) => {
-        res.status(201).json({
-          Leaves: allLeaves,
-        });
-      });
+    if (!specificClient) {
+      res.status(400).json({ error: "No client found with that ID" });
+    }
+    const company = specificClient._id;
+
+    const allLeaves = await Leaves.find({
+      "workerDetails.companyDetail._id": company,
     });
+    if (allLeaves) {
+      res.status(201).json({
+        Leaves: allLeaves,
+      });
+    }
   } catch (error) {
     next(error);
   }
