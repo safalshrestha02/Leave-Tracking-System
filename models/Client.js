@@ -57,7 +57,10 @@ const clientSchema = new mongoose.Schema(
 );
 
 clientSchema.pre("save", async function (next) {
-  const salt = await bcrypt.genSalt();
+  if (!this.isModified("password")) {
+    next();
+  }
+  const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
   next();
 });
