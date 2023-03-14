@@ -473,7 +473,8 @@ input[type=radio] {
   .register-heading .fa-circle-xmark {
     font-size: 1.8rem;
   }
-  .register-form label, .register-form p {
+  .register-form label,
+  .register-form p {
     font-size: 0.9rem;
   }
   .suggestsed-ID-container .suggested-id {
@@ -565,7 +566,7 @@ input[type=radio] {
     width: 100vw;
     min-height: 100vh;
     display: none;
-    transition: 0.7s;
+    transition: 0.3s;
     z-index: 2;
     backdrop-filter: blur(0.5px);
   }
@@ -1214,6 +1215,14 @@ a {
     padding: 2rem 2rem !important;
     font-size: 0.8rem !important;
   }
+  .delete-worker-detail {
+    padding: 1rem;
+    align-items: center;
+  }
+  .delete-worker-name {
+    display: flex;
+    align-items: center;
+  }
 }
 @media only screen and (max-width: 406px) {
   .dashboard-head-container .filter-icon {
@@ -1245,4 +1254,4 @@ a {
   .absolute-worker-details {
     width: 90vw;
   }
-}/*# sourceMappingURL=client_manage_worker.css.map */
+}

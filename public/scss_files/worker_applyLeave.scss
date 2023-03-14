@@ -15,43 +15,41 @@ label {
   margin-bottom: 0.8rem;
 }
 
+.dashboard-content {
+  display: flex;
+  justify-content: center;
+}
+
 .form-container {
-  width: 90%;
+  padding: 0 5rem;
+  width: 100%;
   min-height: 70vh;
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-around;
-  margin: auto;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  row-gap: 1rem;
 }
 
-.form-field:nth-child(2n) {
-  flex-basis: 50%;
-}
-
+.form-field:nth-child(2n),
 .form-field:nth-child(2n + 1) {
-  flex-basis: 50%;
+  flex-basis: 45%;
 }
 
-select {
-  width: 90%;
-  background-color: #f3f5f7;
-  padding: 0.6rem;
-  margin-right: 2rem;
-  border: none;
-  border-radius: 0.3rem;
-  font-size: 1rem;
-}
-
-.form-field input {
+.form-field input,
+.form-field select {
   border: none;
   padding: 0.6rem;
   border-radius: 0.3rem;
   background-color: #f3f5f7;
-  margin-right: 2rem;
-  width: 90%;
+  width: 100%;
   font-size: 1rem;
   text-transform: capitalize;
+}
+
+#days-number {
+  padding: 0.7rem;
 }
 
 #end-date,
@@ -60,7 +58,9 @@ select {
 }
 
 #reason-box {
-  flex-basis: 100%;
+  justify-self: flex-start;
+  flex: 1 0 50%;
+  margin-bottom: 2rem;
 }
 
 #reason-box textarea {
@@ -68,19 +68,18 @@ select {
   border-radius: 0.3rem;
   background-color: #f3f5f7;
   padding: 1rem;
-  width: 95%;
+  width: 100%;
   resize: none;
   font-size: 1rem;
 }
 
 .form-buttons {
-  width: 93%;
+  width: 100%;
   display: flex;
   justify-content: flex-end;
 }
 
 .form-buttons button {
-  margin: 0 1rem;
   padding: 0.5rem 3rem;
   border-radius: 0.3rem;
   border: none;
@@ -90,6 +89,7 @@ select {
 .form-button-apply {
   background-color: $primary-yellow;
   outline: 1px solid $primary-yellow;
+  margin-left: 2rem;
 
   &:hover {
     background-color: $orange-bg;
@@ -116,16 +116,186 @@ select {
 }
 
 .start-date-error-div {
-  height: 0.5vh;
   width: 100%;
   color: red;
   font-size: 0.8rem;
   font-weight: 600;
-  grid-column: 1/4;
   text-align: center;
-  // margin: 0 auto;
 }
 
 .eligible-leave {
   color: $green-bg;
+}
+
+// MEDIA QUERY
+@media only screen and (max-width: 1115px) {
+  .dashboard-content {
+    padding: 0 0 1rem 0;
+  }
+}
+
+@media only screen and (max-width: 660px) {
+  .form-container,
+  .form-field input,
+  .form-field select,
+  #reason-box textarea,
+  .form-buttons button {
+    font-size: 0.9rem;
+  }
+
+  .form-container {
+    max-height: 5vh;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .form-container,
+  .form-field input,
+  .form-field select,
+  #reason-box textarea,
+  .form-buttons button {
+    font-size: 0.8rem;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .form-container {
+    display: block;
+    width: 100vw;
+  }
+
+  .form-buttons {
+    justify-content: center;
+  }
+
+  .form-container,
+  .form-field input,
+  .form-field select,
+  #reason-box textarea,
+  .form-buttons button {
+    font-size: 1rem;
+  }
+
+  .form-container {
+    max-height: 100vh;
+  }
+}
+
+@media only screen and (max-width: 490px) {
+  .dashboard-content {
+    display: block;
+    padding: 0;
+    padding-bottom: 1rem;
+  }
+
+  .form-field {
+    padding: 0;
+  }
+
+  .form-container {
+    padding: 0 2rem;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .form-container,
+  .form-field input,
+  .form-field select,
+  #reason-box textarea,
+  .form-buttons button {
+    font-size: 0.9rem;
+  }
+}
+
+@media only screen and (max-height: 850px) {
+  .form-container {
+    margin-bottom: 1rem;
+  }
+}
+
+@media only screen and (max-height: 820px) {
+  .form-container {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media only screen and (max-height: 810px) {
+  .form-container {
+    margin-bottom: 2.5rem;
+  }
+}
+
+@media only screen and (max-height: 795px) {
+  .form-container {
+    margin-bottom: 3.5rem;
+  }
+}
+
+@media only screen and (max-height: 780px) {
+  .form-container {
+    margin-bottom: 4.5rem;
+  }
+}
+
+@media only screen and (max-height: 760px) {
+  .form-container {
+    margin-bottom: 5.5rem;
+  }
+}
+
+@media only screen and (max-height: 719px) {
+  .form-container {
+    margin-bottom: 10.5rem !important;
+  }
+
+  .form-buttons {
+    margin-bottom: 10rem;
+  }
+}
+
+@media only screen and (max-height: 750px) {
+  .form-container {
+    margin-bottom: 6.5rem;
+  }
+}
+
+@media only screen and (max-height: 695px) {
+  .form-container {
+    margin-bottom: 7.5rem;
+  }
+}
+
+@media only screen and (max-height: 680px) {
+  .form-container {
+    margin-bottom: 8.5rem;
+  }
+}
+
+@media only screen and (max-height: 670px) {
+  .form-container {
+    margin-bottom: 9.5rem;
+  }
+}
+
+@media only screen and (max-height: 650px) {
+  .form-container {
+    margin-bottom: 10.5rem;
+  }
+}
+
+@media only screen and (width >= 768px) and (height>=1000px) {
+  .form-container {
+    margin: 0 !important;
+    padding-bottom: 0;
+    height: 50vh;
+  }
+
+  .form-container {
+    row-gap: 1.5rem;
+  }
+
+  .dashboard-content {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
 }
