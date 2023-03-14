@@ -10,23 +10,23 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
-// const cors = require ('cors')
-// const hpp = require("hpp")
+const cors = require ('cors')
+const hpp = require("hpp")
 const PORT = process.env.PORT;
+const connectDB = require("./config/connectDB");
 
 //security packages
-// app.use(helmet());
-// app.use(mongoSanitize());
-// app.use(bodyParser.urlencoded())
-// app.use(hpp())
-// app.use(xss());
-// app.use(cors())
+app.use(helmet());
+app.use(mongoSanitize());
+app.use(bodyParser.urlencoded())
+app.use(hpp())
+app.use(xss());
+app.use(cors())
 
 const worker = require("./routes/workerRoutes");
 const client = require("./routes/clientRoutes");
 const tempRoutes = require("./routes/tempRoutes");
 
-const DBrui = process.env.DBrui;
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
@@ -42,9 +42,6 @@ app.use("/", worker); //worker side
 //render all data
 app.use("/", tempRoutes);
 
-// connectDB();
-const Person = mongoose.connect(DBrui).then((result) => {
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-  });
-});
+mongoose.set("strictQuery", true);
+connectDB();
+app.listen(console.log(`\x1b[96m\x1b[4mServer running on port ${PORT}`));

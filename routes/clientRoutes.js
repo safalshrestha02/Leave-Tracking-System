@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-//const { createAccountLimiter } = require("../middleware/limitter");
+const { createAccountLimiter } = require("../middleware/limitter");
 
 //paths
 const loadPages = require("../controller/clientPageController");
@@ -37,14 +37,14 @@ router.get("/api/suggestedIds/:id", clientAPI.suggestedIds);
 
 router.post(
   "/api/addWorker",
-  // createAccountLimiter,
+  createAccountLimiter,
   requireClientAuth,
   addworker.registerWorker
 );
 router.post("/api/activeClient", requireClientAuth, clientAuth.activeClient);
 router.post(
   "/api/clientRegister",
-  //createAccountLimiter,
+  createAccountLimiter,
   clientAuth.registerClient
 );
 router.post("/api/clientLogin", clientAuth.login);
