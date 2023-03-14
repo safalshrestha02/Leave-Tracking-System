@@ -78,11 +78,7 @@ exports.clientsWorkersLeaves = async (req, res, next) => {
     let query = { "workerDetails.companyDetail._id": company };
     const searchRegex = new RegExp(search, "i");
     if (search) {
-      query.$or = [
-        { workerName: searchRegex },
-        //{ lastName: searchRegex },
-        { workerID: searchRegex },
-      ];
+      query.$or = [{ workerName: searchRegex }, { workerID: searchRegex }];
     }
 
     const allLeaves = await Leaves.find(query);

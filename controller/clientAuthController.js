@@ -2,7 +2,6 @@ const Client = require("../models/Client");
 const Leaves = require("../models/Leave");
 const Worker = require("../models/Worker");
 const crypto = require("crypto");
-const bcrypt = require("bcrypt");
 const { clientErrHandle } = require("../utils/errorHandler");
 const { createClientToken } = require("../utils/createToken");
 const sendEmail = require("../utils/sendMail");
@@ -20,8 +19,6 @@ exports.registerClient = async (req, res) => {
     password,
     leavesYearly,
   } = req.body;
-  // const salt = await bcrypt.genSalt();
-  // hashedPassword = await bcrypt.hash(password, salt);
   try {
     const client = await Client.create({
       clientID,
@@ -202,7 +199,6 @@ exports.forgotPassword = async (req, res, next) => {
 
 exports.resetPassword = async (req, res, next) => {
   try {
-    //get hashed token
     const resetPasswordToken = crypto
       .createHash("sha256")
       .update(req.params.resetToken)

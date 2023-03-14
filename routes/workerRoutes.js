@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-//const { createAccountLimiter } = require("../middleware/limitter");
+const { createAccountLimiter } = require("../middleware/limitter");
 
 //paths
 const loadPages = require("../controller/workerPageController");
@@ -24,7 +24,7 @@ router.get("/api/workers_leaves/:id", workerAPI.workersLeaves);
 router.post("/api/workerLogin", workerAuth.login);
 router.post(
   "/api/applyForLeave",
-  //createAccountLimiter,
+  createAccountLimiter,
   requireWorkerAuth,
   workerAuth.applyLeave
 );
