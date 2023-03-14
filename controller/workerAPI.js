@@ -16,9 +16,17 @@ exports.workersLeaves = async (req, res, next) => {
   const { page = 1, limit = 1000 } = req.query;
   const count = await Leaves.count();
   const { id } = req.params;
+  let {approveState} = req.query || "all"
 
   try {
+    const states = ["approved", "rejected"];
+    approveState === "approved"
+    ? (approveState = [...states])
+    : (approveState = req.query.approveState.split(","));
+
     await Leaves.find({ "workerDetails._id": id })
+      .where("approveState")
+      .in([...approveState])
       .limit(limit * 1)
       .skip((page - 1) * limit)
       .then((leaves) => {
