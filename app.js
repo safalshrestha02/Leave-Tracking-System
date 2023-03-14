@@ -10,18 +10,18 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
-const cors = require ('cors')
-const hpp = require("hpp")
+const cors = require("cors");
+const hpp = require("hpp");
 const PORT = process.env.PORT;
 const connectDB = require("./config/connectDB");
 
 //security packages
 app.use(helmet());
 app.use(mongoSanitize());
-app.use(bodyParser.urlencoded())
-app.use(hpp())
+app.use(bodyParser.urlencoded());
+app.use(hpp());
 app.use(xss());
-app.use(cors())
+app.use(cors());
 
 const worker = require("./routes/workerRoutes");
 const client = require("./routes/clientRoutes");
@@ -38,10 +38,9 @@ app.get("/", (req, res, next) => {
 
 app.use("/", client); //client side
 app.use("/", worker); //worker side
-
+mongoose.set("strictQuery", true);
 //render all data
 app.use("/", tempRoutes);
-
-mongoose.set("strictQuery", true);
 connectDB();
-app.listen(console.log(`\x1b[96m\x1b[4mServer running on port ${PORT}`));
+
+const server = app.listen(PORT, console.log(`\x1b[94m\x1b[4mServer running on port ${PORT}`));
