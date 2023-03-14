@@ -44,7 +44,7 @@ const workersUnderClient = async () => {
 const leaveRequestsUnderClient = async () => {
     const activeClient = await fetchActiveClientApi();
     const { _id } = activeClient
-    const leavesResponse = await fetch(`http://localhost:3000/api/clients_workers_leaves/${_id}?limit=1000`)
+    const leavesResponse = await fetch(`http://localhost:3000/api/clientsManageHistory/${_id}/?typeOfLeave=All`)
     const leavesResult = await leavesResponse.json()
     const { Leaves } = leavesResult
 
