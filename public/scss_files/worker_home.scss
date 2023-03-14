@@ -47,7 +47,7 @@
     background-color: $light-bg;
     padding: 1rem;
     border-radius: 0.5rem;
-    width: 30%;
+    width: 32%;
 
     .leave-type {
       font-weight: 500;
@@ -57,6 +57,7 @@
       display: flex;
       justify-content: space-between;
       margin: 0.8rem 0;
+      font-size: 1rem;
       span {
         opacity: 0.6;
       }
@@ -181,11 +182,194 @@
 // ===========responsive====================
 
 @media only screen and (max-width: 1550px) {
-
   .overview{
-    .leaves-data, .leaves-number{
-      font-size: 1.7rem;
+    .leaves-data{
+      font-size: 1.6rem;
+    }
+    .leaves-number{
+      font-size: 2.2rem;
+    }
+  }
+  .display-none{
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 1350px) {
+  .dashboard-content {
+    padding: 1rem 2rem;
+  }
+
+  .active-leave-container {
+    .active-leave-details {
+      .leave-type{
+        font-size: 1rem;
+      }
+      .active-leave-date, .leave-status{
+        font-size: .9rem;
+      }
     }
   }
 
+  .pending-and-approved {
+    .pending-and-approved-container {
+      .worker-leaves {
+        .leave-type{
+          font-size: 1rem;
+        }
+        .leave-date, .leave-status{
+          font-size: .9rem;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1260px) {
+  .overview{
+    .leaves-data{
+      font-size: 1.4rem;
+    }
+    .leaves-number{
+      font-size: 1.8rem;
+    }
+  }
+  .display-none{
+    font-size: 1rem;
+  }
+  .active-leave-container {
+    .active-leave-details {
+      .leave-type{
+        font-size: .9rem;
+      }
+      .active-leave-date, .leave-status{
+        font-size: .8rem;
+      }
+    }
+  }
+  .leave-type-container {
+    .fa-regular, .fa-trash{
+      font-size: 1.2rem;
+    }
+
+    .fa-circle-xmark{
+      margin-right: 1rem;
+    }
+  }
+
+  .pending-and-approved {
+    .pending-and-approved-container {
+      .worker-leaves {
+        .leave-type{
+          font-size: .9rem;
+        }
+        .leave-date, .leave-status{
+          font-size: .8rem;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1130px) {
+
+  .overview{
+    .leaves-data{
+      font-size: 1.3rem;
+    }
+    .leaves-number{
+      font-size: 1.6rem;
+    }
+  }
+  .display-none{
+    font-size: 1rem;
+  }
+  .active-leave-container{
+    .active-leave-details{
+      width: 48%;
+    }
+  }
+  .pending-and-approved {
+    .pending-and-approved-container {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .overview{
+    .leaves-data{
+      font-size: 1rem;
+    }
+    .leaves-number{
+      font-size: 1.4rem;
+    }
+  }
+  .display-none{
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+
+  .overview{
+    .leaves-data{
+      font-size: 1.1rem;
+    }
+    .leaves-number{
+      font-size: 1.3rem;
+    }
+
+    margin-bottom: -1rem;
+  }
+  .display-none{
+    font-size: 1rem;
+  }
+  .worker-leave-overview {
+    flex-wrap: wrap;
+    margin-top: 0;
+  
+    .worker-total-leave {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  
+    .worker-leaves-taken {
+      width: 48%;
+    }
+  
+    .worker-leaves-remaining {
+      width: 48%;
+    }
+  }
+
+  .pending-and-approved {
+    margin-top: 2rem;
+  
+    .pending-and-approved-container {
+      margin-top: 0;
+    }
+  }
+  
+
+  .active-leave-container{
+    .active-leave-details{
+      width: 100%;
+    }
+  }
+  .pending-and-approved {
+    .pending-and-approved-container {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .dashboard-content {
+    padding: 1rem;
+  }
+
+  .display-none {
+    font-size: .5rem;
+  } 
 }
