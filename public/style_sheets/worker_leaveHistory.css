@@ -506,6 +506,7 @@ li {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
+  padding-bottom: 2rem;
 }
 
 .worker-leave-history-details {
@@ -651,4 +652,85 @@ li {
 
 .confirm-leave-delete-container {
   display: none;
+}
+
+@media only screen and (max-width: 1550px) {
+  .worker-leave-history-leave-type, .worker-leave-history-leave-date, .history-leave-status {
+    font-size: 1rem;
+  }
+}
+@media only screen and (max-width: 1350px) {
+  .dashboard-content {
+    padding: 1rem 2rem;
+  }
+  .worker-leave-history-leave-type, .worker-leave-history-leave-date, .history-leave-status {
+    font-size: 0.9rem;
+  }
+  .filter-options-container {
+    right: 0;
+  }
+}
+@media only screen and (max-width: 1130px) {
+  .upcoming-leaves-container, .past-leaves-container {
+    position: relative;
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+  .worker-leave-history-leave-date, .history-leave-status {
+    font-size: 1rem;
+  }
+}
+@media only screen and (max-width: 1260px) {
+  .worker-leave-history-leave-type, .worker-leave-history-leave-date, .history-leave-status {
+    font-size: 0.8rem;
+  }
+}
+@media only screen and (max-width: 550px) {
+  .upcoming-leaves-container, .past-leaves-container {
+    margin-top: 0;
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+  .worker-leave-history-leave-type, .worker-leave-history-leave-date, .history-leave-status {
+    font-size: 0.9rem;
+  }
+  .history-title {
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+  }
+  .main-page-title {
+    font-size: 1.7rem;
+  }
+  .select-worker {
+    font-size: 0.9rem !important;
+    padding: 0.5rem 0.8rem !important;
+  }
+  .filter-button {
+    font-size: 0.9rem !important;
+    padding: 0.5rem 0.8rem !important;
+    margin-right: 0;
+  }
+  .no-past-leaves {
+    font-size: 0.8rem;
+  }
+  .filter-options-container, .filter-option {
+    font-size: 0.9rem;
+  }
+  .upcoming-container-icons {
+    font-size: 0.9rem !important;
+  }
+  .no-past-record {
+    font-size: 0.9rem;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .dashboard-content {
+    padding: 1rem;
+  }
+  .upcoming-container-icons {
+    font-size: 0.95rem !important;
+  }
 }/*# sourceMappingURL=worker_leaveHistory.css.map */

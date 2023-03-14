@@ -37,7 +37,7 @@ const checkworkersRequest = async () => {
   if (workersLeaveHistory.length === 0) {
     primaryLeaveContainer.innerHTML = "";
 
-    let content = `<p class="no-past-record">This worker has no past leaves record</p>`;
+    let content = `<p class="no-past-record">No past leaves record</p>`;
 
     primaryLeaveContainer.innerHTML += content;
   }
@@ -114,11 +114,11 @@ const checkworkersRequest = async () => {
                             <div class="worker-leave-top-details">
                               <p class="worker-leave-history-leave-type">${typeOfLeave}</p>
                               <div class="confirm-leave-delete-container">
-                                <i class="fa-regular fa-circle-xmark"></i>
-                                <i class="fa-regular fa-circle-check"></i>
+                                <i class="fa-regular fa-circle-xmark upcoming-container-icons"></i>
+                                <i class="fa-regular fa-circle-check upcoming-container-icons"></i>
                               </div>
 
-                              <i class="fa-solid fa-trash" onclick='confirmDelete("${_id}","${index}")'></i>
+                              <i class="fa-solid fa-trash upcoming-container-icons" onclick='confirmDelete("${_id}","${index}")'></i>
                             </div>
                               
                           
@@ -132,7 +132,7 @@ const checkworkersRequest = async () => {
                               </div>
                           
                               <div class="worker-leave-history-leave-status">
-                                  <p class="capitalize-input">
+                                  <p class="capitalize-input history-leave-status">
                                       <i class="fa-solid fa-circle approved-leave"></i>
                                       ${approveState}
                                   </p>
@@ -168,7 +168,7 @@ const checkworkersRequest = async () => {
                               </div>
                           
                               <div class="worker-leave-history-leave-status">
-                                  <p class="capitalize-input">
+                                  <p class="capitalize-input history-leave-status">
                                       <i class="fa-solid fa-circle approved-leave"></i>
                                       ${approveState}
                                   </p>
@@ -229,7 +229,7 @@ const checkworkersRequest = async () => {
                     </div>
                 
                     <div class="worker-leave-history-leave-status">
-                        <p class="capitalize-input">
+                        <p class="capitalize-input history-leave-status">
                             <i class="fa-solid fa-circle rejected-leave"></i>
                             ${approveState}
                         </p>
