@@ -591,7 +591,6 @@ li {
 
 .save-button {
   background-color: orange;
-  text-transform: uppercase;
 }
 
 .save-button:hover {
