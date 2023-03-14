@@ -9,20 +9,26 @@
 
 body {
   font-family: "Open Sans", sans-serif;
-  padding: 10rem;
-  height: 90vh;
   background-color: #dbe8f4;
 }
 
 .main-container {
+  width: 100vw;
   display: flex;
-  border-radius: 2rem;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  max-height: 88vh;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+}
+
+.main-wrapper {
+  display: flex;
+  border-radius: 1rem;
+  width: 80%;
+  margin: 0 auto;
 }
 
 #ecobees-text-logo {
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: 500;
   letter-spacing: 2px;
 }
@@ -81,21 +87,10 @@ a {
 }
 
 .right-container-wrapper {
-  margin: 4rem;
+  margin: 4rem 0 3rem 0;
 }
 
-.right-container-heading {
-  flex-direction: row;
-  font-size: 2.3rem;
-  font-weight: 500;
-  text-align: center;
-}
-
-.right-container-heading h1 {
-  display: inline-flex;
-}
-
-/*-------------------- form */
+/*-------------------- form -------------------------- */
 .login-form {
   margin-top: 4rem;
   padding-bottom: 2rem;
@@ -117,7 +112,7 @@ a {
 }
 
 .login-button {
-  background-color: white;
+  background-color:#fdb514;
   width: 100%;
   border-radius: 0.5rem;
   font-size: 1.2rem;
@@ -129,7 +124,7 @@ a {
 
 .login-button:hover {
   cursor: pointer;
-  background-color: #edeef0;
+  background-color:  #f5aa09;
 }
 
 .success-alert {
@@ -159,14 +154,10 @@ a {
   border-radius: 50%;
 }
 
-body {
-  padding: 3.5rem 10rem;
-}
-
 .right-container-heading {
   text-align: left;
 }
-.right-container-heading h4 {
+.main-register-title{
   font-size: 2rem;
 }
 .right-container-heading p {
@@ -220,7 +211,7 @@ body {
   height: 0.6vh;
 }
 
-@media only screen and (max-width: 1560px) {
+@media only screen and (max-width: 1580px) {
   #ecobees-text-logo {
     font-size: 1.4rem;
   }
@@ -235,7 +226,123 @@ body {
   .right-container-wrapper {
     margin: 2rem;
   }
-  .right-container-heading {
+  .main-register-title {
     font-size: 1.7rem;
   }
+
+}
+
+@media only screen and (max-width: 1420px) {
+  .right-container {
+    flex-basis: 40%;
+  }
+  .left-container {
+    flex-basis: 60%;
+  }
+
+}
+
+@media only screen and (max-width: 1270px) {
+  .main-register-title {
+    font-size: 1.4rem;
+  }
+  .right-container-heading p {
+    font-size: 0.9rem;
+    margin-top: 0.6rem;
+  }
+  .register-input {
+    text-transform: capitalize;
+    width: 100%;
+    font-size: 0.9rem;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    background-color: #f3f5f7;
+    color: rgb(22, 22, 22);
+  }
+
+  .login-button {
+    background-color: #fdb514;
+    width: 100%;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    line-height: 3rem;
+    color: black;
+    border: none;
+    margin-top: 2rem;
+  }
+  .right-container {
+    flex-basis: 45%;
+  }
+  .left-container {
+    flex-basis: 55%;
+  }
+  .ecobees-trans-logo {
+    width: 9rem;
+  }
+
+}
+
+@media only screen and (max-width:930px) {
+
+  .main-wrapper {
+    display: block;
+    width: 100vw;
+  }
+
+  .left-container {
+    display: none;
+  }
+  .right-container {
+    width: 70%;
+    border-radius: 1rem;
+    margin: 0 auto;
+  }
+  .right-container-wrapper {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width:550px) {
+  .main-register-title {
+    font-size: 1.1rem;
+  }
+  .right-container-heading p {
+    font-size: 0.8rem;
+  }
+  .register-input {
+    font-size: 0.8rem;
+    padding: 0.6rem;
+  }
+  .login-button {
+    font-size: 0.9rem;
+    line-height: 2.7rem;
+  }
+  .right-container-wrapper {
+    width: 100%;
+    margin: 1rem 2rem;
+  }
+  .fa-eye-slash,
+  .fa-eye {
+    font-size: 0.8rem;
+    transform: translateY(100%);
+  }
+  .main-container {
+    width: 100%;
+  }
+  .login-form {
+    margin-top: 2rem;
+    padding-bottom: 0;
+  }
+  .right-container {
+    width: 90%;
+    border-radius: 1rem;
+  }
+}
+
+@media only screen and (max-height: 900px) {
+  .main-container {
+    padding: 2rem 0;
+  }
+  
 }
