@@ -367,7 +367,7 @@ input[type="radio"] {
 #clientID {
   cursor: not-allowed;
 }
-#clientID{
+#clientID {
   width: 80px;
 }
 .double-id-container {
@@ -492,32 +492,31 @@ input[type="radio"] {
     }
   }
 
-  .register-form{
-    label, p{
-      font-size: .9rem;
+  .register-form {
+    label,
+    p {
+      font-size: 0.9rem;
     }
-
   }
 
-  .suggestsed-ID-container{
-    .suggested-id{
-      font-size: .9rem;
+  .suggestsed-ID-container {
+    .suggested-id {
+      font-size: 0.9rem;
       margin-right: 1rem;
     }
   }
   .register-input-field {
-    font-size: .9rem;
-    padding: .9rem;
+    font-size: 0.9rem;
+    padding: 0.9rem;
   }
   .register-errors {
-    font-size: .8rem;
+    font-size: 0.8rem;
     min-height: 1.5vh;
   }
 
   .form-buttons button {
-    padding: .5rem 2.5rem;
+    padding: 0.5rem 2.5rem;
   }
-
 }
 
 @media only screen and (max-width: 1490px) {
@@ -535,14 +534,13 @@ input[type="radio"] {
     font-size: 0.8rem;
   }
 
-  .register-right-container{
+  .register-right-container {
     width: 80%;
   }
 
   input[type="radio"] {
     margin-right: 1rem;
   }
-  
 }
 
 @media only screen and (max-width: 1260px) {
@@ -611,7 +609,7 @@ input[type="radio"] {
     width: 100vw;
     min-height: 100vh;
     display: none;
-    transition: 0.7s;
+    transition: 0.3s;
     z-index: 2;
     backdrop-filter: blur(0.5px);
   }
@@ -670,12 +668,12 @@ input[type="radio"] {
     font-size: 1.4rem;
   }
 
-  .register-right-container{
+  .register-right-container {
     width: 90%;
     height: 90%;
   }
   .form-buttons button {
-    padding: .3rem 2rem;
+    padding: 0.3rem 2rem;
   }
 
   .register-heading {
@@ -688,7 +686,6 @@ input[type="radio"] {
       font-size: 1.3rem;
     }
   }
-
 }
 
 @media only screen and (max-width: 747px) {
@@ -719,7 +716,7 @@ input[type="radio"] {
     padding-top: 1.1rem;
   }
 
-  .register-right-container{
+  .register-right-container {
     width: 100%;
     height: 100vh;
     border-radius: 0;
@@ -732,9 +729,9 @@ input[type="radio"] {
     display: flex;
   }
 
-  .suggestsed-ID-container{
-    .suggested-id{
-      font-size: .9rem;
+  .suggestsed-ID-container {
+    .suggested-id {
+      font-size: 0.9rem;
       margin: 0 2rem 1rem 0;
       margin-right: 1rem;
     }
@@ -763,7 +760,7 @@ input[type="radio"] {
     padding: 1.3rem 0 0 1.3rem;
   }
 
-  .register-form{
+  .register-form {
     display: block;
     height: 80vh;
     overflow: scroll;
@@ -771,8 +768,6 @@ input[type="radio"] {
   .worker-ids-container {
     width: 83%;
   }
-  
-
 }
 
 //Mobile
@@ -866,5 +861,5 @@ input[type="radio"] {
   .register-form {
     max-height: 75vh;
     overflow: scroll;
-  } 
+  }
 }

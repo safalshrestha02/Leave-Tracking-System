@@ -503,6 +503,16 @@ a {
     padding: 2rem 2rem !important;
     font-size: 0.8rem !important;
   }
+
+  .delete-worker-detail {
+    padding: 1rem;
+    align-items: center;
+  }
+
+  .delete-worker-name {
+    display: flex;
+    align-items: center;
+  }
 }
 
 @media only screen and (max-width: 406px) {
