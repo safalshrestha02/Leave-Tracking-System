@@ -87,7 +87,7 @@ const activeLeavesDisplay = async () => {
                       .replaceAll("-", "/")}</span> <span> ${leave.leaveDays} days</span>
                 </div>
                 <p class="leave-status">
-                  <i class="fa-solid fa-circle green"></i>Approved
+                  <i class="fa-solid fa-circle green"></i><span class="capitalize-input">${leave.approveState}</span>
                 </p>
             `
             activeLeavesDetails.innerHTML += ihtml
@@ -150,7 +150,7 @@ const pendingApprovedLeavesDisplay = async () => {
                       .slice(0, 10)
                       .replaceAll("-", "/")}</span> <span> ${leave.leaveDays} days</span>
                 </div>
-                <p><i class="fa-solid fa-circle orange"></i><span class="capitalize-input">${leave.approveState}</span></p>
+                <p><i class="fa-solid fa-circle orange"></i><span class="capitalize-input leave-status">${leave.approveState}</span></p>
             </div>
             `
             pendingApprovedLeaves.innerHTML += ihtml
