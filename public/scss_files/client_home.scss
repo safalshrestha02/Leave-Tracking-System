@@ -108,7 +108,7 @@
 // ===========responsive====================
 
 @media only screen and (max-width: 1550px) {
-  .active-leave-name, .active-leave-date {
+  .active-leave-name, .active-leave-date, .display-none {
     font-size: 1rem;
   }
 }
@@ -122,7 +122,7 @@
   .worker-overview-number, .worker-overview-status {
     font-size: 1.2rem;
   }
-  .active-leave-name, .active-leave-date {
+  .active-leave-name, .active-leave-date, .display-none {
     font-size: 0.9rem;
   }
 }
@@ -141,13 +141,13 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.5rem;
   }
-  .active-leave-name, .active-leave-date {
+  .active-leave-name, .active-leave-date, .display-none {
     font-size: 1rem;
   }
 }
 
 @media only screen and (max-width: 1260px) {
-  .active-leave-name, .active-leave-date {
+  .active-leave-name, .active-leave-date, .display-none {
     font-size: 0.8rem;
   }
 }
@@ -192,7 +192,7 @@
     gap: 1.5rem;
   }
 
-  .active-leave-name, .active-leave-date {
+  .active-leave-name, .active-leave-date{
     font-size: .9rem;
   }
 
@@ -209,10 +209,18 @@
       margin-bottom: 1rem;
     }
   }
+
+  .display-none {
+    font-size: .7rem;
+  } 
 } 
 
 @media only screen and (max-width: 400px) {
   .dashboard-content {
     padding: 1rem;
   }
+
+  .display-none {
+    font-size: .5rem;
+  } 
 }
