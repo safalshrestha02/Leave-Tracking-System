@@ -32,7 +32,8 @@ router.get(
   requireClientAuth,
   clientAPI.clientsWorkers
 );
-router.get("/api/clients_workers_leaves/:id", clientAPI.clientsWorkersLeaves);
+router.get("/api/clientsLeaveHistory/:id", clientAPI.clientsLeaveHistory);
+router.get("/api/clientsManageHistory/:id", clientAPI.clientsManageLeave);
 router.get("/api/suggestedIds/:id", clientAPI.suggestedIds);
 
 router.post(

@@ -64,9 +64,10 @@ exports.clientsWorkers = async (req, res, next) => {
   }
 };
 
-exports.clientsWorkersLeaves = async (req, res, next) => {
+exports.clientsLeaveHistory = async (req, res, next) => {
   const { id } = req.params;
   const { search, page, limit } = req.query;
+  let { approveState } = req.query.approveState || "approved";
   try {
     const specificClient = await Clients.findById(id);
 
@@ -75,13 +76,60 @@ exports.clientsWorkersLeaves = async (req, res, next) => {
     }
     const company = specificClient._id;
 
+    const states = ["approved", "rejected"];
+
     let query = { "workerDetails.companyDetail._id": company };
     const searchRegex = new RegExp(search, "i");
     if (search) {
       query.$or = [{ workerName: searchRegex }, { workerID: searchRegex }];
     }
 
-    const allLeaves = await Leaves.find(query);
+    approveState === "approved"
+      ? (approveState = [...states])
+      : (approveState = req.query.approveState.split(","));
+
+    const allLeaves = await Leaves.find(query)
+      .where("approveState")
+      .in([...approveState]);
+
+    if (allLeaves) {
+      res.status(201).json({
+        Leaves: allLeaves,
+      });
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.clientsManageLeave = async (req, res, next) => {
+  const { id } = req.params;
+  const { search, page, limit } = req.query;
+  let { typeOfLeave } = req.query || "All";
+  try {
+    const specificClient = await Clients.findById(id);
+
+    if (!specificClient) {
+      res.status(400).json({ error: "No client found with that ID" });
+    }
+
+    const company = specificClient._id;
+    const leaveTypes = [
+      "Urgent Leave",
+      "Sick Leave",
+      "Vacation Leave",
+      "Unpaid Leave",
+    ];
+
+    let query = { "workerDetails.companyDetail._id": company };
+    typeOfLeave === "All" 
+      ? (typeOfLeave = [...leaveTypes])
+      : (typeOfLeave = req.query.typeOfLeave.split(","));
+
+    const allLeaves = await Leaves.find(query)
+      .where("typeOfLeave")
+      .in([...typeOfLeave]);
+
     if (allLeaves) {
       res.status(201).json({
         Leaves: allLeaves,
