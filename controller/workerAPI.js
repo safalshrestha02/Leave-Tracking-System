@@ -16,13 +16,17 @@ exports.workersLeaves = async (req, res, next) => {
   const { page = 1, limit = 1000 } = req.query;
   const count = await Leaves.count();
   const { id } = req.params;
-  let {approveState} = req.query || "all"
+  let { approveState } = req.query
+
+  if (!approveState) {
+    approveState = "all";
+  }
 
   try {
-    const states = ["approved","pending", "rejected"];
+    const states = ["approved", "pending", "rejected"];
     approveState === "all"
-    ? (approveState = [...states])
-    : (approveState = req.query.approveState.split(","));
+      ? (approveState = [...states])
+      : (approveState = req.query.approveState.split(","));
 
     await Leaves.find({ "workerDetails._id": id })
       .where("approveState")
@@ -63,7 +67,7 @@ exports.expireUnapproved = async (req, res) => {
         allLeaves[i].endDate < currentDate &&
         allLeaves[i].approveState === "pending"
       ) {
-        console.log(allLeaves[i].approveState)
+        console.log(allLeaves[i].approveState);
         await Leaves.findByIdAndUpdate(
           allLeaves[i]._id,
           { $set: change },

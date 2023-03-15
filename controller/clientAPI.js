@@ -67,7 +67,10 @@ exports.clientsWorkers = async (req, res, next) => {
 exports.clientsLeaveHistory = async (req, res, next) => {
   const { id } = req.params;
   const { search, page, limit } = req.query;
-  let { approveState } = req.query.approveState || "approved";
+  let { approveState } = req.query;
+  if (!approveState) {
+    approveState = "approved";
+  }
   try {
     const specificClient = await Clients.findById(id);
 
@@ -105,8 +108,9 @@ exports.clientsLeaveHistory = async (req, res, next) => {
 exports.clientsManageLeave = async (req, res, next) => {
   const { id } = req.params;
   const { search, page, limit } = req.query;
-  let { typeOfLeave } = req.query || "All";
+  let { typeOfLeave } = req.query
   try {
+    if(!typeOfLeave){typeOfLeave = "All"}
     const specificClient = await Clients.findById(id);
 
     if (!specificClient) {
@@ -122,7 +126,7 @@ exports.clientsManageLeave = async (req, res, next) => {
     ];
 
     let query = { "workerDetails.companyDetail._id": company };
-    typeOfLeave === "All" 
+    typeOfLeave === "All"
       ? (typeOfLeave = [...leaveTypes])
       : (typeOfLeave = req.query.typeOfLeave.split(","));
 
