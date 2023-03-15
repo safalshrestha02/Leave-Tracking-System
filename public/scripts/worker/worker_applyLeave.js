@@ -13,6 +13,40 @@ const endDateErrorMessage = document.querySelector('.end-date-error-div')
 const leaveTypeField = document.querySelector(".type-of-leave");
 const reasonField = document.querySelector(".reason-of-leave");
 
+const applyLeaveBtn = document.querySelector('.apply-leave')
+const resetLeaveBtn = document.querySelector('.reset-leave')
+
+const checkRemainingLeaves = async () => {
+  const leavesTaken = []
+  const leavesResult = await fetchLeavesUnderWorker()
+  const filteredLeaves = leavesResult.filter((leave) => {
+    const { approveState } = leave
+    return approveState === 'pending' || approveState === 'approved'
+  })
+
+  filteredLeaves.forEach((leave) => {
+    const { leaveDays } = leave
+    leavesTaken.push(leaveDays)
+  })
+
+  const totalLeavesTaken = leavesTaken.reduce((l1, l2) => {
+    return l1 + l2
+  })
+
+  const leavesYearly = await fetchLeavesYearly()
+  const remaining = parseInt(leavesYearly) - totalLeavesTaken;
+
+
+  if (remaining <= 0) {
+    applyLeaveBtn.classList.remove('form-button-apply')
+    resetLeaveBtn.classList.remove('form-button-reset')
+    startDateErrorMessage.innerHTML = `*You have already taken alloted number of leaves.`
+  }
+
+  return remaining
+}
+checkRemainingLeaves()
+
 // ------------------------------------------------------------------
 
 const fetchEmpNameAndID = async () => {
@@ -40,6 +74,8 @@ const disablePastDate = () => {
 disablePastDate()
 
 const validateForm = async () => {
+  checkRemainingLeaves()
+
   const leavesResult = await fetchLeavesUnderWorker()
   const filteredLeaves = leavesResult.filter((leave) => {
     const { approveState } = leave
@@ -71,12 +107,10 @@ const validateForm = async () => {
         generateLeaveDays();
       }
 
-      const leavesYearly = await fetchLeavesYearly()
-      const leavesTakenNo = filteredLeaves.length
-      const leavesRemaining = parseInt(leavesYearly) - parseInt(leavesTakenNo);
+      const remainingLeaves = await checkRemainingLeaves()
 
-      if (leaveDays > leavesRemaining) {
-        leaveDaysField.value = `Applying for: ${leaveDays}   Remaining Leaves: ${leavesRemaining}`;
+      if (leaveDays > remainingLeaves) {
+        leaveDaysField.value = `Applying for: ${leaveDays}   Remaining Leaves: ${remainingLeaves}`;
         leaveDaysField.style.border = "1px solid red";
       }
     }
