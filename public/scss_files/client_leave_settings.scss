@@ -9,7 +9,7 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 12rem;
+  padding: 8rem;
 }
 
 .dashboard-heading {
@@ -120,4 +120,66 @@ select {
   padding: 0.5rem;
   color: white;
   border-radius: 50%;
+}
+
+
+@media only screen and (max-width:1600px) {
+  .form-labels {
+    font-size: 0.9rem ;
+  }
+  #types-of-leaves,#no-of-days {
+    font-size: 0.9rem;
+  }
+}
+
+@media only screen and (max-width:1330px) {
+  .form-field  {
+    width: 48%;
+    padding: 1.5rem 2.5rem;
+  }
+  .dashboard-content {
+    padding: 4rem 2rem;
+  }
+}
+
+@media only screen and (max-width:1023px) {
+  .form-labels {
+    font-size: 1rem ;
+  }
+  #types-of-leaves,#no-of-days {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width:700px) {
+  .form-container {
+    display: block;
+  }
+
+  .form-field {
+    width: 70%;
+    margin: 0 auto;
+  }
+  .leave-types {
+    margin-top: 2rem;
+  }
+}
+
+@media only screen and (max-width:510px) {
+  .dashboard-content {
+    padding: 4rem 1rem;
+  }
+  .form-field {
+    width: 90%;
+  }
+  .dashboard-heading {
+    font-size: 1.4rem;
+  }
+  .leave-option-gear {
+    font-size: 1.1rem;
+  }
+  .done-button {
+    font-size: 0.9rem;
+  }
+
 }
