@@ -23,7 +23,6 @@ const fetchLeavesUnderWorker = async () => {
   const activeWorker = await fetchActiveWorkerApi();
   const { _id } = activeWorker;
   const response = await fetch(`http://localhost:3000/api/workers_leaves/${_id}`);
-  console.log(_id)
   const leavesResult = await response.json();
   const { leaveHistory } = leavesResult
   return leaveHistory
@@ -56,6 +55,8 @@ const fetchLeavesYearly = async () => {
   return leavesYearly
 }
 
+
+// RESPONSIVE HAMBURGER MENU
 const leftContainerWrapper = document.querySelector('.left-container-wrapper')
 const hamBurgerMenu = document.querySelector('.hamburger-bars')
 const closeMenu = document.querySelector('.close-menu')
@@ -87,13 +88,13 @@ hamBurgerMenu.addEventListener('click', openHamburgerMenu)
 closeMenu.addEventListener('click', closeHamburgerMenu)
 
 const deleteExpiredUnapprovedLeavesWorker = async () => {
-  try{
-      const activeWorker = await fetchActiveWorkerApi();
-      const { _id } = activeWorker;
-      const expiredUnapprovedLeavesUrl= `http://localhost:3000/api/workerExpireUnapproved/${_id}`
-      const req = await fetch(expiredUnapprovedLeavesUrl, {method: "PATCH"})
+  try {
+    const activeWorker = await fetchActiveWorkerApi();
+    const { _id } = activeWorker;
+    const expiredUnapprovedLeavesUrl = `http://localhost:3000/api/workerExpireUnapproved/${_id}`
+    const req = await fetch(expiredUnapprovedLeavesUrl, { method: "PATCH" })
   } catch (error) {
-      console.log(error.message)
+
   }
 }
 

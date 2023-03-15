@@ -36,7 +36,6 @@ const fetchCompanyName = async () => {
     const { companyName } = await fetchActiveClientApi();
     companyNameField.value = companyName;
   } catch (err) {
-    console.log(err.message);
   }
 };
 fetchCompanyName();
@@ -47,7 +46,6 @@ const fetchCompanyID = async () => {
     companyIDField.value = companyID
 
   } catch (err) {
-    console.log(err.message)
   }
 }
 
@@ -76,6 +74,8 @@ reset.addEventListener("click", () => {
   });
 });
 
+
+// RESPONSIVE HAMBURGER MENU
 const leftContainerWrapper = document.querySelector('.left-container-wrapper')
 const hamBurgerMenu = document.querySelector('.hamburger-bars')
 const closeMenu = document.querySelector('.close-menu')

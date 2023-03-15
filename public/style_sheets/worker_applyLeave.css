@@ -5,6 +5,19 @@
   color: black;
 }
 
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+  width: 12rem;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -653,6 +666,11 @@ label {
     margin-bottom: 1rem;
   }
 }
+@media only screen and (max-height: 845px) {
+  .form-container {
+    margin-bottom: 2.5rem;
+  }
+}
 @media only screen and (max-height: 820px) {
   .form-container {
     margin-bottom: 1.5rem;
@@ -724,4 +742,4 @@ label {
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
   }
-}/*# sourceMappingURL=worker_applyLeave.css.map */
+}

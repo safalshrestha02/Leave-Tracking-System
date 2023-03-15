@@ -92,8 +92,6 @@ addWorkerForm.addEventListener("submit", async (e) => {
       inputFields.forEach((inputs) => {
         inputs.setAttribute("style", "border: initial");
       });
-
-      console.log(data.errors);
       firstName_error.textContent = data.errors.firstName;
       lastName_error.textContent = data.errors.lastName;
       city_error.textContent = data.errors.city;
@@ -142,7 +140,7 @@ addWorkerForm.addEventListener("submit", async (e) => {
       formcompanyName.value = fixedCompanyName;
       formcompanyID.value = fixedClientID;
       handleRefresh()
-      
+
       const successAlert = document.querySelector(".success-alert");
       successAlert.style.display = "block";
       setTimeout(() => {
@@ -150,7 +148,6 @@ addWorkerForm.addEventListener("submit", async (e) => {
       }, 2500);
     }
   } catch (error) {
-    console.error(error);
   }
 });
 
@@ -183,7 +180,6 @@ workerIDinput.addEventListener(
         refreshContainer.innerHTML = `<i class="fa-solid fa-arrows-rotate refresh-icon" onclick='handleRefresh()'></i>`;
         suggestionTitle.innerHTML = "Suggessted IDs";
       } catch (error) {
-        console.log(error);
       }
     };
 
@@ -233,7 +229,6 @@ const handleRefresh = async () => {
       suggestIDContainer.innerHTML += content;
     });
   } catch (error) {
-    console.log(error);
   }
 };
 

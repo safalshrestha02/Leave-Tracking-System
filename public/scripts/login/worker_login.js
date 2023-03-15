@@ -36,7 +36,6 @@ loginForm.addEventListener("submit", async (event) => {
       },
     });
     const data = await response.json();
-    console.log(data);
 
     if (data.errors) {
       login_error.textContent = data.errors.workerID;
@@ -63,6 +62,6 @@ loginForm.addEventListener("submit", async (event) => {
       }, 1000);
     }
   } catch (err) {
-    console.log(err);
+
   }
 });

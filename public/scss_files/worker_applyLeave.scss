@@ -213,6 +213,12 @@ label {
   }
 }
 
+@media only screen and (max-height: 845px) {
+  .form-container {
+    margin-bottom: 2.5rem;
+  }
+}
+
 @media only screen and (max-height: 820px) {
   .form-container {
     margin-bottom: 1.5rem;

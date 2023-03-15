@@ -12,7 +12,7 @@ const pendingContainer = document.querySelector(".pending-container")
 const fetchWorkers = async () => {
   // Getting the actual workers from the company
   manageWorkersSection.innerHTML = '<img src = "/images/load.gif" alt = "Loading fresh data for you" class = "load-gif"/>'
-  
+
   const workersUnderActiveClient = await workersUnderClient()
   const { workers: companyWorkers } = workersUnderActiveClient
   const workersPerPage = companyWorkers
@@ -31,7 +31,7 @@ const fetchWorkers = async () => {
     } else {
       manageWorkersSection.innerHTML = "";
       filtered.map((data, index) => {
-        const { firstName, lastName, workerID, gender, email, city, country,_id } = data;
+        const { firstName, lastName, workerID, gender, email, city, country, _id } = data;
         const fullName = `${firstName} ${lastName}`;
         let ihtml = `
           <div class="worker-details">
@@ -81,7 +81,7 @@ const fetchWorkers = async () => {
         '<p class="empty-workers">You have no any workers. Add some to manage...</p>';
     }
     companyWorkers.map((data, index) => {
-      const { firstName, lastName, workerID, gender, email, city, country,_id } = data;
+      const { firstName, lastName, workerID, gender, email, city, country, _id } = data;
       const fullName = `${firstName} ${lastName}`;
       let ihtml = `
           <div class="worker-details">
@@ -135,7 +135,7 @@ const fetchWorkers = async () => {
     }
     if (companyWorkers.length > 0) {
 
-      filteroptions.forEach(button=> {
+      filteroptions.forEach(button => {
         button.classList.remove("active-option")
       })
       nameAsc.classList.add("active-option")
@@ -151,7 +151,7 @@ const fetchWorkers = async () => {
       });
       manageWorkersSection.innerHTML = "";
       nameAscending.map((data) => {
-        const { firstName, lastName, workerID, gender, email, city, country,_id } = data;
+        const { firstName, lastName, workerID, gender, email, city, country, _id } = data;
         const fullName = `${firstName} ${lastName}`;
         let ihtml = `
         <div class="worker-details">
@@ -202,7 +202,7 @@ const fetchWorkers = async () => {
     }
 
     if (companyWorkers.length > 0) {
-      filteroptions.forEach(button=> {
+      filteroptions.forEach(button => {
         button.classList.remove("active-option")
       })
       nameDes.classList.add("active-option")
@@ -218,7 +218,7 @@ const fetchWorkers = async () => {
       });
       manageWorkersSection.innerHTML = "";
       nameDescending.map((data) => {
-        const { firstName, lastName, workerID, gender, email, city, country,_id } = data;
+        const { firstName, lastName, workerID, gender, email, city, country, _id } = data;
         const fullName = `${firstName} ${lastName}`;
         let ihtml = `
         <div class="worker-details">
@@ -268,11 +268,11 @@ const fetchWorkers = async () => {
         '<p class="empty-workers">You have no any workers to filter. Add workers to filter out</p>';
     }
     if (companyWorkers.length > 0) {
-      filteroptions.forEach(button=> {
+      filteroptions.forEach(button => {
         button.classList.remove("active-option")
       })
       idAsc.classList.add("active-option")
-      
+
       let idAscending = companyWorkers.sort((a, b) => {
         if (a.workerID.toLowerCase() < b.workerID.toLowerCase()) {
           return -1;
@@ -283,9 +283,9 @@ const fetchWorkers = async () => {
         return 0;
       });
       manageWorkersSection.innerHTML = "";
-      
+
       idAscending.map((data) => {
-        const { firstName, lastName, workerID, gender, email, city, country,_id } = data;
+        const { firstName, lastName, workerID, gender, email, city, country, _id } = data;
         const fullName = `${firstName} ${lastName}`;
         let ihtml = `
         <div class="worker-details">
@@ -337,11 +337,11 @@ const fetchWorkers = async () => {
 
     if (companyWorkers.length > 0) {
 
-      filteroptions.forEach(button=> {
+      filteroptions.forEach(button => {
         button.classList.remove("active-option")
       })
       idDes.classList.add("active-option")
-      
+
       let idDescending = companyWorkers.sort((a, b) => {
         if (a.workerID.toLowerCase() < b.workerID.toLowerCase()) {
           return 1;
@@ -351,11 +351,11 @@ const fetchWorkers = async () => {
         }
         return 0;
       });
-      
+
       manageWorkersSection.innerHTML = "";
-      
+
       idDescending.map((data) => {
-        const { firstName, lastName, workerID, gender, email, city, country,_id } = data;
+        const { firstName, lastName, workerID, gender, email, city, country, _id } = data;
         const fullName = `${firstName} ${lastName}`;
         let ihtml = `
         <div class="worker-details">
@@ -398,7 +398,7 @@ fetchWorkers();
 
 // ---------------------- CONFIRM DELETE ----------------------//
 
-const confirmDelete =  (deleteWorkerID, monID, deleteWorkerName) => {
+const confirmDelete = (deleteWorkerID, monID, deleteWorkerName) => {
   const confirmBox = document.querySelector(".confirm-container");
   const cancelButton = document.querySelector(".cancel-button");
   const confirmButton = document.querySelector(".confirm-button");
@@ -407,50 +407,52 @@ const confirmDelete =  (deleteWorkerID, monID, deleteWorkerName) => {
 
   confirmBox.style.display = "flex";
   mainBody.classList.add("main-body-overflow");
-  
+
   workerDeleteName.innerHTML = ""
   workerDeleteID.innerHTML = ``
-  
+
   let deleteworkerIDhtml = `${deleteWorkerID}`
   let deleteworkerNamehtml = `<i class="fa-regular fa-user user-icon"></i>${deleteWorkerName}`
-  
+
   workerDeleteID.innerHTML += deleteworkerIDhtml
   workerDeleteName.innerHTML += deleteworkerNamehtml
-  
-  
+
+
   cancelButton.addEventListener("click", () => {
     confirmBox.style.display = "none";
     mainBody.classList.remove("main-body-overflow");
     deleteWorkerID = null
     monID = null
-  }, {once: true});
-  
-  confirmButton.addEventListener("click", async() => {
+  }, { once: true });
+
+  confirmButton.addEventListener("click", async () => {
     confirmBox.style.display = "none";
     mainBody.classList.remove("main-body-overflow");
     try {
-    if (deleteWorkerID !== null){
-      const deleteURL = `http://localhost:3000/api/workers/${monID}`
-      const deleteWorker = await fetch(deleteURL, {method: "DELETE"})
-      
-      if (deleteWorker.status === 201){
+      if (deleteWorkerID !== null) {
+        const deleteURL = `http://localhost:3000/api/workers/${monID}`
+        const deleteWorker = await fetch(deleteURL, { method: "DELETE" })
 
-        const successAlert = document.querySelector("#alert");
-        successAlert.style.display = "block";
+        if (deleteWorker.status === 201) {
 
-        manageWorkersSection.innerHTML = ""
-        fetchWorkers()
-        
-        setTimeout(()=>{
-          successAlert.style.display = "none";
-        },2500)
+          const successAlert = document.querySelector("#alert");
+          successAlert.style.display = "block";
 
-      }} }
-      catch(error){
-        console.log(error)
+          manageWorkersSection.innerHTML = ""
+          fetchWorkers()
+
+          setTimeout(() => {
+            successAlert.style.display = "none";
+          }, 2500)
+
+        }
       }
+    }
+    catch (error) {
 
-  }, {once: true})
+    }
+
+  }, { once: true })
 };
 
 // ---------- filter ------- //
@@ -469,7 +471,7 @@ filterButton.addEventListener("click", () => {
 
 // ---------------------- HANDLE DETAILS ------------------------//
 
-const handleDetails = (id,full,gender,email,city,country) => {
+const handleDetails = (id, full, gender, email, city, country) => {
 
   const workerDetailBox = document.querySelector(".more-worker-details")
   workerDetailBox.classList.add("details-active")
@@ -514,11 +516,11 @@ const handleDetails = (id,full,gender,email,city,country) => {
             </div>
       </div>
   `
-  workerDetailBox.innerHTML += details 
+  workerDetailBox.innerHTML += details
 
   const closeDetails = document.querySelector(".details-close-icon")
-  
-  closeDetails.addEventListener("click", ()=> {
+
+  closeDetails.addEventListener("click", () => {
     workerDetailBox.classList.remove("details-active")
   })
 

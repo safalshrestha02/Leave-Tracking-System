@@ -224,7 +224,7 @@ form.addEventListener("submit", async (e) => {
       return data;
     }
   } catch (err) {
-    console.log(err);
+
     return err;
   }
 });

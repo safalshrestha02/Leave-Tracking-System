@@ -1,4 +1,3 @@
-
 const filterDropDown = document.querySelector('.filter-leaveRequests')
 const pendingLeaveContainer = document.querySelector('.pending-leave-container')
 

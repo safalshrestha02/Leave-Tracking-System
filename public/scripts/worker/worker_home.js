@@ -26,14 +26,13 @@ const fetchTotalLeaves = async () => {
     leavesWithoutReject.forEach((leave) => {
         if (leave.leaveDays) {
             leavesTakenNo += leave.leaveDays
-        }    
+        }
     })
-
-    console.log(leavesTakenNo)
 
     leavesTaken.textContent = leavesTakenNo
 
-    leavesRemaining.textContent = parseInt(totalLeaveDays.textContent) - parseInt(leavesTaken.textContent);}
+    leavesRemaining.textContent = parseInt(totalLeaveDays.textContent) - parseInt(leavesTaken.textContent);
+}
 fetchTotalLeaves()
 
 
@@ -50,28 +49,28 @@ const activeLeavesDisplay = async () => {
     let currentMonth = currentDate.getMonth() + 1;
     let currentDay = currentDate.getDate();
     currentMonth < 10
-    ? (currentMonth = `0${currentMonth}`)
-    : (currentMonth = currentMonth);
+        ? (currentMonth = `0${currentMonth}`)
+        : (currentMonth = currentMonth);
     currentDay < 10 ? (currentDay = `0${currentDay}`) : (currentDay = currentDay);
     const fullDate = `${currentYear}${currentMonth}${currentDay}`;
 
     // --filtering workers based on today
     const activeLeaves = totalLeaves.filter((leave) => {
         const startDateLeave = `${leave.startDate.slice(
-        0,
-        4
+            0,
+            4
         )}${leave.startDate.slice(5, 7)}${leave.startDate.slice(8, 10)}`;
-        const endDateLeave = `${leave.endDate.slice(0, 4)}${leave.endDate.slice(5,7)}${leave.endDate.slice(8, 10)}`;
+        const endDateLeave = `${leave.endDate.slice(0, 4)}${leave.endDate.slice(5, 7)}${leave.endDate.slice(8, 10)}`;
 
         let startDateCheck = parseInt(fullDate) - parseInt(startDateLeave);
         let endDateCheck = parseInt(fullDate) - parseInt(endDateLeave);
 
         if (Math.sign(startDateCheck) === 1 && Math.sign(endDateCheck) === -1) {
-        return leave;
+            return leave;
         } else if (startDateLeave === fullDate) {
-        return leave;
+            return leave;
         } else if (endDateLeave === fullDate) {
-        return leave;
+            return leave;
         }
     });
 
@@ -83,8 +82,8 @@ const activeLeavesDisplay = async () => {
                     <span>${leave.startDate
                     .slice(0, 10)
                     .replaceAll("-", "/")} - ${leave.endDate
-                      .slice(0, 10)
-                      .replaceAll("-", "/")}</span> <span> ${leave.leaveDays} days</span>
+                        .slice(0, 10)
+                        .replaceAll("-", "/")}</span> <span> ${leave.leaveDays} days</span>
                 </div>
                 <p class="leave-status">
                   <i class="fa-solid fa-circle green"></i><span class="capitalize-input">${leave.approveState}</span>
@@ -93,7 +92,6 @@ const activeLeavesDisplay = async () => {
             activeLeavesDetails.innerHTML += ihtml
         })
     } else {
-        // console.log("noactive")
         activeLeavesContainer.innerHTML = `
         <h2>Active Leave</h2>
         <p class="display-none">No active leave<p>
@@ -115,25 +113,23 @@ const pendingApprovedLeavesDisplay = async () => {
     `
     const fetchTotalLeaves = await fetchLeavesUnderWorker();
     const totalLeaves = fetchTotalLeaves
-    console.log(totalLeaves)
-    
+
     const pendingLeaves = totalLeaves.filter((pendingLeave) => {
-        // console.log(pendingLeave)
         return pendingLeave.approveState === "pending"
     });
 
     // sorting according to start date
     const totalPendingLeaves = pendingLeaves.sort((req1, req2) => {
-        const {startDate: startDate1} = req1 
-        const {startDate: startDate2} = req2
-        return startDate1.slice(0,10) > startDate2.slice(0,10) ? -1 : startDate1.slice(0,10) < startDate2.slice(0,10) ? 1 : 0; 
+        const { startDate: startDate1 } = req1
+        const { startDate: startDate2 } = req2
+        return startDate1.slice(0, 10) > startDate2.slice(0, 10) ? -1 : startDate1.slice(0, 10) < startDate2.slice(0, 10) ? 1 : 0;
     });
 
 
 
     // ------------ mapping pending.approved leaves
     if (totalPendingLeaves.length !== 0) {
-        pendingApprovedLeaves.innerHTML= ""
+        pendingApprovedLeaves.innerHTML = ""
         totalPendingLeaves.forEach((leave) => {
             let ihtml = `
             <div class="worker-leaves">
@@ -147,8 +143,8 @@ const pendingApprovedLeavesDisplay = async () => {
                     <span>${leave.startDate
                     .slice(0, 10)
                     .replaceAll("-", "/")} - ${leave.endDate
-                      .slice(0, 10)
-                      .replaceAll("-", "/")}</span> <span> ${leave.leaveDays} days</span>
+                        .slice(0, 10)
+                        .replaceAll("-", "/")}</span> <span> ${leave.leaveDays} days</span>
                 </div>
                 <p><i class="fa-solid fa-circle orange"></i><span class="capitalize-input leave-status">${leave.approveState}</span></p>
             </div>
@@ -185,8 +181,8 @@ const handleLeaveCancel = (id) => {
 const handleLeaveDelete = async (id) => {
 
     const deleteLeaveUrl = `http://localhost:3000/api/leaveRequests/${id}`
-    const res = await fetch(deleteLeaveUrl,{method: "DELETE"});
-    console.log(res)
+    const res = await fetch(deleteLeaveUrl, { method: "DELETE" });
+
     if (res.status === 201) {
         const successAlert = document.querySelector(".success-alert");
         successAlert.style.display = "block";
@@ -196,13 +192,13 @@ const handleLeaveDelete = async (id) => {
         pendingApprovedLeaves.innerHTML = ""
         pendingApprovedLeavesDisplay();
 
-        totalLeaveDays.textContent ='...'
+        totalLeaveDays.textContent = '...'
         leavesTaken.textContent = '...'
         leavesRemaining.textContent = '...'
         fetchTotalLeaves();
 
     } else {
-        console.log("failed to delete")
+
     }
 }
 
