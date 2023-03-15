@@ -85,3 +85,16 @@ const closeHamburgerMenu = () => {
 
 hamBurgerMenu.addEventListener('click', openHamburgerMenu)
 closeMenu.addEventListener('click', closeHamburgerMenu)
+
+const deleteExpiredUnapprovedLeavesWorker = async () => {
+  try{
+      const activeWorker = await fetchActiveWorkerApi();
+      const { _id } = activeWorker;
+      const expiredUnapprovedLeavesUrl= `http://localhost:3000/api/workerExpireUnapproved/${_id}`
+      const req = await fetch(expiredUnapprovedLeavesUrl, {method: "PATCH"})
+  } catch (error) {
+      console.log(error.message)
+  }
+}
+
+deleteExpiredUnapprovedLeavesWorker()

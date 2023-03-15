@@ -91,3 +91,16 @@ const rejectedLeaveRequestsUnderClient = async () => {
 
 const workerIDinput = document.querySelector("#workerID")
 const idDetails = document.querySelector(".id-details")
+
+const deleteExpiredUnapprovedLeavesClient = async () => {
+    try{
+        const activeClient = await fetchActiveClientApi();
+        const { _id } = activeClient
+        const expiredUnapprovedLeavesUrl= `http://localhost:3000/api/clientExpireUnapproved/${_id}`
+        const req = await fetch(expiredUnapprovedLeavesUrl, {method: "PATCH"})
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+deleteExpiredUnapprovedLeavesClient()
