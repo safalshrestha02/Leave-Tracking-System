@@ -58,6 +58,9 @@ a {
 /* -----------------------left container ---------------- */
 
 .left-container {
+  position: sticky;
+  top: 0;
+  left: 0;
   background: $dark-bg;
   padding: 0.5rem 1rem 2rem 1rem;
   min-width: 13vw;
