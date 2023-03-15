@@ -294,11 +294,11 @@
   grid-column: 1 / 4;
 }
 
-
 // ------------------- RESPONSIVENESS ------------------------ //
 
 @media only screen and (max-width: 1500px) {
-  #leave-approve-button, #leave-reject-button{
+  #leave-approve-button,
+  #leave-reject-button {
     padding: 0.4rem;
     font-size: 0.9rem;
   }
@@ -314,10 +314,11 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .pending-leave-container{
-    grid-template-columns: repeat(1, minmax(0,1fr));
+  .pending-leave-container {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
-  #leave-approve-button, #leave-reject-button{
+  #leave-approve-button,
+  #leave-reject-button {
     padding: 0.5rem;
     font-size: 1rem;
   }
@@ -351,20 +352,20 @@
   .description h1 {
     font-size: 0.9rem !important;
   }
-  #leave-approve-button, #leave-reject-button{
+  #leave-approve-button,
+  #leave-reject-button {
     padding: 0.3rem;
     font-size: 0.8rem;
   }
   .manage-leaves-header h2 {
     font-size: 1.2rem;
   }
-  .no-leaves{
+  .no-leaves {
     font-size: 0.8rem;
   }
   .dashboard-content {
     padding: 1rem 1.2rem;
   }
-
 }
 
 @media only screen and (max-width: 380px) {
@@ -377,7 +378,7 @@
   .description h1 {
     font-size: 0.8rem !important;
   }
-} 
+}
 
 @media only screen and (max-width: 350px) {
   .manage-leaves-header {
@@ -393,16 +394,15 @@
     width: 80%;
     font-size: 0.7rem;
   }
-  #leave-approve-button, #leave-reject-button{
+  #leave-approve-button,
+  #leave-reject-button {
     width: fit-content;
   }
 }
 
+// ----------- RESPONSIVE CONFIRM ------------------- //
 
-// ----------- RESPONSIVE CONFIRM ------------------- // 
-
-
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 768px) {
   .confirm-wrapper {
     padding: 1rem 2rem !important;
   }
@@ -415,11 +415,13 @@
   .warning-title {
     font-size: 0.8rem !important;
   }
-  .cancel-button-confirm,.approve-button-confirm {
+  .cancel-button-confirm,
+  .approve-button-confirm {
     padding: 0.5rem;
     font-size: 0.8rem;
   }
-  #leave-cancel-button, #leave-status-button {
+  #leave-cancel-button,
+  #leave-status-button {
     padding: 0.5rem;
     font-size: 0.8rem;
   }
@@ -430,6 +432,4 @@
     padding: 0.2rem 0.8rem !important;
     width: 90% !important;
   }
-
 }
-

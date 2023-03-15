@@ -24,7 +24,7 @@ const manageLeavesFunc = async () => {
                 pendingLeaveContainer.innerHTML = ` <p class="no-leaves">No any Pending Leave Requests...</p>`
             }
 
-            const filterLeavesWithType = () => {
+            const filterLeavesWithType = async () => {
                 pendingLeaveContainer.innerHTML = ''
                 const clientChoiceLeaveType = filterDropDown.value
 
@@ -33,14 +33,28 @@ const manageLeavesFunc = async () => {
                 }
 
                 else {
-                    const clientChoiceLeaves = companyPendingLeaveRequests.filter((leaveReq) => {
-                        const { typeOfLeave } = leaveReq
-                        return typeOfLeave === clientChoiceLeaveType
+                    pendingLeaveContainer.innerHTML = '<img src = "/images/load.gif" alt = "Loading fresh data for you" class = "load-gif"/>'
+                    const activeClient = await fetchActiveClientApi()
+                    const { _id } = activeClient
+                    const leavesResponse = await fetch(`http://localhost:3000/api/clientsManageHistory/${_id}/?typeOfLeave=${clientChoiceLeaveType}`)
+                    const leavesResult = await leavesResponse.json()
+                    const { Leaves } = leavesResult
+
+                    const sortedLeaveRequests = Leaves.sort((leaves1, leaves2) => {
+                        const { startDate: startDate1 } = leaves1
+                        const { startDate: startDate2 } = leaves2
+                        return startDate1.slice(0, 10) > startDate2.slice(0, 10) ? -1 : startDate1.slice(0, 10) < startDate2.slice(0, 10) ? 1 : 0
                     })
-                    fetchLeavesHtml(clientChoiceLeaves)
+
+                    const pendingSelectedLeaves = sortedLeaveRequests.filter((leave) => {
+                        const { approveState } = leave
+                        return approveState === 'pending'
+                    })
+
+                    fetchLeavesHtml(pendingSelectedLeaves)
 
                     if (pendingLeaveContainer.innerHTML == '') {
-                        pendingLeaveContainer.innerHTML = ` <p class="no-leaves">No any ${filterDropDown.value} Requests...</p>`
+                        pendingLeaveContainer.innerHTML = ` <p class="no-leaves">No any ${clientChoiceLeaveType} Requests...</p>`
                     }
                 }
             }
@@ -204,7 +218,7 @@ const manageLeavesFunc = async () => {
     }
 
     catch (err) {
-        pendingLeaveContainer.innerHTML = `<p class = "fail">Some error occured at the moment. Please try again in a while...</p>`
+        pendingLeaveContainer.innerHTML = `<p class = "fail">Internal error occured at the moment. Please try again in a while...</p>`
     }
 
 }

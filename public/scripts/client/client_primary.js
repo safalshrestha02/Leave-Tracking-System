@@ -40,7 +40,7 @@ const workersUnderClient = async () => {
     return workersResult
 }
 
-// Getting the leave requests under client
+// Getting all leave requests under client
 const leaveRequestsUnderClient = async () => {
     const activeClient = await fetchActiveClientApi();
     const { _id } = activeClient
@@ -57,7 +57,7 @@ const leaveRequestsUnderClient = async () => {
 }
 
 
-// Getting the pending leave requests
+// Getting all pending leave requests
 const pendingLeaveRequestsUnderClient = async () => {
     const leaves = await leaveRequestsUnderClient()
     const pendingLeaves = leaves.filter((leave) => {
