@@ -17,33 +17,37 @@ const applyLeaveBtn = document.querySelector('.apply-leave')
 const resetLeaveBtn = document.querySelector('.reset-leave')
 
 const checkRemainingLeaves = async () => {
-  const leavesTaken = []
   const leavesResult = await fetchLeavesUnderWorker()
-  const filteredLeaves = leavesResult.filter((leave) => {
-    const { approveState } = leave
-    return approveState === 'pending' || approveState === 'approved'
-  })
 
-  filteredLeaves.forEach((leave) => {
-    const { leaveDays } = leave
-    leavesTaken.push(leaveDays)
-  })
+  if (leavesResult.length > 0) {
+    const leavesTaken = [0]
+    const filteredLeaves = leavesResult.filter((leave) => {
+      const { approveState } = leave
+      return approveState === 'pending' || approveState === 'approved'
+    })
 
-  const totalLeavesTaken = leavesTaken.reduce((l1, l2) => {
-    return l1 + l2
-  })
+    filteredLeaves.forEach((leave) => {
+      const { leaveDays } = leave
+      leavesTaken.push(leaveDays)
+    })
 
-  const leavesYearly = await fetchLeavesYearly()
-  const remaining = parseInt(leavesYearly) - totalLeavesTaken;
+    const totalLeavesTaken = leavesTaken.reduce((l1, l2) => {
+      return l1 + l2
+    })
+
+    const leavesYearly = await fetchLeavesYearly()
+    const remaining = parseInt(leavesYearly) - totalLeavesTaken;
 
 
-  if (remaining <= 0) {
-    applyLeaveBtn.classList.remove('form-button-apply')
-    resetLeaveBtn.classList.remove('form-button-reset')
-    startDateErrorMessage.innerHTML = `*You have already taken alloted number of leaves.`
+    if (remaining <= 0) {
+      applyLeaveBtn.classList.remove('form-button-apply')
+      resetLeaveBtn.classList.remove('form-button-reset')
+      startDateErrorMessage.innerHTML = `*You have already taken alloted number of leaves.`
+    }
+
+    return remaining
   }
 
-  return remaining
 }
 checkRemainingLeaves()
 
@@ -107,12 +111,26 @@ const validateForm = async () => {
         generateLeaveDays();
       }
 
-      const remainingLeaves = await checkRemainingLeaves()
+      if (filteredLeaves.length === 0) {
+        const leavesYearly = await fetchLeavesYearly()
+        const leavesTakenNo = filteredLeaves.length
+        const leavesRemaining = parseInt(leavesYearly) - parseInt(leavesTakenNo);
 
-      if (leaveDays > remainingLeaves) {
-        leaveDaysField.value = `Applying for: ${leaveDays}   Remaining Leaves: ${remainingLeaves}`;
-        leaveDaysField.style.border = "1px solid red";
+        if (leaveDays > leavesRemaining) {
+          leaveDaysField.value = `Applying for: ${leaveDays}   Remaining Leaves: ${leavesRemaining}`;
+          leaveDaysField.style.border = "1px solid red";
+        }
       }
+
+      else if (filteredLeaves.length > 0) {
+        const remainingLeaves = await checkRemainingLeaves()
+        if (leaveDays > remainingLeaves) {
+          leaveDaysField.value = `Applying for: ${leaveDays}   Remaining Leaves: ${remainingLeaves}`;
+          leaveDaysField.style.border = "1px solid red";
+        }
+      }
+
+
     }
     generateLeaveDays()
   }
