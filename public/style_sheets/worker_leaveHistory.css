@@ -75,7 +75,7 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  z-index: 11111;
+  z-index: 1;
 }
 
 li {
