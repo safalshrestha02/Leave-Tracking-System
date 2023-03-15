@@ -554,6 +554,25 @@ label {
   font-size: 1rem;
 }
 
+.apply-leave {
+  background-color: #f99417;
+  outline: 1px solid #f99417;
+  margin-left: 2rem;
+}
+.apply-leave:hover {
+  cursor: not-allowed;
+}
+
+.reset-leave {
+  outline: 2px solid #f99417;
+  background-color: white;
+  color: rgb(59, 59, 59);
+  font-weight: 500;
+}
+.reset-leave:hover {
+  cursor: not-allowed;
+}
+
 .form-button-apply {
   background-color: #fdb514;
   outline: 1px solid #fdb514;

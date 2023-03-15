@@ -86,6 +86,27 @@ label {
   font-size: 1rem;
 }
 
+.apply-leave {
+  background-color: $orange-bg;
+  outline: 1px solid $orange-bg;
+  margin-left: 2rem;
+
+  &:hover {
+    cursor: not-allowed;
+  }
+}
+
+.reset-leave {
+  outline: 2px solid $orange-bg;
+  background-color: white;
+  color: rgb(59, 59, 59);
+  font-weight: 500;
+
+  &:hover {
+    cursor: not-allowed;
+  }
+}
+
 .form-button-apply {
   background-color: $primary-yellow;
   outline: 1px solid $primary-yellow;
