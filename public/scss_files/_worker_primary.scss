@@ -66,6 +66,9 @@ a {
 }
 
 .left-container {
+  position: sticky;
+  top: 0;
+  left: 0;
   background: $dark-bg;
   padding: 0.5rem 1rem 2rem 1rem;
   min-width: 13vw;
@@ -169,6 +172,7 @@ li {
 
 .right-container {
   width: 100%;
+  // margin-left: 15vw;
 }
 
 .navbar-name {
