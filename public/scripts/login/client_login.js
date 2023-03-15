@@ -63,6 +63,6 @@ form.addEventListener("submit", async (e) => {
       }, 1000);
     }
   } catch (err) {
-    console.log(err);
+
   }
 });

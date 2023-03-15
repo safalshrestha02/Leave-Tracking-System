@@ -55,17 +55,14 @@ form.addEventListener("submit", async (e) => {
       confirmPasswordError.textContent = "*passwords do not match";
     } else {
       const password = confirmPassword.value;
-      console.log(password);
 
       const formData = {
         newPassword: newPassword.value,
         confirmPassword: confirmPassword.value,
       };
-      console.log(formData);
 
       const response = await submitFormData(formData);
       const data = await response.json();
-      console.log(response, data);
 
       if (response.status === 201) {
         const successAlert = document.querySelector(".success-alert");
@@ -82,7 +79,7 @@ form.addEventListener("submit", async (e) => {
       }
     }
   } catch (error) {
-    console.log(error.message);
+
   }
 });
 

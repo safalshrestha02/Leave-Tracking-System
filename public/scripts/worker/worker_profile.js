@@ -41,7 +41,7 @@ const changePasswordFields = document.querySelectorAll(".password-inputs")
 
 // ----------- SUBMIT NEW PASSWORD -------------- // 
 
-changePasswordForm.addEventListener("submit", async(e)=> {
+changePasswordForm.addEventListener("submit", async (e) => {
 
   e.preventDefault();
 
@@ -60,8 +60,8 @@ changePasswordForm.addEventListener("submit", async(e)=> {
 
   try {
     const url = "http://localhost:3000/api/changeWorkerPwd"
-    
-    
+
+
     const res = await fetch(url, {
       method: "PUT",
       body: JSON.stringify(formData),
@@ -70,13 +70,11 @@ changePasswordForm.addEventListener("submit", async(e)=> {
       },
     });
     const data = await res.json()
-    
-    console.log(data.message)
 
     if (data.message) {
-      changePasswordError.innerHTML= `<p class="error-message">${data.message}</p>`
+      changePasswordError.innerHTML = `<p class="error-message">${data.message}</p>`
     }
-    
+
     if (res.status === 201) {
       changePasswordFields.forEach((inputField) => {
         inputField.setAttribute("style", "border: initial");
@@ -94,8 +92,8 @@ changePasswordForm.addEventListener("submit", async(e)=> {
       passwordContainer.classList.remove("change-password-active");
     }
   }
-  catch(error){
-    console.log(error)
+  catch (error) {
+
   }
 
 })

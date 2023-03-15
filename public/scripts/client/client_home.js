@@ -9,7 +9,6 @@ const workersOnLeave = document.querySelector(".active-leave-container");
 // -------fetching total workers and display----------------
 const fetchAllWorkers = async () => {
   const { workers: workers } = await workersUnderClient();
-  // console.log(workers)
   totalNumWorkers.textContent = workers.length;
   activeWorkers.textContent =
     parseInt(totalNumWorkers.textContent) - parseInt(leaveWorkers.textContent);
@@ -65,8 +64,6 @@ const fetchAllWorkersLeave = async () => {
       }
     });
 
-    // console.log(activeLeaveWorkers)
-
     leaveWorkers.textContent = activeLeaveWorkers.length;
 
     if (activeLeaveWorkers.length !== 0) {
@@ -97,7 +94,6 @@ const fetchAllWorkersLeave = async () => {
     }
 
   } catch (err) {
-    console.log(err.message)
   };
 };
 

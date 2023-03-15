@@ -11,14 +11,12 @@ const editLeaveSettings = async () => {
   try {
     // ----adding current leaves in a year----------
     const activeClient = await fetchActiveClientApi();
-    console.log(activeClient.leavesYearly);
     leavesYearlyInput.setAttribute(
       "placeholder",
       `${activeClient.leavesYearly}`
     );
 
     const settingsFunction = () => {
-      console.log("settings");
       settingsIcon.style.display = "none";
       doneButton.style.display = "block";
       leavesYearlyInput.style.border = "2px solid #03c988";
@@ -26,7 +24,6 @@ const editLeaveSettings = async () => {
     };
 
     const doneFunction = async () => {
-      console.log("done");
       doneButton.style.display = "none";
       settingsIcon.style.display = "block";
       leavesYearlyInput.style.border = "initial";
@@ -55,7 +52,7 @@ const editLeaveSettings = async () => {
     settingsIcon.addEventListener("click", settingsFunction);
     doneButton.addEventListener("click", doneFunction);
   } catch (err) {
-    console.log(err.messge);
+
   }
 };
 

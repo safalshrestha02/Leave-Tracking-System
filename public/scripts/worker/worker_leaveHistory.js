@@ -292,7 +292,6 @@ const confirmDelete = (monId, index) => {
   deleteCheck[index].addEventListener("click", async () => {
     if (monId !== null) {
       const deleteURL = `http://localhost:3000/api/leaveRequests/${monId}`
-      console.log(deleteURL)
       const res = await fetch(deleteURL, { method: "DELETE" })
 
       if (res.status === 201) {

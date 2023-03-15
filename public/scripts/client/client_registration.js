@@ -37,8 +37,6 @@ const clientNameField = document.querySelector("#cCName")
 const clientEmailField = document.querySelector("#cEmail")
 const clientPasswordField = document.querySelector("#cPassword")
 
-console.log(clientPasswordField)
-
 companyNameField.addEventListener("input", () => {
   companyName_error.textContent = ""
   companyNameField.setAttribute("style", "border: 2px solid initial")
@@ -83,8 +81,6 @@ form.addEventListener("submit", async (e) => {
   const clientEmail = form.cEmail.value;
   const clientPassword = form.cPassword.value;
 
-  console.log(companyID);
-
   const formData = {
     companyName: companyName,
     companyAddress: companyAddress,
@@ -93,21 +89,18 @@ form.addEventListener("submit", async (e) => {
     email: clientEmail,
     password: clientPassword,
   };
-  console.log(formData);
 
   try {
     const response = await submitFormData(formData);
-    console.log(response);
     const data = await response.json();
 
     // ---------------handling errors---------
     if (data.errors) {
-      console.log(data.errors);
 
       registerInputs.forEach((inputField) => {
         inputField.setAttribute("style", "border: 2px solid initial");
 
-        inputField.addEventListener("input" , () => {
+        inputField.addEventListener("input", () => {
           inputField.setAttribute("style", "border: 2px solid initial")
         })
       });
@@ -161,7 +154,7 @@ form.addEventListener("submit", async (e) => {
       }, 1000);
     }
   } catch (err) {
-    console.log(err);
+
   }
 });
 

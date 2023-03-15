@@ -5,7 +5,6 @@ const form = document.querySelector(".forgot-password-form");
 const errorField = document.querySelector(".error-field");
 const successAlert = document.querySelector(".success-alert");
 const continueButton = document.querySelector(".submit-button");
-console.log(successAlert);
 
 // ----------sending email for verification-----------------
 
@@ -22,7 +21,6 @@ form.addEventListener("submit", async (e) => {
 
     const response = await sendingEmailInfo(formData);
     const data = await response.json();
-    console.log(data, response);
 
     if (!email) {
       errorField.textContent = "";
@@ -40,7 +38,7 @@ form.addEventListener("submit", async (e) => {
       }, 2000);
     }
   } catch (error) {
-    console.log(error.message);
+
   }
 });
 

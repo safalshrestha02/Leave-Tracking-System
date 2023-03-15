@@ -17,7 +17,6 @@ a {
   align-self: flex-start;
   font-weight: 500;
   top: -2rem;
-  // margin-bottom: 2rem;
 }
 
 .leave-setting-options {
@@ -28,7 +27,6 @@ a {
 }
 
 .leave-option-gear {
-  // display: none;
   font-size: 1.2rem;
   position: relative;
   top: -2rem;
@@ -86,7 +84,7 @@ select {
   background-color: $green-bg;
   padding: 0.7rem 1rem;
   color: black;
-  font-weight:500;
+  font-weight: 500;
   font-size: 1rem;
   &:hover {
     background-color: #06b97e;
@@ -94,7 +92,7 @@ select {
   }
 }
 
-.leave-success{
+.leave-success {
   display: none;
   position: absolute;
   min-width: 15%;
@@ -111,7 +109,7 @@ select {
   h4 {
     display: inline-flex;
     font-size: 1.1rem;
-    font-weight: 500success-alert ;
+    font-weight: 500success-alert;
   }
 }
 
@@ -122,18 +120,18 @@ select {
   border-radius: 50%;
 }
 
-
-@media only screen and (max-width:1600px) {
+@media only screen and (max-width: 1600px) {
   .form-labels {
-    font-size: 0.9rem ;
+    font-size: 0.9rem;
   }
-  #types-of-leaves,#no-of-days {
+  #types-of-leaves,
+  #no-of-days {
     font-size: 0.9rem;
   }
 }
 
-@media only screen and (max-width:1330px) {
-  .form-field  {
+@media only screen and (max-width: 1330px) {
+  .form-field {
     width: 48%;
     padding: 1.5rem 2.5rem;
   }
@@ -142,16 +140,17 @@ select {
   }
 }
 
-@media only screen and (max-width:1023px) {
+@media only screen and (max-width: 1023px) {
   .form-labels {
-    font-size: 1rem ;
+    font-size: 1rem;
   }
-  #types-of-leaves,#no-of-days {
+  #types-of-leaves,
+  #no-of-days {
     font-size: 1rem;
   }
 }
 
-@media only screen and (max-width:700px) {
+@media only screen and (max-width: 700px) {
   .form-container {
     display: block;
   }
@@ -165,7 +164,7 @@ select {
   }
 }
 
-@media only screen and (max-width:510px) {
+@media only screen and (max-width: 510px) {
   .dashboard-content {
     padding: 4rem 1rem;
   }
@@ -181,5 +180,4 @@ select {
   .done-button {
     font-size: 0.9rem;
   }
-
 }
