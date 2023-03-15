@@ -23,6 +23,7 @@ const fetchLeavesUnderWorker = async () => {
   const activeWorker = await fetchActiveWorkerApi();
   const { _id } = activeWorker;
   const response = await fetch(`http://localhost:3000/api/workers_leaves/${_id}`);
+  console.log(_id)
   const leavesResult = await response.json();
   const { leaveHistory } = leavesResult
   return leaveHistory
