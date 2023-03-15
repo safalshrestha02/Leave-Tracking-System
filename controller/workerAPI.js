@@ -19,8 +19,8 @@ exports.workersLeaves = async (req, res, next) => {
   let {approveState} = req.query || "all"
 
   try {
-    const states = ["approved", "rejected"];
-    approveState === "approved"
+    const states = ["approved","pending", "rejected"];
+    approveState === "all"
     ? (approveState = [...states])
     : (approveState = req.query.approveState.split(","));
 
