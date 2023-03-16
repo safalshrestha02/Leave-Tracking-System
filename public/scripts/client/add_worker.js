@@ -193,8 +193,7 @@ workerIDinput.addEventListener(
 formClose.addEventListener("click", () => {
   formContainer.classList.remove("form-active");
   document.body.style.overflow = "auto";
-  manageWorkersSection.innerHTML = "";
-  fetchWorkers();
+  location.reload()
 });
 
 const handleSuggestionValue = (suggestId) => {

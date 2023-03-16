@@ -71,20 +71,25 @@ const fetchAllWorkersLeave = async () => {
       activeLeaveWorkers.forEach((worker) => {
         let ihtml = `
             <div class="active-leave-details">
-            <i class="fa-regular fa-user user-icon"></i
-            ><span class="active-leave-name capitalize-input">${worker.workerName}</span>
-  
-            <div class="active-leave-date">
-              <span>${worker.startDate
-            .slice(0, 10)
-            .replaceAll("-", "/")} - ${worker.endDate
+              <div class="workerid-name-container">
+                <p><i class="fa-regular fa-user user-icon"></i>
+                <span class="active-leave-name capitalize-input">${worker.workerName}</span></p>
+                <p class="active-worker-id">${worker.workerID}</p>
+              </div>
+              
+    
+              <div class="active-leave-date">
+                <span>${worker.startDate
               .slice(0, 10)
-              .replaceAll("-", "/")}</span> <span> ${worker.leaveDays} days</span>
-            </div>
-  
-            <div class="active-leave-date">
-              <p>${worker.typeOfLeave}</p>
-              <p><i class="fa-solid fa-circle green"></i>Approved</p>
+              .replaceAll("-", "/")} - ${worker.endDate
+                .slice(0, 10)
+                .replaceAll("-", "/")}</span> <span> ${worker.leaveDays} days</span>
+              </div>
+    
+              <div class="active-leave-date">
+                <p>${worker.typeOfLeave}</p>
+                <p><i class="fa-solid fa-circle green"></i>Approved</p>
+              </div>
             </div>
             `;
         workersOnLeave.innerHTML += ihtml;

@@ -123,7 +123,7 @@ a {
 }
 
 .login-button {
-  background-color: white;
+  background-color: #fdb514;
   width: 100%;
   border-radius: 0.5rem;
   font-size: 1.2rem;
@@ -294,7 +294,6 @@ a {
 }
 .forgot-password {
   color: white;
-  color: #fdb514;
   font-weight: 500;
 }
 .forgot-password:hover {
@@ -327,4 +326,4 @@ a {
   padding: 0.5rem;
   color: white;
   border-radius: 50%;
-}
+}/*# sourceMappingURL=login.css.map */
