@@ -31,7 +31,7 @@ router.post(
 router.post("/api/activeWorker", requireWorkerAuth, workerAuth.activeWorker);
 router.post("/api/workerForgotPassword", workerAuth.forgotPassword);
 
-router.patch("/api/workerExpireUnapproved/:id", workerAPI.expireUnapproved)
+router.patch("/api/workerExpireUnapproved/:id", workerAPI.expireUnapproved);
 
 router.put(
   "/api/changeWorkerPwd",

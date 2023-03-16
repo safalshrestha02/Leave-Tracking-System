@@ -114,10 +114,7 @@ exports.activeWorker = async (req, res, next) => {
         "companyDetail firstName lastName country city companyName workerID gender email createdAt"
       )
       .exec();
-    res
-      .status(200)
-      .setHeader("Content-Security-Policy", "script-src 'self'")
-      .json({ data: worker });
+    res.status(200).json({ data: worker });
   } catch (error) {
     next(error);
   }
@@ -184,8 +181,6 @@ exports.forgotPassword = async (req, res, next) => {
 
     const resetUrl = `${process.env.WORKER_DOMAIN}/?token=${resetToken}`;
 
-    console.log(resetUrl);
-
     const message = `You are reveiving this email because you (or someone else) has requested to resest the passord. Please click the link below to reset your password \n\n ${resetUrl} \n\n This link will expire in 10 minutes`;
 
     try {
@@ -198,7 +193,6 @@ exports.forgotPassword = async (req, res, next) => {
 
       res.status(200).json({ success: true, data: "Email sent" });
     } catch (error) {
-      console.log(error);
       worker.resetPasswordToken = undefined;
       worker.resetPasswordExpire = undefined;
 

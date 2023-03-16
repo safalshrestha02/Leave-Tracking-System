@@ -62,7 +62,9 @@ exports.activeClient = async (req, res, next) => {
         "companyName companyID companyAddress name email createdAt leavesYearly"
       )
       .exec();
-    res.status(200).setHeader("Content-Security-Policy", "script-src 'self'").json({ data: client });
+    res
+      .status(200)
+      .json({ data: client });
   } catch (error) {
     return error;
   }
@@ -89,7 +91,9 @@ exports.changeLeaveState = async (req, res, next) => {
         approveState,
       },
     });
-    res.status(201).json({success: `state has been changed to ${approveState}`});
+    res
+      .status(201)
+      .json({ success: `state has been changed to ${approveState}` });
   } catch (error) {
     res.status(400).json({ error: error });
   }
@@ -168,8 +172,6 @@ exports.forgotPassword = async (req, res, next) => {
 
     const resetUrl = `${process.env.CLIENT_DOMAIN}/?token=${resetToken}`;
 
-    console.log(resetUrl);
-
     const message = `You are reveiving this email because you (or someone else) has requested to resest the passord. Please click the link below to reset your password \n ${resetUrl} \n\nThis link will expire in 10 minutes`;
 
     try {
@@ -182,7 +184,6 @@ exports.forgotPassword = async (req, res, next) => {
 
       res.status(200).json({ success: true, data: "Email sent" });
     } catch (error) {
-      console.log(error);
       client.resetPasswordToken = undefined;
       client.resetPasswordExpire = undefined;
 
