@@ -108,9 +108,11 @@ exports.clientsLeaveHistory = async (req, res, next) => {
 exports.clientsManageHistory = async (req, res, next) => {
   const { id } = req.params;
   const { search, page, limit } = req.query;
-  let { typeOfLeave } = req.query
+  let { typeOfLeave } = req.query;
   try {
-    if(!typeOfLeave){typeOfLeave = "All"}
+    if (!typeOfLeave) {
+      typeOfLeave = "All";
+    }
     const specificClient = await Clients.findById(id);
 
     if (!specificClient) {
@@ -162,7 +164,7 @@ exports.suggestedIds = async (req, res, next) => {
             dataLength += 1;
           });
         });
-        res.status(201)
+        res.status(201);
       } else {
         res.status(400).json({ error: "No company found with that ID" });
       }
@@ -186,8 +188,7 @@ exports.suggestedIds = async (req, res, next) => {
         }
         a += 1;
       });
-      res.status(201).json(randomIds)
-      
+      res.status(201).json(randomIds);
     };
 
     checkIds(workerIds, randomIds);

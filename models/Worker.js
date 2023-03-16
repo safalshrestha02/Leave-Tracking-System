@@ -89,7 +89,6 @@ registerWorker.statics.registerWorker = async function (
   if (dupWorkerId) {
     throw Error("*worker is already registered");
   }
-  console.log(dupEmail);
   const worker = await this.create({
     workerName,
     country,

@@ -43,7 +43,6 @@ exports.workersLeaves = async (req, res, next) => {
         } else {
           res
             .status(400)
-            .setHeader("Content-Security-Policy", "script-src 'self'")
             .json({ error: "No worker under that ID" });
         }
       });

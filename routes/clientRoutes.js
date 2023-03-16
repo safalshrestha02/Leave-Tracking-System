@@ -56,6 +56,7 @@ router.patch("/api/approveLeave/:id", clientAuth.changeLeaveState);
 router.patch("/api/changeLeaveDays/:id/", clientAuth.changeLeaveDays);
 router.patch("/api/clientExpireUnapproved/:id", clientAPI.expireUnapproved);
 
+//putReqs
 router.put(
   "/api/changeClientPwd",
   requireClientAuth,
@@ -63,6 +64,7 @@ router.put(
 );
 router.put("/api/clientResetPassword/:resetToken", clientAuth.resetPassword);
 
+//deleteReqs
 router.delete("/api/workers/:id", clientAPI.workerDelete);
 
 module.exports = router;

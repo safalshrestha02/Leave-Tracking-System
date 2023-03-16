@@ -6,7 +6,6 @@ const connectDB = async () => {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
-
   console.log(`\x1b[95m\x1b[4mMongoDB Connected: ${conn.connection.host}`);
 };
 
