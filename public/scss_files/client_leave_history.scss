@@ -19,17 +19,17 @@
 
 .select-worker {
   background-color: #f3f5f7;
-  padding: 0.8rem;
   border: none;
   border-radius: 0.3rem;
   font-size: 1rem;
+  padding: 0.8rem 1rem;
+  min-width: 10rem;
 
   &:hover {
     cursor: pointer;
     background-color: rgb(230, 230, 230);
   }
 }
-
 .filter-workers-leave-history {
   position: relative;
 
@@ -264,7 +264,7 @@
     font-size: 0.9rem !important;
     padding: 0.5rem 0.8rem !important;
   }
-  .no-past-leaves{
+  .empty-workers,.no-past-leaves{
     font-size: 0.8rem;
   }
   .filter-container {

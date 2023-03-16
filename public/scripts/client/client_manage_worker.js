@@ -41,7 +41,7 @@ const fetchWorkers = async () => {
       
       const foundWorkers = data.workers
       if (foundWorkers.length == 0) {
-        manageWorkersSection.innerHTML = `No search results found for "${dashboardSearch.value}"`;
+        manageWorkersSection.innerHTML = `<p>No search results found for "${dashboardSearch.value}"</p>`;
       } 
 
       if (foundWorkers.length > 0) {
@@ -74,7 +74,7 @@ const fetchWorkers = async () => {
       
       const foundWorkers = data.workers
       if (foundWorkers.length == 0) {
-        manageWorkersSection.innerHTML = `Add some workers to filter them`;
+        manageWorkersSection.innerHTML = `<p class="empty-workers">Add some workers to filter them</p>`;
       } 
 
       if (foundWorkers.length > 0) {
@@ -118,7 +118,7 @@ const fetchWorkers = async () => {
       
       const foundWorkers = data.workers
       if (foundWorkers.length == 0) {
-        manageWorkersSection.innerHTML = `Add some workers to filter them`;
+        manageWorkersSection.innerHTML = `<p class="empty-workers">Add some workers to filter them</p>`;
       } 
 
       if (foundWorkers.length > 0) {
@@ -155,7 +155,7 @@ const fetchWorkers = async () => {
       
       const foundWorkers = data.workers
       if (foundWorkers.length == 0) {
-        manageWorkersSection.innerHTML = `Add some workers to filter them`;
+        manageWorkersSection.innerHTML = `<p class="empty-workers">Add some workers to filter them</p>`;
       } 
 
       if (foundWorkers.length > 0) {
@@ -190,7 +190,7 @@ const fetchWorkers = async () => {
       
       const foundWorkers = data.workers
       if (foundWorkers.length == 0) {
-        manageWorkersSection.innerHTML = `Add some workers to filter them`;
+        manageWorkersSection.innerHTML = `<p class="empty-workers">Add some workers to filter them</p>`;
       } 
 
       if (foundWorkers.length > 0) {
@@ -227,7 +227,7 @@ const fetchWorkers = async () => {
       
       const foundWorkers = data.workers
       if (foundWorkers.length == 0) {
-        manageWorkersSection.innerHTML = `Add some workers to filter them`;
+        manageWorkersSection.innerHTML = `<p class="empty-workers">Add some workers to filter them</p>`;
       } 
 
       if (foundWorkers.length > 0) {

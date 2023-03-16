@@ -618,6 +618,21 @@ label {
     padding: 0 0 1rem 0;
   }
 }
+@media only screen and (max-width: 1023px) {
+  .success-alert {
+    display: none;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+  .success-alert h4 {
+    font-size: 1rem;
+  }
+  .success-alert i:nth-child(1) {
+    padding: 0.4rem;
+    font-size: 0.6rem;
+    margin-right: 0.2rem;
+  }
+}
 @media only screen and (max-width: 660px) {
   .form-container,
   .form-field input,

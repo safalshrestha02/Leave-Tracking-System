@@ -15,7 +15,6 @@ select {
   padding-right: 2.5rem;
   print-color-adjust: exact;
   -webkit-print-color-adjust: exact;
-  width: 12rem;
 }
 
 * {
