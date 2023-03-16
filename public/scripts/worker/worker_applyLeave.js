@@ -71,7 +71,7 @@ const disablePastDate = () => {
     ? (currentMonth = `0${currentMonth}`)
     : (currentMonth = currentMonth);
   currentDay < 10 ? (currentDay = `0${currentDay}`) : (currentDay = currentDay);
-  const currentFullDate = `${currentYear}-${currentMonth}-${currentDay + 1}`;
+  const currentFullDate = `${currentYear}-${currentMonth}-${currentDay}`;
   startDateField.setAttribute("min", currentFullDate);
   endDateField.setAttribute("min", currentFullDate);
 }
