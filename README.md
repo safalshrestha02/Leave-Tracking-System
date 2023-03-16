@@ -46,6 +46,8 @@ Start the server
 [Bootcamp Documentation](https://documenter.getpostman.com/view/25413848/2s93JxqLse)
 
 [Project Documentation](https://docs.google.com/document/d/1tUjvT6PisofZ6HykF0o8lusBas0aaBbwEQydqwJAPPU/edit)
+
+[User Manual](https://docs.google.com/document/d/15z7FSdhNns73CiY1aP-R7QbMnzu8qcT9Bn1zfg61m7s/edit)
 		
 
 ## Tech Stack
