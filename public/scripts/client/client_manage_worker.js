@@ -13,384 +13,239 @@ const fetchWorkers = async () => {
   // Getting the actual workers from the company
   manageWorkersSection.innerHTML = '<img src = "/images/load.gif" alt = "Loading fresh data for you" class = "load-gif"/>'
 
-  const workersUnderActiveClient = await workersUnderClient()
-  const { workers: companyWorkers } = workersUnderActiveClient
-  const workersPerPage = companyWorkers
-
-
-  // ----------------------- search Function ------------------------------------//
-
-  const searchFunc = () => {
-    const filtered = companyWorkers.filter((workerInfo) => {
-      const userInput = dashboardSearch.value.toLowerCase();
-      const { firstName } = workerInfo;
-      return firstName.toLowerCase().startsWith(userInput);
-    });
-    if (filtered.length == 0) {
-      manageWorkersSection.innerHTML = `No search results found for "${dashboardSearch.value}"`;
-    } else {
-      manageWorkersSection.innerHTML = "";
-      filtered.map((data, index) => {
-        const { firstName, lastName, workerID, gender, email, city, country, _id } = data;
-        const fullName = `${firstName} ${lastName}`;
-        let ihtml = `
-          <div class="worker-details">
-
-              <div class="topsection">
-              
-                  <span>
-                      <i class="fa-regular fa-user user-icon"></i>
-                      <span class="worker-name">${fullName}</span>
-                  </span>
-                  <div class="worker-profile">
-                    <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}","${city}", "${country}")'></i>
-                  </div>
-
-              </div>
-
-
-              <div class="worker-id">
-                  <span>Worker ID: ${workerID}</span>
-              </div>
-
-              <div class="worker-gender-delete">
-                  <p class="gender">${gender}</p>
-
-                  <button class="worker-delete-button" onClick='confirmDelete("${workerID}","${_id}","${fullName}")'>
-                      <i class="fa-solid fa-trash"></i>
-                  </button>
-
-              </div>
-
-          </div>
-          `;
-        manageWorkersSection.innerHTML += ihtml;
-      });
+  const fetchactiveClientId = async () => {
+    try {
+      const res = await fetchActiveClientApi()
+      const activeid  = res._id
+      return activeid
     }
-  };
+    catch (error) {
+      console.log(error)
+    }
+  }
+
+  const activeClientId = await fetchactiveClientId()
+
+
+  // --------------------- SEARCH FUNCTION  ---------- // 
+
+    const searchWorker = async () => {
+      try {
+      const userInput = dashboardSearch.value.toLowerCase();
+      
+
+      const search_url = `http://localhost:3000/api/clients_workers/${activeClientId}/?page=1&limit=1000&search=${userInput}`
+
+      const res = await fetch(search_url, {method: "GET"})
+      const data = await res.json()
+      
+      const foundWorkers = data.workers
+      if (foundWorkers.length == 0) {
+        manageWorkersSection.innerHTML = `No search results found for "${dashboardSearch.value}"`;
+      } 
+
+      if (foundWorkers.length > 0) {
+        manageWorkersSection.innerHTML = "";
+        foundWorkers.map((data) => {
+          Workermap(data)
+        });
+      }
+      }
+      catch (error) {
+        console.log(error)
+      }
+
+    }
+    dashboardSearch.addEventListener("input", searchWorker);
 
   // ------------------------ ADDING WORKERS ON DASHBOARD -----------------------//
 
-  dashboardSearch.addEventListener("input", searchFunc);
+
 
   const addWorkersToDashboard = async () => {
-    manageWorkersSection.innerHTML = "";
+    filterContainer.classList.remove("filter-container-active");
+    icon.classList.remove("fa-circle-xmark");
 
-    if (companyWorkers.length == 0) {
-      manageWorkersSection.innerHTML =
-        '<p class="empty-workers">You have no any workers. Add some to manage...</p>';
+    try {
+      ASC_URL = `http://localhost:3000/api/clients_workers/${activeClientId}/?page=1&limit=1000&sort=firstName,asc`
+
+      const res = await fetch(ASC_URL, {method: "GET"})
+      const data = await res.json()
+      
+      const foundWorkers = data.workers
+      if (foundWorkers.length == 0) {
+        manageWorkersSection.innerHTML = `Add some workers to filter them`;
+      } 
+
+      if (foundWorkers.length > 0) {
+
+        filteroptions.forEach(button => {
+          button.classList.remove("active-option")
+        })
+        nameAsc.classList.add("active-option")
+
+        manageWorkersSection.innerHTML = "";
+        foundWorkers.map((data) => {
+          Workermap(data)
+        });
+      }
     }
-    companyWorkers.map((data, index) => {
-      const { firstName, lastName, workerID, gender, email, city, country, _id } = data;
-      const fullName = `${firstName} ${lastName}`;
-      let ihtml = `
-          <div class="worker-details">
-  
-              <div class="topsection">
-              
-                  <span>
-                      <i class="fa-regular fa-user user-icon"></i>
-                      <span class="worker-name">${fullName}</span>
-                  </span>
-  
-                  <div class="worker-profile">
-                      <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}","${city}", "${country}")'></i>
-                  </div>
-  
-              </div>
-  
-  
-              <div class="worker-id">
-                  <span>Worker ID: ${workerID}</span>
-              </div>
-  
-              <div class="worker-gender-delete">
-                  <p class="gender">${gender}</p>
-  
-                  <button class="worker-delete-button" onClick='confirmDelete("${workerID}","${_id}","${fullName}")'>
-                      <i class="fa-solid fa-trash"></i>
-                  </button>
-              </div>
-  
-          </div>
-          `;
-      manageWorkersSection.innerHTML += ihtml;
-    });
+    
+    catch (error) {
+      console.log(error)
+     }
   }
 
   addWorkersToDashboard();
 
-  // ----------------------------- SORTING ----------------------------------------//
 
+  
+  // ----------------------------- SORTING ----------------------------------------//
+  
+  
   // ----------------------------- SORTING BY ASCENDING NAME -------------------//
 
-  nameAsc.addEventListener("click", () => {
+  nameAsc.addEventListener("click", async() => {
 
     filterContainer.classList.remove("filter-container-active");
     icon.classList.remove("fa-circle-xmark");
 
-    if (companyWorkers.length == 0) {
-      manageWorkersSection.innerHTML =
-        '<p class="empty-workers">You have no any workers to filter. Add workers to filter out</p>';
+    try {
+      ASC_URL = `http://localhost:3000/api/clients_workers/${activeClientId}/?page=1&limit=1000&sort=firstName,asc`
+
+      const res = await fetch(ASC_URL, {method: "GET"})
+      const data = await res.json()
+      
+      const foundWorkers = data.workers
+      if (foundWorkers.length == 0) {
+        manageWorkersSection.innerHTML = `Add some workers to filter them`;
+      } 
+
+      if (foundWorkers.length > 0) {
+
+        filteroptions.forEach(button => {
+          button.classList.remove("active-option")
+        })
+        nameAsc.classList.add("active-option")
+
+        manageWorkersSection.innerHTML = "";
+        foundWorkers.map((data) => {
+          Workermap(data)
+        });
+      }
     }
-    if (companyWorkers.length > 0) {
-
-      filteroptions.forEach(button => {
-        button.classList.remove("active-option")
-      })
-      nameAsc.classList.add("active-option")
-
-      let nameAscending = companyWorkers.sort((a, b) => {
-        if (a.firstName.toLowerCase() < b.firstName.toLowerCase()) {
-          return -1;
-        }
-        if (a.firstName.toLowerCase() > b.firstName.toLowerCase()) {
-          return 1;
-        }
-        return 0;
-      });
-      manageWorkersSection.innerHTML = "";
-      nameAscending.map((data) => {
-        const { firstName, lastName, workerID, gender, email, city, country, _id } = data;
-        const fullName = `${firstName} ${lastName}`;
-        let ihtml = `
-        <div class="worker-details">
-
-            <div class="topsection">
-            
-                <span>
-                    <i class="fa-regular fa-user user-icon"></i>
-                    <span class="worker-name">${fullName}</span>
-                </span>
-
-                <div class="worker-profile">
-                    <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}","${city}", "${country}")'></i>
-                </div>
-
-            </div>
-
-
-            <div class="worker-id">
-                <span>Worker ID: ${workerID}</span>
-            </div>
-
-            <div class="worker-gender-delete">
-                <p class="gender">${gender}</p>
-
-                <button class="worker-delete-button" onClick='confirmDelete("${workerID}","${_id}","${fullName}")'>
-                    <i class="fa-solid fa-trash"></i>
-                </button>
-            </div>
-
-        </div>
-        `;
-        manageWorkersSection.innerHTML += ihtml;
-      });
-    }
+    
+    catch (error) {
+      console.log(error)
+     }
   });
 
   // ----------------------------- SORTING BY DESCENDING NAME -------------------//
 
-  nameDes.addEventListener("click", () => {
+  nameDes.addEventListener("click", async() => {
 
     filterContainer.classList.remove("filter-container-active");
     icon.classList.remove("fa-circle-xmark");
 
-    if (companyWorkers.length == 0) {
-      manageWorkersSection.innerHTML =
-        '<p class="empty-workers">You have no any workers to filter. Add workers to filter out</p>';
+    try {
+      const DESC_URL = `http://localhost:3000/api/clients_workers/${activeClientId}/?page=1&limit=1000&sort=firstName,desc`
+
+      const res = await fetch(DESC_URL, {method: "GET"})
+      const data = await res.json()
+      
+      const foundWorkers = data.workers
+      if (foundWorkers.length == 0) {
+        manageWorkersSection.innerHTML = `Add some workers to filter them`;
+      } 
+
+      if (foundWorkers.length > 0) {
+        filteroptions.forEach(button => {
+          button.classList.remove("active-option")
+        })
+        nameDes.classList.add("active-option")
+        manageWorkersSection.innerHTML = "";
+        foundWorkers.map((data) => {
+          Workermap(data)
+        });
+      }
     }
-
-    if (companyWorkers.length > 0) {
-      filteroptions.forEach(button => {
-        button.classList.remove("active-option")
-      })
-      nameDes.classList.add("active-option")
-
-      let nameDescending = companyWorkers.sort((a, b) => {
-        if (a.firstName.toLowerCase() < b.firstName.toLowerCase()) {
-          return 1;
-        }
-        if (a.firstName.toLowerCase() > b.firstName.toLowerCase()) {
-          return -1;
-        }
-        return 0;
-      });
-      manageWorkersSection.innerHTML = "";
-      nameDescending.map((data) => {
-        const { firstName, lastName, workerID, gender, email, city, country, _id } = data;
-        const fullName = `${firstName} ${lastName}`;
-        let ihtml = `
-        <div class="worker-details">
-
-            <div class="topsection">
-            
-                <span>
-                    <i class="fa-regular fa-user user-icon"></i>
-                    <span class="worker-name">${fullName}</span>
-                </span>
-
-                <div class="worker-profile">
-                    <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}","${city}", "${country}")'></i>
-                </div>
-
-            </div>
-
-
-            <div class="worker-id">
-                <span>Worker ID: ${workerID}</span>
-            </div>
-
-            <div class="worker-gender-delete">
-                <p class="gender">${gender}</p>
-
-                <button class="worker-delete-button" onClick='confirmDelete("${workerID}","${_id}","${fullName}")'>
-                    <i class="fa-solid fa-trash"></i>
-                </button>
-            </div>
-
-        </div>
-        `;
-        manageWorkersSection.innerHTML += ihtml;
-      });
-    }
+    
+    catch (error) {
+      console.log(error)
+     }
   });
 
   // ----------------------------- SORTING BY ASCENDING ID -------------------//
 
-  idAsc.addEventListener("click", () => {
+  idAsc.addEventListener("click", async() => {
 
     filterContainer.classList.remove("filter-container-active");
     icon.classList.remove("fa-circle-xmark");
 
-    if (companyWorkers.length == 0) {
-      manageWorkersSection.innerHTML =
-        '<p class="empty-workers">You have no any workers to filter. Add workers to filter out</p>';
+    try {
+      const idASC_URL = `http://localhost:3000/api/clients_workers/${activeClientId}/?page=1&limit=1000&sort=workerID,asc`
+
+      const res = await fetch(idASC_URL, {method: "GET"})
+      const data = await res.json()
+      
+      const foundWorkers = data.workers
+      if (foundWorkers.length == 0) {
+        manageWorkersSection.innerHTML = `Add some workers to filter them`;
+      } 
+
+      if (foundWorkers.length > 0) {
+            filteroptions.forEach(button => {
+              button.classList.remove("active-option")
+            })
+            idAsc.classList.add("active-option")
+
+        manageWorkersSection.innerHTML = "";
+        foundWorkers.map((data) => {
+          Workermap(data)
+        });
+      }
     }
-    if (companyWorkers.length > 0) {
-      filteroptions.forEach(button => {
-        button.classList.remove("active-option")
-      })
-      idAsc.classList.add("active-option")
+    
+    catch (error) {
+      console.log(error)
+     }
 
-      let idAscending = companyWorkers.sort((a, b) => {
-        if (a.workerID.toLowerCase() < b.workerID.toLowerCase()) {
-          return -1;
-        }
-        if (a.workerID.toLowerCase() > b.workerID.toLowerCase()) {
-          return 1;
-        }
-        return 0;
-      });
-      manageWorkersSection.innerHTML = "";
-
-      idAscending.map((data) => {
-        const { firstName, lastName, workerID, gender, email, city, country, _id } = data;
-        const fullName = `${firstName} ${lastName}`;
-        let ihtml = `
-        <div class="worker-details">
-
-            <div class="topsection">
-            
-                <span>
-                    <i class="fa-regular fa-user user-icon"></i>
-                    <span class="worker-name">${fullName}</span>
-                </span>
-
-                <div class="worker-profile">
-                    <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}","${city}", "${country}")'></i>
-                </div>
-
-            </div>
-
-
-            <div class="worker-id">
-                <span>Worker ID: ${workerID}</span>
-            </div>
-
-            <div class="worker-gender-delete">
-                <p class="gender">${gender}</p>
-
-                <button class="worker-delete-button" onClick='confirmDelete("${workerID}","${_id}","${fullName}")'>
-                    <i class="fa-solid fa-trash"></i>
-                </button>
-            </div>
-
-        </div>
-        `;
-        manageWorkersSection.innerHTML += ihtml;
-      });
-    }
   });
 
   // ----------------------------- SORTING BY DESCENDING ID -------------------//
 
-  idDes.addEventListener("click", () => {
+  idDes.addEventListener("click", async() => {
 
     filterContainer.classList.remove("filter-container-active");
     icon.classList.remove("fa-circle-xmark");
 
-    if (companyWorkers.length == 0) {
-      manageWorkersSection.innerHTML =
-        '<p class="empty-workers">You have no any workers to filter. Add workers to filter out</p>';
+    try {
+      const idDESC_URL = `http://localhost:3000/api/clients_workers/${activeClientId}/?page=1&limit=1000&sort=workerID,desc`
+
+      const res = await fetch(idDESC_URL, {method: "GET"})
+      const data = await res.json()
+      
+      const foundWorkers = data.workers
+      if (foundWorkers.length == 0) {
+        manageWorkersSection.innerHTML = `Add some workers to filter them`;
+      } 
+
+      if (foundWorkers.length > 0) {
+            filteroptions.forEach(button => {
+              button.classList.remove("active-option")
+            })
+            idDes.classList.add("active-option")
+
+        manageWorkersSection.innerHTML = "";
+        foundWorkers.map((data) => {
+          Workermap(data)
+        });
+      }
     }
-
-    if (companyWorkers.length > 0) {
-
-      filteroptions.forEach(button => {
-        button.classList.remove("active-option")
-      })
-      idDes.classList.add("active-option")
-
-      let idDescending = companyWorkers.sort((a, b) => {
-        if (a.workerID.toLowerCase() < b.workerID.toLowerCase()) {
-          return 1;
-        }
-        if (a.workerID.toLowerCase() > b.workerID.toLowerCase()) {
-          return -1;
-        }
-        return 0;
-      });
-
-      manageWorkersSection.innerHTML = "";
-
-      idDescending.map((data) => {
-        const { firstName, lastName, workerID, gender, email, city, country, _id } = data;
-        const fullName = `${firstName} ${lastName}`;
-        let ihtml = `
-        <div class="worker-details">
-
-            <div class="topsection">
-            
-                <span>
-                    <i class="fa-regular fa-user user-icon"></i>
-                    <span class="worker-name">${fullName}</span>
-                </span>
-
-                <div class="worker-profile">
-                    <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}","${city}", "${country}")'></i>
-                </div>
-
-            </div>
-
-
-            <div class="worker-id">
-                <span>Worker ID: ${workerID}</span>
-            </div>
-
-            <div class="worker-gender-delete">
-                <p class="gender">${gender}</p>
-
-                <button class="worker-delete-button" onClick='confirmDelete("${workerID}","${_id}","${fullName}")'>
-                    <i class="fa-solid fa-trash"></i>
-                </button>
-            </div>
-
-        </div>
-        `;
-        manageWorkersSection.innerHTML += ihtml;
-      });
-    }
+    
+    catch (error) {
+      console.log(error)
+     }
   });
 };
 
@@ -527,3 +382,41 @@ const handleDetails = (id, full, gender, email, city, country) => {
 }
 
 
+// -------------------- Workers mapping -------------------------------------------- // 
+
+const Workermap = (data) => {
+  const { firstName, lastName, workerID, gender, email, city, country, _id } = data;
+          const fullName = `${firstName} ${lastName}`;
+          let ihtml = `
+            <div class="worker-details">
+  
+                <div class="topsection">
+                
+                    <span>
+                        <i class="fa-regular fa-user user-icon"></i>
+                        <span class="worker-name">${fullName}</span>
+                    </span>
+                    <div class="worker-profile">
+                      <i class="fa-solid fa-circle-info details-icon" onClick='handleDetails("${workerID}","${fullName}","${gender}","${email}","${city}", "${country}")'></i>
+                    </div>
+  
+                </div>
+  
+  
+                <div class="worker-id">
+                    <span>Worker ID: ${workerID}</span>
+                </div>
+  
+                <div class="worker-gender-delete">
+                    <p class="gender">${gender}</p>
+  
+                    <button class="worker-delete-button" onClick='confirmDelete("${workerID}","${_id}","${fullName}")'>
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+  
+                </div>
+  
+            </div>
+            `;
+          manageWorkersSection.innerHTML += ihtml;
+}
