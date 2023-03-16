@@ -62,7 +62,7 @@ exports.activeClient = async (req, res, next) => {
         "companyName companyID companyAddress name email createdAt leavesYearly"
       )
       .exec();
-    res.status(200).json({ data: client });
+    res.status(200).setHeader("Content-Security-Policy", "script-src 'self'").json({ data: client });
   } catch (error) {
     return error;
   }

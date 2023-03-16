@@ -16,7 +16,7 @@ exports.workersLeaves = async (req, res, next) => {
   const { page = 1, limit = 1000 } = req.query;
   const count = await Leaves.count();
   const { id } = req.params;
-  let { approveState } = req.query
+  let { approveState } = req.query;
 
   if (!approveState) {
     approveState = "all";
@@ -41,7 +41,10 @@ exports.workersLeaves = async (req, res, next) => {
             currentPage: page,
           });
         } else {
-          res.status(400).json({ error: "No worker under that ID" });
+          res
+            .status(400)
+            .setHeader("Content-Security-Policy", "script-src 'self'")
+            .json({ error: "No worker under that ID" });
         }
       });
   } catch (error) {
@@ -76,6 +79,7 @@ exports.expireUnapproved = async (req, res) => {
     });
     res
       .status(201)
+      .setHeader("Content-Security-Policy", "script-src 'self'")
       .json({ updated: "all dates and leave Requests are updated" });
   } catch (error) {
     res.status(400);
