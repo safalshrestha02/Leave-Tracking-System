@@ -251,7 +251,6 @@ a {
     margin-top: 0.6rem;
   }
   .register-input {
-    text-transform: capitalize;
     width: 100%;
     font-size: 0.9rem;
     border: none;

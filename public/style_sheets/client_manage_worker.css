@@ -16,7 +16,6 @@ select {
   padding-right: 2.5rem;
   print-color-adjust: exact;
   -webkit-print-color-adjust: exact;
-  width: 12rem;
 }
 
 * {
@@ -1228,6 +1227,12 @@ a {
   .absolute-worker-details {
     width: 80vw;
   }
+  .empty-workers {
+    position: static !important;
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+  }
 }
 @media only screen and (max-width: 510px) {
   .confirm-wrapper {
@@ -1272,13 +1277,15 @@ a {
     display: block;
   }
   .dashboard-search {
-    width: 83vw;
+    width: 100%;
   }
   .filter-button {
     margin-top: 1rem;
+    display: block;
+    margin: 1rem auto 0 auto;
   }
   .filter-container {
-    left: 0.1rem;
+    left: 3.5rem;
   }
   .absolute-worker-details {
     width: 90vw;
