@@ -613,6 +613,19 @@ input[type=radio] {
   .close-menu-container {
     display: block;
   }
+  .success-alert {
+    display: none;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+  .success-alert h4 {
+    font-size: 1rem;
+  }
+  .success-alert i:nth-child(1) {
+    padding: 0.4rem;
+    font-size: 0.6rem;
+    margin-right: 0.2rem;
+  }
 }
 .active-hamburger {
   display: block;
@@ -856,6 +869,12 @@ input[type=radio] {
   margin-left: 0.5rem;
 }
 
+.workerid-name-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .active-leave-date {
   display: flex;
   justify-content: space-between;
@@ -891,7 +910,7 @@ input[type=radio] {
 }
 
 @media only screen and (max-width: 1550px) {
-  .active-leave-name, .active-leave-date, .display-none {
+  .active-leave-name, .active-leave-date, .display-none, .active-worker-id, .user-icon {
     font-size: 1rem;
   }
 }
@@ -905,7 +924,7 @@ input[type=radio] {
   .worker-overview-number, .worker-overview-status {
     font-size: 1.2rem;
   }
-  .active-leave-name, .active-leave-date, .display-none {
+  .active-leave-name, .active-leave-date, .display-none, .active-worker-id, .user-icon {
     font-size: 0.9rem;
   }
 }
@@ -923,12 +942,12 @@ input[type=radio] {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.5rem;
   }
-  .active-leave-name, .active-leave-date, .display-none {
+  .active-leave-name, .active-leave-date, .display-none, .user-icon {
     font-size: 1rem;
   }
 }
 @media only screen and (max-width: 1260px) {
-  .active-leave-name, .active-leave-date, .display-none {
+  .active-leave-name, .active-leave-date, .display-none, .active-worker-id, .user-icon {
     font-size: 0.8rem;
   }
 }
@@ -966,7 +985,7 @@ input[type=radio] {
     grid-template-columns: repeat(1, minmax(0, 1fr));
     gap: 1.5rem;
   }
-  .active-leave-name, .active-leave-date {
+  .active-leave-name, .active-leave-date, .active-worker-id, .user-icon {
     font-size: 0.9rem;
   }
   .workers-total {
@@ -990,4 +1009,4 @@ input[type=radio] {
   .display-none {
     font-size: 0.5rem;
   }
-}
+}/*# sourceMappingURL=client_home.css.map */

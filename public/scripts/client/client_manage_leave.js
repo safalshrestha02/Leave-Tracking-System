@@ -69,14 +69,20 @@ const manageLeavesFunc = async () => {
                 else {
                     leaveType.forEach((leaves) => {
 
-                        const { workerName, startDate, endDate, typeOfLeave, leaveDays, reason, _id } = leaves
+                        const { workerName, startDate, endDate, typeOfLeave, leaveDays, reason, _id, workerID} = leaves
                         const dayOrDays = leaveDays > 1 ? 'Days' : 'Day'
                         let ihtml = `
                                 <div class="pending-leave-details">
-                                
+                                    <div class="workerid-name-container">
+                                    <p>
                                     <i class="fa-regular fa-user user-icon"></i>
                                 
                                     <span class="pending-leave-name">${workerName}</span>
+                                    </p>
+
+                                    <p>${workerID}</p>
+                                    
+                                    </div>
                     
                                     <div class="pending-leave-date">
                     
@@ -123,7 +129,7 @@ const manageLeavesFunc = async () => {
                         const leaveID = btn.value
                         const workerName = btn.dataset.name
                         const leaveType = btn.dataset.leavetype
-
+                        document.body.style.overflow = 'hidden'
                         confirmModal.style.display = 'flex'
                         confirmStatus.innerHTML = 'approve'
                         confirmButton.innerHTML = 'Approve'
@@ -154,6 +160,7 @@ const manageLeavesFunc = async () => {
 
                         cancelButton.addEventListener('click', () => {
                             confirmModal.style.display = 'none'
+                            document.body.style.overflow = 'auto'
                         })
 
                     }
@@ -169,6 +176,7 @@ const manageLeavesFunc = async () => {
                         const workerName = btn.dataset.name
                         const leaveType = btn.dataset.leavetype
 
+                        document.body.style.overflow = 'hidden'
                         confirmModal.style.display = 'flex'
                         confirmStatus.innerHTML = 'reject'
                         confirmButton.innerHTML = 'Reject'
@@ -197,6 +205,7 @@ const manageLeavesFunc = async () => {
 
                         cancelButton.addEventListener('click', () => {
                             confirmModal.style.display = 'none'
+                            document.body.style.overflow = 'auto'
                         })
                     }
                     rejectButtons.forEach((btn) => {

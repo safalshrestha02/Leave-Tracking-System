@@ -613,6 +613,19 @@ input[type=radio] {
   .close-menu-container {
     display: block;
   }
+  .success-alert {
+    display: none;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+  .success-alert h4 {
+    font-size: 1rem;
+  }
+  .success-alert i:nth-child(1) {
+    padding: 0.4rem;
+    font-size: 0.6rem;
+    margin-right: 0.2rem;
+  }
 }
 .active-hamburger {
   display: block;
@@ -909,6 +922,11 @@ input[type=radio] {
   background-color: var(--hover-red);
 }
 
+.workerid-name-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 .no-leaves {
   font-size: 1.2rem;
   color: #f99417;
@@ -1173,4 +1191,4 @@ input[type=radio] {
     padding: 0.2rem 0.8rem !important;
     width: 90% !important;
   }
-}
+}/*# sourceMappingURL=client_manage_leave.css.map */

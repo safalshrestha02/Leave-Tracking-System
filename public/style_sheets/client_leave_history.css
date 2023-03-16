@@ -613,6 +613,19 @@ input[type=radio] {
   .close-menu-container {
     display: block;
   }
+  .success-alert {
+    display: none;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+  .success-alert h4 {
+    font-size: 1rem;
+  }
+  .success-alert i:nth-child(1) {
+    padding: 0.4rem;
+    font-size: 0.6rem;
+    margin-right: 0.2rem;
+  }
 }
 .active-hamburger {
   display: block;
@@ -1049,4 +1062,4 @@ input[type=radio] {
   .dashboard-content {
     padding: 1rem;
   }
-}
+}/*# sourceMappingURL=client_leave_history.css.map */

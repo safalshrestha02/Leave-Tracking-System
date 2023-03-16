@@ -261,8 +261,7 @@ const confirmDelete = (deleteWorkerID, monID, deleteWorkerName) => {
   const workerDeleteID = document.querySelector(".delete-worker-ID")
 
   confirmBox.style.display = "flex";
-  mainBody.classList.add("main-body-overflow");
-
+  document.body.style.overflow = 'hidden'
   workerDeleteName.innerHTML = ""
   workerDeleteID.innerHTML = ``
 
@@ -275,14 +274,14 @@ const confirmDelete = (deleteWorkerID, monID, deleteWorkerName) => {
 
   cancelButton.addEventListener("click", () => {
     confirmBox.style.display = "none";
-    mainBody.classList.remove("main-body-overflow");
+    document.body.style.overflow = 'auto'
     deleteWorkerID = null
     monID = null
   }, { once: true });
 
   confirmButton.addEventListener("click", async () => {
     confirmBox.style.display = "none";
-    mainBody.classList.remove("main-body-overflow");
+    document.body.style.overflow = 'auto'
     try {
       if (deleteWorkerID !== null) {
         const deleteURL = `http://localhost:3000/api/workers/${monID}`
@@ -330,7 +329,7 @@ const handleDetails = (id, full, gender, email, city, country) => {
 
   const workerDetailBox = document.querySelector(".more-worker-details")
   workerDetailBox.classList.add("details-active")
-
+  document.body.style.overflow = 'hidden'
   workerDetailBox.innerHTML = "";
 
   let details = `
@@ -377,6 +376,7 @@ const handleDetails = (id, full, gender, email, city, country) => {
 
   closeDetails.addEventListener("click", () => {
     workerDetailBox.classList.remove("details-active")
+    document.body.style.overflow = 'auto'
   })
 
 }
