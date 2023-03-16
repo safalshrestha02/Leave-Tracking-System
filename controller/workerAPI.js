@@ -79,7 +79,6 @@ exports.expireUnapproved = async (req, res) => {
     });
     res
       .status(201)
-      .setHeader("Content-Security-Policy", "script-src 'self'")
       .json({ updated: "all dates and leave Requests are updated" });
   } catch (error) {
     res.status(400);
