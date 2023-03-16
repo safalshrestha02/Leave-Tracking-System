@@ -52,11 +52,11 @@ Start the server
 
 ## Tech Stack
 
-**Client:** HTML, CSS, Vanilla JavaScript, 
+**Client:** HTML <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/640px-HTML5_logo_and_wordmark.svg.png" alt="html" width="30" height="30">, CSS <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1452px-CSS3_logo_and_wordmark.svg.png" alt="css" width="30" height="30">, Vanilla JavaScript <img src="https://i0.wp.com/theicom.org/wp-content/uploads/2016/03/js-logo.png?fit=500%2C500&ssl=1&w=640" alt="js" width="30" height="30">, 
 
-**Server:** Node, Express, MongoDB
+**Server:** Node <img src="https://seeklogo.com/images/N/nodejs-logo-FBE122E377-seeklogo.com.png" alt="node" width="30" height="30">, Express <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0qyJTwB8XfTM3S1I5mnA3u4ZULyp4PblCKQ55-SkL&s" alt="express" width="30" height="30">, MongoDB <img src="https://1000logos.net/wp-content/uploads/2020/08/MongoDB-Emblem.jpg" alt="mongo" width="30" height="30">
 
-**Version Control:** GIT, Github
+**Version Control:** GIT <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Git-logo.svg/1024px-Git-logo.svg.png" alt="git" width="50" height="30">, Github <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="github" width="30" height="30">
 
 ![tech stack](https://user-images.githubusercontent.com/118807784/225589848-dc155dd0-1231-4df4-ac32-362936758d46.png)
 
