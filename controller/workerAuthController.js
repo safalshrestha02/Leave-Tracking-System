@@ -43,7 +43,7 @@ exports.registerWorker = async (req, res, next) => {
         });
         res.status(201).json({ worker: worker._id });
       } else if (dupEmail) {
-        throw new Error ("email is taken")
+        throw new Error("email is taken");
       }
     }
   } catch (error) {
@@ -114,7 +114,10 @@ exports.activeWorker = async (req, res, next) => {
         "companyDetail firstName lastName country city companyName workerID gender email createdAt"
       )
       .exec();
-    res.status(200).json({ data: worker });
+    res
+      .status(200)
+      .setHeader("Content-Security-Policy", "script-src 'self'")
+      .json({ data: worker });
   } catch (error) {
     next(error);
   }
