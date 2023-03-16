@@ -33,7 +33,7 @@ router.get(
   clientAPI.clientsWorkers
 );
 router.get("/api/clientsLeaveHistory/:id", clientAPI.clientsLeaveHistory);
-router.get("/api/clientsManageHistory/:id", clientAPI.clientsManageLeave);
+router.get("/api/clientsManageHistory/:id", clientAPI.clientsManageHistory);
 router.get("/api/suggestedIds/:id", clientAPI.suggestedIds);
 
 router.post(
