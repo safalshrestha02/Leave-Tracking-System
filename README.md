@@ -1,3 +1,19 @@
 # Leave-Tracking-System
 
+# Use
+Add a .env file with
+DB_URI 
+WORKER_TOKEN_SECRET 
+CLIENT_TOKEN_SECRET 
+FROM_EMAIL
+SMTP_HOST 
+SMTP_PORT 
+SMTP_EMAIL 
+SMTP_PASSWORD 
+REFRESH_TOKEN_SECRET 
+PORT
+LINK 
+CLIENT_DOMAIN 
+WORKER_DOMAIN
+
 https://documenter.getpostman.com/view/25413848/2s93JxqLse
