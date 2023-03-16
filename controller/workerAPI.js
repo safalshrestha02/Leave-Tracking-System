@@ -67,7 +67,6 @@ exports.expireUnapproved = async (req, res) => {
         allLeaves[i].endDate < currentDate &&
         allLeaves[i].approveState === "pending"
       ) {
-        console.log(allLeaves[i].approveState);
         await Leaves.findByIdAndUpdate(
           allLeaves[i]._id,
           { $set: change },

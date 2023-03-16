@@ -105,7 +105,7 @@ exports.clientsLeaveHistory = async (req, res, next) => {
   }
 };
 
-exports.clientsManageLeave = async (req, res, next) => {
+exports.clientsManageHistory = async (req, res, next) => {
   const { id } = req.params;
   const { search, page, limit } = req.query;
   let { typeOfLeave } = req.query
@@ -135,7 +135,7 @@ exports.clientsManageLeave = async (req, res, next) => {
       .in([...typeOfLeave]);
 
     if (allLeaves) {
-      res.status(201).json({
+      res.status(201).setHeader("Content-Security-Policy", "script-src 'self'").json({
         Leaves: allLeaves,
       });
     }
@@ -162,7 +162,7 @@ exports.suggestedIds = async (req, res, next) => {
             dataLength += 1;
           });
         });
-        res.status(201);
+        res.status(201).setHeader("Content-Security-Policy", "script-src 'self'");
       } else {
         res.status(400).json({ error: "No company found with that ID" });
       }
@@ -186,7 +186,8 @@ exports.suggestedIds = async (req, res, next) => {
         }
         a += 1;
       });
-      res.status(201).json(randomIds);
+      res.status(201).setHeader("Content-Security-Policy", "script-src 'self'").json(randomIds)
+      
     };
 
     checkIds(workerIds, randomIds);
@@ -223,7 +224,7 @@ exports.expireUnapproved = async (req, res) => {
       }
     });
     res
-      .status(201)
+      .status(201).setHeader("Content-Security-Policy", "script-src 'self'")
       .json({ updated: "all dates and leave Requests are updated" });
   } catch (error) {
     res.status(400);

@@ -89,7 +89,7 @@ exports.changeLeaveState = async (req, res, next) => {
         approveState,
       },
     });
-    res.status(201);
+    res.status(201).json({success: `state has been changed to ${approveState}`});
   } catch (error) {
     res.status(400).json({ error: error });
   }
