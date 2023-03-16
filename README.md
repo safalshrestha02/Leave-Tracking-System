@@ -58,6 +58,9 @@ Start the server
 
 **Version Control:** GIT, Github
 
+![tech stack](https://user-images.githubusercontent.com/118807784/225589848-dc155dd0-1231-4df4-ac32-362936758d46.png)
+
+
 ## Screenshots
 
 ![client side](https://user-images.githubusercontent.com/118807784/225571463-5d81eddf-fd9a-462f-8384-73596d23e6df.gif)
