@@ -70,10 +70,11 @@ body {
 }
 .login-buttons a {
   text-decoration: none;
-  color: white;
+  color: rgb(36, 33, 33);
+  font-weight: 500;
 }
 .login-buttons .login-button {
-  background-color: #3c4048;
+  background-color: #fdb514;
   width: 25%;
   padding: 1.3rem;
   border-radius: 0.5rem;
@@ -82,7 +83,7 @@ body {
   display: inline-block;
 }
 .login-buttons .login-button:hover {
-  background-color: #464950;
+  background-color: #f5aa09;
 }
 
 .login-button:nth-child(1) {
@@ -260,4 +261,4 @@ body {
   #landing-logo {
     width: 25%;
   }
-}/*# sourceMappingURL=landing_page.css.map */
+}

@@ -947,6 +947,7 @@ input[type=radio] {
 .cancel-button {
   color: black;
   margin-right: 1rem;
+  outline: 2px solid #fdb514;
 }
 
 .cancel-button:hover {
@@ -1113,4 +1114,4 @@ input[type=radio] {
   .password-change-container {
     width: 90%;
   }
-}/*# sourceMappingURL=client_profile.css.map */
+}

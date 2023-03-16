@@ -73,10 +73,11 @@ body {
 
   a {
     text-decoration: none;
-    color: white;
+    color: rgb(36, 33, 33);
+    font-weight: 500;
   }
   .login-button {
-    background-color: $dark-bg;
+    background-color: $primary-yellow;
     width: 25%;
     padding: 1.3rem;
     border-radius: 0.5rem;
@@ -84,7 +85,7 @@ body {
     transform: translateY(-30%);
     display: inline-block;
     &:hover {
-      background-color: #464950;
+      background-color: #f5aa09;
     }
   }
 }

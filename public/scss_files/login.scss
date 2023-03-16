@@ -125,12 +125,6 @@ a {
   color: rgb(22, 22, 22);
 }
 
-// #company-name {
-//   width: 100%;
-//   font-size: 1rem;
-//   padding: 1rem;
-//   border-radius: 0.5rem;
-// }
 
 .login-button {
   background-color: $primary-yellow;
@@ -145,7 +139,7 @@ a {
 
 .login-button:hover {
   cursor: pointer;
-  background-color: $grey-bg;
+  background-color: #f5aa09;
 }
 
 .register-errors {

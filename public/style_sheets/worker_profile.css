@@ -616,6 +616,7 @@ li {
 .cancel-button {
   color: black;
   margin-right: 1rem;
+  outline: 2px solid #fdb514;
 }
 
 .cancel-button:hover {
@@ -782,4 +783,4 @@ li {
   .password-change-container {
     width: 90%;
   }
-}/*# sourceMappingURL=worker_profile.css.map */
+}

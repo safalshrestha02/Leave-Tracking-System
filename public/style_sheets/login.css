@@ -135,7 +135,7 @@ a {
 
 .login-button:hover {
   cursor: pointer;
-  background-color: #edeef0;
+  background-color: #f5aa09;
 }
 
 .register-errors {
@@ -326,4 +326,4 @@ a {
   padding: 0.5rem;
   color: white;
   border-radius: 50%;
-}/*# sourceMappingURL=login.css.map */
+}
