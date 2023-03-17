@@ -13,7 +13,7 @@ exports.leaveRequestDelete = async (req, res, next) => {
 };
 
 exports.workersLeaves = async (req, res, next) => {
-  const { page = 1, limit = 1000 } = req.query;
+  const { page, limit } = req.query;
   const count = await Leaves.count();
   const { id } = req.params;
   let { approveState } = req.query;

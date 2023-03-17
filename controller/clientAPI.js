@@ -19,7 +19,8 @@ exports.workerDelete = async (req, res, next) => {
 
 exports.clientsWorkers = async (req, res, next) => {
   const { id } = req.params;
-  const { search, page, limit } = req.query;
+  const { page, limit } = req.query;
+  const { search } = req.query || "";
   let sort = req.query.sort || "firstName";
 
   try {
@@ -66,7 +67,7 @@ exports.clientsWorkers = async (req, res, next) => {
 
 exports.clientsLeaveHistory = async (req, res, next) => {
   const { id } = req.params;
-  const { search, page, limit } = req.query;
+  const { search } = req.query;
   let { approveState } = req.query;
   if (!approveState) {
     approveState = "approved";
@@ -107,7 +108,6 @@ exports.clientsLeaveHistory = async (req, res, next) => {
 
 exports.clientsManageHistory = async (req, res, next) => {
   const { id } = req.params;
-  const { search, page, limit } = req.query;
   let { typeOfLeave } = req.query;
   try {
     if (!typeOfLeave) {
@@ -166,7 +166,7 @@ exports.suggestedIds = async (req, res, next) => {
         });
         res.status(201);
       } else {
-        res.status(400).json({ error: "No company found with that ID" });
+        throw res.status(400).json({ error: "no company found" });
       }
     });
 
