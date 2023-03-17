@@ -156,10 +156,20 @@ Start the server
 
 ## Screenshots
 
+- Client Side
+
 ![client](https://user-images.githubusercontent.com/118807784/225829412-64570914-cda9-478d-8912-0449c17576b7.gif)
+
+- Worker Side
+
 ![worker](https://user-images.githubusercontent.com/118807784/225829869-c8787c06-d1a5-418b-9505-3368322a69e4.gif)
 
+- Client Mobile
+
 ![clientMobile](https://user-images.githubusercontent.com/57618183/225847751-c618c3a8-ef78-4502-820b-aa8e9d8ba705.gif)
+
+- Worker Mobile
+
 ![workerMobile](https://user-images.githubusercontent.com/57618183/225848187-7257421c-1f7a-40af-bf0e-a08c897303a7.gif)
 
 
