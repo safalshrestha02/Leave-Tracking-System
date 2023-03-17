@@ -30,37 +30,37 @@ noPassword.addEventListener("click", () => {
 
 // ----------Handling input fields----------
 
-const companyNameField = document.querySelector("#cName")
-const companyIDField = document.querySelector("#companyID")
-const companyAddressField = document.querySelector("#cAddress")
-const clientNameField = document.querySelector("#cCName")
-const clientEmailField = document.querySelector("#cEmail")
-const clientPasswordField = document.querySelector("#cPassword")
+const companyNameField = document.querySelector("#cName");
+const companyIDField = document.querySelector("#companyID");
+const companyAddressField = document.querySelector("#cAddress");
+const clientNameField = document.querySelector("#cCName");
+const clientEmailField = document.querySelector("#cEmail");
+const clientPasswordField = document.querySelector("#cPassword");
 
 companyNameField.addEventListener("input", () => {
-  companyName_error.textContent = ""
-  companyNameField.setAttribute("style", "border: 2px solid initial")
-})
+  companyName_error.textContent = "";
+  companyNameField.setAttribute("style", "border: 2px solid initial");
+});
 companyIDField.addEventListener("input", () => {
-  companyID_error.textContent = ""
-  companyIDField.setAttribute("style", "border: 2px solid initial")
-})
+  companyID_error.textContent = "";
+  companyIDField.setAttribute("style", "border: 2px solid initial");
+});
 companyAddressField.addEventListener("input", () => {
-  companyAddress_error.textContent = ""
-  companyAddressField.setAttribute("style", "border: 2px solid initial")
-})
+  companyAddress_error.textContent = "";
+  companyAddressField.setAttribute("style", "border: 2px solid initial");
+});
 clientNameField.addEventListener("input", () => {
-  clientName_error.textContent = ""
-  clientNameField.setAttribute("style", "border: 2px solid initial")
-})
+  clientName_error.textContent = "";
+  clientNameField.setAttribute("style", "border: 2px solid initial");
+});
 clientEmailField.addEventListener("input", () => {
-  email_error.textContent = ""
-  clientEmailField.setAttribute("style", "border: 2px solid initial")
-})
+  email_error.textContent = "";
+  clientEmailField.setAttribute("style", "border: 2px solid initial");
+});
 clientPasswordField.addEventListener("input", () => {
-  password_error.textContent = ""
-  clientPasswordField.setAttribute("style", "border: 2px solid initial")
-})
+  password_error.textContent = "";
+  clientPasswordField.setAttribute("style", "border: 2px solid initial");
+});
 
 //-------------------- form event listener
 
@@ -96,13 +96,12 @@ form.addEventListener("submit", async (e) => {
 
     // ---------------handling errors---------
     if (data.errors) {
-
       registerInputs.forEach((inputField) => {
         inputField.setAttribute("style", "border: 2px solid initial");
 
         inputField.addEventListener("input", () => {
-          inputField.setAttribute("style", "border: 2px solid initial")
-        })
+          inputField.setAttribute("style", "border: 2px solid initial");
+        });
       });
 
       companyName_error.textContent = data.errors.companyName;
@@ -153,8 +152,8 @@ form.addEventListener("submit", async (e) => {
         location.assign("http://localhost:3000/client_login");
       }, 1000);
     }
-  } catch (err) {
-
+  } catch (error) {
+    console.log(error);
   }
 });
 
