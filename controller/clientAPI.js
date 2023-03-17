@@ -202,7 +202,17 @@ exports.expireUnapproved = async (req, res) => {
     let i = -1;
     let companyName;
     const change = { approveState: "rejected" };
-    let currentDate = new Date();
+    mm = new Date().getMonth() + 1;
+    dd = new Date().getDate();
+    yyyy = new Date().getFullYear();
+
+    if (dd < 10) dd = "0" + dd;
+    if (mm < 10) mm = "0" + mm;
+
+    const currentDate = `${yyyy}-${mm}-${dd}`;
+    const parsedCurrentDate = Date.parse(currentDate);
+
+    let currentDateValue = Date.parse(currentDate);
 
     const id = req.params["id"];
     await Clients.findById(id).then((result) => {
@@ -213,8 +223,17 @@ exports.expireUnapproved = async (req, res) => {
     });
     allLeaves.forEach(async () => {
       i += 1;
+      let dataYear = allLeaves[i].endDate.getFullYear();
+      let dataMonth = allLeaves[i].endDate.getMonth()+1;
+      let dataDay = allLeaves[i].endDate.getDate();
+
+      if (dataDay < 10) dataDay = "0" + dataDay;
+      if (dataMonth < 10) dataMonth = "0" + dataMonth;
+
+      let finalDate = `${dataYear}-${dataMonth}-${dataDay}`
+      const parsedFinalDate = Date.parse(finalDate)
       if (
-        allLeaves[i].endDate < currentDate &&
+        parsedFinalDate<parsedCurrentDate &&
         allLeaves[i].approveState === "pending"
       ) {
         await Leaves.findByIdAndUpdate(
