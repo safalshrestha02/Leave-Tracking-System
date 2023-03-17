@@ -223,7 +223,7 @@ const leaveHistory = async () => {
 
         }
 
-        catch (err) {
+        catch (error) {
             leaveHistoryContainer.innerHTML = '<p class = "no-past-leaves">The requested user has no any approved leaves records.</p>'
         }
 

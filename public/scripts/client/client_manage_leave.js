@@ -225,7 +225,7 @@ const manageLeavesFunc = async () => {
 
     }
 
-    catch (err) {
+    catch (error) {
         pendingLeaveContainer.innerHTML = `<p class = "fail">Internal error occured at the moment. Please try again in a while...</p>`
     }
 

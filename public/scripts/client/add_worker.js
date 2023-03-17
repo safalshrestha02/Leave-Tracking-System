@@ -88,6 +88,7 @@ addWorkerForm.addEventListener("submit", async (e) => {
 
     const data = await res.json();
 
+    console.log(data.errors);
     if (data.errors) {
       inputFields.forEach((inputs) => {
         inputs.setAttribute("style", "border: initial");
@@ -139,7 +140,7 @@ addWorkerForm.addEventListener("submit", async (e) => {
       idDetails.innerHTML = "";
       formcompanyName.value = fixedCompanyName;
       formcompanyID.value = fixedClientID;
-      handleRefresh()
+      handleRefresh();
 
       const successAlert = document.querySelector(".success-alert");
       successAlert.style.display = "block";
@@ -148,6 +149,7 @@ addWorkerForm.addEventListener("submit", async (e) => {
       }, 2500);
     }
   } catch (error) {
+    console.log(error);
   }
 });
 
@@ -180,6 +182,7 @@ workerIDinput.addEventListener(
         refreshContainer.innerHTML = `<i class="fa-solid fa-arrows-rotate refresh-icon" onclick='handleRefresh()'></i>`;
         suggestionTitle.innerHTML = "Suggessted IDs";
       } catch (error) {
+        console.log(error)
       }
     };
 
@@ -193,11 +196,10 @@ workerIDinput.addEventListener(
 formClose.addEventListener("click", () => {
   formContainer.classList.remove("form-active");
   document.body.style.overflow = "auto";
-  location.reload()
+  location.reload();
 });
 
 const handleSuggestionValue = (suggestId) => {
-
   const workerIDfield = form.workerID;
   const companyID = form.clientID.value;
   form.workerID.value = suggestId;
@@ -228,6 +230,7 @@ const handleRefresh = async () => {
       suggestIDContainer.innerHTML += content;
     });
   } catch (error) {
+    console.log(error)
   }
 };
 
@@ -245,43 +248,37 @@ const emailfield = form.workerEmail;
 const workerIDfield = form.workerID;
 const passwordfield = form.workerPassword;
 
-
 emailfield.addEventListener("input", () => {
-  removeError(workerEmail_error)
+  removeError(workerEmail_error);
   emailfield.setAttribute("style", "border: initial");
-})
+});
 
 workerIDfield.addEventListener("input", () => {
-  removeError(workerID_error)
+  removeError(workerID_error);
   workerIDfield.setAttribute("style", "border: initial");
-})
+});
 
 passwordfield.addEventListener("input", () => {
-  removeError(workerPassword_error)
+  removeError(workerPassword_error);
   passwordfield.setAttribute("style", "border: initial");
-})
-
+});
 
 firstName.addEventListener("input", () => {
-  removeError(firstName_error)
+  removeError(firstName_error);
   firstName.setAttribute("style", "border: initial");
-})
+});
 
 lastName.addEventListener("input", () => {
-  removeError(lastName_error)
+  removeError(lastName_error);
   lastName.setAttribute("style", "border: initial");
-})
+});
 
 country.addEventListener("input", () => {
-  removeError(country_error)
+  removeError(country_error);
   country.setAttribute("style", "border: initial");
-})
+});
 
 city.addEventListener("input", () => {
-  removeError(city_error)
+  removeError(city_error);
   city.setAttribute("style", "border: initial");
-})
-
-
-
-
+});

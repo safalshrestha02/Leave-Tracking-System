@@ -7,49 +7,47 @@ const empIDField = document.querySelector(".employee-id-field");
 const startDateField = document.querySelector("#start-date");
 const endDateField = document.querySelector("#end-date");
 const leaveDaysField = document.querySelector("#days-number");
-const startDateErrorMessage = document.querySelector('.start-date-error-div')
-const endDateErrorMessage = document.querySelector('.end-date-error-div')
+const startDateErrorMessage = document.querySelector(".start-date-error-div");
+const endDateErrorMessage = document.querySelector(".end-date-error-div");
 
 const leaveTypeField = document.querySelector(".type-of-leave");
 const reasonField = document.querySelector(".reason-of-leave");
 
-const applyLeaveBtn = document.querySelector('.apply-leave')
-const resetLeaveBtn = document.querySelector('.reset-leave')
+const applyLeaveBtn = document.querySelector(".apply-leave");
+const resetLeaveBtn = document.querySelector(".reset-leave");
 
 const checkRemainingLeaves = async () => {
-  const leavesResult = await fetchLeavesUnderWorker()
+  const leavesResult = await fetchLeavesUnderWorker();
 
   if (leavesResult.length > 0) {
-    const leavesTaken = [0]
+    const leavesTaken = [0];
     const filteredLeaves = leavesResult.filter((leave) => {
-      const { approveState } = leave
-      return approveState === 'pending' || approveState === 'approved'
-    })
+      const { approveState } = leave;
+      return approveState === "pending" || approveState === "approved";
+    });
 
     filteredLeaves.forEach((leave) => {
-      const { leaveDays } = leave
-      leavesTaken.push(leaveDays)
-    })
+      const { leaveDays } = leave;
+      leavesTaken.push(leaveDays);
+    });
 
     const totalLeavesTaken = leavesTaken.reduce((l1, l2) => {
-      return l1 + l2
-    })
+      return l1 + l2;
+    });
 
-    const leavesYearly = await fetchLeavesYearly()
+    const leavesYearly = await fetchLeavesYearly();
     const remaining = parseInt(leavesYearly) - totalLeavesTaken;
 
-
     if (remaining <= 0) {
-      applyLeaveBtn.classList.remove('form-button-apply')
-      resetLeaveBtn.classList.remove('form-button-reset')
-      startDateErrorMessage.innerHTML = `*You have already taken alloted number of leaves.`
+      applyLeaveBtn.classList.remove("form-button-apply");
+      resetLeaveBtn.classList.remove("form-button-reset");
+      startDateErrorMessage.innerHTML = `*You have already taken alloted number of leaves.`;
     }
 
-    return remaining
+    return remaining;
   }
-
-}
-checkRemainingLeaves()
+};
+checkRemainingLeaves();
 
 // ------------------------------------------------------------------
 
@@ -74,21 +72,21 @@ const disablePastDate = () => {
   const currentFullDate = `${currentYear}-${currentMonth}-${currentDay}`;
   startDateField.setAttribute("min", currentFullDate);
   endDateField.setAttribute("min", currentFullDate);
-}
-disablePastDate()
+};
+disablePastDate();
 
 const validateForm = async () => {
-  checkRemainingLeaves()
+  checkRemainingLeaves();
 
-  const leavesResult = await fetchLeavesUnderWorker()
+  const leavesResult = await fetchLeavesUnderWorker();
   const filteredLeaves = leavesResult.filter((leave) => {
-    const { approveState } = leave
-    return approveState === 'pending' || approveState === 'approved'
-  })
+    const { approveState } = leave;
+    return approveState === "pending" || approveState === "approved";
+  });
 
   if (startDateField.value) {
-    startDateErrorMessage.innerHTML = ''
-    leaveTypeField.value = 'Sick Leave'
+    startDateErrorMessage.innerHTML = "";
+    leaveTypeField.value = "Sick Leave";
 
     const generateLeaveDays = async () => {
       endDateField.removeAttribute("min");
@@ -100,112 +98,108 @@ const validateForm = async () => {
       const userInputStartDateObj = new Date(userInputStartDate);
       const userInputEndDateObj = new Date(userInputEndDate);
 
-      const leaveDays = (userInputEndDateObj - userInputStartDateObj) / (1000 * 60 * 60 * 24) + 1;
+      const leaveDays =
+        (userInputEndDateObj - userInputStartDateObj) / (1000 * 60 * 60 * 24) +
+        1;
       if (leaveDays > 0) {
         leaveDaysField.value = leaveDays;
         leaveDaysField.style.border = "none";
-      }
-
-      else {
+      } else {
         endDateField.value = startDateField.value;
         generateLeaveDays();
       }
 
       if (filteredLeaves.length === 0) {
-        const leavesYearly = await fetchLeavesYearly()
-        const leavesTakenNo = filteredLeaves.length
-        const leavesRemaining = parseInt(leavesYearly) - parseInt(leavesTakenNo);
+        const leavesYearly = await fetchLeavesYearly();
+        const leavesTakenNo = filteredLeaves.length;
+        const leavesRemaining =
+          parseInt(leavesYearly) - parseInt(leavesTakenNo);
 
         if (leaveDays > leavesRemaining) {
           leaveDaysField.value = `Applying for: ${leaveDays}   Remaining Leaves: ${leavesRemaining}`;
           leaveDaysField.style.border = "1px solid red";
         }
-      }
-
-      else if (filteredLeaves.length > 0) {
-        const remainingLeaves = await checkRemainingLeaves()
+      } else if (filteredLeaves.length > 0) {
+        const remainingLeaves = await checkRemainingLeaves();
         if (leaveDays > remainingLeaves) {
           leaveDaysField.value = `Applying for: ${leaveDays}   Remaining Leaves: ${remainingLeaves}`;
           leaveDaysField.style.border = "1px solid red";
         }
       }
-
-
-    }
-    generateLeaveDays()
+    };
+    generateLeaveDays();
   }
 
-
-
-
   const checkLeaveRequests = async () => {
-    const takenLeaves = []
-    const selectedLeaves = []
+    const takenLeaves = [];
+    const selectedLeaves = [];
 
     const checkSelectedLeaves = () => {
-      const selectedStartDate = new Date(startDateField.value)
-      const selectedEndDate = new Date(endDateField.value)
-      for (let date = new Date(selectedStartDate); date <= selectedEndDate; date.setDate(date.getDate() + 1)) {
-        const selectedLeavesObj = new Date(date)
+      const selectedStartDate = new Date(startDateField.value);
+      const selectedEndDate = new Date(endDateField.value);
+      for (
+        let date = new Date(selectedStartDate);
+        date <= selectedEndDate;
+        date.setDate(date.getDate() + 1)
+      ) {
+        const selectedLeavesObj = new Date(date);
         let year = selectedLeavesObj.getFullYear();
         let month = selectedLeavesObj.getMonth() + 1;
         let day = selectedLeavesObj.getDate();
 
-        month < 10
-          ? (month = `0${month}`)
-          : (month = month);
+        month < 10 ? (month = `0${month}`) : (month = month);
         day < 10 ? (day = `0${day}`) : (day = day);
 
         const selectedLeavesFullDate = `${year}-${month}-${day}`;
-        selectedLeaves.push(selectedLeavesFullDate)
+        selectedLeaves.push(selectedLeavesFullDate);
       }
-    }
-    checkSelectedLeaves()
+    };
+    checkSelectedLeaves();
 
     if (filteredLeaves.length > 0) {
       filteredLeaves.forEach((leave) => {
-        const startDateObj = new Date(leave.startDate)
-        const endDateObj = new Date(leave.endDate)
+        const startDateObj = new Date(leave.startDate);
+        const endDateObj = new Date(leave.endDate);
 
-        for (let date = new Date(startDateObj); date <= endDateObj; date.setDate(date.getDate() + 1)) {
-          const takenLeavesObj = new Date(date)
+        for (
+          let date = new Date(startDateObj);
+          date <= endDateObj;
+          date.setDate(date.getDate() + 1)
+        ) {
+          const takenLeavesObj = new Date(date);
           let year = takenLeavesObj.getFullYear();
           let month = takenLeavesObj.getMonth() + 1;
           let day = takenLeavesObj.getDate();
 
-          month < 10
-            ? (month = `0${month}`)
-            : (month = month);
+          month < 10 ? (month = `0${month}`) : (month = month);
           day < 10 ? (day = `0${day}`) : (day = day);
 
           const leavesTakenFullDate = `${year}-${month}-${day}`;
-          takenLeaves.push(leavesTakenFullDate)
+          takenLeaves.push(leavesTakenFullDate);
         }
-      })
+      });
 
       const disableDate = () => {
         selectedLeaves.forEach((selectedLeave) => {
           takenLeaves.forEach((takenLeave) => {
             if (selectedLeave == takenLeave) {
-              leaveDaysField.value = '-'
-              leaveTypeField.value = ''
-              reasonField.value = ''
-              startDateErrorMessage.classList.remove('eligible-leave')
-              startDateErrorMessage.innerHTML = `*Try again!!! You have already taken leave between selected days.`
+              leaveDaysField.value = "-";
+              leaveTypeField.value = "";
+              reasonField.value = "";
+              startDateErrorMessage.classList.remove("eligible-leave");
+              startDateErrorMessage.innerHTML = `*Try again!!! You have already taken leave between selected days.`;
             }
-          })
-        })
-      }
-      disableDate()
+          });
+        });
+      };
+      disableDate();
     }
-  }
-  checkLeaveRequests()
-
-}
+  };
+  checkLeaveRequests();
+};
 
 startDateField.addEventListener("change", validateForm);
 endDateField.addEventListener("change", validateForm);
-
 
 // <=============================================>
 
@@ -213,7 +207,7 @@ endDateField.addEventListener("change", validateForm);
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  startDateErrorMessage.innerHTML = ''
+  startDateErrorMessage.innerHTML = "";
   // ------------------getting input values
 
   const workerName = empNameField.value;
@@ -275,9 +269,8 @@ form.addEventListener("submit", async (e) => {
       const data = await res2.json();
       return data;
     }
-  } catch (err) {
-
-    return err;
+  } catch (error) {
+    return error;
   }
 });
 
@@ -295,8 +288,7 @@ const submitFormData = async (formData) => {
 
 // ---------------RESETTING FORM INPUTS---------------
 form.addEventListener("reset", () => {
-  startDateErrorMessage.innerHTML = ' ';
-  leaveDaysField.style.border = 'none';
+  startDateErrorMessage.innerHTML = " ";
+  leaveDaysField.style.border = "none";
   fetchEmpNameAndID();
-})
-
+});

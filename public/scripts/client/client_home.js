@@ -20,15 +20,15 @@ const fetchAllWorkersLeave = async () => {
     const companyWorkersLeave = await approvedLeaveRequestsUnderClient();
     const { workers: workers } = await workersUnderClient();
 
-    let filteredApprovesLeaves = []
+    let filteredApprovesLeaves = [];
 
     workers.forEach((worker) => {
       companyWorkersLeave.forEach((leavesReq) => {
         if (leavesReq.workerDetails._id === worker._id) {
-          filteredApprovesLeaves.push(leavesReq)
+          filteredApprovesLeaves.push(leavesReq);
         }
-      })
-    })
+      });
+    });
 
     // ------getting current date
     const currentDate = new Date();
@@ -38,7 +38,9 @@ const fetchAllWorkersLeave = async () => {
     currentMonth < 10
       ? (currentMonth = `0${currentMonth}`)
       : (currentMonth = currentMonth);
-    currentDay < 10 ? (currentDay = `0${currentDay}`) : (currentDay = currentDay);
+    currentDay < 10
+      ? (currentDay = `0${currentDay}`)
+      : (currentDay = currentDay);
     const fullDate = `${currentYear}${currentMonth}${currentDay}`;
 
     // --filtering workers based on today
@@ -73,17 +75,19 @@ const fetchAllWorkersLeave = async () => {
             <div class="active-leave-details">
               <div class="workerid-name-container">
                 <p><i class="fa-regular fa-user user-icon"></i>
-                <span class="active-leave-name capitalize-input">${worker.workerName}</span></p>
+                <span class="active-leave-name capitalize-input">${
+                  worker.workerName
+                }</span></p>
                 <p class="active-worker-id">${worker.workerID}</p>
               </div>
               
     
               <div class="active-leave-date">
                 <span>${worker.startDate
-              .slice(0, 10)
-              .replaceAll("-", "/")} - ${worker.endDate
-                .slice(0, 10)
-                .replaceAll("-", "/")}</span> <span> ${worker.leaveDays} days</span>
+                  .slice(0, 10)
+                  .replaceAll("-", "/")} - ${worker.endDate
+          .slice(0, 10)
+          .replaceAll("-", "/")}</span> <span> ${worker.leaveDays} days</span>
               </div>
     
               <div class="active-leave-date">
@@ -97,10 +101,9 @@ const fetchAllWorkersLeave = async () => {
     } else {
       workersOnLeave.innerHTML = `<p class="display-none">No workers actively on leave<p>`;
     }
-
-  } catch (err) {
-  };
+  } catch (error) {
+    console.log(error);
+  }
 };
-
 
 fetchAllWorkersLeave().then(() => fetchAllWorkers());

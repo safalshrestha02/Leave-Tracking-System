@@ -1,146 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leave Tracking System</title>
+    <link rel="stylesheet" href="/style_sheets/worker_home.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Leave Tracking System</title>
-  <link rel="stylesheet" href="/style_sheets/worker_home.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
-</head>
+  <body>
+    <div>
+      <div class="main-container">
+        <div class="left-container-wrapper">
+          <div class="left-container">
+            <nav>
+              <div class="close-menu-container">
+                <i class="fa-solid fa-xmark close-menu"></i>
+              </div>
 
-<body>
-  <div>
-    <div class="main-container">
-      <div class="left-container-wrapper">
+              <h1 id="main-logo"><span>e</span>coB<span>ee</span>s</h1>
 
-        <div class="left-container">
-          <nav>
+              <ul id="nav-ul ">
+                <li class="active">
+                  <a href="/worker_home" class="nav-links nav-active"
+                    ><i class="fa-solid fa-house nav-icon"></i>Home</a
+                  >
+                </li>
 
-            <div class="close-menu-container">
-              <i class="fa-solid fa-xmark close-menu"></i>
+                <li>
+                  <a href="/worker_profile" class="nav-links"
+                    ><i class="fa-solid fa-user nav-icon"></i>Profile</a
+                  >
+                </li>
+
+                <li>
+                  <a href="/worker_applyLeave" class="nav-links"
+                    ><i class="fa-solid fa-right-from-bracket nav-icon"></i
+                    >Apply for Leave</a
+                  >
+                </li>
+
+                <li>
+                  <a href="/leave_history" class="nav-links"
+                    ><i class="fa-solid fa-clock-rotate-left nav-icon"></i>Leave
+                    History</a
+                  >
+                </li>
+              </ul>
+            </nav>
+
+            <a href="/logoutWorker">
+              <div class="logout-button-container">
+                <span class="logout-button"
+                  ><i
+                    class="fa-solid fa-arrow-right-from-bracket nav-icon"
+                    style="rotate: 180deg"
+                  ></i>
+                  Logout
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="right-container">
+          <div class="navbar-name">
+            <div class="hamburger-menu">
+              <i class="fa-solid fa-bars hamburger-bars"></i>
             </div>
 
-            <h1 id="main-logo"><span>e</span>coB<span>ee</span>s</h1>
-
-            <ul id="nav-ul ">
-
-              <li class="active">
-                <a href="/worker_home" class="nav-links nav-active"><i class="fa-solid fa-house nav-icon"></i>Home</a>
-              </li>
-
-              <li>
-                <a href="/worker_profile" class="nav-links"><i class="fa-solid fa-user nav-icon"></i>Profile</a>
-              </li>
-
-              <li>
-                <a href="/worker_applyLeave" class="nav-links"><i
-                    class="fa-solid fa-right-from-bracket nav-icon"></i>Apply
-                  for Leave</a>
-              </li>
-
-              <li>
-                <a href="/leave_history" class="nav-links"><i class="fa-solid fa-clock-rotate-left nav-icon"></i>Leave
-                  History</a>
-              </li>
-
-            </ul>
-          </nav>
-
-          <a href="/logoutWorker">
-            <div class="logout-button-container">
-              <span class="logout-button"><i class="fa-solid fa-arrow-right-from-bracket nav-icon"
-                  style="rotate: 180deg"></i>
-                Logout
-              </span>
+            <div>
+              <p class="worker-name"></p>
+              <p class="main-logo-responsive">
+                <span>e</span>coB<span>ee</span>s
+              </p>
             </div>
-          </a>
 
+            <div class="navbar-id">
+              <p class="worker-id">Worker ID:<span id="id-number"></span></p>
+            </div>
+          </div>
+
+          <div class="dashboard-content">
+            <div class="worker-leave-overview">
+              <div class="worker-total-leave overview">
+                <p class="leaves-data">Total Leaves</p>
+
+                <p class="leaves-number total-leave-days">...</p>
+              </div>
+
+              <div class="worker-leaves-taken overview">
+                <p class="leaves-data">Leaves Taken</p>
+
+                <p class="leaves-number leaves-taken">...</p>
+              </div>
+
+              <div class="worker-leaves-remaining overview">
+                <p class="leaves-data">Remaining</p>
+
+                <p class="leaves-number leaves-remaining">...</p>
+              </div>
+            </div>
+
+            <div class="active-leave-container">
+              <h2>Active Leave</h2>
+
+              <div class="active-leave-details"></div>
+            </div>
+
+            <div class="pending-and-approved">
+              <h2>Pending Leaves</h2>
+
+              <div class="pending-and-approved-container"></div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="right-container">
-        <div class="navbar-name">
+      <div class="success-alert alert-boxes">
+        <i class="fa-solid fa-check alert-icon"></i>
 
-          <div class="hamburger-menu">
-            <i class="fa-solid fa-bars hamburger-bars"></i>
-          </div>
-
-          <div>
-            <p class="worker-name"></p>
-            <p class="main-logo-responsive"><span>e</span>coB<span>ee</span>s</p>
-          </div>
-
-          <div class="navbar-id">
-            <p class="worker-id">Worker ID:<span id="id-number"></span></p>
-          </div>
-
-        </div>
-
-        <div class="dashboard-content">
-
-          <div class="worker-leave-overview">
-
-            <div class="worker-total-leave overview">
-              <p class="leaves-data">Total Leaves</p>
-
-              <p class="leaves-number total-leave-days">...</p>
-            </div>
-
-            <div class="worker-leaves-taken overview">
-              <p class="leaves-data">Leaves Taken</p>
-
-              <p class="leaves-number leaves-taken">...</p>
-            </div>
-
-            <div class="worker-leaves-remaining overview">
-              <p class="leaves-data">Remaining</p>
-
-              <p class="leaves-number leaves-remaining">...</p>
-            </div>
-
-          </div>
-
-          <div class="active-leave-container">
-
-            <h2>Active Leave</h2>
-
-            <div class="active-leave-details"></div>
-
-          </div>
-
-          <div class="pending-and-approved">
-
-            <h2>Pending Leaves</h2>
-
-            <div class="pending-and-approved-container"></div>
-
-          </div>
-
-        </div>
-
+        <span class="alert-description">
+          <h4>Success:</h4>
+          Your leave request has been deleted!
+        </span>
       </div>
     </div>
 
-    <div class="success-alert alert-boxes">
-
-      <i class="fa-solid fa-check alert-icon"></i>
-
-      <span class="alert-description">
-        <h4>Success:</h4>
-        Your leave request has been deleted!
-      </span>
-
-    </div>
-
-  </div>
-
-  <script src="/scripts/worker/worker_primary.js"></script>
-  <script src="/scripts/worker/worker_home.js"></script>
-</body>
-
+    <script src="/scripts/worker/worker_primary.js"></script>
+    <script src="/scripts/worker/worker_home.js"></script>
+  </body>
 </html>
