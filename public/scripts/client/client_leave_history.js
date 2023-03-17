@@ -49,7 +49,7 @@ const leaveHistory = async () => {
       const { firstName, lastName, workerID } = worker;
       const fullName = `${capitalize(firstName)} ${capitalize(lastName)}`;
       let ihtml = `
-            <option value="${workerID}">${fullName}</option>
+            <option value="${workerID}">${fullName} ${workerID}</option>
             `;
       chooseWorker.innerHTML += ihtml;
     });
