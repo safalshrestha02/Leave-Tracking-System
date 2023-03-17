@@ -1,14 +1,15 @@
 const dashboardWorkerName = document.querySelector(".worker-name-profile");
-const dashboardCompany = document.querySelector('.emp-companyName-value');
+const dashboardCompany = document.querySelector(".emp-companyName-value");
 const dashboardWorkerID = document.querySelector(".emp-id-value");
 const dashboardWorkerEmail = document.querySelector(".emp-email-value");
 const dashboardWorkerGender = document.querySelector(".emp-gender-value");
 const dashboardWorkerCountry = document.querySelector(".emp-country-value");
 const dashboardWorkerCity = document.querySelector(".emp-city-value");
-const companyNameField = document.querySelector('#company-name')
+const companyNameField = document.querySelector("#company-name");
 
 const fetchWorkerProfile = async () => {
-  const { fullName, workerID, email, gender, country, city, companyName } = await fetchActiveWorkerApi();
+  const { fullName, workerID, email, gender, country, city, companyName } =
+    await fetchActiveWorkerApi();
   dashboardWorkerName.innerHTML = fullName;
   dashboardCompany.innerHTML = companyName;
   dashboardWorkerID.innerHTML = workerID;
@@ -20,7 +21,9 @@ const fetchWorkerProfile = async () => {
 };
 fetchWorkerProfile();
 
-const passwordContainer = document.querySelector(".main-password-change-container");
+const passwordContainer = document.querySelector(
+  ".main-password-change-container"
+);
 const changePasswordButton = document.querySelector(".change-password-button");
 const cancelButton = document.querySelector(".cancel-button");
 
@@ -32,35 +35,31 @@ cancelButton.addEventListener("click", () => {
   passwordContainer.classList.remove("change-password-active");
 });
 
+const changePasswordError = document.querySelector(".error-container");
+const changePasswordForm = document.querySelector(".change-password-form");
+const changePasswordFields = document.querySelectorAll(".password-inputs");
 
-const changePasswordError = document.querySelector(".error-container")
-const changePasswordForm = document.querySelector(".change-password-form")
-const changePasswordFields = document.querySelectorAll(".password-inputs")
-
-
-
-// ----------- SUBMIT NEW PASSWORD -------------- // 
+// ----------- SUBMIT NEW PASSWORD -------------- //
 
 changePasswordForm.addEventListener("submit", async (e) => {
-
   e.preventDefault();
 
   changePasswordError.textContent = " ";
 
-  const currentPassword = changePasswordForm.currentPassword.value.toLowerCase();
+  const currentPassword =
+    changePasswordForm.currentPassword.value.toLowerCase();
   const newPassword = changePasswordForm.newPassword.value.toLowerCase();
-  const confirmPassword = changePasswordForm.confirmNewPassword.value.toLowerCase();
-
+  const confirmPassword =
+    changePasswordForm.confirmNewPassword.value.toLowerCase();
 
   const formData = {
     currentPassword,
     newPassword,
-    confirmPassword
-  }
+    confirmPassword,
+  };
 
   try {
-    const url = "http://localhost:3000/api/changeWorkerPwd"
-
+    const url = "http://localhost:3000/api/changeWorkerPwd";
 
     const res = await fetch(url, {
       method: "PUT",
@@ -69,10 +68,10 @@ changePasswordForm.addEventListener("submit", async (e) => {
         "Content-Type": "application/json",
       },
     });
-    const data = await res.json()
+    const data = await res.json();
 
     if (data.message) {
-      changePasswordError.innerHTML = `<p class="error-message">${data.message}</p>`
+      changePasswordError.innerHTML = `<p class="error-message">${data.message}</p>`;
     }
 
     if (res.status === 201) {
@@ -87,13 +86,11 @@ changePasswordForm.addEventListener("submit", async (e) => {
       successAlert.style.display = "block";
       setTimeout(() => {
         successAlert.style.display = "none";
-        window.location.replace("/logoutClient")
+        window.location.replace("/logoutClient");
       }, 2500);
       passwordContainer.classList.remove("change-password-active");
     }
+  } catch (error) {
+    console.log(error);
   }
-  catch (error) {
-
-  }
-
-})
+});

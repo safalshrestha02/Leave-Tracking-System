@@ -5,247 +5,221 @@ const filterButton = document.querySelector(".filter-button");
 const filterContainer = document.querySelector(".filter-container");
 const paginationContainer = document.querySelector(".pagination-container");
 const paginationNumbers = document.querySelector(".pagination-wrapper");
-const leftArrow = document.querySelector(".fa-less-than")
-const rightArrow = document.querySelector(".fa-greater-than")
-const pendingContainer = document.querySelector(".pending-container")
+const leftArrow = document.querySelector(".fa-less-than");
+const rightArrow = document.querySelector(".fa-greater-than");
+const pendingContainer = document.querySelector(".pending-container");
 
 const fetchWorkers = async () => {
   // Getting the actual workers from the company
-  manageWorkersSection.innerHTML = '<img src = "/images/load.gif" alt = "Loading fresh data for you" class = "load-gif"/>'
+  manageWorkersSection.innerHTML =
+    '<img src = "/images/load.gif" alt = "Loading fresh data for you" class = "load-gif"/>';
 
   const fetchactiveClientId = async () => {
     try {
-      const res = await fetchActiveClientApi()
-      const activeid  = res._id
-      return activeid
+      const res = await fetchActiveClientApi();
+      const activeid = res._id;
+      return activeid;
+    } catch (error) {
+      console.log(error);
     }
-    catch (error) {
-      console.log(error)
-    }
-  }
+  };
 
-  const activeClientId = await fetchactiveClientId()
+  const activeClientId = await fetchactiveClientId();
 
+  // --------------------- SEARCH FUNCTION  ---------- //
 
-  // --------------------- SEARCH FUNCTION  ---------- // 
-
-    const searchWorker = async () => {
-      try {
+  const searchWorker = async () => {
+    try {
       const userInput = dashboardSearch.value.toLowerCase();
-      
 
-      const search_url = `http://localhost:3000/api/clients_workers/${activeClientId}/?page=1&limit=1000&search=${userInput}`
+      const search_url = `http://localhost:3000/api/clients_workers/${activeClientId}/?page=1&limit=1000&search=${userInput}`;
 
-      const res = await fetch(search_url, {method: "GET"})
-      const data = await res.json()
-      
-      const foundWorkers = data.workers
+      const res = await fetch(search_url, { method: "GET" });
+      const data = await res.json();
+
+      const foundWorkers = data.workers;
       if (foundWorkers.length == 0) {
         manageWorkersSection.innerHTML = `<p>No search results found for "${dashboardSearch.value}"</p>`;
-      } 
+      }
 
       if (foundWorkers.length > 0) {
         manageWorkersSection.innerHTML = "";
         foundWorkers.map((data) => {
-          Workermap(data)
+          Workermap(data);
         });
       }
-      }
-      catch (error) {
-        console.log(error)
-      }
-
+    } catch (error) {
+      console.log(error);
     }
-    dashboardSearch.addEventListener("input", searchWorker);
+  };
+  dashboardSearch.addEventListener("input", searchWorker);
 
   // ------------------------ ADDING WORKERS ON DASHBOARD -----------------------//
-
-
 
   const addWorkersToDashboard = async () => {
     filterContainer.classList.remove("filter-container-active");
     icon.classList.remove("fa-circle-xmark");
 
     try {
-      ASC_URL = `http://localhost:3000/api/clients_workers/${activeClientId}/?page=1&limit=1000&sort=firstName,asc`
+      ASC_URL = `http://localhost:3000/api/clients_workers/${activeClientId}/?page=1&limit=1000&sort=firstName,asc`;
 
-      const res = await fetch(ASC_URL, {method: "GET"})
-      const data = await res.json()
-      
-      const foundWorkers = data.workers
+      const res = await fetch(ASC_URL, { method: "GET" });
+      const data = await res.json();
+
+      const foundWorkers = data.workers;
       if (foundWorkers.length == 0) {
         manageWorkersSection.innerHTML = `<p class="empty-workers">Add some workers to filter them</p>`;
-      } 
+      }
 
       if (foundWorkers.length > 0) {
-
-        filteroptions.forEach(button => {
-          button.classList.remove("active-option")
-        })
-        nameAsc.classList.add("active-option")
+        filteroptions.forEach((button) => {
+          button.classList.remove("active-option");
+        });
+        nameAsc.classList.add("active-option");
 
         manageWorkersSection.innerHTML = "";
         foundWorkers.map((data) => {
-          Workermap(data)
+          Workermap(data);
         });
       }
+    } catch (error) {
+      console.log(error);
     }
-    
-    catch (error) {
-      console.log(error)
-     }
-  }
+  };
 
   addWorkersToDashboard();
 
-
-  
   // ----------------------------- SORTING ----------------------------------------//
-  
-  
+
   // ----------------------------- SORTING BY ASCENDING NAME -------------------//
 
-  nameAsc.addEventListener("click", async() => {
-
+  nameAsc.addEventListener("click", async () => {
     filterContainer.classList.remove("filter-container-active");
     icon.classList.remove("fa-circle-xmark");
 
     try {
-      ASC_URL = `http://localhost:3000/api/clients_workers/${activeClientId}/?page=1&limit=1000&sort=firstName,asc`
+      ASC_URL = `http://localhost:3000/api/clients_workers/${activeClientId}/?page=1&limit=1000&sort=firstName,asc`;
 
-      const res = await fetch(ASC_URL, {method: "GET"})
-      const data = await res.json()
-      
-      const foundWorkers = data.workers
+      const res = await fetch(ASC_URL, { method: "GET" });
+      const data = await res.json();
+
+      const foundWorkers = data.workers;
       if (foundWorkers.length == 0) {
         manageWorkersSection.innerHTML = `<p class="empty-workers">Add some workers to filter them</p>`;
-      } 
+      }
 
       if (foundWorkers.length > 0) {
-
-        filteroptions.forEach(button => {
-          button.classList.remove("active-option")
-        })
-        nameAsc.classList.add("active-option")
+        filteroptions.forEach((button) => {
+          button.classList.remove("active-option");
+        });
+        nameAsc.classList.add("active-option");
 
         manageWorkersSection.innerHTML = "";
         foundWorkers.map((data) => {
-          Workermap(data)
+          Workermap(data);
         });
       }
+    } catch (error) {
+      console.log(error);
     }
-    
-    catch (error) {
-      console.log(error)
-     }
   });
 
   // ----------------------------- SORTING BY DESCENDING NAME -------------------//
 
-  nameDes.addEventListener("click", async() => {
-
+  nameDes.addEventListener("click", async () => {
     filterContainer.classList.remove("filter-container-active");
     icon.classList.remove("fa-circle-xmark");
 
     try {
-      const DESC_URL = `http://localhost:3000/api/clients_workers/${activeClientId}/?page=1&limit=1000&sort=firstName,desc`
+      const DESC_URL = `http://localhost:3000/api/clients_workers/${activeClientId}/?page=1&limit=1000&sort=firstName,desc`;
 
-      const res = await fetch(DESC_URL, {method: "GET"})
-      const data = await res.json()
-      
-      const foundWorkers = data.workers
+      const res = await fetch(DESC_URL, { method: "GET" });
+      const data = await res.json();
+
+      const foundWorkers = data.workers;
       if (foundWorkers.length == 0) {
         manageWorkersSection.innerHTML = `<p class="empty-workers">Add some workers to filter them</p>`;
-      } 
+      }
 
       if (foundWorkers.length > 0) {
-        filteroptions.forEach(button => {
-          button.classList.remove("active-option")
-        })
-        nameDes.classList.add("active-option")
+        filteroptions.forEach((button) => {
+          button.classList.remove("active-option");
+        });
+        nameDes.classList.add("active-option");
         manageWorkersSection.innerHTML = "";
         foundWorkers.map((data) => {
-          Workermap(data)
+          Workermap(data);
         });
       }
+    } catch (error) {
+      console.log(error);
     }
-    
-    catch (error) {
-      console.log(error)
-     }
   });
 
   // ----------------------------- SORTING BY ASCENDING ID -------------------//
 
-  idAsc.addEventListener("click", async() => {
-
+  idAsc.addEventListener("click", async () => {
     filterContainer.classList.remove("filter-container-active");
     icon.classList.remove("fa-circle-xmark");
 
     try {
-      const idASC_URL = `http://localhost:3000/api/clients_workers/${activeClientId}/?page=1&limit=1000&sort=workerID,asc`
+      const idASC_URL = `http://localhost:3000/api/clients_workers/${activeClientId}/?page=1&limit=1000&sort=workerID,asc`;
 
-      const res = await fetch(idASC_URL, {method: "GET"})
-      const data = await res.json()
-      
-      const foundWorkers = data.workers
+      const res = await fetch(idASC_URL, { method: "GET" });
+      const data = await res.json();
+
+      const foundWorkers = data.workers;
       if (foundWorkers.length == 0) {
         manageWorkersSection.innerHTML = `<p class="empty-workers">Add some workers to filter them</p>`;
-      } 
+      }
 
       if (foundWorkers.length > 0) {
-            filteroptions.forEach(button => {
-              button.classList.remove("active-option")
-            })
-            idAsc.classList.add("active-option")
+        filteroptions.forEach((button) => {
+          button.classList.remove("active-option");
+        });
+        idAsc.classList.add("active-option");
 
         manageWorkersSection.innerHTML = "";
         foundWorkers.map((data) => {
-          Workermap(data)
+          Workermap(data);
         });
       }
+    } catch (error) {
+      console.log(error);
     }
-    
-    catch (error) {
-      console.log(error)
-     }
-
   });
 
   // ----------------------------- SORTING BY DESCENDING ID -------------------//
 
-  idDes.addEventListener("click", async() => {
-
+  idDes.addEventListener("click", async () => {
     filterContainer.classList.remove("filter-container-active");
     icon.classList.remove("fa-circle-xmark");
 
     try {
-      const idDESC_URL = `http://localhost:3000/api/clients_workers/${activeClientId}/?page=1&limit=1000&sort=workerID,desc`
+      const idDESC_URL = `http://localhost:3000/api/clients_workers/${activeClientId}/?page=1&limit=1000&sort=workerID,desc`;
 
-      const res = await fetch(idDESC_URL, {method: "GET"})
-      const data = await res.json()
-      
-      const foundWorkers = data.workers
+      const res = await fetch(idDESC_URL, { method: "GET" });
+      const data = await res.json();
+
+      const foundWorkers = data.workers;
       if (foundWorkers.length == 0) {
         manageWorkersSection.innerHTML = `<p class="empty-workers">Add some workers to filter them</p>`;
-      } 
+      }
 
       if (foundWorkers.length > 0) {
-            filteroptions.forEach(button => {
-              button.classList.remove("active-option")
-            })
-            idDes.classList.add("active-option")
+        filteroptions.forEach((button) => {
+          button.classList.remove("active-option");
+        });
+        idDes.classList.add("active-option");
 
         manageWorkersSection.innerHTML = "";
         foundWorkers.map((data) => {
-          Workermap(data)
+          Workermap(data);
         });
       }
+    } catch (error) {
+      console.log(error);
     }
-    
-    catch (error) {
-      console.log(error)
-     }
   });
 };
 
@@ -257,56 +231,59 @@ const confirmDelete = (deleteWorkerID, monID, deleteWorkerName) => {
   const confirmBox = document.querySelector(".confirm-container");
   const cancelButton = document.querySelector(".cancel-button");
   const confirmButton = document.querySelector(".confirm-button");
-  const workerDeleteName = document.querySelector(".delete-worker-name")
-  const workerDeleteID = document.querySelector(".delete-worker-ID")
+  const workerDeleteName = document.querySelector(".delete-worker-name");
+  const workerDeleteID = document.querySelector(".delete-worker-ID");
 
   confirmBox.style.display = "flex";
-  document.body.style.overflow = 'hidden'
-  workerDeleteName.innerHTML = ""
-  workerDeleteID.innerHTML = ``
+  document.body.style.overflow = "hidden";
+  workerDeleteName.innerHTML = "";
+  workerDeleteID.innerHTML = ``;
 
-  let deleteworkerIDhtml = `${deleteWorkerID}`
-  let deleteworkerNamehtml = `<i class="fa-regular fa-user user-icon"></i>${deleteWorkerName}`
+  let deleteworkerIDhtml = `${deleteWorkerID}`;
+  let deleteworkerNamehtml = `<i class="fa-regular fa-user user-icon"></i>${deleteWorkerName}`;
 
-  workerDeleteID.innerHTML += deleteworkerIDhtml
-  workerDeleteName.innerHTML += deleteworkerNamehtml
+  workerDeleteID.innerHTML += deleteworkerIDhtml;
+  workerDeleteName.innerHTML += deleteworkerNamehtml;
 
+  cancelButton.addEventListener(
+    "click",
+    () => {
+      confirmBox.style.display = "none";
+      document.body.style.overflow = "auto";
+      deleteWorkerID = null;
+      monID = null;
+    },
+    { once: true }
+  );
 
-  cancelButton.addEventListener("click", () => {
-    confirmBox.style.display = "none";
-    document.body.style.overflow = 'auto'
-    deleteWorkerID = null
-    monID = null
-  }, { once: true });
+  confirmButton.addEventListener(
+    "click",
+    async () => {
+      confirmBox.style.display = "none";
+      document.body.style.overflow = "auto";
+      try {
+        if (deleteWorkerID !== null) {
+          const deleteURL = `http://localhost:3000/api/workers/${monID}`;
+          const deleteWorker = await fetch(deleteURL, { method: "DELETE" });
 
-  confirmButton.addEventListener("click", async () => {
-    confirmBox.style.display = "none";
-    document.body.style.overflow = 'auto'
-    try {
-      if (deleteWorkerID !== null) {
-        const deleteURL = `http://localhost:3000/api/workers/${monID}`
-        const deleteWorker = await fetch(deleteURL, { method: "DELETE" })
+          if (deleteWorker.status === 201) {
+            const successAlert = document.querySelector("#alert");
+            successAlert.style.display = "block";
 
-        if (deleteWorker.status === 201) {
+            manageWorkersSection.innerHTML = "";
+            fetchWorkers();
 
-          const successAlert = document.querySelector("#alert");
-          successAlert.style.display = "block";
-
-          manageWorkersSection.innerHTML = ""
-          fetchWorkers()
-
-          setTimeout(() => {
-            successAlert.style.display = "none";
-          }, 2500)
-
+            setTimeout(() => {
+              successAlert.style.display = "none";
+            }, 2500);
+          }
         }
+      } catch (error) {
+        console.log(error);
       }
-    }
-    catch (error) {
-
-    }
-
-  }, { once: true })
+    },
+    { once: true }
+  );
 };
 
 // ---------- filter ------- //
@@ -326,10 +303,9 @@ filterButton.addEventListener("click", () => {
 // ---------------------- HANDLE DETAILS ------------------------//
 
 const handleDetails = (id, full, gender, email, city, country) => {
-
-  const workerDetailBox = document.querySelector(".more-worker-details")
-  workerDetailBox.classList.add("details-active")
-  document.body.style.overflow = 'hidden'
+  const workerDetailBox = document.querySelector(".more-worker-details");
+  workerDetailBox.classList.add("details-active");
+  document.body.style.overflow = "hidden";
   workerDetailBox.innerHTML = "";
 
   let details = `
@@ -369,25 +345,24 @@ const handleDetails = (id, full, gender, email, city, country) => {
                 <p class="capitalize-field">${city}</p>
             </div>
       </div>
-  `
-  workerDetailBox.innerHTML += details
+  `;
+  workerDetailBox.innerHTML += details;
 
-  const closeDetails = document.querySelector(".details-close-icon")
+  const closeDetails = document.querySelector(".details-close-icon");
 
   closeDetails.addEventListener("click", () => {
-    workerDetailBox.classList.remove("details-active")
-    document.body.style.overflow = 'auto'
-  })
+    workerDetailBox.classList.remove("details-active");
+    document.body.style.overflow = "auto";
+  });
+};
 
-}
-
-
-// -------------------- Workers mapping -------------------------------------------- // 
+// -------------------- Workers mapping -------------------------------------------- //
 
 const Workermap = (data) => {
-  const { firstName, lastName, workerID, gender, email, city, country, _id } = data;
-          const fullName = `${firstName} ${lastName}`;
-          let ihtml = `
+  const { firstName, lastName, workerID, gender, email, city, country, _id } =
+    data;
+  const fullName = `${firstName} ${lastName}`;
+  let ihtml = `
             <div class="worker-details">
   
                 <div class="topsection">
@@ -418,5 +393,5 @@ const Workermap = (data) => {
   
             </div>
             `;
-          manageWorkersSection.innerHTML += ihtml;
-}
+  manageWorkersSection.innerHTML += ihtml;
+};

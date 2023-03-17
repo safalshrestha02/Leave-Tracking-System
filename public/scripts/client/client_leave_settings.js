@@ -51,8 +51,8 @@ const editLeaveSettings = async () => {
 
     settingsIcon.addEventListener("click", settingsFunction);
     doneButton.addEventListener("click", doneFunction);
-  } catch (err) {
-
+  } catch (error) {
+      console.log(error)
   }
 };
 
