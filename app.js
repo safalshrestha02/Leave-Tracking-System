@@ -1,6 +1,5 @@
 //dependencies
 require("dotenv").config();
-const crypto = require("crypto");
 const bodyParser = require("body-parser");
 const express = require("express");
 const app = express();
@@ -10,9 +9,6 @@ const cookieParser = require("cookie-parser");
 const PORT = process.env.PORT;
 
 //security dependencies
-var xss = require("xss-clean");
-var clean = require("xss-clean/lib/xss").clean;
-var cleaned = clean("<script></script>");
 const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
 const cors = require("cors");
@@ -33,7 +29,6 @@ app.use(
 );
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(hpp());
-app.use(xss());
 app.use(cors());
 
 const connectDB = require("./config/connectDB");
