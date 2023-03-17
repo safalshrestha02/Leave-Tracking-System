@@ -86,7 +86,7 @@ changePasswordForm.addEventListener("submit", async (e) => {
       successAlert.style.display = "block";
       setTimeout(() => {
         successAlert.style.display = "none";
-        window.location.replace("/logoutClient");
+        window.location.replace("/worker_login");
       }, 2500);
       passwordContainer.classList.remove("change-password-active");
     }
