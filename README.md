@@ -156,6 +156,9 @@ Start the server
 
 ## Screenshots
 
-![client side](https://user-images.githubusercontent.com/118807784/225571463-5d81eddf-fd9a-462f-8384-73596d23e6df.gif)
-![worker side](https://user-images.githubusercontent.com/118807784/225572008-7f90e76e-b7ff-41fc-944e-379793c6bb5b.gif)
+![client](https://user-images.githubusercontent.com/118807784/225829412-64570914-cda9-478d-8912-0449c17576b7.gif)
+![worker](https://user-images.githubusercontent.com/118807784/225829869-c8787c06-d1a5-418b-9505-3368322a69e4.gif)
+
+
+
 
